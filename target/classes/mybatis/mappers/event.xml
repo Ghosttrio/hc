@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="event">
+
+<!-- 이벤트목록 -->
+<select id="selectEventList" resultType="eventDTO">
+		SELECT * From event
+	</select>
+	
+<!-- 댓글목록	 -->
+<select id="listArticles" resultType="eventDTO">
+		SELECT LEVEL, articleNO, parentNO, title, content, id
+					 from e_board
+					 START WITH parentNO=0
+					CONNECT BY PRIOR articleNO=parentNO
+					 ORDER SIBLINGS BY articleNO DESC
+	</select>
+	
+<!-- 이벤트 목록 추가 -->
+<insert id="addEvent" parameterType="eventDTO">
+		INSERT INTO
+			event (id, title,  firstimage,  secondimage, eventday)
+		VALUES
+			(#{id}, #{title}, #{firstimage}, #{secondimage}, #{eventday} )
+	</insert>
+</mapper>
