@@ -130,7 +130,8 @@ public class Store_managerController {
 	
 	// 메뉴 삭제
 	
-	@RequestMapping("/DeleteStore.do")
+	@RequestMapping(value = "DeleteStore.do", method= {RequestMethod.DELETE, RequestMethod.POST})
+		
 	public String DeleteStore(
 			HttpServletRequest request,
 			@RequestParam("menu_id") String menu_id, Model model) {

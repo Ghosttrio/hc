@@ -18,6 +18,9 @@ public interface StoreDAO {
 
 	StoreDTO DeleteStore(String menu_id);
 	
-	StoreDTO selectMenu(String menu_type);
+	public abstract List selectMenu(String menu_type);
+	
+	StoreDTO storeinfo(String menu_id);
+	
 	
 }

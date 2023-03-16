@@ -86,9 +86,17 @@ public class StoreServiceImpl implements StoreService {
 
 	
 	@Override
-	public StoreDTO selectMenu(String menu_type) {
+	public List selectMenu(String menu_type) {
 		
-		StoreDTO storeDTO = storeDAO.selectMenu(menu_type);
+		List selectMenu = storeDAO.selectMenu(menu_type);
+		
+		return selectMenu;
+	}
+	
+	@Override
+	public StoreDTO storeinfo(String menu_id) {
+		
+		StoreDTO storeDTO = storeDAO.storeinfo(menu_id);
 		
 		return storeDTO;
 	}

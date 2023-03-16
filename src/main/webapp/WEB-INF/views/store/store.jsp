@@ -61,9 +61,9 @@
 	 <div class = "title">	
 			    <div id = "bar1">
 			        <ul>
-			            <li><a href="/myapp/Store/selectMenu.do?menu_type=10">스낵</a></li>
-			            <li><a href="/myapp/Store/selectMenu.do?menu_type=20">음료</a></li>
-			            <li><a href="/myapp/Store/selectMenu.do?menu_type=30">영화관람권</a></li>
+			            <li><a href="/Store/selectMenu.do?menu_type=10">스낵</a></li>
+			            <li><a href="/Store/selectMenu.do?menu_type=20">음료</a></li>
+			            <li><a href="/Store/selectMenu.do?menu_type=30">영화관람권</a></li>
 			            
 			        </ul>
 			        

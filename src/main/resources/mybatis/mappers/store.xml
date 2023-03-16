@@ -62,5 +62,11 @@
 	</select>
 	
 	
+	<!-- menu_id 리스트 -->
+	<select id="storeinfo" parameterType="String" resultType="storeDTO">
+		select * from store2
+		where menu_id = #{_parameter}
+	</select>
+	
 	
 </mapper>

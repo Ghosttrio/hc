@@ -79,9 +79,20 @@ public class StoreDAOImpl implements StoreDAO {
 		return storeDTO;
 	}
 	
+	
+	// 메뉴타입에 따라 출력
 	@Override
-	public StoreDTO selectMenu(String menu_type) {
-		StoreDTO storeDTO = sqlSession.selectOne("mapper.store.selectMenu", menu_type);
+	public List selectMenu(String menu_type) {
+		List selectMenu = sqlSession.selectList("mapper.store.selectMenu", menu_type);
+		
+		System.out.println("메뉴타입에 따라 출력 list.size : " + selectMenu.size());
+		logger.info("메뉴타입에 따라 출력 list.size : " + selectMenu.size());
+		return selectMenu;
+	}
+	
+	@Override
+	public StoreDTO storeinfo(String menu_id) {
+		StoreDTO storeDTO = sqlSession.selectOne("mapper.store.storeinfo", menu_id);
 		return storeDTO;
 	}
 	

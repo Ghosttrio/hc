@@ -19,6 +19,9 @@ public interface StoreService {
 
 	StoreDTO DeleteStore(String menu_id);
 	
-	StoreDTO selectMenu(String menu_type);
+	List selectMenu(String menu_type);
+	
+	StoreDTO storeinfo(String menu_id);
+	
 
 }
