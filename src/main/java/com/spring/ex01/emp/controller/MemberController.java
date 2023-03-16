@@ -25,15 +25,12 @@ public class MemberController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
-	@Autowired
-	MemberService memberService;
+	@Autowired	MemberService memberService;
+	@Autowired	MemberDTO memberDTO;
 	
-	@Autowired
-	MemberDTO memberDTO;
-	
-	//로그인
-	@RequestMapping(value="/loginMember",method = RequestMethod.POST)
-	public String loginMember(@ModelAttribute MemberDTO memberDTO,
+	//로그인(loginMember)
+	@RequestMapping(value="/loginMember",method = {RequestMethod.POST)
+	public ModelAndView loginMember(@ModelAttribute MemberDTO memberDTO,
 					            HttpServletRequest req, HttpServletResponse resp) {
 
 		HttpSession session = req.getSession();
@@ -57,7 +54,7 @@ public class MemberController {
 			return "";
 		}
 	}
-	//회원가입
+	//회원가입(addMember)
 	@RequestMapping(value="/addMember",method = RequestMethod.POST)
 	public String addMember(Model model,
 					            HttpServletRequest req, HttpServletResponse resp) {
@@ -84,7 +81,7 @@ public class MemberController {
 			}
 	}
 
-	//회원 중복확인
+	//회원 중복확인(checkMember)
 	@RequestMapping(value="/checkMember",method = RequestMethod.POST)
 	public String checkMember (Model model,
 								HttpServletRequest req,HttpServletResponse resp) {
