@@ -1,5 +1,6 @@
 package com.spring.ex01.emp.dao;
 
+public interface MemberDAO {
 	
 	public boolean loginDAO(String id, String pwd);
 			
