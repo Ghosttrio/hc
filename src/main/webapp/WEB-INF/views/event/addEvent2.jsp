@@ -7,7 +7,7 @@
 <title>이벤트 추가페이지</title>
 </head>
 <body>
-<form method="post" action="/boot_test_db/event1/event1.do">
+<form method="post" action="/addEventView.do">
 	 ID : <input type="text" name="id"><br>
 	title: <input type="text" name="title"><br>
 	첫번째 이미지:  <input type="text" name="firstimage"><br>

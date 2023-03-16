@@ -28,7 +28,7 @@ public class EventController {
 	EventService eventService;
 	
 	//이벤트 목록
-	@RequestMapping(value="/event1/event1.do", method=RequestMethod.GET)
+	@RequestMapping(value="/event1/event1.do")
 	public String getList(Model model) {
 		List list = eventService.getList();
 		
@@ -38,28 +38,37 @@ public class EventController {
 		return "event/listEvent";
 	}
 	
-//	@RequestMapping(value="/event1/addEvent.do", method=RequestMethod.GET)
-//	public String addEvent(Model model) {
-//		
-//	}
+	
+	
+
 	//이벤트 목록추가
-	@RequestMapping(value="/addEvent.do", method=RequestMethod.GET)
-	public String addEvent(
+	@RequestMapping(value="/addEventView.do", method=RequestMethod.POST)
+	public String addEvent2(
 			HttpServletRequest request,
 			
 			@ModelAttribute EventDTO dto
-		) {
+			) {
 		
 		
 		System.out.println("Id : "+ dto.getId());
 		
 		// service 호출
 		
-//		int name = eventService.addEvent(dto);
-//		System.out.println("insert 결과 : "+ name);
+		int name = eventService.addEvent(dto);
+		System.out.println("insert 결과 : "+ name);
+		
+		return "redirect:/event1/event1.do";
+	}
+	
+	@RequestMapping(value="/addEvent.do", method=RequestMethod.GET)
+	public String addEvent() {
+		
+		
+		
 		
 		return "event/addEvent2";
 	}
+	
 	
 	//이벤트 댓글 목록
 	@RequestMapping(value="/event1/listArticles.do", method=RequestMethod.GET)
