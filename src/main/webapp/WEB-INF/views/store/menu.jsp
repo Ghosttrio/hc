@@ -81,10 +81,22 @@
 <script>
 	window.onload = () => {
 		
-		 let i = parseInt ('${list.menu_type}')
-		
-	    	document.querySelector(".menu"+i).style.display = "block";
-		    document.querySelector(".drink").style.display = "none";
+		 let i = parseInt ('${list.menu_type }')
+		 
+		 	for ( let j = 10; j <= i; j++){
+		 		
+		 		if( i == j ){
+		 			
+		 		 	document.querySelector(".menu"+i).style.display = "block";
+		 		 	
+		 		} else {
+		 			
+		 			document.querySelector(".menu"+j).style.display = "none";
+		 		}
+		 		
+		 	}
+	   
+		/*     document.querySelector(".drink").style.display = "none";
 		    document.querySelector(".card").style.display = "none";
 	
 	   		for (let i = 1; i < 5; i++) {
@@ -114,7 +126,9 @@
 	           }
 	        })
 	    }
- }
+	   		
+	   		*/
+ } 
     
     
 
