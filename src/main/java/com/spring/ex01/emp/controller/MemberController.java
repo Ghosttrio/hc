@@ -27,7 +27,7 @@ public class MemberController {
 	
 	@Autowired	MemberService memberService;
 	@Autowired	MemberDTO memberDTO;
-	
+	//test
 	//로그인(loginMember)
 	@RequestMapping(value="/loginMember",method = {RequestMethod.POST)
 	public ModelAndView loginMember(@ModelAttribute MemberDTO memberDTO,
