@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
-@Component("memberVO")
+@Component("memberDTO")
 public class MemberDTO {
 	
 	private String member_id;
@@ -14,10 +14,10 @@ public class MemberDTO {
 	private String member_number;
 	private Date joinDate;
 
-	private String member_birth_y;
-	private String member_birth_m;
-	private String member_birth_d;
-	private String member_gender;
+//	private String member_birth_y;
+//	private String member_birth_m;
+//	private String member_birth_d;
+//	private String member_gender;
 	
 	public MemberDTO() {
 		System.out.println("MemberDTO 실행");
@@ -51,11 +51,11 @@ public class MemberDTO {
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
-	public String getMember_pw() {
+	public String getMember_pwd() {
 		return member_pwd;
 	}
-	public void setMember_pw(String member_pw) {
-		this.member_pwd = member_pw;
+	public void setMember_pwd(String member_pwd) {
+		this.member_pwd = member_pwd;
 	}
 	public String getMember_name() {
 		return member_name;
@@ -81,30 +81,31 @@ public class MemberDTO {
 	public void setJoinDate(Date joinDate) {
 		this.joinDate = joinDate;
 	}
-	public String getMember_birth_y() {
-		return member_birth_y;
-	}
-	public void setMember_birth_y(String member_birth_y) {
-		this.member_birth_y = member_birth_y;
-	}
-	public String getMember_birth_m() {
-		return member_birth_m;
-	}
-	public void setMember_birth_m(String member_birth_m) {
-		this.member_birth_m = member_birth_m;
-	}
-	public String getMember_birth_d() {
-		return member_birth_d;
-	}
-	public void setMember_birth_d(String member_birth_d) {
-		this.member_birth_d = member_birth_d;
-	}
-	public String getMember_gender() {
-		return member_gender;
-	}
-	public void setMember_gender(String member_gender) {
-		this.member_gender = member_gender;
-	}
+	
+//	public String getMember_birth_y() {
+//		return member_birth_y;
+//	}
+//	public void setMember_birth_y(String member_birth_y) {
+//		this.member_birth_y = member_birth_y;
+//	}
+//	public String getMember_birth_m() {
+//		return member_birth_m;
+//	}
+//	public void setMember_birth_m(String member_birth_m) {
+//		this.member_birth_m = member_birth_m;
+//	}
+//	public String getMember_birth_d() {
+//		return member_birth_d;
+//	}
+//	public void setMember_birth_d(String member_birth_d) {
+//		this.member_birth_d = member_birth_d;
+//	}
+//	public String getMember_gender() {
+//		return member_gender;
+//	}
+//	public void setMember_gender(String member_gender) {
+//		this.member_gender = member_gender;
+//	}
 
 	
 	

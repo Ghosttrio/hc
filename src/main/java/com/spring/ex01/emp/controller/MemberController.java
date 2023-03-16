@@ -3,7 +3,6 @@ package com.spring.ex01.emp.controller;
 import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -28,8 +28,37 @@ public class MemberController {
 	@Autowired
 	MemberService memberService;
 	
+	@Autowired
+	MemberDTO memberDTO;
+	
+	//로그인
+	@RequestMapping(value="/loginMember",method = RequestMethod.POST)
+	public String loginMember(@ModelAttribute MemberDTO memberDTO,
+					            HttpServletRequest req, HttpServletResponse resp) {
+
+		HttpSession session = req.getSession();
+		System.out.println("session:" +session.getAttribute("member_id"));
+		String member_id = req.getParameter("member_id");
+		String pwd = req.getParameter("pwd");
+		System.out.println(member_id + pwd);
+		
+		boolean result = servlog.servlog(member_id, member_pwd);
+		System.out.println("return되어 최종 돌려받은 값:"+result);
+		System.out.println(member_id+pwd);
+		
+		if( result ) {
+			session.setAttribute("member_id",member_id);
+			System.out.println("session 로그인:"+session);
+			
+			return "";	
+	
+		} else {
+			System.out.println("로그인 실패");
+			return "";
+		}
+	}
 	//회원가입
-	@RequestMapping(value="/new",method = RequestMethod.POST)
+	@RequestMapping(value="/addMember",method = RequestMethod.POST)
 	public String addMember(Model model,
 					            HttpServletRequest req, HttpServletResponse resp) {
 		
@@ -41,8 +70,6 @@ public class MemberController {
 		System.out.println(member_member_id+"/"+member_pwd1+"/"+member_name+"/"+member_email);
 		
 			if(member_pwd1.equals(member_pwd2)) {
-				MemberService actSign = new MemberService();
-				MemberDTO memberDTO = new MemberDTO();
 				memberDTO.setMember_id(member_member_id);
 				memberDTO.setMember_pwd1(member_pwd1);
 				memberDTO.setMember_name(member_name);
@@ -52,23 +79,22 @@ public class MemberController {
 				return "member/";
 
 			} else {
-				
 				return "";
 				
 			}
 	}
 
 	//회원 중복확인
+	@RequestMapping(value="/checkMember",method = RequestMethod.POST)
 	public String checkMember (Model model,
 								HttpServletRequest req,HttpServletResponse resp) {
 
 		String member_id = (String) req.getParameter("member_member_id");
 		System.out.println("member_id = " + member_id);
-		MemberService nameCheck = new MemberService();
 		boolean overlappedID = nameCheck.setCheck(member_id);
 		
 		//회원 중복확인에 대한 결과 메시지 전송
-		PrintWriter writer = response.getWriter();
+		PrintWriter writer = resp.getWriter();
 			if (overlappedID == true) {
 				writer.print("not_usable");
 			} else {
@@ -76,69 +102,50 @@ public class MemberController {
 			}
 			
 	//회원리스트 생성
-	} else if (action.equals("/userlist")) {
+	@RequestMapping(value="/listMember",method = RequestMethod.POST)		
+	public String listMember (Model model,
+			HttpServletRequest req,HttpServletResponse resp) {
+		
 		MemberService actList = new MemberService();
 		List<MemberDTO> UserList = actList.serList();//회원정보 조회할 때 사용할 수 있음
-		request.setAttribute("UserList", UserList);//조회한 정보를 request에 바인딩
-		System.out.println("회원리스트 생성 출력");
-//<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-		page ="/hyojung/LogIn.jsp";
+		req.setAttribute("UserList", UserList);//조회한 정보를 req에 바인딩
 		
-	//로그인
-	}else if (action.equals("/login")) {
-			HttpSession session = request.getSession();
-			System.out.println("session:" +session.getAttribute("member_id"));
-			String member_id = request.getParameter("member_id");
-			String pwd = request.getParameter("pwd");
-			System.out.println(member_id + pwd);
-			
-			MemberService servlog = new MemberService();
-			boolean result = servlog.servlog(member_id, pwd);
-			System.out.println("return되어 최종 돌려받은 값:"+result);
-			System.out.println(member_id+pwd);
-			
-			if( result ) {
-					session.setAttribute("member_id",member_id);
-//<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-					//창순씨 메인페이지 주소로 이동해야함.
-					page = "/HumanCinema/movie1/main.do";
-					//
-					System.out.println("session:"+session);
+	}
 
-			} else {
-//<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-				page = "/hyojung/LogIn.jsp";
-				System.out.println("로그인 실패");
-			}
-			System.out.println("로그인 출력");
 		
 	//마이페이지 내 정보 출력
-	} else if (action.equals("/mypage")){
-		HttpSession session = request.getSession();
+	@RequestMapping(value="/mainMypage",method = RequestMethod.POST)	
+	public String mainMypage (Model model,
+			HttpServletRequest req,HttpServletResponse resp) {
+		
+		HttpSession session = req.getSession();
 		String member_id = (String)session.getAttribute("member_id");
 		System.out.println("session member_id값:" +member_id);
-				if(member_id!=null) {
-					MemberService mypage = new MemberService();
-					MemberDTO result = mypage.serPage(member_id);
-					request.setAttribute("result", result);
-					System.out.println(result);					
-					
-					page="/hyojung/Mypage.jsp";
-				} else {
-					System.out.println("session member_id값이 없습니다.");
-					page="/hyojung/LogIn.jsp";
-				}
+		
+			if(member_id!=null) {
+				MemberService mypage = new MemberService();
+				MemberDTO result = mypage.serPage(member_id);
+				req.setAttribute("result", result);
+				System.out.println(result);					
+				
+			} else {
+				System.out.println("session member_id값이 없습니다.");
+			}
+	}
 	
 	//마이페이지 내 정보 수정
-	} else if (action.equals("/update")) {
+	@RequestMapping(value="/updateMypage",method = RequestMethod.POST)	
+	public String updateMypage (Model model,
+			HttpServletRequest req,HttpServletResponse resp) {
+		
 		System.out.println("회원정보수정 출력");
 	
 		MemberService actupdate = new MemberService();
-		String member_id = request.getParameter("member_id");
-		String pwd1 = request.getParameter("pwd1");
-		String pwd2 = request.getParameter("pwd2");
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
+		String member_id = req.getParameter("member_id");
+		String pwd1 = req.getParameter("pwd1");
+		String pwd2 = req.getParameter("pwd2");
+		String name = req.getParameter("name");
+		String email = req.getParameter("email");
 		System.out.println("update getParam:"+member_id+"/"+pwd1+"/"+"/"+name+"/"+email);
 		
 		if(pwd1.equals(pwd2)) {
@@ -148,40 +155,27 @@ public class MemberController {
 			vo.setName(name);
 			vo.setEmail(email);
 			actupdate.serUpdate(vo);
-			page="/hyojung/Mypage.jsp";
+			
 			}
+	}
+	
+	//마이페이지 영화 예매내역 출력
+	//마이페이지 스토어 구매내역 출력
+	
 			
 	//회원탈퇴
-	}else if(action.equals("/delete")){
-			String member_id = request.getParameter("member_id");
-			String pwd = request.getParameter("pwd");
+	@RequestMapping(value="/delMember",method = RequestMethod.POST)	
+	public String delMember (Model model,
+			HttpServletRequest req,HttpServletResponse resp) {
+		
+			String member_id = req.getParameter("member_id");
+			String pwd = req.getParameter("pwd");
 			if(pwd!=null) {
 				MemberService actdel = new MemberService();
 				actdel.serDel(member_id);
 				
-				page="/HumanCinema/movie1/main.do";
 			}
 	}
 	
-	if(!action.equals("/check")) {
-		RequestDispatcher dispatch = request.getRequestDispatcher(page);
-		dispatch.forward(request, response);
-	}	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	//로그인
-	//로그아웃
-	//회원가입
-	//마이페이지
-	//관리자페이지(회원정보)
 	
 }
