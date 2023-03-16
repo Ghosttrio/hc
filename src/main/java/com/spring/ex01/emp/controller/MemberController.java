@@ -27,10 +27,10 @@ public class MemberController {
 	
 	@Autowired	MemberService memberService;
 	@Autowired	MemberDTO memberDTO;
-	//test
+	
 	//로그인(loginMember)
-	@RequestMapping(value="/loginMember",method = {RequestMethod.POST)
-	public ModelAndView loginMember(@ModelAttribute MemberDTO memberDTO,
+	@RequestMapping(value="/loginMember",method = RequestMethod.POST)
+	public String loginMember(@ModelAttribute MemberDTO memberDTO,
 					            HttpServletRequest req, HttpServletResponse resp) {
 
 		HttpSession session = req.getSession();
@@ -98,7 +98,7 @@ public class MemberController {
 				writer.print("usable");
 			}
 			
-	//회원리스트 생성
+	//관리자페이지 회원리스트 (listMember)
 	@RequestMapping(value="/listMember",method = RequestMethod.POST)		
 	public String listMember (Model model,
 			HttpServletRequest req,HttpServletResponse resp) {
@@ -110,7 +110,7 @@ public class MemberController {
 	}
 
 		
-	//마이페이지 내 정보 출력
+	//마이페이지 출력(mainMypage)
 	@RequestMapping(value="/mainMypage",method = RequestMethod.POST)	
 	public String mainMypage (Model model,
 			HttpServletRequest req,HttpServletResponse resp) {
@@ -130,7 +130,7 @@ public class MemberController {
 			}
 	}
 	
-	//마이페이지 내 정보 수정
+	//마이페이지 내 정보 수정(updateMypage)
 	@RequestMapping(value="/updateMypage",method = RequestMethod.POST)	
 	public String updateMypage (Model model,
 			HttpServletRequest req,HttpServletResponse resp) {
@@ -146,7 +146,6 @@ public class MemberController {
 		System.out.println("update getParam:"+member_id+"/"+pwd1+"/"+"/"+name+"/"+email);
 		
 		if(pwd1.equals(pwd2)) {
-			MemberDTO vo = new MemberDTO();
 			vo.setId(member_id);
 			vo.setPwd(pwd1);
 			vo.setName(name);
@@ -160,7 +159,7 @@ public class MemberController {
 	//마이페이지 스토어 구매내역 출력
 	
 			
-	//회원탈퇴
+	//회원탈퇴(delMember)
 	@RequestMapping(value="/delMember",method = RequestMethod.POST)	
 	public String delMember (Model model,
 			HttpServletRequest req,HttpServletResponse resp) {
@@ -168,7 +167,6 @@ public class MemberController {
 			String member_id = req.getParameter("member_id");
 			String pwd = req.getParameter("pwd");
 			if(pwd!=null) {
-				MemberService actdel = new MemberService();
 				actdel.serDel(member_id);
 				
 			}
