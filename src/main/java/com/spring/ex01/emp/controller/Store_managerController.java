@@ -38,7 +38,7 @@ public class Store_managerController {
 	
 	
 	// 메뉴 목록
-	@RequestMapping(value = "/list.do", method=RequestMethod.GET)
+	@RequestMapping(value = "/list.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public String StoreList(Model model) {
 		List StoreList = storeService.getList();
 		
@@ -130,7 +130,7 @@ public class Store_managerController {
 	
 	// 메뉴 삭제
 	
-	@RequestMapping(value = "DeleteStore.do", method= {RequestMethod.DELETE, RequestMethod.POST})
+	@RequestMapping(value = "DeleteStore.do", method= {RequestMethod.GET, RequestMethod.POST})
 		
 	public String DeleteStore(
 			HttpServletRequest request,

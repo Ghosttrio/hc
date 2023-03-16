@@ -53,7 +53,12 @@ public class StoreController {
 		List selectMenu = storeService.selectMenu(menu_type);
 	
 		model.addAttribute("selectMenu", selectMenu);
+		
+		model.addAttribute("menu_type", menu_type);
+	
+		
 		logger.warn("StoreController > selectMenu : list.size = " + selectMenu.size());
+		logger.warn("StoreController > type : menu_type = " + menu_type);
 		
 		
 		return "store/menu";
