@@ -57,7 +57,12 @@
 		      <groupId>org.apache.tomcat.embed</groupId>
 		      <artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>com.myspring</groupId>
+			<artifactId>myapp</artifactId>
+			<version>1.0.0-BUILD-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>

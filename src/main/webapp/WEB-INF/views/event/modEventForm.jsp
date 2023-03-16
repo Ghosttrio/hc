@@ -25,7 +25,7 @@
 </head>
 <body>
 	<h1 class="cls1">이벤트 수정창</h1>
-	<form method="post" action= "/HumanCinema/event1/modEvent.do?id=${eveInfo.id }">
+	<form method="post" action= "/boot_test_db/event1/modEvent.do?id=${eveInfo.id }">
 		<table align="center">
 			<tr>
 				<td width="200">

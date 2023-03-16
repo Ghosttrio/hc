@@ -9,12 +9,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.myspring.service.EventService;
+import com.spring.ex01.emp.dto.EventDTO;
+import com.spring.ex01.emp.service.EventService;
 
 
 
@@ -26,6 +27,7 @@ public class EventController {
 	@Autowired
 	EventService eventService;
 	
+	//이벤트 목록
 	@RequestMapping(value="/event1/event1.do", method=RequestMethod.GET)
 	public String getList(Model model) {
 		List list = eventService.getList();
@@ -36,12 +38,30 @@ public class EventController {
 		return "event/listEvent";
 	}
 	
-	@RequestMapping(value="/event1/addEvent.do", method=RequestMethod.GET)
-	public String addEvent(Model model) {
+//	@RequestMapping(value="/event1/addEvent.do", method=RequestMethod.GET)
+//	public String addEvent(Model model) {
+//		
+//	}
+	//이벤트 목록추가
+	@RequestMapping(value="/addEvent.do", method=RequestMethod.GET)
+	public String addEvent(
+			HttpServletRequest request,
+			
+			@ModelAttribute EventDTO dto
+		) {
 		
+		
+		System.out.println("Id : "+ dto.getId());
+		
+		// service 호출
+		
+//		int name = eventService.addEvent(dto);
+//		System.out.println("insert 결과 : "+ name);
+		
+		return "event/addEvent2";
 	}
 	
-	
+	//이벤트 댓글 목록
 	@RequestMapping(value="/event1/listArticles.do", method=RequestMethod.GET)
 	public String listArticlesView(Model model) {
 		

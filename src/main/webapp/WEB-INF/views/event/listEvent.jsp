@@ -231,7 +231,7 @@ nav {
 <c:forEach var="vo" items="${ eventsList}">
 <div class=event_t>
 	
-		<a href="/myapp/event1/viewEvent.do?id=${vo.id }">
+		<a href="/boot_test_db/event1/viewEvent.do?id=${vo.id }">
 			<img src ="${vo.firstimage }" width = "100%" ><br>
 			${vo.title }<br>
 			${vo.eventday }<br>

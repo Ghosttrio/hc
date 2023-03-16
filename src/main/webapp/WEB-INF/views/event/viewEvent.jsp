@@ -34,7 +34,7 @@
 
 	<div class="secondimg"> 
 		<h1>
-			<a href="/HumanCinema/seunggi/project1/articleForm.jsp">이벤트 참여 댓글쓰기</a>
+			<a href="/boot_test_db/event/articleForm.jsp">이벤트 참여 댓글쓰기</a>
 		</h1>
 		<img src ="${vo.secondimage }">
 	</div>

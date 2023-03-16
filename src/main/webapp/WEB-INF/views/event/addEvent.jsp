@@ -58,15 +58,15 @@
 	      		<td>${eve.firstimagead }</td>
 	      		<td>${eve.secondimage }</td>
 	      		<td>${eve.eventday }</td>
-	      		<td><a href="/HumanCinema/event1/modEventForm.do?id=${eve.id }">수정</a></td>
-	      		<td><a href="/HumanCinema/event1/delEvent.do?id=${eve.id }">삭제</a></td>
+	      		<td><a href="/boot_test_db/event1/modEventForm.do?id=${eve.id }">수정</a></td>
+	      		<td><a href="/boot_test_db/event1/delEvent.do?id=${eve.id }">삭제</a></td>
 			</tr>
 		  </c:forEach>
 		</c:when>	  
 	</c:choose>
 </table>   
 
-<a href="/HumanCinema/event1/eventForm.do">
+<a href="/boot_test_db/event1/eventForm.do">
 	<p class="cls2">이벤트 등록하기</p>
 </a>
     

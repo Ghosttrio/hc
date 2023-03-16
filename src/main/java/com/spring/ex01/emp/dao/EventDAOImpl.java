@@ -8,6 +8,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
+import com.spring.ex01.emp.dto.EventDTO;
+
 @Repository
 public class EventDAOImpl implements EventDAO {
 
@@ -16,6 +19,7 @@ private static final Logger logger = LoggerFactory.getLogger(EventDAOImpl.class)
 	@Autowired
 	SqlSession sqlSession;
 
+	//이벤트 목록 
 	@Override
 	public List selectEventList() {
 
@@ -32,6 +36,19 @@ private static final Logger logger = LoggerFactory.getLogger(EventDAOImpl.class)
 		return list;
 	}
 	
+	//이벤트 목록 추가
+	@Override
+	public int insertEvent(EventDTO dto) {
+		System.out.println(dto.getId());
+		System.out.println(dto.getTitle());
+		System.out.println(dto.getFirstimage());
+		System.out.println(dto.getSecondimage());
+		System.out.println(dto.getEventday());
+		int addEvent = sqlSession.insert("event.addEvent", dto);
+		return addEvent;
+	}
+	
+	//이벤트 댓글 표시
 	@Override
 	public List ListArticles() {
 		
