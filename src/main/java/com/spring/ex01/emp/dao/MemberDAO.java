@@ -1,6 +1,7 @@
 package com.spring.ex01.emp.dao;
 
-public class MemberDAO{
-
+public interface MemberDAO {
+	
+	public MemberDTO login(Map loginMap) throws DataAccessException;
 
 }

@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
-@Component("memberDTO")
+@Component("memberVO")
 public class MemberDTO {
 	
 	private String member_id;
