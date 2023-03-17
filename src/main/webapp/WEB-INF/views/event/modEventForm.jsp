@@ -25,7 +25,7 @@
 </head>
 <body>
 	<h1 class="cls1">이벤트 수정창</h1>
-	<form method="post" action= "/boot_test_db/event1/modEvent.do?id=${eveInfo.id }">
+	<form method="post" action= "/modifyEvent2.do">
 		<table align="center">
 			<tr>
 				<td width="200">
@@ -48,13 +48,13 @@
 				<td width="400"><input type="text" name="firstimage" value="${eveInfo.firstimage }" >
 				</td>
 			</tr>
-			<tr>
-				<td width="200">
-					<p align="right">첫번째 이미지내용(x)</p>
-				</td>
-				<td width="400"><input type="text" name="firstimagead" value="${eveInfo.firstimagead }" disabled>
-				</td>
-			</tr>
+<!-- 			<tr> -->
+<!-- 				<td width="200"> -->
+<!-- 					<p align="right">첫번째 이미지내용(x)</p> -->
+<!-- 				</td> -->
+<%-- 				<td width="400"><input type="text" name="firstimagead" value="${eveInfo.firstimagead }" disabled> --%>
+<!-- 				</td> -->
+<!-- 			</tr> -->
 			<tr>
 				<td width="200">
 					<p align="right">두번째 이미지 주소</p>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import com.spring.ex01.emp.dto.EventDTO;
 import com.spring.ex01.emp.service.EventService;
 
@@ -69,6 +70,66 @@ public class EventController {
 		return "event/addEvent2";
 	}
 	
+	//두번째 이미지 보여주기
+	@RequestMapping(value="/viewEvent.do")
+	public String secondEvent(Model model,
+			
+			@RequestParam("id") 
+			String id
+			
+			) {
+		List list = eventService.secondEvent(id);
+		System.out.println(id);
+		model.addAttribute("secondEvent", list);
+		logger.warn("EventController > getList : list.size = "+ list.size());
+		
+		return "event/viewEvent";
+	}
+	
+	//이벤트 수정창
+	@RequestMapping(value="/modifyEvent2.do")
+	public String modify(@ModelAttribute EventDTO dto) {
+		System.out.println("modifyEvent2.do 실행:"+dto.getId());
+		// DB에서 수정하고
+		int count = eventService.updateEvent(dto);
+		System.out.println("update 결과 : "+ count);
+		
+		
+		return "redirect:/event1/event1.do"; //주소 고치기
+	}
+	
+	//전체 수정삭제창
+	@RequestMapping(value="/modifyEvent.do")
+	public String modifyEvent(Model model) {
+		
+		List list = eventService.getList();
+		
+		model.addAttribute("eventsList", list);
+		
+		
+		return "event/modify";
+	}
+	
+	
+	@RequestMapping(value="/modifyEventForm.do")
+	public String modifyEventForm(Model model) {
+		
+		
+
+		return "event/modEventForm";
+	}
+	
+	//이벤트 삭제창
+	@RequestMapping(value="/deleteEvent.do")
+	public String deleteEvent(@ModelAttribute EventDTO dto) {
+		System.out.println("deleteEvent.do 실행:"+dto.getId());
+		// DB에서 수정하고
+		int count = eventService.deleteEvent(dto);
+		System.out.println("delete 결과 : "+ count);
+		
+		
+		return "redirect:/event1/event1.do"; //주소 고치기
+	}
 	
 	//이벤트 댓글 목록
 	@RequestMapping(value="/event1/listArticles.do", method=RequestMethod.GET)

@@ -24,7 +24,7 @@ public class EventServiceImpl implements EventService {
 		list = edi.selectEventList();
 		
 		
-		return edi.selectEventList();
+		return list;
 	}
 	
 	//이벤트 추가하기
@@ -35,7 +35,18 @@ public class EventServiceImpl implements EventService {
 		
 	}
 	
+	//두번째 이벤트이미지 보여주기
 	
+	@Override
+	public List secondEvent(String id) {
+		List list = null;
+		
+
+		list = edi.secondEvent(id);
+		
+		
+		return list;
+	}
 	
 	//댓글 목록 표시
 	@Override
@@ -45,5 +56,18 @@ public class EventServiceImpl implements EventService {
 		return edi.ListArticles();
 	}
 	
+	//이벤트 수정
+	@Override
+	public int updateEvent(EventDTO dto) {
+		int count = edi.updateEvent(dto);
+		return count;
+	}
+	
+	//이벤트 삭제
+	@Override
+	public int deleteEvent(EventDTO dto) {
+		int count = edi.deleteEvent(dto);
+		return count;
+	}
 	
 }

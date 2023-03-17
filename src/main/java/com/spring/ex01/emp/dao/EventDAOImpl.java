@@ -48,6 +48,24 @@ private static final Logger logger = LoggerFactory.getLogger(EventDAOImpl.class)
 		return addEvent;
 	}
 	
+	//이벤트 두번째 이미지 표시
+	@Override
+	public List secondEvent(String id) {
+
+		logger.info("EventDAOImpl > viewEvent 호출");
+		
+		// SqlSession이 필요
+		// SqlSession의 selectList 호출
+		// selectList에서 sql 호출
+		// 그 결과 DTO를 담은 List로 return 함
+		List list = sqlSession.selectList("event.viewEvent",id);
+		System.out.println("list.size : "+ list.size());
+		logger.info("list.size : "+ list.size());
+		
+		return list;
+	}
+	
+	
 	//이벤트 댓글 표시
 	@Override
 	public List ListArticles() {
@@ -58,5 +76,19 @@ private static final Logger logger = LoggerFactory.getLogger(EventDAOImpl.class)
 		logger.info("list.size : "+ list.size());
 		
 		return list;
+	}
+	
+	//이벤트 수정
+	@Override
+	public int updateEvent(EventDTO dto) {
+		int count = sqlSession.update("event.updateEvent", dto);
+		return count;
+	}
+	
+	//이벤트 삭제
+	@Override
+	public int deleteEvent(EventDTO dto) {
+		int count = sqlSession.update("event.deleteEvent", dto);
+		return count;
 	}
 }

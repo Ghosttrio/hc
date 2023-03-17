@@ -6,6 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import="java.util.*"%>
 <%@ page import="java.io.*"%>
+<c:set var="contextPath" value= "${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,18 +56,18 @@
 	      		<td>${eve.id }</td>
 	      		<td>${eve.title }</td>
 	      		<td>${eve.firstimage }</td>
-	      		<td>${eve.firstimagead }</td>
+<%-- 	      		<td>${eve.firstimagead }</td> --%>
 	      		<td>${eve.secondimage }</td>
 	      		<td>${eve.eventday }</td>
-	      		<td><a href="/boot_test_db/event1/modEventForm.do?id=${eve.id }">수정</a></td>
-	      		<td><a href="/boot_test_db/event1/delEvent.do?id=${eve.id }">삭제</a></td>
+	      		<td><a href="/modifyEventForm.do?id=${eve.id }">수정</a></td>
+	      		<td><a href="/deleteEvent.do?id=${eve.id }">삭제</a></td>
 			</tr>
 		  </c:forEach>
 		</c:when>	  
 	</c:choose>
 </table>   
 
-<a href="/boot_test_db/event1/eventForm.do">
+<a href="/addEvent.do">
 	<p class="cls2">이벤트 등록하기</p>
 </a>
     

@@ -31,14 +31,14 @@
  </style>   
 </head>
 <body>
-
+<c:forEach var="vo" items="${ secondEvent}">
 	<div class="secondimg"> 
 		<h1>
-			<a href="/boot_test_db/event/articleForm.jsp">이벤트 참여 댓글쓰기</a>
+			<a href="/articleForm.jsp">이벤트 참여 댓글쓰기</a>
 		</h1>
 		<img src ="${vo.secondimage }">
 	</div>
-	
+</c:forEach>
 <!-- 	<div class="reply"> -->
 	
 <!-- 	<h1>댓글창</h1> -->
