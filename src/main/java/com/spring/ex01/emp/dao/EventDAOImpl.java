@@ -66,17 +66,6 @@ private static final Logger logger = LoggerFactory.getLogger(EventDAOImpl.class)
 	}
 	
 	
-	//이벤트 댓글 표시
-	@Override
-	public List ListArticles() {
-		
-		logger.info("EventDAOImpl > ListArticles 호출");
-		
-		List list = sqlSession.selectList("event.listArticles");
-		logger.info("list.size : "+ list.size());
-		
-		return list;
-	}
 	
 	//이벤트 수정
 	@Override
@@ -91,4 +80,48 @@ private static final Logger logger = LoggerFactory.getLogger(EventDAOImpl.class)
 		int count = sqlSession.update("event.deleteEvent", dto);
 		return count;
 	}
+	
+	
+	//댓글
+	
+	
+	//이벤트 댓글 표시
+	@Override
+	public List ListArticles() {
+		
+		logger.info("EventDAOImpl > ListArticles 호출");
+		
+		List list = sqlSession.selectList("event.listArticles");
+		logger.info("list.size : "+ list.size());
+		
+		return list;
+	}
+	
+	//댓글 추가
+	//이벤트 목록 추가
+		@Override
+		public int insertReplyForm(EventDTO dto) {
+			
+			System.out.println("getArticleNO:"+dto.getArticleNO());
+			System.out.println("getParentNO:"+dto.getParentNO());
+			System.out.println("getReplyTitle:"+dto.getReplyTitle());
+			System.out.println("getContent:"+dto.getContent());
+			System.out.println("getReplyId:"+dto.getReplyId());
+			System.out.println("getWriteDate:"+dto.getWriteDate());
+			int ReplyForm = sqlSession.insert("event.ReplyForm", dto);
+			return ReplyForm;
+		}
+	
+		//댓글 수정
+		@Override
+		public int modArticle(EventDTO dto) {
+			int count = sqlSession.update("event.modArticle", dto);
+			return count;
+		}
+		
+		@Override
+		public EventDTO selectReplyId(String replyId) {
+			EventDTO dto = sqlSession.selectOne("event.selectReplyId", replyId);
+			return dto;
+		}
 }

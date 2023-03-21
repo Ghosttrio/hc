@@ -11,13 +11,14 @@
 </head>
 <body>
 <h1>답글쓰기</h1>
-<form method="post" action="/HumanCinema/event1/addReply.do">
-	글쓴이 ID : <input type="text" name="id"><br>
-	제목: <input type="text" name="title"><br>
-	내용
+<form method="post" action="/replyForm2.do">
+	글쓴이 ID : <input type="text" name="replyId"><br>
+	제목: <input type="text" name="replyTitle"><br>
+	내용:
 	<textarea name="content" rows="10" cols="65"></textarea>
 	<br><input type="submit" value="글쓰기"><br>
 	<input type="hidden" name="parentNO" value="${param.parentNO }">
+<%-- 	<input type="hidden" name="articleNO" value="${param.articleNO }"> --%>
 </form>
 </body>
 </html>

@@ -159,23 +159,6 @@ nav {
 </style>
 </head>
 <body>
-		<div id="wrap">
-			<header>
-				<nav id="nav">
-		
-<!-- 					<ul class="nav-items"> -->
-<!-- 						<li><a href="#home">영화</a></li> -->
-<!-- 						<li><a href="#news">예매</a></li> -->
-<!-- 						<li><a href="#news">극장</a></li> -->
-<!-- 						<a class="logo" href="#home">로고</a> -->
-<!-- 						<li><a href="#contact">스토어</a></li> -->
-<!-- 						<li><a href="#about">고객센터</a></li> -->
-<!-- 						<li><a href="#about">로그인</a></li> -->
-<!-- 					</ul> -->
-				</nav>
-			</header>
-		</div>
-
 
 	<div class="event_top"></div>
           <h1>EVENT</h1>
@@ -229,52 +212,16 @@ nav {
     
 <!--  원래화면         -->
 <c:forEach var="vo" items="${ eventsList}">
-<div class=event_t>
-	
-		<a href="/viewEvent.do?id=${vo.id }">
-			<img src ="${vo.firstimage }" width = "100%" ><br>
-			${vo.title }<br>
-			${vo.eventday }<br>
-		</a>
-	
-</div>
+		<div class=event_t>
+			
+				<a href="/viewEvent.do?id=${vo.id }">
+					<img src ="${vo.firstimage }" width = "100%" ><br>
+					${vo.title }<br>
+					${vo.eventday }<br>
+				</a>
+			
+		</div>
 </c:forEach>
-
-
-
-
-<!-- <li><a id="tile_7" href="./detailViewUnited.aspx?seq=36342&amp;menu=001"><div class="evt-thumb"><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/36342/16750579815130.jpg" alt="[바빌론] 필름마크"></div><div class="evt-desc"><p class="txt1">[바빌론] 필름마크</p><p class="txt2">2023.01.31~2023.02.28<span> . </span><em>D-1</em></p></div></a></li> -->
-
-
-
-
-
-
-<!--         <div class="event_title"> -->
-<!--             <table border=1> -->
-<%--             <c:forEach var="vo" items="${ eventsList}"> --%>
-<!--             <tr> -->
-<!--             	<td> -->
-<%--             	${vo.id } --%>
-<%--             	${vo.title } --%>
-<%--             	${vo.firstimage } --%>
-<%--             	${vo.secondimage } --%>
-<%--             	${vo.eventday } --%>
-<!--             	</td> -->
-<!--             </tr> -->
-<%--             </c:forEach> --%>
-<!--             </table> -->
-<!--         </div> -->
-
-<!--         <div class="event_menu"> -->
-<!--             <ul class="event_menuul"> -->
-<!--                 <li><a href="">SPECIAL</a></li> -->
-<!--                 <li><a href="">영화/예매</a></li> -->
-<!--                 <li><a href="">멤버십/CLUB</a></li> -->
-<!--                 <li><a href="">CGV</a></li> -->
-<!--                 <li><a href="">제휴/할인</a></li> -->
-<!--             </ul> -->
-<!--         </div> -->
 
 
 

@@ -17,13 +17,13 @@ public class EventDTO {
 		this.eventday=eventday;
 	}
 	
-	public EventDTO(int level, int articleNO, int parentNO, String replytitle , String content, String replyid, Date writeDate ) {
+	public EventDTO(int level, int articleNO, int parentNO, String replyTitle , String content, String replyId, Date writeDate ) {
 		this.level = level;
 		this.articleNO = articleNO;
 		this.parentNO = parentNO;
-		this.replytitle = replytitle;
+		this.replyTitle = replyTitle;
 		this.content = content;
-		this.replyid = replyid;
+		this.replyId = replyId;
 		this.writeDate = writeDate;
 	}
 	
@@ -39,9 +39,9 @@ public class EventDTO {
 	private int level;
 	private	 int articleNO;
 	private int parentNO;
-	private String replytitle;
+	private String replyTitle;
 	private String content;
-	private String replyid;
+	private String replyId;
 	private Date writeDate;
 	
 	
@@ -53,6 +53,23 @@ public class EventDTO {
 	private String eventday;
 	
 	
+	
+	public String getReplyTitle() {
+		return replyTitle;
+	}
+
+	public String getReplyId() {
+		return replyId;
+	}
+
+	public void setReplyTitle(String replyTitle) {
+		this.replyTitle = replyTitle;
+	}
+
+	public void setReplyId(String replyId) {
+		this.replyId = replyId;
+	}
+
 	public int getLevel() {
 		return level;
 	}
@@ -65,17 +82,13 @@ public class EventDTO {
 		return parentNO;
 	}
 
-	public String getReplytitle() {
-		return replytitle;
-	}
+	
 
 	public String getContent() {
 		return content;
 	}
 
-	public String getReplyid() {
-		return replyid;
-	}
+	
 
 	public Date getWriteDate() {
 		return writeDate;
@@ -93,17 +106,13 @@ public class EventDTO {
 		this.parentNO = parentNO;
 	}
 
-	public void setReplytitle(String replytitle) {
-		this.replytitle = replytitle;
-	}
+	
 
 	public void setContent(String content) {
 		this.content = content;
 	}
 
-	public void setReplyid(String replyid) {
-		this.replyid = replyid;
-	}
+	
 
 	public void setWriteDate(Date writeDate) {
 		this.writeDate = writeDate;

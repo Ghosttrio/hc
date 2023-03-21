@@ -10,9 +10,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form method="post" action="/HumanCinema/event1/viewArticle.do">
-	회원 ID : <input type="text" name="id"><br>
-	제목: <input type="text" name="title"><br>
+<form method="post" action="/replyForm2.do">
+	회원 ID : <input type="text" name="replyId"><br>
+	제목: <input type="text" name="replyTitle"><br>
 	내용
 	<textarea name="content" rows="10" cols="65"></textarea>
 	<br><input type="submit" value="글쓰기"><br>

@@ -48,13 +48,6 @@ public class EventServiceImpl implements EventService {
 		return list;
 	}
 	
-	//댓글 목록 표시
-	@Override
-	public List ListArticles() {
-		List list = null;
-		list = edi.ListArticles();
-		return edi.ListArticles();
-	}
 	
 	//이벤트 수정
 	@Override
@@ -69,5 +62,33 @@ public class EventServiceImpl implements EventService {
 		int count = edi.deleteEvent(dto);
 		return count;
 	}
+	
+	//댓글 목록 표시
+	@Override
+	public List ListArticles() {
+		List list = null;
+		list = edi.ListArticles();
+		return edi.ListArticles();
+	}
+	
+	//댓글 추가하기
+		@Override
+		public int replyForm(EventDTO dto) {
+			
+			return edi.insertReplyForm(dto);
+			
+		}
+	//댓글 수정하기
+		@Override
+		public int modArticle(EventDTO dto) {
+			int count = edi.modArticle(dto);
+			return count;
+		}
+		
+		@Override
+		public EventDTO selectReplyId(String replyId) {
+			EventDTO dto = edi.selectReplyId(replyId);
+			return dto;
+		}
 	
 }

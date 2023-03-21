@@ -61,6 +61,9 @@ public class EventController {
 		return "redirect:/event1/event1.do";
 	}
 	
+
+	
+	//이벤트 목록 추가 창
 	@RequestMapping(value="/addEvent.do", method=RequestMethod.GET)
 	public String addEvent() {
 		
@@ -70,7 +73,7 @@ public class EventController {
 		return "event/addEvent2";
 	}
 	
-	//두번째 이미지 보여주기
+	//두번째 이미지 보여주는 창
 	@RequestMapping(value="/viewEvent.do")
 	public String secondEvent(Model model,
 			
@@ -131,6 +134,9 @@ public class EventController {
 		return "redirect:/event1/event1.do"; //주소 고치기
 	}
 	
+	//댓글 관련 Controller
+	
+	
 	//이벤트 댓글 목록
 	@RequestMapping(value="/event1/listArticles.do", method=RequestMethod.GET)
 	public String listArticlesView(Model model) {
@@ -141,7 +147,74 @@ public class EventController {
 		
 		return "article/listArticles";
 	}
-//	
+	
+	//댓글추가창
+	@RequestMapping(value="/replyForm2.do")
+	public String replyForm(
+			HttpServletRequest request,
+			
+			@ModelAttribute EventDTO dto
+			) {
+
+		
+		// service 호출
+		
+		int name = eventService.replyForm(dto);
+		System.out.println("insert 결과 : "+ name);
+		
+		return "redirect:event1/listArticles.do";
+	}
+	
+	//이벤트 댓글 추가 창
+	@RequestMapping(value="/replyForm.do")
+	public String replyForm2() {
+		
+		
+		
+		
+		return "article/articleForm";
+	}
+	
+	//댓글 수정창
+	@RequestMapping(value="/modArticle2.do")
+	public String modArticle2(Model model,@ModelAttribute EventDTO dto) {
+		
+		int list = eventService.modArticle( dto);
+		
+		model.addAttribute("modArticle", list);
+		
+		System.out.println("modArticle2.do 실행");
+		return "redirect:event1/listArticles.do";
+	}
+	
+	@RequestMapping(value="/detail.do")
+	public String detail(
+			
+			@RequestParam("replyId") String replyId, Model model) {
+		
+		// DB에서 조회한
+		EventDTO dto = eventService.selectReplyId(replyId);
+		
+		// DTO를 메모리에 넣어서 jsp로 전달
+		model.addAttribute("dto", dto);
+		
+		System.out.println("detail.do 실행");
+		return "article/modArticle";
+	}
+	
+	//댓글 수정
+	@RequestMapping(value="/modArticle.do")
+	public String modArticle(Model model) {
+		
+		//조회하기(유일한값으로 조회하기)
+		//조회결과를 dto 에 담기
+		// 다시 model에 담기
+		
+
+		return "article/modArticle";
+	}
+	
+	//이벤트 댓글 추가
 //	// 목록을 조회해서 json으로 돌려줌
 //	@RequestMapping(value="/api/list", method=RequestMethod.GET)
 //	@ResponseBody
