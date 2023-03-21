@@ -53,42 +53,11 @@
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 
 <c:set var = "type" value = "${menu_type }" />
-<script>
-	window.onload = () => {
-		
-		 /* let i = parseInt('${menu_type }')
-		 
-		 for(let j = 10; j <= 30; j += 10){
-			 console.log(j,i)
-			 if( i == j ){
-			 		
-			 		document.querySelector(".menu"+j).style.display = "block";
-			 		
-			 	} else {
-		 			
-		 			document.querySelector(".menu"+j).style.display = "none";
-		
-		 		}
-			 
-		 }
-		 	
-	 */
-	 }
-	
-	
-		
- 	
-    
-    
-
-
-</script> 
-
 
 <body>
 
 <!-- menu_type 받아서 그걸로 class 적용 -->
-<!--  -->
+
 <c:if test="${menu_type == 10 }">
 		 <div class = "menu10">	  
 			<span id = "text1">스낵</span>

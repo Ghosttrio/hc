@@ -21,6 +21,11 @@ public interface StoreDAO {
 	public abstract List selectMenu(String menu_type);
 	
 	StoreDTO storeinfo(String menu_id);
+
+	int cartadd(StoreDTO storeDTO);
+
+	public abstract List cartlist();
 	
+
 	
 }

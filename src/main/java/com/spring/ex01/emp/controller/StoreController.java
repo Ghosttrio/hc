@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -83,10 +84,63 @@ public class StoreController {
 		return "store/storeinfo";
 	}
 	
+	// 스토어 (장바구니 목록)
+		@RequestMapping(value = "/cartlist.do" , method= {RequestMethod.GET, RequestMethod.POST})
+		public String cartlist(
+				@RequestParam("user_id") String user_id,
+				@RequestParam("menu_id") String menu_id,
+				Model model) {
+				
+				List cartlist = storeService.cartlist();
+				
+				model.addAttribute("cartlist", cartlist);
+				
+				logger.warn("StoreController > cartlist : cartlist.size = " + cartlist.size());
+				
+				// 장바구니에 메뉴가 담겼습니다
+				
+				
+				return "store/cart";	
+		}
+	
+	// 스토어 (장바구니 추가)
+	@RequestMapping(value = "/cartadd.do" , method= {RequestMethod.GET, RequestMethod.POST})
+	public String cartadd(
+			@RequestParam("user_id") String user_id,
+			@RequestParam("menu_id") String menu_id,
+			Model model,
+			@ModelAttribute StoreDTO storeDTO
+			) {
+		System.out.println("user_id : " + storeDTO.getUser_id());
+		
+		if (user_id != null || user_id != "") {
+		
+		int count = storeService.cartadd(storeDTO);
+		 System.out.println("insert결과 : " + count);
+		 
+		 // 장바구니에 담김 보실?
+		 // ㅇㅇ
+		 
+		 return "redirect:/Store/cartlist.do";
+		 
+		 // ㄴㄴ
+		 // 정보창
+		 
+		} else {
+			
+			
+			// 로그인해주세요
+			
+			return "store/login";
+		}
+	
+	}
 	
 	
 	
-	// 스토어 (장바구니)
+	
+	
+	
 	
 	// 스토어 (선물하기)
 	

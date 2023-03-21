@@ -57,13 +57,14 @@ public class StoreDAOImpl implements StoreDAO {
 		
 	}
 	
+
 	@Override
 	public StoreDTO selectStore(String menu_id) {
 		StoreDTO storeDTO = sqlSession.selectOne("mapper.store.selectStore", menu_id);
 		return storeDTO;
 	}
 	
-	
+	// 메뉴 수정
 	@Override
 	public int StoreUpdate(StoreDTO storeDTO) {
 		int count = sqlSession.insert("mapper.store.StoreUpdate", storeDTO);
@@ -73,6 +74,7 @@ public class StoreDAOImpl implements StoreDAO {
 		return count;
 	}
 	
+	// 메뉴 삭제
 	@Override
 	public StoreDTO DeleteStore(String menu_id) {
 		StoreDTO storeDTO = sqlSession.selectOne("mapper.store.DeleteStore", menu_id);
@@ -90,10 +92,35 @@ public class StoreDAOImpl implements StoreDAO {
 		return selectMenu;
 	}
 	
+	// 메뉴 정보
 	@Override
 	public StoreDTO storeinfo(String menu_id) {
 		StoreDTO storeDTO = sqlSession.selectOne("mapper.store.storeinfo", menu_id);
 		return storeDTO;
+	}
+	
+	// 스토어(장바구니 목록)
+		@Override
+		public List cartlist() {
+			System.out.println("StoreDAOImpl > cartlist 호출");
+			
+			List list = sqlSession.selectList("mapper.store.cartlist");
+			System.out.println("스토어(장바구니 목록) list.size : " + list.size());
+			logger.info("스토어 관리자(목록) list.size : " + list.size());
+			return list;
+		}
+	
+	// 장바구니 추가
+	@Override
+	public int cartadd(StoreDTO storeDTO) {
+		System.out.println("StoreDAOImpl > cartadd 호출");
+		
+		int count = sqlSession.insert("mapper.store.cartadd", storeDTO);
+		System.out.println(count);
+		
+	
+		return count;
+		
 	}
 	
 	

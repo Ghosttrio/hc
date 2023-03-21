@@ -1,11 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+
+<c:choose>	
+	<c:when test ='${msg == "null_id" }'>
+		<script>
+			window.onload = function(){
+				alert("로그인 후 이용해주세요");
+				window.location.href = "/HumanCinema/user/login";
+			}
+		</script>
+	</c:when>
+	<c:when test = '${msg == "login" }'> 
+		<script>
+			window.onload = function(){
+				alert("메뉴가 장바구니에 담겼습니다. 확인하시겠습니까?");
+			}
+		</script>
+	</c:when>
+</c:choose>
+
+
 <style>
 .name{
 		font-size: 30px;
@@ -95,7 +116,7 @@
 	}
 </style>
 <body>
-<form>
+<form method = "post" action = "/Store/cartadd.do">
 	<div class = "name">${storeDTO.name }</div> 
 					<hr style="border: solid 1px black;">
 			<div class = "info_main">
@@ -114,7 +135,7 @@
 						<div><input id = "bt1" type='button' onclick='count("plus")' value='+'></div>
 						<div id='result'>1</div>
 						<div><input id = "bt1" type='button' onclick='count("minus")'  value='-'></div>
-						<div id='result1'></div>
+						<div id='result1'>${storeDTO.price}원</div>
      				</div>
     
     <!-- 수량 선택 후 자동계산 --> 				
@@ -163,12 +184,18 @@
 		
 </script>
 
-				<div>
-							     <br>	
-			    	<input name = "cart" class = "cart" type = "submit" value = "장바구니" >
-			    	<input class = "order" type = "submit" value = "구매하기">
-				</div>
+		<div>
+			 <br>	
+			<button class="btn btn-default btn-order">주문하기</button>
+			<button class="btn-cart">장바구니</button>
 		</div>
+		</div>
+		
+<script>
+
+
+
+</script>		
 </form>
 	
 <hr style="border: solid 1px black;">
@@ -221,6 +248,6 @@
 
 
 
-</body>
+
 </body>
 </html>

@@ -23,5 +23,9 @@ public interface StoreService {
 	
 	StoreDTO storeinfo(String menu_id);
 	
+	int cartadd(StoreDTO storeDTO);
+	
+	List cartlist();
+	
 
 }
