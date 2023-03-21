@@ -23,6 +23,16 @@
 <select id="viewEvent" resultType="eventDTO" parameterType="String">
 		select secondimage from event 
 		where id=#{id}
+		
+<!-- 		select replyId,replyTitle, content from event  -->
+<!-- 		where id=#{id} -->
+</select>
+	
+<select id="viewEvent_review" resultType="eventDTO" parameterType="String">
+		
+		
+ 		select articleNO,replyId,replyTitle, content from event_review 
+		where id=#{id} 
 	</select>
 	
 <!-- 이벤트 수정  -->
@@ -52,7 +62,7 @@
 
 <!-- 댓글목록	 -->
 <select id="listArticles" resultType="eventDTO">
-		SELECT LEVEL, articleNO, parentNO, replyTitle, content, replyId
+		SELECT LEVEL, id,articleNO, parentNO, replyTitle, content, replyId
 					 from event_review
 					 START WITH parentNO=0
 					CONNECT BY PRIOR articleNO=parentNO
@@ -62,9 +72,9 @@
 <!-- 댓글추가	 -->
 <insert id="ReplyForm" parameterType="eventDTO">
 		INSERT INTO
-			event_review ( articleNO,  parentNO,  replyTitle, content,replyId,writeDate)
+			event_review (id, articleNO,  parentNO,  replyTitle, content,replyId,writeDate)
 		VALUES
-			(event_review_seq.nextval, #{parentNO}, #{replyTitle}, #{content}, #{replyId}, sysdate)
+			( #{id},event_review_seq.nextval, #{parentNO}, #{replyTitle}, #{content}, #{replyId}, sysdate)
 	</insert>
 	
 <!-- 댓글 수정  -->
@@ -76,7 +86,7 @@
 			replyTitle = #{replyTitle},
 			content = #{content}
 		WHERE
-			replyId = #{replyId}
+			articleNO = #{articleNO}
 	</update>	
 <!-- 	디테일 -->
 <select id="selectReplyId" parameterType="String" resultType="eventDTO">

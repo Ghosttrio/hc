@@ -31,13 +31,16 @@
 						</td>
 					</tr>	
 					<tr>
-						<td>
+						
+						<td style="padding-left: ${(vo.level-1) * 20 }px">
+							<a href="/viewArticle.do?articleNO=${vo.articleNO }">
 							글쓴이 ID :${vo.replyId }
+							</a>
 						</td>
 					</tr>
 					<tr>
-						<td style="padding-left: ${(vo.level-1) * 20 }px">
-							<a href="/viewArticle.do?articleNO=${vo.articleNO }">제목 :${vo.replyTitle }</a>
+						<td>
+						제목 :${vo.replyTitle }
 						</td>
 					</tr>
 					<tr>

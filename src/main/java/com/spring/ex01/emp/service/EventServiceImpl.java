@@ -65,11 +65,15 @@ public class EventServiceImpl implements EventService {
 	
 	//댓글 목록 표시
 	@Override
-	public List ListArticles() {
+	public List ListArticles(String id) {
 		List list = null;
-		list = edi.ListArticles();
-		return edi.ListArticles();
+		list = edi.ListArticles(id);
+		return list;
 	}
+	
+	
+	
+	
 	
 	//댓글 추가하기
 		@Override
@@ -85,9 +89,10 @@ public class EventServiceImpl implements EventService {
 			return count;
 		}
 		
+		
 		@Override
-		public EventDTO selectReplyId(String replyId) {
-			EventDTO dto = edi.selectReplyId(replyId);
+		public EventDTO selectReplyId(String articleNO) {
+			EventDTO dto = edi.selectReplyId(articleNO);
 			return dto;
 		}
 	

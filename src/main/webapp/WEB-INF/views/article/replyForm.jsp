@@ -12,7 +12,8 @@
 <body>
 <h1>답글쓰기</h1>
 <form method="post" action="/replyForm2.do">
-	글쓴이 ID : <input type="text" name="replyId"><br>
+
+	글쓴이 ID : <input type="text" name="replyid"><br>
 	제목: <input type="text" name="replyTitle"><br>
 	내용:
 	<textarea name="content" rows="10" cols="65"></textarea>

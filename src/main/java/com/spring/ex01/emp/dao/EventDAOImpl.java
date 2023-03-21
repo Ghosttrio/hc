@@ -87,21 +87,22 @@ private static final Logger logger = LoggerFactory.getLogger(EventDAOImpl.class)
 	
 	//이벤트 댓글 표시
 	@Override
-	public List ListArticles() {
+	public List ListArticles(String id) {
 		
 		logger.info("EventDAOImpl > ListArticles 호출");
-		
-		List list = sqlSession.selectList("event.listArticles");
+		System.out.println("id :"+id);
+		List list = sqlSession.selectList("event.viewEvent_review", id);
 		logger.info("list.size : "+ list.size());
 		
 		return list;
 	}
 	
 	//댓글 추가
-	//이벤트 목록 추가
+	
 		@Override
 		public int insertReplyForm(EventDTO dto) {
 			
+			System.out.println("getId:"+dto.getId());
 			System.out.println("getArticleNO:"+dto.getArticleNO());
 			System.out.println("getParentNO:"+dto.getParentNO());
 			System.out.println("getReplyTitle:"+dto.getReplyTitle());
@@ -120,8 +121,8 @@ private static final Logger logger = LoggerFactory.getLogger(EventDAOImpl.class)
 		}
 		
 		@Override
-		public EventDTO selectReplyId(String replyId) {
-			EventDTO dto = sqlSession.selectOne("event.selectReplyId", replyId);
+		public EventDTO selectReplyId(String articleNO) {
+			EventDTO dto = sqlSession.selectOne("event.selectReplyId", articleNO);
 			return dto;
 		}
 }

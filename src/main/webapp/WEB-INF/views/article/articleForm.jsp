@@ -11,6 +11,8 @@
 </head>
 <body>
 <form method="post" action="/replyForm2.do">
+	이벤트 : <input type="text" name="id" value="${id }"><br>
+<!-- 	 : <input type="text" name="id"><br> -->
 	회원 ID : <input type="text" name="replyId"><br>
 	제목: <input type="text" name="replyTitle"><br>
 	내용

@@ -8,7 +8,7 @@
 </head>
 <body>
 <form method="post" action="/addEventView.do">
-	 ID : <input type="text" name="id"><br>
+	 ID : <input type="text" name="id" value="id"><br>
 	title: <input type="text" name="title"><br>
 	첫번째 이미지:  <input type="text" name="firstimage"><br>
 	두번째 이미지:  <input type="text" name="secondimage"><br>

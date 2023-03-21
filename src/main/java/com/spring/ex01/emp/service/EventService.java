@@ -16,8 +16,8 @@ public interface EventService {
 	public int deleteEvent(EventDTO dto);
 	
 	//댓글 서비스
-	List ListArticles();
+	List ListArticles(String id);
 	int replyForm(EventDTO dto);
 	public int modArticle(EventDTO dto);
-	EventDTO selectReplyId(String replyId);
+	EventDTO selectReplyId(String articleNO);
 }

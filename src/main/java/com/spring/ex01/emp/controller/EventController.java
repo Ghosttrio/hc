@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 import com.spring.ex01.emp.dto.EventDTO;
 import com.spring.ex01.emp.service.EventService;
 
@@ -81,9 +80,15 @@ public class EventController {
 			String id
 			
 			) {
+		//이벤트 상세정보 가져오기
 		List list = eventService.secondEvent(id);
 		System.out.println(id);
 		model.addAttribute("secondEvent", list);
+		
+		//이벤트 댓글목록 가져오기
+		List list2 = eventService.ListArticles(id);
+		
+		model.addAttribute("listArticles", list2);
 		logger.warn("EventController > getList : list.size = "+ list.size());
 		
 		return "event/viewEvent";
@@ -138,10 +143,15 @@ public class EventController {
 	
 	
 	//이벤트 댓글 목록
-	@RequestMapping(value="/event1/listArticles.do", method=RequestMethod.GET)
-	public String listArticlesView(Model model) {
+	@RequestMapping(value="/event1/listArticles.do")
+	public String listArticlesView(Model model,
+				@RequestParam(value="id", required=false) 
+				String id
+			) {
+	
 		
-		List list = eventService.ListArticles();
+		
+		List list = eventService.ListArticles(id);
 		model.addAttribute("listArticles", list);
 		logger.warn("EventController > ListArticles : list.size = "+ list.size());
 		
@@ -154,24 +164,27 @@ public class EventController {
 			HttpServletRequest request,
 			
 			@ModelAttribute EventDTO dto
+			
 			) {
 
+		
 		
 		// service 호출
 		
 		int name = eventService.replyForm(dto);
 		System.out.println("insert 결과 : "+ name);
-		
-		return "redirect:event1/listArticles.do";
+		System.out.println("getId()"+dto.getId());
+//		return "redirect:/event1/event1.do";
+		return "redirect:/viewEvent.do?id="+dto.getId();
 	}
 	
 	//이벤트 댓글 추가 창
 	@RequestMapping(value="/replyForm.do")
-	public String replyForm2() {
+	public String replyForm2(Model model,@RequestParam("id") String id) {
 		
+		System.out.println("replyForm.do:id;"+id);
 		
-		
-		
+		model.addAttribute("id",id);
 		return "article/articleForm";
 	}
 	
@@ -179,39 +192,43 @@ public class EventController {
 	@RequestMapping(value="/modArticle2.do")
 	public String modArticle2(Model model,@ModelAttribute EventDTO dto) {
 		
-		int list = eventService.modArticle( dto);
+		int list = eventService.modArticle(dto );
 		
-		model.addAttribute("modArticle", list);
+		model.addAttribute("dto", list);
 		
 		System.out.println("modArticle2.do 실행");
-		return "redirect:event1/listArticles.do";
+		return "redirect:/event1/listArticles.do";
 	}
 	
-	@RequestMapping(value="/detail.do")
-	public String detail(
-			
-			@RequestParam("replyId") String replyId, Model model) {
-		
-		// DB에서 조회한
-		EventDTO dto = eventService.selectReplyId(replyId);
-		
-		// DTO를 메모리에 넣어서 jsp로 전달
-		model.addAttribute("dto", dto);
-		
-		System.out.println("detail.do 실행");
-		return "article/modArticle";
-	}
+//	@RequestMapping(value="/detail.do")
+//	public String detail(
+//			
+//			@RequestParam("replyId") String replyId, Model model) {
+//		
+//		// DB에서 조회한
+//		EventDTO dto = eventService.selectReplyId(replyId);
+//		
+//		// DTO를 메모리에 넣어서 jsp로 전달
+//		model.addAttribute("dto", dto);
+//		
+//		System.out.println("detail.do 실행");
+//		return "article/modArticle";
+//	}
 	
 	//댓글 수정
 	@RequestMapping(value="/modArticle.do")
-	public String modArticle(Model model) {
+	public String modArticle(
 		
-		//조회하기(유일한값으로 조회하기)
-		//조회결과를 dto 에 담기
-		// 다시 model에 담기
-		
-
-		return "article/modArticle";
+		@RequestParam("articleNO") String articleNO, Model model) {
+			
+			// DB에서 조회한
+			EventDTO dto = eventService.selectReplyId(articleNO);
+			System.out.println("articleNO :"+articleNO);
+			// DTO를 메모리에 넣어서 jsp로 전달
+			model.addAttribute("dto", dto);
+			
+			System.out.println("modArticle.do 실행");
+			return "article/modArticle";
 	}
 	
 	//이벤트 댓글 추가

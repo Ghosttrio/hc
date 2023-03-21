@@ -34,11 +34,42 @@
 <c:forEach var="vo" items="${ secondEvent}">
 	<div class="secondimg"> 
 		<h1>
-			<a href="/replyForm.do">이벤트 참여 댓글쓰기</a>
+			<a href="/replyForm.do?id=${param.id }">이벤트 참여 댓글쓰기</a>
 		</h1>
 		<img src ="${vo.secondimage }">
 	</div>
 </c:forEach>
+
+
+
+	<c:forEach var="vo" items="${ listArticles}">
+			<table border=1>
+<!-- 					<tr> -->
+<!-- 						<td> -->
+<%-- 							글 번호 :${vo.articleNO } --%>
+<!-- 						</td> -->
+<!-- 					</tr>	 -->
+					<tr>
+						<td style="padding-left: ${(vo.level-1) * 20 }px">
+						<a href="/modArticle.do?articleNO=${vo.articleNO }">
+							글쓴이 ID :${vo.replyId }
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							제목 :${vo.replyTitle }</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							내용: ${vo.content }
+						</td>
+					</tr>
+			</table>
+					<br>
+	</c:forEach>
+</div>
 <!-- 	<div class="reply"> -->
 	
 <!-- 	<h1>댓글창</h1> -->

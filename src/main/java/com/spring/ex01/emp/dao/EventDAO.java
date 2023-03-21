@@ -14,7 +14,7 @@ public interface EventDAO {
 	public int deleteEvent(EventDTO dto);
 	
 	
-	List ListArticles();
+	List ListArticles(String id);
 	int insertReplyForm(EventDTO dto);
 	public int modArticle(EventDTO dto);
 	EventDTO selectReplyId(String replyId);
