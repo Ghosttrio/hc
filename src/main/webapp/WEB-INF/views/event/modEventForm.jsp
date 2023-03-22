@@ -31,7 +31,7 @@
 				<td width="200">
 					<p align="right">이벤트 아이디</p>
 				</td>
-				<td width="400"><input type="text" name="id" value="${eveInfo.id }" >
+				<td width="400"><input type="text" name="id" value="${param.id }" >
 				</td>
 			</tr>
 			<tr>

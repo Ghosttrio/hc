@@ -159,6 +159,8 @@ nav {
 </style>
 </head>
 <body>
+<button type="button" onclick="location.href='/addEvent.do'">이벤트 추가</button>
+<button type="button" onclick="location.href='/modifyEvent.do'">이벤트 수정/삭제</button>
 
 	<div class="event_top"></div>
           <h1>EVENT</h1>
@@ -168,6 +170,7 @@ nav {
     
     
 <!--  원래화면         -->
+
 <c:forEach var="vo" items="${ eventsList}">
 		<div class=event_t>
 			

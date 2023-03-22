@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+    isELIgnored= "false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -7,19 +8,21 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+
 <title>Insert title here</title>
 </head>
 <body>
-<h1>È¸¿ø¼öÁ¤</h1>
+<h1>íšŒì›ìˆ˜ì •</h1>
 <form method="post"  action="/modArticle2.do">
 
-	<input type="text" name="articleNO" value="${dto.articleNO }"><br>
-	¾ÆÀÌµð: <input type="text" name="replyId" value="${dto.replyId }"><br>
-	Á¦¸ñ: <input type="text" name="replyTitle" value="${dto.replyTitle }"><br>
-	³»¿ë: <input type="text" name="content" value="${dto.content }"><br>
-<%-- 	±Û ¹øÈ£: <input type="text" name="articleNO" value="${dto.articleNO }"><br> --%>
 
-	<input type="submit" value="¼öÁ¤">
+	<input type="hidden" name="articleNO" value="${param.articleNO }"><br>
+	ì•„ì´ë””: <input type="text" name="replyId" value="${dto.replyId }"><br>
+	ì œëª©: <input type="text" name="replyTitle" value="${dto.replyTitle }"><br>
+	ë‚´ìš©: <input type="text" name="content" value="${dto.content }"><br>
+<%-- 	ê¸€ ë²ˆí˜¸: <input type="text" name="articleNO" value="${dto.articleNO }"><br> --%>
+
+	<input type="submit" value="ìˆ˜ì •">
 </form>
 
 </body>

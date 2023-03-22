@@ -1,8 +1,10 @@
 package com.spring.ex01.emp.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +23,7 @@ import com.spring.ex01.emp.service.EventService;
 
 @Controller
 public class EventController {
+	
 
 	private static final Logger logger = LoggerFactory.getLogger(EventController.class);
 	
@@ -74,12 +77,19 @@ public class EventController {
 	
 	//두번째 이미지 보여주는 창
 	@RequestMapping(value="/viewEvent.do")
+	
 	public String secondEvent(Model model,
 			
 			@RequestParam("id") 
-			String id
+			String id,
+			HttpServletRequest request, HttpServletResponse response
 			
-			) {
+			) throws UnsupportedEncodingException {
+		
+		//한글깨짐 방지
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		
 		//이벤트 상세정보 가져오기
 		List list = eventService.secondEvent(id);
 		System.out.println(id);
@@ -190,9 +200,16 @@ public class EventController {
 	
 	//댓글 수정창
 	@RequestMapping(value="/modArticle2.do")
-	public String modArticle2(Model model,@ModelAttribute EventDTO dto) {
+	public String modArticle2(Model model,@ModelAttribute EventDTO dto,
+			HttpServletRequest request, HttpServletResponse response) 
+					throws UnsupportedEncodingException {
+		
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		
 		
 		int list = eventService.modArticle(dto );
+		System.out.println("dto.getreplyId :"+dto.getReplyId());
 		
 		model.addAttribute("dto", list);
 		
@@ -219,8 +236,12 @@ public class EventController {
 	@RequestMapping(value="/modArticle.do")
 	public String modArticle(
 		
-		@RequestParam("articleNO") String articleNO, Model model) {
+		@RequestParam("articleNO") String articleNO, Model model,
+		HttpServletRequest request, HttpServletResponse response) 
+				throws UnsupportedEncodingException {
 			
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
 			// DB에서 조회한
 			EventDTO dto = eventService.selectReplyId(articleNO);
 			System.out.println("articleNO :"+articleNO);

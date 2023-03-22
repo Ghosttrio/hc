@@ -13,14 +13,19 @@
 <meta charset="UTF-8">
 <style>
 .cls1{
-	width:50%;
-	height:30%;
-	font-size : 20px;
+	width:30%;
+	height:40%;
+	font-size : 40px;
 	text-align: center;
 }
 .cls2{
 	font-size : 20px;
 	text-align: center;
+}
+.event_mod{
+	width:50%;
+	height:60%;
+
 }
 </style>
 <title>Insert title here</title>
@@ -29,16 +34,17 @@
 <body>
 <!--   수정/삭제   -->
 <p class="cls1">이벤트</p>
-<table align="center" border="1">
-	<tr align="center" bgcolor="lightgreen">
-		<td width="5%"><b>이벤트아이디</b></td>
-		<td width="5%"><b>이벤트제목</b></td>
-		<td width="5%"><b>이미지주소</b></td>
-		<td width="5%"><b>첫번째이미지내용(x)</b></td>
-		<td width="5%"><b>두번째이미지주소</b></td>
-		<td width="5%"><b>이벤트기간</b></td>
-		<td width="5%"><b>수정</b></td>
-		<td width="5%"><b>삭제</b></td>
+
+<p class="event_mod">
+<table  align="center" border="1" >
+	<tr align="center" bgcolor="lightgreen" >
+		<td width="4%"><b>이벤트아이디</b></td>
+		<td width="4%"><b>이벤트제목</b></td>
+		<td width="4%"><b>이미지주소</b></td>
+		<td width="4%"><b>두번째이미지주소</b></td>
+		<td width="4%"><b>이벤트기간</b></td>
+		<td width="4%"><b>수정</b></td>
+		<td width="4%"><b>삭제</b></td>
 	</tr>
 	
 	<c:choose>
@@ -66,6 +72,7 @@
 		</c:when>	  
 	</c:choose>
 </table>   
+</p>
 
 <a href="/addEvent.do">
 	<p class="cls2">이벤트 등록하기</p>
