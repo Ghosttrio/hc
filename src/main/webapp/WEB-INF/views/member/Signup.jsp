@@ -6,7 +6,7 @@
 
 <link  href="/css/MemberSignup.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
+
 <script>
 	// 브라우저가 켜지면 아래 메소드가 실행한다. 
     window.onload = function(){
@@ -95,9 +95,6 @@
 	                }
             });  //end ajax	 
          }
-        
-        
-        
 </script>
 
 <c:if test="${result=='signupSucceed' }">
@@ -116,16 +113,16 @@
         <div class="login_box">
             <div class="left_img">
                 <div class="slider">
-                    <img id="mainimg" src="/resources/static/image/loginPoster01.jpg">
-                    <img id="mainimg" src="/resources/static/image/loginPoster02.jpg">
-                    <img id="mainimg" src="/resources/static/image/loginPoster03.jpg">
-                    <img id="mainimg" src="/resources/static/image/loginPoster04.jpg">
-                    <img id="mainimg" src="/resources/static/image/loginPoster05.jpg">
-                    <img id="mainimg" src="/resources/static/image/loginPoster06.jpg">
-                    <img id="mainimg" src="/resources/static/image/loginPoster07.jpg">
-                    <img id="mainimg" src="/resources/static/image/loginPoster08.jpg">
-                    <img id="mainimg" src="/resources/static/image/loginPoster09.jpg">
-                    <img id="mainimg" src="/resources/static/image/loginPoster10.jpg">
+                    <img id="mainimg" src="/image/loginPoster01.jpg">
+                    <img id="mainimg" src="/image/loginPoster02.jpg">
+                    <img id="mainimg" src="/image/loginPoster03.jpg">
+                    <img id="mainimg" src="/image/loginPoster04.jpg">
+                    <img id="mainimg" src="/image/loginPoster05.jpg">
+                    <img id="mainimg" src="/image/loginPoster06.jpg">
+                    <img id="mainimg" src="/image/loginPoster07.jpg">
+                    <img id="mainimg" src="/image/loginPoster08.jpg">
+                    <img id="mainimg" src="/image/loginPoster09.jpg">
+                    <img id="mainimg" src="/image/loginPoster10.jpg">
                 </div>
             </div>
             
