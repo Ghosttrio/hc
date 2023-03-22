@@ -1,125 +1,60 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"
-	isELIgnored="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+    isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<link  href="/css/MemberSignup.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<style>
-    .login {
-        height: 100vh;
-        width: 100%;
-        position: relative;
-   	 }
-    .login_box {
-        width: 900px;
-        height: 600px;
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        transform: translate(-50%,-50%);/*Horizontal alignment*/
-        background: #fff;
-        border-radius: 5px;
-        box-shadow: 1px 4px 22px -8px rgb(147, 146, 146);
-        display: flex;
-        overflow: hidden;}
-        
-    .login_box .left_img{width: 600px ; height: 900px;}
-    .login_box .right_login{width: 65%; height: 100%; padding: 25px 25px;}
-
-    .footer_link a{color: black; font-weight: 500;}
-    .footer_link{text-align: center;}
-   
-    .right_login .sign-in{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        align-self: center;
-        height: 100%;
-        width: 80%;
-        flex-direction: column;
-        margin: auto;
-    }
-     .right_login input {
-        border: none;
-        outline: none;
-    }
-    .inputSet{
-        font-size: 15px;
-        font-weight: 500;
-        align-items: center;
-        margin: 15px 0px;
-        padding: 10px;
-        padding-left: 20px;
-        border: 1px solid lightgray;
-        border-radius: 20px;
-        text-align: left;
-    }
-    .check{
-        font-size: 12px;
-        border-radius: 20px;
-        border: none;
-        color: #fff;
-        background: darkred;
-
-    }
-
-    .right{background: linear-gradient(-45deg, #dcd7e0, #fff);}
-
-    .submit {
-        margin: auto;
-        margin-top: 30px;
-        margin-bottom: 40px;
-        padding: 15px 120px;
-        width: 100%;
-        border: none;
-        border-radius: 20px;
-        display: block;
-        font-weight: 600;
-        font-size: 17px;
-        color: #fff;
-        background: darkred;
-        -webkit-box-shadow: 0px 9px 15px -11px rgb(114, 54, 54);
-        -moz-box-shadow: 0px 9px 15px -11px rgb(114, 54, 54);
-        box-shadow: 0px 9px 15px -11px rgb(114, 54, 54);
-    }
-    .left_img {
-        background: linear-gradient(212.38deg, /*각도*/
-        rgba(121, 13, 13, 0.7) 0%,
-        rgba(8, 7, 8, 0.71) 50%);
-        background-color: black;
-        color: #fff;
-        position: relative;
-        background-size: width 600px height 500px;
-    }
-    section {display: flex; overflow: hidden;}
-    #mainimg{
-    	width: 430px; 
-        height: 600px;
-    }
-    #humanimg{
-        width: 300px; 
-        height: 120px;
-    }
-     
-    </style>
     
 <script>
+	// 브라우저가 켜지면 아래 메소드가 실행한다. 
     window.onload = function(){
         init();
         bind();
     }   
         function init(){    }
         function bind(){
-
-        function fnSlide() {
-            $(".slider").animate({ "margin-left": "0px" }, 3000, function () {
-                $(".slider").css({ "margin-left": "0px" });
-                $(".slider img:first-child").insertAfter(".slider img:last-child");
-            });
-        };
-        setInterval(fnSlide, 3000);
+        	
+	        //메인화면 슬라이더
+	        setInterval(fnSlide, 3000);
+	 		
+	        
+       	 	//회원가입 폼  메소드 실행
+	        $('#new').on('click',function(){
+	        	//값 초기화. 회원가입 버튼 비활성화
+// 	            $("#버튼 아이디").prop("disabled",true);	
+		
+			        if(	$('#inputPwd1').val() == $('#inputPwd2').val()
+			        		&& $(!'#member_id'=="")
+			        		&& $(!'#member_pwd'=="")
+			        		&& $(!'#member_name'=="")
+			        		&& $(!'#member_email'=="")
+			        		&& $(!'#member_number'=="")
+			        		){
+		    			
+		   			 //and 로 계속 충족되는 지 확인 하고 넘기기
+		   			$('#addMember').submit();
+		   			 
+			   		}else {
+			   			
+			   			return false;
+			   			alert("회원가입에 실패 하였습니다.");
+			   			
+			   		}
+		   	})
+	        
   	  }
+	
+        //메인화면 슬라이더 옵션
+        function fnSlide() {
+	            $(".slider").animate({ "margin-left": "0px" }, 3000, function () {
+	                $(".slider").css({ "margin-left": "0px" });
+	                $(".slider img:first-child").insertAfter(".slider img:last-child");
+	            });
+	        };
         
-        
+	     //아이디 중복체크 기능
         function fn_checkMember(){
             var _id=$("#inputId").val();
             //입력한 아이디 값을 가져와서
@@ -129,12 +64,11 @@
            	 return;
             }
             $.ajax({
-	                type:"post",
+	                type:"post",	//post 방식으로 전달
 	                async:true,  
-	                url:"/member/checkMember",
-	                dataType:"text",
-	                data: {member_id:_id},
-	                //아이디를 서블릿에 전송한다.
+	                url:"/member/checkMember",	 //Controller에서 요청 받을 주소
+	                dataType:"text",	//서버로 돌려 받는 값의 타입 지정
+	                data: {member_id:_id},	//아이디를 서블릿에 전송한다.
 	                success:function (data,textStatus){
 	             	  	 //alert(data);
 	             	   
@@ -142,6 +76,9 @@
 	                   if(data=='false'){
 	                	   $('#message').text("사용할 수 있는 아이디입니다.");
 	                	   //alert("사용 할 수 있는 아이디입니다.")
+	                	   
+	                	   $('#new').removeAttr("disabled");
+	                	   //회원가입 비활성화를 사용가능한 아이디 일때 활성화 시킨다
 	                	   
 	                	   //$('#idcheck').prop("disabled", true);
 	                	   //사용 할 수 있는 id일 때 버튼 비활성화(여러번 누르는 것을 막음)
@@ -159,31 +96,18 @@
             });  //end ajax	 
          }
         
-//         function	fn_addMember(){
-            	 
-//         $("#키값").on("click",function(){
-        	
-//     		if($("#member_pwd").val() == $("#member_pwd2").val()){
-    			
-//     		}else {
-//     		}
-//     	})
-
         
         
 </script>
 
-   <c:choose>
-	<c:when test="${result=='addFailed' }">
+<c:if test="${result=='signupSucceed' }">
 	  <script>
 	    window.onload=function(){
 	      alert("${msg}");
 	    }
 	  </script>
-	</c:when>
-</c:choose> 
+</c:if>
 
-        
     
 </head>
 <body>
@@ -192,36 +116,37 @@
         <div class="login_box">
             <div class="left_img">
                 <div class="slider">
-                    <img id="mainimg" src="/HumanStudy/img/poster1.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster2.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster3.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster4.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster5.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster6.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster7.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster8.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster9.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster10.jpg">
+                    <img id="mainimg" src="/resources/static/image/loginPoster01.jpg">
+                    <img id="mainimg" src="/resources/static/image/loginPoster02.jpg">
+                    <img id="mainimg" src="/resources/static/image/loginPoster03.jpg">
+                    <img id="mainimg" src="/resources/static/image/loginPoster04.jpg">
+                    <img id="mainimg" src="/resources/static/image/loginPoster05.jpg">
+                    <img id="mainimg" src="/resources/static/image/loginPoster06.jpg">
+                    <img id="mainimg" src="/resources/static/image/loginPoster07.jpg">
+                    <img id="mainimg" src="/resources/static/image/loginPoster08.jpg">
+                    <img id="mainimg" src="/resources/static/image/loginPoster09.jpg">
+                    <img id="mainimg" src="/resources/static/image/loginPoster10.jpg">
                 </div>
             </div>
             
             <div class="right_login">
                 <div class="sign-in">
-                <img id="humanimg" src="/HumanStudy/img/human.png">
-                <form method="post" action="/member/addMember">
+                
+                <form id="addMember" method="post" action="/member/addMember">
                   <div class="join_login">
-                     <div class="inputSet"><input id="inputId"  type="text" name="member_id" placeholder="아이디를 입력하세요" maxlength="20" >
+                     <div class="inputSet"><input id="inputId"  type="text" name="member_id" placeholder="아이디를 입력하세요" maxlength="20">
                      <input type="button" class="check"  id="idcheck" onclick="fn_checkMember()" value="확인&#128504;"></div>
                      <div id="message"></div>
                      <div class="inputSet"><input id="inputPwd1"  type="password" name="member_pwd" placeholder="비밀번호를 입력하세요" maxlength="20" ></div>
                      <div class="inputSet"><input id="inputPwd2"  type="password" name="member_pwd2" placeholder="한번 더 입력하세요" maxlength="20" ></div>
                      <h1></h1>
-                     <div class="inputSet"><input id="inputName"  type="text" name="member_name" placeholder="이름을 입력하세요"></div>
-                     <div class="inputSet"><input id="inputEmail"  type="text" name="member_email" placeholder="이메일을 입력하세요"></div>
-                     <div class="inputSet"><input id="inputNumber"  type="text" name="member_number" placeholder="전화번호를 입력하세요"></div>
+                     <div class="inputSet"><input id="inputName"  type="text" name="member_name" placeholder="이름을 입력하세요" ></div>
+                     <div class="inputSet"><input id="inputEmail"  type="text" name="member_email" placeholder="이메일을 입력하세요" ></div>
+                     <div class="inputSet"><input id="inputNumber"  type="text" name="member_number" placeholder="전화번호를 입력하세요" ></div>
                  </div>
-                 <input type="submit" class="submit"  value="회원가입" ><br>
+                 <button  type="submit" class="submit"  id="new"  disabled="disabled">회원가입</button><br>
                  </form>
+                 
                </div>
             </div>
         </div>

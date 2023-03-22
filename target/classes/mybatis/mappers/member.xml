@@ -15,11 +15,6 @@
 				<result property="member_number" column="member_number" />
 				<result property="joinDate" column="joinDate" />
 				
-<!-- 		<result property="member_birth_y" column="member_birth_y" /> -->
-<!-- 		<result property="member_birth_m" column="member_birth_m" /> -->
-<!-- 		<result property="member_birth_d" column="member_birth_d" /> -->
-<!-- 		<result property="member_gender" column="member_gender" /> -->
-				
 	</resultMap>	
 	
 	<!-- 로그인 -->
@@ -60,63 +55,6 @@
 					    	)
 			]]>      
   </insert>   
-  
-  <!-- 마이페이지 회원 정보 수정 -->
-<!--   <update id="updateMypage" parameterType="memberDTO"> -->
-<!--   				  <![CDATA[ -->
-<!--   				  		UPDATE -->
-<!--   				  		FORM MEMBER -->
-<!-- 						WHERE member_id = #{member_id} -->
-<!-- 						AND member_pwd = #{member_pwd}  -->
-<!-- 						AND member_name = #{member_name}  -->
-<!-- 						AND member_email = #{member_email}  -->
-<!-- 						AND member_number = #{member_number}  -->
-<!--   					]]> 	   -->
-<!--   </update> -->
-  
-  
-    <!-- 마이페이지 영화 예매 내역 //창순씨 영화 예매 테이블 추가  -->
-<!--   <select id="storeMypage" resultType="String"  parameterType="String"  > -->
-<!-- 			    <![CDATA[ -->
-<!-- 			    	SELECT* -->
-<!-- 			    	FROM MEMBER -->
-<!-- 		            WHERE member_id=#{member_id} -->
-<!-- 				]]> -->
-<!-- </select> -->
-  
-  <!-- 마이페이지 스토어 구매 내역 //가영씨 스토어 구매 테이블 추가 -->
-<!--   <select id="storeMypage" resultType="String"  parameterType="String"  > -->
-<!-- 			    <![CDATA[ -->
-<!-- 			    	SELECT* -->
-<!-- 			    	FROM MEMBER -->
-<!-- 		            WHERE member_id=#{member_id} -->
-<!-- 				]]> -->
-<!-- </select> -->
-  
-  <!-- 회원탈퇴 -->
-<!-- 	<delete id="memberDelete" parameterType="String"> -->
-<!-- 			  <![CDATA[ -->
-<!-- 					DELETE  -->
-<!-- 					FROM MEMBER -->
-<!-- 					WHERE member_id = #{member_id} -->
-<!-- 				]]>     -->
-<!-- 	</delete> -->
-	
-<!-- 관리자페이지 회원정보 -->
-<!--   <select id="searchMember" parameterType="memberDTO" resultMap="memResult"> -->
-<!--       <![CDATA[ -->
-<!--           select * from t_member -->
-<!--       ]]> -->
-<!--       <where> -->
-<!--          <if test=" name != ''  and  name != null"> -->
-<!--             name=#{name} -->
-<!--          </if> -->
-<!--          <if test="email != ''  and email != null "> -->
-<!--            and email = #{email} -->
-<!--          </if> -->
-<!--       </where> -->
-<!--       order by joinDate desc -->
-<!--   </select> -->
 		
 </mapper>
 

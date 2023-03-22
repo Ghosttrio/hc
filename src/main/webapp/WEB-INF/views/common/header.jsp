@@ -96,21 +96,20 @@
         
         <div class="login_signup">
             <div id="h7">
-	            <ul>
 	            	<c:choose>
 	            			<c:when test="${isLogOn ==true and member!=null}">
 	            				<h3>${member.member_id }님 로그인 중</h3>
-		            			<li><a href="${contextPath}/member/logout" style="cursor: pointer"><h3>로그아웃</h3></a></li>
-		            			<li><a href="${contextPath}/member/mypage" style="cursor: pointer"><h3>마이페이지</h3></a></li>
+		            			<a href="/member/logout" style="cursor: pointer"><h4>로그아웃</h4></a>
+		            			<a href="member/mypage.do" style="cursor: pointer"><h4>마이페이지</h4></a>
 		        	 	 </c:when>
 		          		<c:otherwise>
-			       			 <li><a href="${contextPath}/member/login.do" style="cursor: pointer"><h3>로그인</h3></a></li>
-			       			 <li><a href="${contextPath}/member/add.do" style="cursor: pointer"><h3>회원가입</h3></a></li>
+			       			 <a href="/member/login.do" style="cursor: pointer"><h4>로그인</h4></a>
+			       			 <a href="/member/add.do" style="cursor: pointer"><h4>회원가입</h4></a>
 			     		 </c:otherwise>
 			   		</c:choose>     
-			   	</ul>
        		 </div>
-		</div>   	
+		</div> 
+			
     </header>
 </body>
 </html>
