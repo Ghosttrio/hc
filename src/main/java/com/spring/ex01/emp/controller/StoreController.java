@@ -141,9 +141,6 @@ public class StoreController {
 	
 	
 	
-	
-	// 스토어 (선물하기)
-	
 	// 스토어 (구매하기)
 	
 	

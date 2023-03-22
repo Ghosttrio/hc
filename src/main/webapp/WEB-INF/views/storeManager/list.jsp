@@ -59,7 +59,7 @@
     if(msg != null && msg != ""){
     	 alert(msg);
     	/*  location.href = url; */
-    } 
+
    
 </script>
 

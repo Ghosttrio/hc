@@ -3,92 +3,60 @@
       PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<!-- 파일의 Id(class 명)와 같은 -->
 <mapper namespace="mapper.member">
-
-<!-- 영화 출력 -->
-	 <select id="movieList" resultType="movieDTO">
-         <![CDATA[
-         	select * from practice
-         ]]>
-	</select>
-
-<!-- articleNO에 맞는 영화 출력 -->
-	 <select id="movieInfo" resultType="movieDTO" parameterType="int">
-         <![CDATA[
-         	select * from practice where articleNO=#{articleNO}
-         ]]>
-         
-	</select>
+		
+		<!-- 회원 정보를 저장할 resultMap을 정의한다,  -->
+		<resultMap id="memberResult" type="MemberDTO">
+				<result property="member_id" column="member_id" />
+				<result property="member_pwd" column="member_pwd" />
+				<result property="member_name" column="member_name" />
+				<result property="member_email" column="member_email" />
+				<result property="member_number" column="member_number" />
+				<result property="joinDate" column="joinDate" />
+				
+	</resultMap>	
 	
-<!-- 관리자페이지 영화 추가 -->
-	<insert id="movieAdd" parameterType="String">
-         <![CDATA[
-         	insert into practice 
-        	 (articleNO, title, title_en, age, opendate, explain, director, genre, runningtime, actor, poster_back, poster_main)
-        	 values(100, #{title}, #{title_en},#{age}, #{opendate}, #{explain}, #{director}, #{genre}, #{runningtime}, #{actor}, #{poster_back}, #{poster_main})
-         ]]>
-	</insert>
+	<!-- 로그인 -->
+	<select id="loginMember" resultType="memberDTO"  parameterType="memberDTO"  >
+		    <!-- *resultType 나가는 return타입 과 같고, parameterType 들어오는 전달인자-->
+		    <![CDATA[
+				SELECT* 
+				FROM MEMBER
+				WHERE member_id = #{member_id}
+				AND member_pwd = #{member_pwd}		
+			]]>
+		</select>
 	
-<!-- 관리자페이지 영화 수정 -->
-	<update id="movieUpdate" parameterType="movieDTO">
-         <![CDATA[
-       		update practice set title=#{title}, title_en=#{title_en}, age=#{age}, 
-			opendate=#{opendate}, explain=#{explain},
-			director=#{director}, genre=#{genre}, runningtime=#{runningtime}, actor=#{actor},
-			poster_back=#{poster_back}, poster_main=#{poster_main} 
-			 where title=#{title}
-         ]]>
-	</update>
-
-<!-- 관리자페이지 영화 수정 -->
-	<delete id="movieDelete" parameterType="String">
-         <![CDATA[
-       		delete from practice where title = #{title}
-         ]]>
-	</delete>
-
-<!-- 좋아요 업데이트 -->
-	<update id="updateLike" parameterType="int">
-		<![CDATA[
-         	update practice set like_num=like_num+1 where articleNO=#{articleNO}
-         ]]>
-	</update>
-
-<!-- 좋아요 출력 -->
-	<select id="selectLike" resultType="int" parameterType="int">
-         <![CDATA[
-         	select like_num from practice where articleNO=#{articleNO}
-         ]]>
-	</select>
-
-<!-- 댓글 추가 -->
-	<insert id="insertComment" parameterType="movieDTO">
-         <![CDATA[
-         	INSERT INTO comment_1 (articleNO, commentNO, parentNO, comment_id, comment_text, comment_rate) 
-         	VALUES (#{articleNO}, #{commentNO}, 0, #{comment_id}, #{comment_text}, #{comment_rate})
-         ]]>
-	</insert>
-	
-<!-- 댓글출력(페이징) -->
-	<select id="commentList" resultType="movieDTO" parameterType="java.util.HashMap">
-         <![CDATA[
-        SELECT recnum, lvl, articleNO, commentNO, parentNO, comment_text, comment_id, comment_rate FROM (
-			SELECT rownum AS recnum, lvl, articleNO, commentNO, parentNO, comment_text, comment_id, comment_rate 
-			FROM (SELECT LEVEL AS lvl, articleNO, commentNO, parentNO, comment_text, comment_id, comment_rate 
-					FROM COMMENT_1 
-					START WITH parentNO=0 
-					CONNECT BY NOCYCLE PRIOR commentNO = parentNO 
-					ORDER SIBLINGS BY commentNO DESC)) 
-			WHERE articleNO = #{articleNO} and recnum BETWEEN (#{section}-1)*100 + (#{pageNum}-1)*10+1 AND (#{section}-1)*100+#{pageNum}*10 
-         ]]>
+	<!-- 회원가입 아이디 중복체크  -->
+	<select id="checkMember" resultType="String" parameterType="String" >
+			<![CDATA[
+				  SELECT decode(count(*),1, 'true', 0, 'false')
+				  FROM MEMBER
+				   WHERE member_id = #{_parameter}
+			  ]]>
 	</select>
 	
-	
-<!-- 전체 댓글 개수 -->
-	<select id="tot" resultType="int" parameterType="int">
-         <![CDATA[
-         	select count(commentNO) from comment_1
-         ]]>
-	</select>
-
+	<!-- 회원가입  -->
+	<insert id="addMember"  parameterType="memberDTO">
+		  <![CDATA[
+			  INSERT
+			  INTO MEMBER(member_id
+			    						, member_pwd
+			    						, member_name
+			    						, member_email
+			    						, member_number
+			    						)
+					    	values(#{member_id}
+					    	,#{member_pwd}
+					    	,#{member_name}
+					    	,#{member_email}
+					    	,#{member_number}
+					    	)
+			]]>      
+  </insert>   
+		
 </mapper>
+
+
+

@@ -133,7 +133,7 @@ public class Store_managerController {
 		 
 		 
 		 model.addAttribute("msg", "메뉴가 수정 되었습니다");
-		 
+
 		 return "forward:/StoreManager/list.do";
 		
 	}
@@ -151,8 +151,9 @@ public class Store_managerController {
 		// DTO를 메모리에 넣어서 jsp로 전달
 		model.addAttribute("storeDTO", storeDTO);
 		
-		 
+		 System.out.println(menu_id);
 		 model.addAttribute("msg", "메뉴가 삭제 되었습니다");
+
 		 
 		 return "forward:/StoreManager/list.do";
 		 

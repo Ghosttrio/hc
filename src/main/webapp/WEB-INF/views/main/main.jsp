@@ -215,9 +215,6 @@ window.onload =()=>{
 </head>
 <body>
 	<div id="wrap_all">
-<!--상단바  -->
-		<jsp:include page="../common/Header.jsp"></jsp:include>
-
 			
 			<div class="ddd">
 				<h1>무비차트</h1>

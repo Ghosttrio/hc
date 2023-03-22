@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
     isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -25,7 +25,7 @@
         	font-color:black;
             padding: 0 10px 0 10px;
             letter-spacing: 1px;
-            opacity: 0.85;/* Åõ¸íµµ */
+            opacity: 0.85;/* íˆ¬ëª…ë„ */
             background-color: black;
             display: flex;
             justify-content: space-around;
@@ -71,35 +71,45 @@
 </head>
 <body>
     <header>
- <%-- !!!!!!!!!!!!!!ÆÄÀÏ ÀÌµ¿ ½Ã º¯°æÇØ¾ß ÇÏ´Â ÁÖ¼Ò!!!!!!!!!!!!!!!--%>
         <div class="header_list">
             <div id="h1"><a href="/myapp/movie/movieTab.do">
-            	<span style="cursor: pointer">¿µÈ­</span></a></div>
+            	<span style="cursor: pointer">ì˜í™”</span></a></div>
             
             <div id="h2"><a href="">
-            	<span style="cursor: pointer">¿¹¸Å</span></a></div>
+            	<span style="cursor: pointer">ì˜ˆë§¤</span></a></div>
             
             <div id="h3"><a href="/HumanCinema/cinema/cinema.do">
-            	<span style="cursor: pointer">±ØÀå</span></a></div>
+            	<span style="cursor: pointer">ê·¹ì¥</span></a></div>
             	
             <div id="logo_human"><a href="/HumanCinema/movie1/main.do">
         		<img src="/HumanCinema/img/logoCI.png"/></a></div>
         		
 			<div id="h4"><a href="/HumanCinema/menu/store.do">
-            	<span style="cursor: pointer">½ºÅä¾î</span></a></div>
+            	<span style="cursor: pointer">ìŠ¤í† ì–´</span></a></div>
             
             <div id="h5"><a href="/HumanCinema/event1/event1.do">
-            	<span style="cursor: pointer">ÀÌº¥Æ®</span></a></div>
+            	<span style="cursor: pointer">ì´ë²¤íŠ¸</span></a></div>
             
             <div id="h6"><a href="/HumanCinema/board/listArticles.do">
-            	<span style="cursor: pointer">°í°´¼¾ÅÍ</span></a></div>
+            	<span style="cursor: pointer">ê³ ê°ì„¼í„°</span></a></div>
         </div>
+        
         <div class="login_signup">
-            <div id="h7"><a href="/HumanCinema/user/login">
-           		<span style="cursor: pointer">·Î±×ÀÎ</span></a></div>
-            <div id="h8"><a href="/HumanCinema/user/new">
-            	<span style="cursor: pointer">È¸¿ø°¡ÀÔ</span></a></div>
-        </div>
+            <div id="h7">
+	            	<c:choose>
+	            			<c:when test="${isLogOn ==true and member!=null}">
+	            				<h3>${member.member_id }ë‹˜ ë¡œê·¸ì¸ ì¤‘</h3>
+		            			<a href="/member/logout" style="cursor: pointer"><h4>ë¡œê·¸ì•„ì›ƒ</h4></a>
+		            			<a href="member/mypage.do" style="cursor: pointer"><h4>ë§ˆì´í˜ì´ì§€</h4></a>
+		        	 	 </c:when>
+		          		<c:otherwise>
+			       			 <a href="/member/login.do" style="cursor: pointer"><h4>ë¡œê·¸ì¸</h4></a>
+			       			 <a href="/member/add.do" style="cursor: pointer"><h4>íšŒì›ê°€ì…</h4></a>
+			     		 </c:otherwise>
+			   		</c:choose>     
+       		 </div>
+		</div> 
+			
     </header>
 </body>
 </html>
