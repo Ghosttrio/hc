@@ -173,14 +173,8 @@ public class EventController {
 	public String replyForm(
 			HttpServletRequest request,
 			
-			@ModelAttribute EventDTO dto
-			
-			) {
+			@ModelAttribute EventDTO dto) {
 
-		
-		
-		// service 호출
-		
 		int name = eventService.replyForm(dto);
 		System.out.println("insert 결과 : "+ name);
 		System.out.println("getId()"+dto.getId());
@@ -197,6 +191,34 @@ public class EventController {
 		model.addAttribute("id",id);
 		return "article/articleForm";
 	}
+	
+	//이벤트 대댓글 추가 창
+	
+	@RequestMapping(value="/addreply.do", method=RequestMethod.GET)
+	public String addreply(Model model,
+			@RequestParam("parentNO") String parentNO,
+			@RequestParam("id") String id
+			) {
+		
+		System.out.println("addreply.do 실행 :"+parentNO);
+		System.out.println("addreply.do:parentNO"+parentNO);
+		
+		model.addAttribute("parentNO",parentNO);
+		
+		model.addAttribute("id",id);
+		
+		return "article/replyForm";
+	}
+//	@RequestMapping(value="/replyForm3.do")
+//	public String replyForm3(Model model,@RequestParam("id") String id) {
+//		
+//		System.out.println("replyForm.do:id;"+id);
+//		
+//		model.addAttribute("id",id);
+//		return "article/articleForm";
+//	}
+	
+
 	
 	//댓글 수정창
 	@RequestMapping(value="/modArticle2.do")
@@ -217,20 +239,7 @@ public class EventController {
 		return "redirect:/event1/listArticles.do";
 	}
 	
-//	@RequestMapping(value="/detail.do")
-//	public String detail(
-//			
-//			@RequestParam("replyId") String replyId, Model model) {
-//		
-//		// DB에서 조회한
-//		EventDTO dto = eventService.selectReplyId(replyId);
-//		
-//		// DTO를 메모리에 넣어서 jsp로 전달
-//		model.addAttribute("dto", dto);
-//		
-//		System.out.println("detail.do 실행");
-//		return "article/modArticle";
-//	}
+
 	
 	//댓글 수정
 	@RequestMapping(value="/modArticle.do")
@@ -252,41 +261,6 @@ public class EventController {
 			return "article/modArticle";
 	}
 	
-	//이벤트 댓글 추가
-//	// 목록을 조회해서 json으로 돌려줌
-//	@RequestMapping(value="/api/list", method=RequestMethod.GET)
-//	@ResponseBody
-//	public List list(Model model) {
-//		List list = empService.getList();
-//		
-//		return list;
-//	}
-//	
-//	@RequestMapping(value="/checkedList.do", method=RequestMethod.GET)
-//	public String checkedList(Model model, 
-//			HttpServletRequest request,
-//			@RequestParam("chk") List<Integer> list_chk2,
-//			@RequestParam("chk") String chk) {
-//		
-//		System.out.println("getParameterValues 결과");
-//		String[] list_chk = request.getParameterValues("chk");
-//		for(String val : list_chk) {
-//			System.out.println(val);
-//		}
-//
-//		System.out.println("@RequestParam 결과");
-//		for(int val : list_chk2) {
-//			System.out.println(val);
-//		}
-//		
-//		System.out.println("chk : "+ chk);
-//
-//		List list = empService.selectCheckedList(list_chk);
-//		
-//		model.addAttribute("list", list);
-//		logger.warn("EmpController > getList : list.size = "+ list.size());
-//		
-//		return "emp/list";
-//	}
+	
 	
 }

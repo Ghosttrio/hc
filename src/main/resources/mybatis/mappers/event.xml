@@ -28,13 +28,6 @@
 <!-- 		where id=#{id} -->
 </select>
 	
-<select id="viewEvent_review" resultType="eventDTO" parameterType="String">
-		
-		
- 		select articleNO,replyId,replyTitle, content from event_review 
-		where id=#{id} 
-	</select>
-	
 <!-- 이벤트 수정  -->
 <update id="updateEvent" parameterType="eventDTO">
 		UPDATE
@@ -59,6 +52,18 @@
 
 <!-- 댓글 -->
 
+<select id="viewEvent_review" resultType="eventDTO" parameterType="String">
+		
+		
+
+				SELECT LEVEL, id,articleNO, parentNO, replyTitle, content, replyId
+					 from event_review 
+					 WHERE id = #{id}
+					 START WITH parentNO=0
+					CONNECT BY nocycle PRIOR articleNO=parentNO
+					ORDER SIBLINGS BY articleNO DESC
+	</select>
+	
 
 <!-- 댓글목록	 -->
 <select id="listArticles" resultType="eventDTO">
@@ -76,6 +81,12 @@
 		VALUES
 			( #{id},event_review_seq.nextval, #{parentNO}, #{replyTitle}, #{content}, #{replyId}, sysdate)
 	</insert>
+	
+	
+	
+	
+	
+	
 	
 <!-- 댓글 수정  -->
 <update id="modArticle" parameterType="eventDTO">

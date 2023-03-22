@@ -28,6 +28,10 @@
 	 margin-top: 20px;
  text-align:center;
 }
+
+.listArticles {
+	
+}
  
  </style>   
 </head>
@@ -44,23 +48,20 @@
 
 
 	<c:forEach var="vo" items="${ listArticles}">
-			<table border=1>
-<!-- 					<tr> -->
-<!-- 						<td> -->
-<%-- 							글 번호 :${vo.articleNO } --%>
-<!-- 						</td> -->
-<!-- 					</tr>	 -->
+			<table class="listArticles" bgcolor="lightblue" border=1 >
+
+					
+					
 					<tr>
 						<td style="padding-left: ${(vo.level-1) * 20 }px">
-						<a href="/modArticle.do?articleNO=${vo.articleNO }">
 						
-							글쓴이 ID :${vo.replyId }
-							</a>
+							글쓴이 ID: ${vo.replyId }
+							
 						</td>
 					</tr>
 					<tr>
 						<td>
-							제목 :${vo.replyTitle }</a>
+							제목: ${vo.replyTitle }
 						</td>
 					</tr>
 					<tr>
@@ -68,8 +69,19 @@
 							내용: ${vo.content }
 						</td>
 					</tr>
+					<tr>
+						<td>
+							<a href="/modArticle.do?articleNO=${vo.articleNO }">	
+								<input type="button" value="수정하기"/>
+							</a>
+							
+							<a href="/addreply.do?parentNO=${vo.articleNO }&id=${vo.id }">	
+								<input type="button" value="답글달기"/>
+							</a>
+						</td>
+					</tr>
 			</table>
-					<br>
+			<br>
 	</c:forEach>
 </div>
 <!-- 	<div class="reply"> -->

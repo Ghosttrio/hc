@@ -13,13 +13,13 @@
 <h1>답글쓰기</h1>
 <form method="post" action="/replyForm2.do">
 
-	글쓴이 ID : <input type="text" name="replyid"><br>
+	글쓴이 ID : <input type="text" name="replyId" value="관리자" readonly/><br>
 	제목: <input type="text" name="replyTitle"><br>
 	내용:
 	<textarea name="content" rows="10" cols="65"></textarea>
+	<input type="hidden" name="parentNO" value="${parentNO }">
+	<input type="hidden" name="id" value="${id }">
 	<br><input type="submit" value="글쓰기"><br>
-	<input type="hidden" name="parentNO" value="${param.parentNO }">
-<%-- 	<input type="hidden" name="articleNO" value="${param.articleNO }"> --%>
 </form>
 </body>
 </html>

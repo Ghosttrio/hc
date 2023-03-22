@@ -45,91 +45,7 @@
 
     </script>
 <style>
-/* 상단바시작         */
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
 
-li {
-	list-style: none;
-}
-
-a {
-	text-decoration: none;
-}
-
-#wrap {
-	width: 100%;
-	/* margin-top = header height */
-	margin-top: 80px; /*상단 탭이랑 사이즈 잘 맞춰야함*/
-}
-
-/* Navigation bar */
-header {
-	/* for sticky header */
-	position: fixed;
-	top: 0;
-	width: 100%;
-	height: 80px;
-	z-index: 2000;
-	background-color: #fff;
-	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
-}
-
-.logo {
-	display: inline-block;
-	height: 5px;
-	margin: 12px 0 12px 25px;
-}
-
-.logo>img {
-	height: 50px;
-}
-
-nav {
-	display: flex;
-	justify-content: space-around;
-}
-
-.nav-items {
-	margin-right: 20px;
-}
-/* nav-items 가로정렬 */
-.nav-items>li {
-	display: inline-block;
-	margin-left: 40px;
-	margin-right: 40px;
-}
-
-.nav-items>li>a {
-	/* for Vertical Centering */
-	line-height: 80px;
-	padding: 0 30px;
-	color: rgba(0, 0, 0, 0.4);
-}
-
-.nav-items>li>a:hover {
-	color: rgba(0, 0, 0, 0.8);
-}
-/* 상단바 끝 */
-/* .event_menu>ul>li{ */
-    
-/*     display: inline-block; */
-/* } */
-/* .event_main>ul>li{ */
-/*     display:inline-block; */
-/*     width: 20%; */
-/*     height: 10%; */
-/*     float: left; */
-/*     margin-top: 20px; */
-/*     margin-left: auto; */
-/*     margin-right: auto; */
-/* } */
-/* .evt-thumb>img { */
-/*     width: 100%; */
-/* } */
 
 .event_t {
 	
@@ -158,6 +74,7 @@ nav {
 }
 </style>
 </head>
+
 <body>
 <button type="button" onclick="location.href='/addEvent.do'">이벤트 추가</button>
 <button type="button" onclick="location.href='/modifyEvent.do'">이벤트 수정/삭제</button>
