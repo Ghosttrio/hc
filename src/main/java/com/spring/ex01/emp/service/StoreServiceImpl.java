@@ -92,7 +92,7 @@ public class StoreServiceImpl implements StoreService {
 		
 		return selectMenu;
 	}
-	
+	// 메뉴 정보창
 	@Override
 	public StoreDTO storeinfo(String menu_id) {
 		
@@ -100,6 +100,25 @@ public class StoreServiceImpl implements StoreService {
 		
 		return storeDTO;
 	}
+	
+	// 장바구니 목록
+	@Override
+	public List cartlist() {
+		
+		List list = null;
+		
+		list = storeDAO.cartlist();
+		
+		return storeDAO.cartlist();
+	}
+	
+	// 장바구니 추가
+		@Override
+		public int cartadd(StoreDTO storeDTO) {
+			
+			return storeDAO.cartadd(storeDTO);
+			
+		}
 	
 
 }

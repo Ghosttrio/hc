@@ -6,34 +6,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%-- <c:choose>
-	<c:when test='${msg == "addMenu" }'>
-		<script>
-			window.onload = function(){
-				alert("메뉴를 등록했습니다");
-			}
-		</script>
-	</c:when>
-	<c:when test='${msg=="modified" }'>
-		<script>
-			window.onload = function(){
-				alert("메뉴 정보를 수정했습니다");
-			}
-		</script>
-	</c:when>
-	<c:when test='${msg=="deleted" }'>
-		<script>
-			window.onload = function(){
-				alert("메뉴 정보를 삭제했습니다");
-			}
-		</script>
-	</c:when>
-</c:choose> --%>
-
 <meta charset="UTF-8">
 <title>스토어 관리자 페이지 ( 목록 )</title>
 </head>
+
+
 <body>
+
 <section>
 <h1>관리자페이지(목록)</h1>
 <form action = "/StoreManager/StoreAddView.do" method = "post">
@@ -74,5 +53,17 @@
 	</div>
 </form>
 </section>
+<script>
+    var msg = "<c:out value='${msg}'/>";
+    /* var url = "<c:out value='${url}'/>"; */
+    if(msg != null || msg != ""){
+    	 alert(msg);
+    	/*  location.href = url; */
+    } else {
+    	 location.href = "/storeManager/list";
+    }
+   
+</script>
+
 </body>
 </html>

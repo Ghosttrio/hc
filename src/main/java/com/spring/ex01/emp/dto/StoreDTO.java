@@ -18,10 +18,13 @@ public class StoreDTO {
 	
 	
 	// 스토어 결제정보 (장바구니, 구매하기)
+	private String user_id;
+	private String cart_id;
 	private int amount;	// 수량
 	private int total;	// 금액
 	private Date store_date;	// 제품 담은 시간
 	private String store_pay;	// 결제여부
+	
 	
 	
 	
@@ -81,5 +84,16 @@ public class StoreDTO {
 		this.store_pay = store_pay;
 	}
 	
-
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+	public String getCart_id() {
+		return cart_id;
+	}
+	public void setCart_id(String cart_id) {
+		this.cart_id = cart_id;
+	}
 }

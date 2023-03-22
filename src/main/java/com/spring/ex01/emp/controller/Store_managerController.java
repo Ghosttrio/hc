@@ -1,7 +1,9 @@
 package com.spring.ex01.emp.controller;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -35,11 +37,12 @@ public class Store_managerController {
 	
 	@Autowired
 	private StoreDAO storeDAO;
+
 	
 	
 	// 메뉴 목록
 	@RequestMapping(value = "/list.do", method= {RequestMethod.GET, RequestMethod.POST})
-	public String StoreList(Model model) {
+	public String StoreList(Model model){
 		List StoreList = storeService.getList();
 		
 		model.addAttribute("StoreList", StoreList);
@@ -63,7 +66,7 @@ public class Store_managerController {
 	@RequestMapping(value = "/StoreAdd.do",method= {RequestMethod.GET, RequestMethod.POST} )
 	public String StoreAdd(
 			
-			HttpServletRequest request,
+			Model model,
 			@ModelAttribute StoreDTO storeDTO
 		
 //			Model model,
@@ -73,7 +76,7 @@ public class Store_managerController {
 //			@RequestParam(value = "image" , required = false) String image,
 //			@RequestParam(value = "menu_type" , required = false ) Integer menu_type
 			
-			) {
+			) throws Exception {
 		
 		System.out.println("menu_id : " + storeDTO.getMenu_id());
 
@@ -86,11 +89,17 @@ public class Store_managerController {
 			 
 			int count = storeService.StoreAdd(storeDTO);
 			 System.out.println("insert결과 : " + count);
-			 
-			 request.setAttribute("msg", "addMenu");
-			 
-			 return "redirect:/StoreManager/list.do";
 			
+			 if(count > 0) {
+				 model.addAttribute("msg" , "메뉴가 추가 되었습니다");
+					/* model.addAttribute("url" , "/"); */
+			 } else {
+				 
+				 model.addAttribute("msg" , "메뉴를 입력해주세요");
+					/* model.addAttribute("url" , "/storeManager/list"); */
+			 }
+		
+			 return "redirect:/StoreManager/list.do";
 		} 
 			 
 	@RequestMapping("/detail.do")
@@ -114,15 +123,17 @@ public class Store_managerController {
 	// 메뉴 수정
 	@RequestMapping(value = "/StoreUpdate.do",method= {RequestMethod.PUT, RequestMethod.POST} )
 	public String StoreUpdate(
-			HttpServletRequest request,
-			@ModelAttribute StoreDTO storeDTO) {
+			Model model,
+			@ModelAttribute StoreDTO storeDTO) throws Exception {
 		
 		System.out.println("들어왔는지 확인" + storeDTO);
 		
 		int count = storeService.StoreUpdate(storeDTO);
 		 System.out.println("insert결과 : " + count);
 		 
-		 request.setAttribute("msg", "modified");
+		 
+		 model.addAttribute("msg", "메뉴가 수정 되었습니다");
+		 model.addAttribute("url", "redirect:/StoreManager/list.do");
 		 
 		 return "redirect:/StoreManager/list.do";
 		
@@ -133,8 +144,7 @@ public class Store_managerController {
 	@RequestMapping(value = "DeleteStore.do", method= {RequestMethod.GET, RequestMethod.POST})
 		
 	public String DeleteStore(
-			HttpServletRequest request,
-			@RequestParam("menu_id") String menu_id, Model model) {
+			@RequestParam("menu_id") String menu_id, Model model) throws Exception {
 		
 	
 		StoreDTO storeDTO = storeService.DeleteStore(menu_id);
@@ -142,9 +152,12 @@ public class Store_managerController {
 		// DTO를 메모리에 넣어서 jsp로 전달
 		model.addAttribute("storeDTO", storeDTO);
 		
-		request.setAttribute("msg", "deleted");
-		
-		return "redirect:/StoreManager/list.do";
+		 
+		 model.addAttribute("msg", "메뉴가 삭제 되었습니다");
+		 model.addAttribute("url", "redirect:/StoreManager/list.do");
+		 
+		 return "redirect:/StoreManager/list.do";
+		 
 	}
 			
 }

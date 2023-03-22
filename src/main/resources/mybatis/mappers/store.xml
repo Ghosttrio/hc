@@ -68,5 +68,21 @@
 		where menu_id = #{_parameter}
 	</select>
 	
+	<!-- 장바구니 목록 -->
+	 <select id="cartlist" resultType="storeDTO">
+         <![CDATA[
+         	select * from STORE_CART
+         ]]>
+	</select>
 	
+	
+	<!-- 장바구니 추가 -->
+	<insert id = "cartadd" parameterType="storeDTO">
+		 <![CDATA[
+         	insert into STORE_CART
+        	 (cart_id, AMOUNT, PRICE, CART_DATE, STORE_PAY, menu_name, image, menu_id, user_id)
+        	 values
+        	 (#{cart_id}, #{AMOUNT}, #{price}, sysdate, #{STORE_PAY}, #{menu_name}, #{image}, #{menu_id}, #{user_id})
+         ]]>
+	</insert>
 </mapper>
