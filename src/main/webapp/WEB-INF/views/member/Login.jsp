@@ -2,6 +2,7 @@
 	pageEncoding="utf-8"
 	 isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
@@ -107,15 +108,13 @@
         	 }
     </script>
     
-    <c:choose>
-	<c:when test="${result=='loginFailed' }">
+<c:if test="${result=='loginFailed' }">
 	  <script>
 	    window.onload=function(){
 	      alert("${msg}");
 	    }
 	  </script>
-	</c:when>
-</c:choose> 
+</c:if>
 
 </head>
 <body>
@@ -124,23 +123,23 @@
         <div class="login_box">
             <div class="left_img">
                 <div class="slider">
-                    <img id="mainimg" src="/teambackup/image/poster01.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster2.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster3.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster4.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster5.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster6.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster7.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster8.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster9.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster10.jpg">
+                    <img id="mainimg" src="/resources/static/image/loginPoster01.jpg">
+                    <img id="mainimg" src="/resources/static/image/loginPoster02.jpg">
+                    <img id="mainimg" src="/resources/static/image/loginPoster03.jpg">
+                    <img id="mainimg" src="/resources/static/image/loginPoster04.jpg">
+                    <img id="mainimg" src="/resources/static/image/loginPoster05.jpg">
+                    <img id="mainimg" src="/resources/static/image/loginPoster06.jpg">
+                    <img id="mainimg" src="/resources/static/image/loginPoster07.jpg">
+                    <img id="mainimg" src="/resources/static/image/loginPoster08.jpg">
+                    <img id="mainimg" src="/resources/static/image/loginPoster09.jpg">
+                    <img id="mainimg" src="/resources/static/image/loginPoster10.jpg">
                 </div>
             </div>
             <div class="right_login">
                 <div class="sign-in">
-                <img id="humanimg" src="/HumanStudy/img/human.png">
+                <img id="humanimg" src="/resources/static/image/loginHuman.png">
                 
-	                <form method="post" action="/member/loginMember">
+	                <form method="post" action="${contextPath }/member/loginMember">
 			                <input id="inputId" type="text" placeholder="아이디를 입력하세요" maxlength="20" name="member_id">
 			                <input id="inputPwd" type="password" placeholder="비밀번호를 입력하세요" maxlength="20" name="member_pwd">
 			                <button class="submit">로그인</button><br>
