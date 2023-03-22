@@ -8,7 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지(회원정보)</title>
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <style>
 	#mypage{
 	margin-left: 15%;
@@ -67,16 +66,14 @@
 </head>
 <body>
 
-<%-- <c:choose> --%>
-<%-- 	<c:when test="${ }"></c:when> --%>
-<%-- </c:choose> --%>
+<!--  -->
 	
     <div id="content-wrap">
       <aside id="mypage"><h1>마이페이지</h1></aside>
             </div>
               <section>
                 <article class="UserInformation">
-                   <form method="post"  action="${contextPath}/user/update?id=${result.id}" >
+                   <form method="post"  action="/member/updateMypage" >
                         <table>
                             <th colspan="3">회원정보2</th>
                             <tr>

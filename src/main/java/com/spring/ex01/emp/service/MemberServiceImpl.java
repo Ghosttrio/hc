@@ -26,4 +26,8 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.checkMember(id);
 	}
 
+	@Override	//마이페이지 출력(mainMypage)
+	public MemberDTO mypage(MemberDTO memberDTO) throws Exception {
+		return memberDAO.mypage(memberDTO);
+	}
 }
