@@ -14,10 +14,9 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override	//로그인(loginMember)
 	public MemberDTO loginMember(MemberDTO memberDTO) throws DataAccessException {
-		System.out.println("loginMember: "+memberDTO);
+			System.out.println("loginMember: "+memberDTO);
 			MemberDTO member = (MemberDTO) sqlSession.selectOne("mapper.member.loginMember",memberDTO);
-			//*selectOne: Id, pwd를 한줄로 돌려준다,  selectList: 리스트로 돌려준다.
-			System.out.println("after: "+member);
+			System.out.println("MemberDAOImpl, loginMember: "+member);
 			return member;
 		}
 
@@ -26,13 +25,20 @@ public class MemberDAOImpl implements MemberDAO{
 		sqlSession.insert("mapper.member.addMember",memberDTO) ;
 	}
 	
-	
 	@Override 	//회원 중복확인(checkMember)
 	public String  checkMember(String id) throws DataAccessException{
 		System.out.println("checkmember Id: "+id);
 		String result =  sqlSession.selectOne("mapper.member.checkMember",id);
 		return result;
 	}	
+	
+	@Override	//마이페이지 출력(mypage)
+	public MemberDTO mypage(MemberDTO memberDTO) throws DataAccessException{
+		System.out.println("mypage: "+memberDTO);
+		MemberDTO member = (MemberDTO) sqlSession.selectOne("mapper.member.mainMypage",memberDTO);
+		System.out.println("MemberDAOImpl, mypage: "+member);
+		return member;
+	}
 	
 	
 

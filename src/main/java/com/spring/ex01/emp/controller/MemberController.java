@@ -30,97 +30,101 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	@Autowired	private MemberService memberService;
-	@Autowired	private MemberDTO memberDTO;
+	
+	//로그인 View (/login.do) 
+	@RequestMapping("/login.do")
+	public String login() {
+		return "loginMember";
+	}
 	
 	//로그인(loginMember)
-		@RequestMapping(value="/loginMember", method = {RequestMethod.POST, RequestMethod.GET})
-		public String  loginMember(@ModelAttribute  MemberDTO memberDTO ,Model model,
-																					HttpServletRequest req, HttpServletResponse resp
-																					) throws Exception {
+	@RequestMapping(value="/loginMember", method = {RequestMethod.POST, RequestMethod.GET})
+	public String  loginMember(@ModelAttribute  MemberDTO memberDTO ,	Model model
+													,HttpServletRequest req, HttpServletResponse resp	) throws Exception {
 
-			System.out.println("check loginMember 로그인 실행");//로그인 접속여부 출력
-			memberDTO = memberService.loginMember(memberDTO);
-		
-			if(memberDTO != null) {
-			  HttpSession session = req.getSession();
-			  System.out.println("login session: "+session.getAttribute("isLogOn")); //세션정보 출력
-			  
-			  session.setAttribute("member", memberDTO);
-			  session.setAttribute("isLogOn", true); // 세션 속성(true 로그인/ false 로그아웃)
-				return "main";
-				
-			}else {
-				System.out.println("loginFailed(loginMember)"); //실패 출력
-				
-//				전달인자 값이 ModelAndView일 때 사용
-//				 rAttr.addAttribute("result","loginFailed");
-//				mav.setViewName("loginMember"); //ModelAndView에서 viewResolver를 탄다.
-				  model.addAttribute("msg", "아이디 또는 비밀번호가 다릅니다.");
-				  model.addAttribute("result","loginFailed");
-				  
-				  return "loginMember";
-			}
-		}
-		
-		//회원가입 View (/add.do) 
-		@RequestMapping("/add.do")
-		public String add() {
+		memberDTO = memberService.loginMember(memberDTO);
+	
+		if(memberDTO != null) {
+		  HttpSession session = req.getSession();
+		  session.setAttribute("member", memberDTO);
+		  session.setAttribute("isLogOn", true); 
+		  System.out.println("login session: "+session.getAttribute("isLogOn"));
+		  return "main";
 			
-			return "addMember";
+		}else {
+			  model.addAttribute("msg", "아이디 또는 비밀번호가 다릅니다.");
+			  model.addAttribute("result","loginFailed");
+			  return "loginMember";
 		}
-		
-		
-		//회원가입(addMember)
-		@RequestMapping(value="/addMember", method = {RequestMethod.POST, RequestMethod.GET})
-		public String addMember(@ModelAttribute("memberDTO") MemberDTO memberDTO, 	//회원가입 정보를 _memberDTO에 설정
-																				Model model	,HttpServletRequest req, HttpServletResponse resp) throws Exception {
-			System.out.println("check addMember 회원가입 실행");
-			System.out.println("입력 받은 id 값: "+memberDTO.getMember_id());
-					
-					try {
-					    memberService.addMember(memberDTO);	//회원정보를 SQL문에 전달
-					    model.addAttribute("result","signupSucceed"); //request처럼 redirect를 하면 사라진다.
-					    model.addAttribute("msg", "가입을 환영합니다.");
-					    System.out.println("/addMember Succeed 회원가입 성공");
-					    
-					}catch(Exception e) {
-						// catch에 전달인자는 꼭 필수이다.
-						System.out.println("/addMember failed 회원가입 실패");
-						return "addMember";
-						
-					}
-					
-					return "forward:/member/login.do";
-					//model 정보를 가져오려면 forward 해줘야 한다.
+	}
+	
+	//회원가입 View (/add.do) 
+	@RequestMapping("/add.do")
+	public String add() {
+		return "addMember";
+	}
+	
+	//회원가입(addMember)
+	@RequestMapping(value="/addMember", method = {RequestMethod.POST, RequestMethod.GET})
+	public String addMember(@ModelAttribute("memberDTO") MemberDTO memberDTO, Model model
+														,HttpServletRequest req, HttpServletResponse resp) throws Exception {
+				
+				try {
+				    memberService.addMember(memberDTO);
+				    model.addAttribute("result","signupSucceed");
+				    model.addAttribute("msg", "가입을 환영합니다.");
+				    System.out.println("/addMember Succeed 회원가입 성공");
+				    
+				}catch(Exception e) {
+					// catch의 전달인자는 꼭 필수이다.
+					System.out.println("/addMember failed 회원가입 실패");
+					return "addMember";
 				}
-		
-		
-		//회원 중복확인(checkMember)
-		@RequestMapping(value="/checkMember", method = {RequestMethod.POST, RequestMethod.GET})
-		public @ResponseBody  String checkMember (@RequestParam("member_id") String member_id,
-																					HttpServletRequest req,HttpServletResponse resp) throws Exception {
-			System.out.println("check checkMember 중복체크 실행");
-			
-			String result = memberService.checkMember(member_id);
-			System.out.println("member_id: "+ member_id); //가져온 아이디 출력
-			System.out.println("/checkMember 의 결과 값이 (false=가능/true:불가능) : "+result); //결과 값 출력 true(사용 가능한 아이디)/false(사용 중인 아이디)
-			return result;
-		}
-		
-		
-		//로그아웃(logout)
-		  @RequestMapping(value="/logout", method={RequestMethod.POST, RequestMethod.GET})
-		  public String logout(HttpServletRequest req,	 HttpServletResponse resp) throws Exception {
-			  System.out.println("check logout 로그아웃 실행"); 
+				return "forward:/member/login.do";
+			}
+	
+	//회원 중복확인(checkMember)
+	@RequestMapping(value="/checkMember", method = {RequestMethod.POST, RequestMethod.GET})
+	public @ResponseBody  String checkMember (@RequestParam("member_id") String member_id) throws Exception {
 
-			  HttpSession session = req.getSession();	//세션정보를 불러오고
-				System.out.println("logout session: "+session);	//세션 정보 출력
-				
-				session.invalidate();	//로그인 된 회원정보를 삭제한다.
-				
-				return "redirect:/member/login.do";
-		  }
-		
+		String result = memberService.checkMember(member_id);
+		return result;
+	}
+	
+	//로그아웃(logout)
+	  @RequestMapping(value="/logout", method={RequestMethod.POST, RequestMethod.GET})
+	  public String logout(HttpServletRequest req,	 HttpServletResponse resp) throws Exception {
+
+		  HttpSession session = req.getSession();
+			session.invalidate();
+			return "redirect:/member/login.do";
+	  }
+	  
+	  //마이페이지 View 출력(mypage.do)
+		@RequestMapping(value="/mypage.do", method={RequestMethod.POST, RequestMethod.GET})	
+		public String mainMypage (Model model
+												, HttpServletRequest req,	HttpServletResponse resp	) throws Exception {
+			
+				 HttpSession session = req.getSession();
+				 if( (boolean)session.getAttribute("isLogOn")==true ) {
+					 System.out.println("로그인 세션출력 isLogOn(true : "+session.getAttribute("isLogOn"));
+					 
+					 MemberDTO memberDTO = new MemberDTO();
+					 memberDTO = (MemberDTO)session.getAttribute("member");
+					 memberDTO = memberService.mypage(memberDTO);
+					 
+					 model.addAttribute("result", memberDTO);
+					 //result 키 값을 return mypage 로 보낸다.
+					 
+					 return "mainMypage";
+					 //return 값은 tiles name을 쓰며 tiles를 JSP로 출력한다.
+					 
+				}else {
+					System.out.println("로그인 정보가 없어 마이페이지를 출력 할 수 없습니다"); //실패 출력
+					return "loginMember";
+				}
+		}
+
 	
 }
 

@@ -29,6 +29,12 @@
          <put-attribute name="title" value="회원 가입 페이지" />
          <put-attribute name="body" value="/WEB-INF/views/member/Signup.jsp" />
       </definition>
+      
+<!-- 마이 페이지  -->      
+      <definition name="mainMypage" extends="baseLayout">
+         <put-attribute name="title" value="마이 페이지" />
+         <put-attribute name="body" value="/WEB-INF/views/member/Mypage_main.jsp" />
+      </definition>
 
       
 </tiles-definitions>
