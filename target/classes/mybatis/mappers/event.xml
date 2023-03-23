@@ -60,7 +60,7 @@
 					 from event_review 
 					 WHERE id = #{id}
 					 START WITH parentNO=0
-					CONNECT BY nocycle PRIOR articleNO=parentNO
+					CONNECT BY nocycle PRIOR articleNO = parentNO
 					ORDER SIBLINGS BY articleNO DESC
 	</select>
 	

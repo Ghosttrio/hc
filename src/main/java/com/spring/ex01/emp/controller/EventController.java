@@ -11,7 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,6 +41,17 @@ public class EventController {
 		logger.warn("EventController > getList : list.size = "+ list.size());
 		
 		return "event/listEvent";
+	}
+	
+	//이벤트 목록 일반용
+	@RequestMapping(value="/event1/event2.do")
+	public String getList2(Model model) {
+		List list = eventService.getList();
+		
+		model.addAttribute("eventsList", list);
+		logger.warn("EventController > getList : list.size = "+ list.size());
+		
+		return "event/listEvent2";
 	}
 	
 	
@@ -262,5 +275,61 @@ public class EventController {
 	}
 	
 	
+//로그인 관련
+	
+	@Controller
+	public class loginController {
+//		아이디와 비밀번호를 입려받은 후 아이디가 admin일 경우 admin.jsp로 이동
+//		아이디가 user일 경우 user.jsp로 이동
+		
+//		-admin.jsp
+//		-user.jsp
+		
+		@GetMapping("loginForm")
+		public String goLoginForm() {
+			return "loginEvent/login";
+		}
+		
+		@PostMapping("/login")
+//		외부에서 전달받은 아이디와 패스워드를 매개변수로 받는다.
+		public String login(@ModelAttribute("id") String id, String pw) {
+//			만약 아아디가 admin일 경우
+			if(id.equals("admin")) {
+
+				return "loginEvent/admin";
+			}
+//			만약 아이디가 admin이 아닐 경우  이동
+			return "loginEvent/user";
+		}
+	}
+	
+	//두번째 이미지 보여주는 창 admin 용
+		@RequestMapping(value="/viewEvent2.do")
+		
+		public String secondEvent2(Model model,
+				
+				@RequestParam("id") 
+				String id,
+				HttpServletRequest request, HttpServletResponse response
+				
+				) throws UnsupportedEncodingException {
+			
+			//한글깨짐 방지
+			request.setCharacterEncoding("utf-8");
+			response.setContentType("text/html;charset=utf-8");
+			
+			//이벤트 상세정보 가져오기
+			List list = eventService.secondEvent(id);
+			System.out.println(id);
+			model.addAttribute("secondEvent", list);
+			
+			//이벤트 댓글목록 가져오기
+			List list2 = eventService.ListArticles(id);
+			
+			model.addAttribute("listArticles", list2);
+			logger.warn("EventController > getList : list.size = "+ list.size());
+			
+			return "event/viewEvent2";
+		}
 	
 }

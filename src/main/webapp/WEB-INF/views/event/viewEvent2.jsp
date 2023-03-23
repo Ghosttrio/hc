@@ -117,14 +117,15 @@
 					<td>
 						내용
 					</td>
-					<td>
-						관리자용
-					</td>
+<!-- 					<td> -->
+<!-- 						관리자용 -->
+<!-- 					</td> -->
 				</tr>
 			
 		<c:forEach var="vo" items="${ listArticles}">
 		
 						<tr>	
+							
 								<td> ${vo.replyId }</td>
 								
 							
@@ -133,16 +134,16 @@
 							
 							
 								<td> ${vo.content }</td>
-							<td colspan="2" >
-								<a href="/modArticle.do?articleNO=${vo.articleNO }">	
-									<input type="button" value="수정하기"/>
-								</a>
+<!-- 							<td colspan="2" > -->
+<%-- 								<a href="/modArticle.do?articleNO=${vo.articleNO }">	 --%>
+<!-- 									<input type="button" value="수정하기"/> -->
+<!-- 								</a> -->
 								
-								<a href="/addreply.do?parentNO=${vo.articleNO }&id=${vo.id }">	
-									<input type="button" value="답글달기"/>
-								</a>
+<%-- 								<a href="/addreply.do?parentNO=${vo.articleNO }&id=${vo.id }">	 --%>
+<!-- 									<input type="button" value="답글달기"/> -->
+<!-- 								</a> -->
 	 							
-							</td>
+<!-- 							</td> -->
 						</tr>
 		</c:forEach>
 	</table>	
