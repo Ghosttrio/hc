@@ -43,7 +43,7 @@
 					 </tr>
 				</c:forEach>
 			</c:if>
-			<c:if test = "${empty StoreList }">
+			<c:if test = " ${empty StoreList }">
 				<tr>
 					<td colspan = "5" style = "text-align:center;">조회된 데이터가 없습니다</td>
 				</tr>
@@ -59,7 +59,7 @@
     if(msg != null && msg != ""){
     	 alert(msg);
     	/*  location.href = url; */
-
+    }
    
 </script>
 

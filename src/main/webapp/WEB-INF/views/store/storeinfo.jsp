@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 </head>
 
 <c:choose>	
@@ -116,31 +118,34 @@
 	}
 </style>
 <body>
-<form method = "post" action = "/Store/cartadd.do">
-	<div class = "name">${storeDTO.name }</div> 
-					<hr style="border: solid 1px black;">
+<form method = "post">
+	<div id = "menu_name">${storeDTO.name }</div> 
+	<hr style="border: solid 1px black;">
+
 			<div class = "info_main">
 				<div class = "info">
-					  <div><img src="${storeDTO.image }" width="400px" height= "400px"></div>
+					  <div><img id = "image" src="${storeDTO.image }" width="400px" height= "400px"></div>
 				</div>	   
 					<div class = "info1">
-					     <div class = "price"> ${storeDTO.price} 원</div> 
+					     <div><span id = "price">${storeDTO.price}</span> 원</div> 
 							 <hr style="border: solid 1px gray;">
 					      <div class = "text">
-					      유효기간 : 내가 집가고 싶을 때...까...지....
+					      		유효기간 : 구매 후 24개월 이내
 					      </div>
+					</div>
 					      <hr>
 					
 					<div class = "total">  
 						<div><input id = "bt1" type='button' onclick='count("plus")' value='+'></div>
 						<div id='result'>1</div>
 						<div><input id = "bt1" type='button' onclick='count("minus")'  value='-'></div>
-						<div id='result1'>${storeDTO.price}원</div>
+						<div id='result1'><span id = "total">${storeDTO.price}</span>원</div>
      				</div>
     
-    <!-- 수량 선택 후 자동계산 --> 				
+   			
+   			
 <script>
-
+		// 수량 선택 후 자동계산	
 		function count(type)  {
 			  // 결과를 표시할 element
 			  const resultElement = document.getElementById('result');
@@ -177,25 +182,73 @@
 			  console.log(total);
 			  
 			  result1Element.innerText = total + "원";
-			  
-			  
+			    
 			}
-	
-		
 </script>
 
 		<div>
 			 <br>	
-			<button class="btn btn-default btn-order">주문하기</button>
-			<button class="btn-cart">장바구니</button>
+			<button type = "submit"  formaction="/Store/storeOrder" >구매하기</button>
+			<button type = "button" id = "cart">장바구니</button>
+			<input type = "hidden" id = "menu_id" value = "${storeDTO.menu_id}">
 		</div>
-		</div>
+	</div>
+
+<script>	
 		
-<script>
+	 $("#cart").click(function(){
+		 
+		 let name = $("#menu_id").val();
+			console.log(name);
+			
+		/* 	let name = $("#menu_name").text();
+			let image = $("#image").text();
+			let amount = $("#result").text();
+			let price = $("#price").text();
+			let total = $("#result1").text();
+ */
+ 
+ 
+			$.ajax({
+				url : "/Store/cartadd.do",
+				dataType : "text",
+				type : 'post',
+				data : {
+					name : $("#menu_name").text(),
+					image : $("#image").text(), 
+ 					amount : $("#result").text(),
+ 					price : $("#price").text(),
+ 					total : $("#total").text(),
+ 					menu_id : $("#menu_id").val()
+				},
+					
+				success : function(data) {
+					console.log("data", data);
+							if(data == "cartlist"){
+								location.href = "/Store/cartlist.do"
+							} else if(data == "login"){
+								location.href = "/member/login.do"
+							}
+			    },				
+				error : function() {
+					
+					alert("error");
+				}
+			     
+			});
+		})
+		
+		// div 값 넘겨주기
+			/* let image = document.getElementById('image').innerText;
+			let amount = document.getElementById('result').innerText;
+			let price = document.getElementById('price').innerText;
+			let total = document.getElementById('result1').innerText; */
+	
+		
+</script>
 
 
-
-</script>		
+	
 </form>
 	
 <hr style="border: solid 1px black;">

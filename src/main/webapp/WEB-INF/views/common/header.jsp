@@ -82,9 +82,9 @@
             	<span style="cursor: pointer">극장</span></a></div>
             	
             <div id="logo_human"><a href="/HumanCinema/movie1/main.do">
-        		<img src="/HumanCinema/img/logoCI.png"/></a></div>
+        		<img src="/image/headerLogo.png"/></a></div>
         		
-			<div id="h4"><a href="/HumanCinema/menu/store.do">
+			<div id="h4"><a href="/Store/storemain.do">
             	<span style="cursor: pointer">스토어</span></a></div>
             
             <div id="h5"><a href="/HumanCinema/event1/event1.do">

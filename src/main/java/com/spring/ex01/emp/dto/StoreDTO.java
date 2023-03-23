@@ -21,9 +21,9 @@ public class StoreDTO {
 	private String user_id;
 	private String cart_id;
 	private int amount;	// 수량
-	private int total;	// 금액
+	private int total;	// 총 금액
 	private Date store_date;	// 제품 담은 시간
-	private String store_pay;	// 결제여부
+	private String store_pay;	// 결제여부 (장바구니 : N , 결제하기 : Y)
 	
 	
 	

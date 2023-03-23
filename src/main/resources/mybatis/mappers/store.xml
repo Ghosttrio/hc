@@ -80,9 +80,12 @@
 	<insert id = "cartadd" parameterType="storeDTO">
 		 <![CDATA[
          	insert into STORE_CART
-        	 (cart_id, AMOUNT, PRICE, CART_DATE, STORE_PAY, menu_name, image, menu_id, user_id)
+        	 (cart_id, amount, price, CART_DATE, store_pay, menu_name, image, menu_id, user_id)
         	 values
-        	 (#{cart_id}, #{AMOUNT}, #{price}, sysdate, #{STORE_PAY}, #{menu_name}, #{image}, #{menu_id}, #{user_id})
+        	 (#{cart_id}, #{amount},#{price}, sysdate, #{store_pay}, #{name}, #{image}, #{menu_id}, #{user_id})
          ]]>
 	</insert>
+	
+	
+	
 </mapper>

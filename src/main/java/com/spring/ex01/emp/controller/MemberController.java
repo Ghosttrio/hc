@@ -32,6 +32,14 @@ public class MemberController {
 	@Autowired	private MemberService memberService;
 	@Autowired	private MemberDTO memberDTO;
 	
+	   //로그인 View (/login.do) 
+	   @RequestMapping("/login.do")
+	   public String login() {
+	      return "loginMember";
+	   }
+	   
+	
+	
 	//로그인(loginMember)
 		@RequestMapping(value="/loginMember", method = {RequestMethod.POST, RequestMethod.GET})
 		public String  loginMember(@ModelAttribute  MemberDTO memberDTO ,Model model,

@@ -18,9 +18,9 @@
 		가격 : <input type = "text" name = "price"><br>
 		<h3>메뉴타입</h3>
 		
-		    <input type="checkbox" name="menu_type" value = "10"> 스낵 <br>
-		    <input type="checkbox" name="menu_type" value = "20" > 음료 <br>
-		    <input type="checkbox" name="menu_type" value = "30"> 영화관람권 <br>
+		    <input type="radio" name="menu_type" value = "10"> 스낵 <br>
+		    <input type="radio" name="menu_type" value = "20" > 음료 <br>
+		    <input type="radio" name="menu_type" value = "30"> 영화관람권 <br>
 		 
 		<input type = "submit" value = "메뉴등록">
 	</form>
