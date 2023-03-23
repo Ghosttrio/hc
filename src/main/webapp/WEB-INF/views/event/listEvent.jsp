@@ -47,12 +47,19 @@
 <style>
 
 
+body {
+background: whitesmoke;
+
+
+}
+
 .event_t {
 	
-	width:30%;
+	width:33%;
  	display:inline-block; 
  	
-  	text-align: center; 
+	 margin: auto;
+/* 	 display:block; */
 }
 /* .event_t > img { */
 	
@@ -61,9 +68,16 @@
 /* } */
 .event_top{
 	width:30%;
-	margin:150px;
+	margin:100px;
+	color: blue;
+	font-size: 30px;
 }
 
+.event_t{
+	display: center;
+	text-align:center;
+	
+}
 .cls1{
 	width:50%;
 	height:30%;
@@ -74,14 +88,21 @@
 	font-size : 20px;
 	text-align: center;
 }
+button{
+padding: 25px 50px;
+ border-radius: 15px;
+ background-color: lightblue;
+ font-size: 20px;
+}
 </style>
 </head>
 
 <body>
+<div class="admin_btn">
 <button type="button" onclick="location.href='/addEvent.do'">이벤트 추가</button>
 <button type="button" onclick="location.href='/modifyEvent.do'">이벤트 수정/삭제</button>
-
-	<div class="event_top"></div>
+</div>
+	<div class="event_top">
           <h1>EVENT</h1>
     </div> 
     
@@ -91,7 +112,7 @@
 <!--  원래화면         -->
 
 <c:forEach var="vo" items="${ eventsList}">
-		<div class=event_t>
+		<div class=event_t >
 			
 				<a href="/viewEvent.do?id=${vo.id }">
 					<img src ="${vo.firstimage }" width = "100%" ><br>

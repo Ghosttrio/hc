@@ -9,6 +9,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+body {
+background: whitesmoke;
+
+
+}
+</style>
 <body>
 <a href="/articleForm.jsp">글쓰기</a>
 <table border=1>

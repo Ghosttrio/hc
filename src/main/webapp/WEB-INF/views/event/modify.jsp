@@ -12,6 +12,14 @@
 <head>
 <meta charset="UTF-8">
 <style>
+
+
+body {
+background: whitesmoke;
+
+
+}
+
 .cls1{
 	width:30%;
 	height:40%;

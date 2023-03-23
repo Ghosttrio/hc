@@ -17,6 +17,14 @@
 <meta charset="UTF-8">
 <title>이벤트 수정창</title>
 <style>
+
+
+body {
+background: whitesmoke;
+
+
+}
+
  	.cls1{
  	font-size:40px;
  	text-align:center;

@@ -38,6 +38,14 @@
     </script>
  
  <style>
+ 
+
+body {
+background: whitesmoke;
+
+
+}
+
 .secondimg {
 	 width: 100%;
 	display: center;
@@ -98,9 +106,9 @@
 <div class="content">
 	<c:forEach var="vo" items="${ secondEvent}">
 		<div class="secondimg"> 
-			<h1>
-				<a href="/replyForm.do?id=${param.id }">이벤트 참여 댓글쓰기</a>
-			</h1>
+<!-- 			<h1> -->
+<%-- 				<a href="/replyForm.do?id=${param.id }">이벤트 참여 댓글쓰기</a> --%>
+<!-- 			</h1> -->
 			<img src ="${vo.secondimage }">
 		</div>
 	</c:forEach>
@@ -146,6 +154,13 @@
 <!-- 							</td> -->
 						</tr>
 		</c:forEach>
+							<td>
+								
+								<a href="/replyForm.do?id=${param.id }">
+									<input type="button" value="댓글쓰기"/>
+								</a>
+			
+							</td>
 	</table>	
 	<br>
 </div>

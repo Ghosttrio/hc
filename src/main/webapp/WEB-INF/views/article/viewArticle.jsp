@@ -10,6 +10,18 @@
 <title>Insert title here</title>
 
 <h1>이벤트 참여 목록</h1>	
+<style>
+body {
+background: whitesmoke;
+
+
+}
+head {
+background: whitesmoke;
+
+
+}
+</style>
 </head>
 <body>
 <h1>

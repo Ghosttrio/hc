@@ -10,19 +10,46 @@
 <meta charset="EUC-KR">
 
 <title>Insert title here</title>
+<style>
+body {
+background: whitesmoke;
+
+
+}
+input {
+	margin: 20px;
+  width: 500px;
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+/*   background-color: rgb(233, 233, 233); */
+}
+.modmember{
+	color: blue;
+}
+</style>
 </head>
 <body>
-<h1>회원수정</h1>
+	<div class="modmember">
+		<h1>회원수정</h1>
+	
+	</div>
 <form method="post"  action="/modArticle2.do">
 
 
 	<input type="hidden" name="articleNO" value="${param.articleNO }"><br>
-	아이디: <input type="text" name="replyId" value="${dto.replyId }"><br>
-	제목: <input type="text" name="replyTitle" value="${dto.replyTitle }"><br>
-	내용: <input type="text" name="content" value="${dto.content }"><br>
+	아이디: <input type="text" name="replyId" value="${dto.replyId }" 				placeholder="수정할 아이디를 입력하세요"><br>
+	제목: <input type="text" name="replyTitle" value="${dto.replyTitle }"
+				placeholder="수정할 제목을 입력하세요"><br>
+	내용: <input type="text" name="content" value="${dto.content }"	
+				placeholder="수정할 내용을 입력하세요"> <br>
+				<input type="submit" value="수정">
 <%-- 	글 번호: <input type="text" name="articleNO" value="${dto.articleNO }"><br> --%>
 
-	<input type="submit" value="수정">
+	
 </form>
 
 </body>

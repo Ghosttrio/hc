@@ -13,26 +13,54 @@
 			background-color: #e6ecff;
 			text-align: center;
 		}
-</style>
-</head>
+body {
+background: whitesmoke;
+text-align: center;
 
+}
+input {
+	margin: 20px;
+  width: 500px;
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+/*   background-color: rgb(233, 233, 233); */
+}
+textarea {
+width: 500px;
+ 
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+}
+
+
+
+</style>
+<h1>댓글쓰기</h1>
+</head>
 <body>
 <form method="post" action="/replyForm2.do">
 	<table class="table">
 		<thead>
 		<tr>
 			<td>
-	회원 ID : <input type="text" name="replyId"><br>			
+	회원 ID : <input type="text" name="replyId" placeholder="아이디를 입력하세요"><br>			
 			</td>
 		</tr>
 		<tr>
 			<td>
-	제목: <input type="text" name="replyTitle"><br>			
+	제목: <input type="text" name="replyTitle" placeholder="제목을 입력하세요"><br>			
 			</td>
 		</tr>
 		<tr>
 			<td>
-		내용: <textarea name="content" rows="10" cols="65"></textarea>
+		내용: <textarea name="content" rows="10" cols="65"placeholder="내용을 입력하세요"></textarea>
 			</td>
 		</tr>
 		<tr>

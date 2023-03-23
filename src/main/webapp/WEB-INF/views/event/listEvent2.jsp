@@ -22,10 +22,16 @@
     </script>
 <style>
 
+body {
+background: whitesmoke;
+
+
+}
+
 
 .event_t {
 	
-	width:30%;
+	width:33%;
  	display:inline-block; 
  	
   	text-align: center; 
@@ -37,7 +43,9 @@
 /* } */
 .event_top{
 	width:30%;
-	margin:150px;
+	margin:100px;
+	color: blue;
+	font-size: 30px;
 }
 
 .cls1{
@@ -49,6 +57,12 @@
 .cls2{
 	font-size : 20px;
 	text-align: center;
+}
+button{
+padding: 25px 50px;
+ border-radius: 15px;
+ background-color: lightblue;
+ font-size: 20px;
 }
 </style>
 </head>

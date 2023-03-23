@@ -5,7 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+body {
+background: whitesmoke;
+
+
+}
+</style>
 </head>
+
 <body>
 <c:forEach var="vo" items="${ listArticles}">
 	<table class="listArticles" bgcolor="lightblue" border=1 >
