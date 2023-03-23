@@ -100,7 +100,7 @@
 	            			<c:when test="${isLogOn ==true and member!=null}">
 	            				<h3>${member.member_id }님 로그인 중</h3>
 		            			<a href="/member/logout" style="cursor: pointer"><h4>로그아웃</h4></a>
-		            			<a href="member/mypage.do" style="cursor: pointer"><h4>마이페이지</h4></a>
+		            			<a href="/member/mypage.do" style="cursor: pointer"><h4>마이페이지</h4></a>
 		        	 	 </c:when>
 		          		<c:otherwise>
 			       			 <a href="/member/login.do" style="cursor: pointer"><h4>로그인</h4></a>
