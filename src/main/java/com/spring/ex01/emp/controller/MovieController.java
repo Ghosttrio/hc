@@ -1,8 +1,13 @@
-package com.spring.ex01.emp.controller;
+package controller;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,41 +16,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.spring.ex01.emp.dto.MovieDTO;
-import com.spring.ex01.emp.service.MovieService;
+import service.MovieService;
 
-@Controller("movieController")
-@RequestMapping("/movie")
+@Controller
 public class MovieController {
 	
 	@Autowired
 	private MovieService movieService;
 	
-	@Autowired
-	private MovieDTO movieDTO;
-	
-//	영화출력
-	@RequestMapping(value="/movieTab.do", method=RequestMethod.GET)
-	public String movieList(Model model) {
-		System.out.println("영화탭 실행");
+//	영화탭출력
+	@RequestMapping(value="/movie.do", method=RequestMethod.GET)
+	public String movie(Model model, HttpSession session) {
+		System.out.println("영화탭출력");
+		model.addAttribute("memberList",session.getAttribute("id"));
 		List movieList = movieService.movieList();
-//		List list2 = movieService.movieList2();
-		model.addAttribute("movieList", movieList);
-//		model.addAttribute("movieList2", list2);
-		return "movie/movieTab";
+		model.addAttribute("movieList",movieList);
+
+        // 현재 날짜 구하기
+        LocalDate now = LocalDate.now();
+        // 포맷 정의
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        // 포맷 적용
+        String formatedNow = now.format(formatter);
+        model.addAttribute("formatedNow",formatedNow);
+		
+		return "movie/movie";
 	}
 	
-//	영화상세창 출력
+//	영화상세출력
 	@RequestMapping(value="/movieInfo.do", method=RequestMethod.GET)
 	public String movieInfo(Model model,
-			// movieTab에서 articleNO 전달 후 articleNO에 맞는 테이블 포워딩
 			@RequestParam(value="articleNO", required=false) int articleNO,
 			@RequestParam(value="section", required=false) String section,
 			@RequestParam(value="pageNum", required=false) String pageNum) {
-		System.out.println(articleNO + "번 영화 상세창 출력");
+		System.out.println(articleNO + "번 상세정보 출력");
 		List list = movieService.viewArticle(articleNO);
-		model.addAttribute("article", list);
+//		articleNO에 맞는 영화리스트
 		model.addAttribute("movieList", list);
+		
 		int section_ = Integer.parseInt(((section==null) ? "1" : section));
 		int pageNum_ = Integer.parseInt(((pageNum==null) ? "1" : pageNum));
 		
@@ -68,6 +76,4 @@ public class MovieController {
 		
 		return "movie/movieInfo";
 	}
-	
-	
 }

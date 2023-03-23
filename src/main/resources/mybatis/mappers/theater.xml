@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.theater">
+
+	<!-- 극장정보출력  -->
+	<select id="theaterList" resultType="movieDTO">
+         <![CDATA[
+         	select * from theater
+         ]]>
+	</select>
+	
+<!-- 극장정보출력  -->
+	<select id="showList" resultType="movieDTO">
+         <![CDATA[
+         	select * from show
+         ]]>
+	</select>
+	
+	<select id="showList2" resultType="theaterDTO" parameterType="theaterDTO">
+         <![CDATA[
+         	select * from show
+         ]]>
+         <where>
+         	<if test="articleNO1 != '' and articleNO1 != null">
+         		articleNO = #{articleNO1} 
+         	</if>
+         	<if test="theater_id != '' and theater_id != null">
+         		and theater_id = #{theater_id} 
+         	</if>
+         	<if test="showdate != '' and showdate != null">
+         		and showdate = #{showdate}
+         	</if>
+         	<if test="showtime != '' and showtime != null">
+         		and showtime = #{showtime}
+         	</if>
+         </where>
+	</select>
+	
+</mapper>
