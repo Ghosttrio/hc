@@ -113,7 +113,7 @@
 <body>
 	<div id="wrap">
 		
-		<jsp:include page="../common/Header.jsp"></jsp:include>
+		
 	</div>
 		
 		
