@@ -86,6 +86,7 @@ public class MovieService {
 		articlesMap.put("totArticles", totArticles);
 		return articlesMap;
 	}
+<<<<<<< HEAD
 	public List theaterList() {
 		List theaterList = movieDAO.theaterList();
 		return theaterList;
@@ -115,5 +116,13 @@ public class MovieService {
 		return showList;
 	}
 	
+=======
+	
+	
+	
+//	public void upComment2(MovieDTO movieDTO) {
+//		movieDAO.upComment2(articleNO, upComment2, comment_id, comment_text);
+//	}
+>>>>>>> sm
 	
 }
