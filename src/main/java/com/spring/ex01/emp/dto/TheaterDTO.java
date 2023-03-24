@@ -1,4 +1,4 @@
-package dto;
+package com.spring.ex01.emp.dto;
 
 import org.springframework.stereotype.Component;
 

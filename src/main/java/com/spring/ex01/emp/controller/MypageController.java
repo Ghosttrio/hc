@@ -1,4 +1,4 @@
-package controller;
+package com.spring.ex01.emp.controller;
 
 import javax.servlet.http.HttpSession;
 

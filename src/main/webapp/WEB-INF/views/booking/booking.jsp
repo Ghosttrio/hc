@@ -21,12 +21,10 @@
 
         /* 선택상자 */
         .box{
-            border: 1px solid red;
-            height: 700px;
+            height: 1000px;
             margin-top : 30px;
         }
         .select_box{
-            border:1px solid red;
             height: 600px;
             font-size: 0;
         }
@@ -41,39 +39,127 @@
         }
         .movie {
             width: 25%;
+            background-color: #f2f0e5;
+            border-right:2px solid #d4d3c9;
             
-            background-color: lightblue;
         }
         .theater{
             width: 35%;
-           
-            background-color: lightgray;
+            background-color: #f2f0e5;
+            border-right:2px solid #d4d3c9;
         }
         .date {
             width: 10%;
-            background-color: lightgreen;
+            background-color: #f2f0e5;
+            border-right:2px solid #d4d3c9;
         }
         .time{
-            width: 30%;
-            background-color: lightyellow;
+            width: 29%;
+            background-color: #f2f0e5;
         }
+        
+        
         
         .movie_btn{
         	width:100%;
         	height:30px;
         }
+        .theater_btn{
+        	width:100%;
+        	height:30px;
+        }
+        .date_btn{
+        	width:100%;
+        	height:30px;
+        }
+        .time_btn{
+        	width:100%;
+        	height:30px;
+        }
+        
+        
+        
+        
+        
+        .movie_title{
+        	text-align:center;
+        	font-size:20px;
+        	font-weight:600;
+        	background-color:#333333;
+        	color:#c4c4c4;
+        	padding:5px;
+        }
+        .theater_title{
+        	text-align:center;
+        	font-size:20px;
+        	font-weight:600;
+        	background-color:#333333;
+        	color:#c4c4c4;
+        	padding:5px;
+        }
+        .date_title{
+        	text-align:center;
+        	font-size:20px;
+        	font-weight:600;
+        	background-color:#333333;
+        	color:#c4c4c4;
+        	padding:5px;
+        }
+        .time_title{
+        	text-align:center;
+        	font-size:20px;
+        	font-weight:600;
+        	background-color:#333333;
+        	color:#c4c4c4;
+        	padding:5px;
+        }
+        .btn0 > div > div{
+        	display:inline-block;
+        	vertical-align:middle;
+        	height:160px;
+        }
+        .btn0 {
+			width:100%;
+      		height:100px;  
+     		
+        }
+        .ticket_title{
+        	font-weight:600;
+        	line-height:160px;
+        	color: white;
+        }
+        .ticket_info{
+        	font-size:15px;
+        	color: white;
+        	
+        }
+        #pay_btn{
+        	height:160px;
+        	width:100px;
+			cursor: pointer;
+			border: none;
+			background: #bf2828;
+			color: white;
+			position:relative;
+			right:-900px;
+			border:1px solid black;
+			border-radius: 10px;
+        }
+        .pay{
+        	width:100%;
+        	border:1px solid red;
+        	background-color:#1d1d1c;
+        	vertical-align:middle;
+        }
     </style>
 
-	<script>
-		window.onload = () => {
 
-		}
-	</script>
 </head>
 <body>
-    <div class="wrap">
+    <div id="wrap">
         <!-- 상단바 -->
         <jsp:include page="../common/header.jsp"></jsp:include>
+        <h1>예매</h1>
         <!-- 선택상자 -->
         <div class="box">
             <div class="select_box">
@@ -81,6 +167,7 @@
 	            <c:choose>
 	            	<c:when test="${showList==null || showList==''}">
 	            		<div class="movie">
+	            			<div class="movie_title">영화목록</div>
 	            			<c:forEach var="movieList" items="${movieList }">
 	            				<form action="t_movie.do">
 	            					<input type="hidden" name="articleNO" value="${movieList.articleNO }">
@@ -89,105 +176,141 @@
 	            			</c:forEach>
 	            		</div>
 	            		<div class="theater">
+	            			<div class="theater_title">극장목록</div>
 	            		</div>
 	            		<div class="date">
+	            			<div class="date_title">날짜</div>
 		                </div>
 		                <div class="time">
+		                	<div class="time_title">시간</div>
 		                </div>
 		                <div class="btn0">
 	            		</div>
 	            	</c:when>
 	            	<c:when test="${(showList != null || showList != '') && (articleNO!=null) && (theater_id==null)}">
-	            		
 	            		<div class="movie">
+	            			<div class="movie_title">영화목록</div>
 	            			<c:forEach var="movieList" items="${movieList }">
-		            			<form action="t_movie.do">
-		           					<input type="hidden" name="articleNO" value="${movieList.articleNO }">
-	           						<input class="movie_btn" type="submit" value="${movieList.title }">
-	         					</form>
+	            				<c:if test="${movieList.articleNO == articleNO }">
+			            			<form action="t_movie.do">
+			           					<input type="hidden" name="articleNO" value="${movieList.articleNO }">
+		           						<input class="movie_btn" type="submit" value="${movieList.title }">
+		         					</form>
+								</c:if>
 	            			</c:forEach>
 	            		</div>
 	            		
 	            		<div class="theater">
-	            			<c:forEach var="theaterList" items="${theaterList }">
-	            				<form action="t_movie.do">
-	            					<input type="hidden" name="articleNO" value="${articleNO }">
-	            					<input type="hidden" name="theater_id" value="${theaterList.theater_id }">
-	            					<input type="submit" value="${theaterList.theater_name }">
-	            				</form>
+	            		<div class="theater_title">극장목록</div>
+		            		<c:forEach var="theaterList" items="${theaterList }" varStatus="status">
+		            			<c:forEach var="showList" items="${showList }">
+		            				<c:if test="${showList.articleNO == articleNO}">
+				            			<c:if test="${showList.theater_id == theaterList.theater_id }">
+				            				<form action="t_movie.do">
+				            					<input type="hidden" name="articleNO" value="${articleNO }">
+				            					<input type="hidden" name="theater_id" value="${theaterList.theater_id }">
+				            					<input class="theater_btn" type="submit" value="${theaterList.theater_name }">
+				            				</form>
+			            				</c:if>
+		            				</c:if>
+			            			</c:forEach>
 	            			</c:forEach>
 	            		</div>
 	            		<div class="date">
+	            		<div class="date_title">날짜</div>
 		                </div>
 		                <div class="time">
+		                <div class="time_title">시간</div>
 		                </div>
 		                <div class="btn0">
 	            		</div>
 	            	</c:when>
 	            	<c:when test="${(showList !=null || showList !='') && (theater_id!=null) && (articleNO!=null) && (showdate==null)}">
 	            		<div class="movie">
+	            			<div class="movie_title">영화목록</div>
 	            			<c:forEach var="movieList" items="${movieList }">
-	            				<form action="t_movie.do">
-	            				
-	            					<input type="hidden" name="articleNO" value="${movieList.articleNO }">
-	            					<input class="movie_btn" type="submit" value="${movieList.title }">
-	            				</form>
+	            				<c:if test="${movieList.articleNO == articleNO }">
+			            			<form action="t_movie.do">
+			           					<input type="hidden" name="articleNO" value="${movieList.articleNO }">
+		           						<input class="movie_btn" type="submit" value="${movieList.title }">
+		         					</form>
+								</c:if>
 	            			</c:forEach>
 	            		</div>
 	            		<div class="theater">
+	            		<div class="theater_title">극장목록</div>
 	            			<c:forEach var="theaterList" items="${theaterList }">
-	            				<form action="t_movie.do">
-	            					<input type="hidden" name="articleNO" value="${articleNO }">
-	            					<input type="hidden" name="theater_id" value="${theaterList.theater_id }">
-	            					<input type="submit" value="${theaterList.theater_name }">
-	            				</form>
+		            			<c:if test="${theaterList.theater_id == theater_id }">
+		            				<form action="t_movie.do">
+		            					<input type="hidden" name="articleNO" value="${articleNO }">
+		            					<input type="hidden" name="theater_id" value="${theaterList.theater_id }">
+		            					<input class="theater_btn" type="submit" value="${theaterList.theater_name }">
+		            				</form>
+	            				</c:if>
 	            			</c:forEach>
 	            		</div>
 	            		<div class="date">
-	            			<form action="t_movie.do">
-	            				<input type="hidden" name="articleNO" value="${articleNO }">
-	            				<input type="hidden" name="theater_id" value="${theater_id }">
-								<input type="submit" name="showdate" value="1일">
-								<input type="submit" name="showdate" value="2일">
-								<input type="submit" name="showdate" value="3일">
-								<input type="submit" name="showdate" value="4일">
-							</form>
+	            		<div class="date_title">날짜</div>
+	            			<c:forEach var="showList" items="${showList }">
+	            				<c:if test="${showList.articleNO == articleNO}">
+		            				<c:forEach var="theaterList" items="${theaterList }">
+				            			<c:if test="${theaterList.theater_id == theater_id }">
+				            				<form action="t_movie.do">
+					            				<input type="hidden" name="articleNO" value="${articleNO }">
+					            				<input type="hidden" name="theater_id" value="${theater_id }">
+												<input class="date_btn" type="submit" name="showdate" value="${showList.showdate }">
+											</form>
+			            				</c:if>
+			            			</c:forEach>
+								</c:if>
+	            			</c:forEach>
 		                </div>
 		                <div class="time">
+		                <div class="time_title">시간</div>
 		                </div>
 	            	</c:when>
 	            	<c:when test="${(showList !=null || showList !='') && (theater_id!=null) && (articleNO!=null) && (showdate!=null) && (showtime==null)}">
 	            		<div class="movie">
+	            			<div class="movie_title">영화목록</div>
 	            			<c:forEach var="movieList" items="${movieList }">
-	            				<form action="t_movie.do">
-	            					<input type="hidden" name="articleNO" value="${movieList.articleNO }">
-	            					<input class="movie_btn" type="submit" value="${movieList.title }">
-	            				</form>
+	            				<c:if test="${movieList.articleNO == articleNO }">
+			            			<form action="t_movie.do">
+			           					<input type="hidden" name="articleNO" value="${movieList.articleNO }">
+		           						<input class="movie_btn" type="submit" value="${movieList.title }">
+		         					</form>
+								</c:if>
 	            			</c:forEach>
 	            		</div>
 	            		<div class="theater">
+	            		<div class="theater_title">극장목록</div>
 	            			<c:forEach var="theaterList" items="${theaterList }">
-	            				<form action="t_movie.do">
-	            					<input type="hidden" name="theater_id" value="${theaterList.theater_id }">
-	            					<input type="submit" value="${theaterList.theater_name }">
-	            				</form>
+		            			<c:if test="${theaterList.theater_id == theater_id }">
+		            				<form action="t_movie.do">
+		            					<input type="hidden" name="articleNO" value="${articleNO }">
+		            					<input type="hidden" name="theater_id" value="${theaterList.theater_id }">
+		            					<input class="theater_btn" type="submit" value="${theaterList.theater_name }">
+		            				</form>
+	            				</c:if>
 	            			</c:forEach>
 	            		</div>
 	            		<div class="date">
-	            			<form action="t_movie.do">
-								<input type="submit" name="showdate" value="1일">
-								<input type="submit" name="showdate" value="2일">
-								<input type="submit" name="showdate" value="3일">
-								<input type="submit" name="showdate" value="4일">
-							</form>
+	            		<div class="date_title">날짜</div>
+		            		<c:forEach var="showList" items="${showList }">
+		            			<form action="t_movie.do">
+		            				<input type="hidden" name="articleNO" value="${articleNO }">
+		            				<input type="hidden" name="theater_id" value="${theater_id }">
+									<input class="date_btn" type="submit" name="showdate" value="${showList.showdate }">
+								</form>
+							</c:forEach>
 		                </div>
 		                <div class="time">
+		                <div class="time_title">시간</div>
 		                	<c:forEach var="showList" items="${showList }">
 			                	<form action="t_movie.do">
 			                		<input type="hidden" name="showdate" value="${showdate }">
 			                		<input type="hidden" name="articleNO" value="${articleNO }">
 			                		<input type="hidden" name="theater_id" value="${theater_id }">
-		          					<input type="submit" name="showtime" value="${showList.showtime }">
+		          					<input class="time_btn" type="submit" name="showtime" value="${showList.showtime }">
 		          				</form>
 	          				</c:forEach>
 		                </div>
@@ -197,54 +320,76 @@
 	            	<c:when test="${(showList !=null || showList !='') && (theater_id!=null) && (articleNO!=null) && (showdate!=null) && (showtime!=null)}">
 		                
 			                <div class="movie">
-		            			<c:forEach var="movieList" items="${movieList }">
-		            				<form action="t_movie.do">
-		            					<input type="hidden" name="articleNO" value="${movieList.articleNO }">
-		            					<input class="movie_btn" type="submit" value="${movieList.title }">
-		            				</form>
-		            			</c:forEach>
-		            		</div>
-		            		<div class="theater">
-		            			<c:forEach var="theaterList" items="${theaterList }">
-		            				<form action="t_movie.do">
-		            					<input type="hidden" name="theater_id" value="${theaterList.theater_id }">
-		            					<input type="submit" value="${theaterList.theater_name }">
-		            				</form>
-		            			</c:forEach>
-		            		</div>
-		            		<div class="date">
-								<input type="submit" name="showdate" value="1일">
-								<input type="submit" name="showdate" value="2일">
-								<input type="submit" name="showdate" value="3일">
-								<input type="submit" name="showdate" value="4일">
-			                </div>
-			                <div class="time">
-			                	<c:forEach var="showList" items="${showList }">
-				                	<form action="t_movie.do">
-				                		<input type="hidden" name="showdate" value="${showdate }">
-				                		<input type="hidden" name="articleNO" value="${articleNO }">
-				                		<input type="hidden" name="theater_id" value="${theater_id }">
-			          					<input type="submit" name="showtime" value="${showList.showtime }">
-			          				</form>
-		          				</c:forEach>
-			                </div>
+			                	<div class="movie_title">영화목록</div>
+	            			<c:forEach var="movieList" items="${movieList }">
+	            				<c:if test="${movieList.articleNO == articleNO }">
+			            			<form action="t_movie.do">
+			           					<input type="hidden" name="articleNO" value="${movieList.articleNO }">
+		           						<input class="movie_btn" type="submit" value="${movieList.title }">
+		         					</form>
+								</c:if>
+	            			</c:forEach>
+	            		</div>
+	            		<div class="theater">
+	            		<div class="theater_title">극장목록</div>
+	            			<c:forEach var="showList" items="${showList }">
+	            				<c:if test="${showList.articleNO == articleNO}">
+			            			<c:forEach var="theaterList" items="${theaterList }">
+				            			<c:if test="${showList.theater_id == theaterList.theater_id }">
+				            				<form action="t_movie.do">
+				            					<input type="hidden" name="articleNO" value="${articleNO }">
+				            					<input type="hidden" name="theater_id" value="${theaterList.theater_id }">
+				            					<input class="theater_btn" type="submit" value="${theaterList.theater_name }">
+				            				</form>
+			            				</c:if>
+			            			</c:forEach>
+		            			</c:if>
+	            			</c:forEach>
+	            		</div>
+	            		<div class="date">
+	            		<div class="date_title">날짜</div>
+		            		<c:forEach var="showList" items="${showList }">
+		            			<form action="t_movie.do">
+		            				<input type="hidden" name="articleNO" value="${articleNO }">
+		            				<input type="hidden" name="theater_id" value="${theater_id }">
+									<input class="date_btn" type="submit" name="showdate" value="${showList.showdate }">
+								</form>
+							</c:forEach>
+		                </div>
+		                <div class="time">
+		                <div class="time_title">시간</div>
+		                	<c:forEach var="showList" items="${showList }">
+			                	<form action="t_movie.do">
+			                		<input type="hidden" name="showdate" value="${showdate }">
+			                		<input type="hidden" name="articleNO" value="${articleNO }">
+			                		<input type="hidden" name="theater_id" value="${theater_id }">
+		          					<input class="time_btn" type="submit" name="showtime" value="${showList.showtime }">
+		          				</form>
+	          				</c:forEach>
+		                </div>
 			                <div class="btn0">
+			                	<div class="pay">
 				                <c:forEach var="movieList" items="${movieList }">
 				                	<c:if test="${articleNO == movieList.articleNO }">
-				                		<div>영화 : ${movieList.title }</div>
+				                		<div><img src="${movieList.poster_main }" width=100px height=160px></div>
+				                		<div class="ticket_title">${movieList.title }</div>
 				                	</c:if>
 				                </c:forEach>
-				                <c:forEach var="theaterList" items="${theaterList }">
-				                	<c:if test="${theater_id == theaterList.theater_id }">
-				                		<div>영화관 : ${theaterList.theater_name }</div>
-				                	</c:if>
-				                </c:forEach>
-				                <div>날짜 :  ${showdate }</div>
-				                <div>시간 :  ${showtime }</div>
-				                <form action="pay.do">
-				                	<div>티켓 수량 선택</div>
-				            		<div><input type="submit" value="결제하기"></div>
-			            		</form>
+				                <div class="ticket_info">
+					                <c:forEach var="theaterList" items="${theaterList }">
+					                	<c:if test="${theater_id == theaterList.theater_id }">
+					                		<div>영화관 : ${theaterList.theater_name }</div>
+					                	</c:if>
+					                </c:forEach>
+					                <div>날짜 :  ${showdate }</div>
+					                <div>시간 :  ${showtime }</div>
+				                </div>
+				                <div>
+				                	<form action="pay.do">
+					            		<div><input id="pay_btn" type="submit" value="결제하기"></div>
+				            		</form>
+				                </div>
+				                </div>
 		            		</div>
 	            		
 	           		</c:when>

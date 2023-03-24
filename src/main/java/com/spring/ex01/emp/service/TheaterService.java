@@ -1,14 +1,14 @@
-package service;
+package com.spring.ex01.emp.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dao.MovieDAO;
-import dao.TheaterDAO;
-import dto.MovieDTO;
-import dto.TheaterDTO;
+import com.spring.ex01.emp.dao.MovieDAO;
+import com.spring.ex01.emp.dao.TheaterDAO;
+import com.spring.ex01.emp.dto.MovieDTO;
+import com.spring.ex01.emp.dto.TheaterDTO;
 
 @Service
 public class TheaterService {

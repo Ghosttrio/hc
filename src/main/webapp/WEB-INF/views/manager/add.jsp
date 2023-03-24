@@ -1,12 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="EUC-KR">
     <style>
         #wrap {
             margin-top: 30px;
@@ -100,16 +98,41 @@
 <body>
     <div id="wrap">
         <header>
-            <h1>ê´€ë¦¬ìžíŽ˜ì´ì§€</h1>
+            <h1>°ü¸®ÀÚÆäÀÌÁö</h1>
         </header>
         <section>
             <aside>
-                <div class="aside_title">ê´€ë¦¬íƒ­</div>
-                <div><a href="memberManager.do"><input type="submit" value="íšŒì›ê´€ë¦¬"></a></div>
-                <div><a href="movieManager.do"><input type="submit" value="ì˜í™”ê´€ë¦¬"></a></div>
-                <div><a href="theaterManager.do"><input type="submit" value="ê·¹ìž¥ê´€ë¦¬"></a></div>
+                <div class="aside_title">°ü¸®ÅÇ</div>
+                <div><a href="memberManager.do"><input type="submit" value="È¸¿ø°ü¸®"></a></div>
+                <div><a href="movieManager.do"><input type="submit" value="¿µÈ­°ü¸®"></a></div>
+                <div><a href="theaterManager.do"><input type="submit" value="±ØÀå°ü¸®"></a></div>
             </aside>
-            <article>ê´€ë¦¬ìžíŽ˜ì´ì§€</article>
+            
+             <article>
+				<div class="content">
+					<h1>¿µÈ­Ãß°¡</h1>
+				    <form action="movieManager.do" method="GET">
+				    	¿µÈ­¹øÈ£ : <input type="text" name="articleNO"> <br>
+					    Å¸ÀÌÆ² : <input type="text" name="title"> <br>
+					    Å¸ÀÌÆ²(¿µ¹®) : <input type="text" name="title_en"> <br>
+					    °ü¶÷¿¬·É : <input type="text" name="age"> <br>
+					    °³ºÀÀÏ : <input type="text" name="opendate"> <br>
+					    ÁÁ¾Æ¿ä ¼ö : <input type="text" readonly> <br>
+					    ÆòÁ¡ : <input type="text" readonly> <br>
+					    ¿µÈ­¼³¸í : <input type="text" name="explain"> <br>
+					    °¨µ¶ : <input type="text" name="director"> <br>
+					    Àå¸£ : <input type="text" name="genre"> <br>
+					    ·¯´×Å¸ÀÓ : <input type="text" name="runningtime"> <br>
+					    ¹è¿ì : <input type="text" name="actor"> <br>
+					    Æ÷½ºÅÍ(¹è°æ) : <input type="text" name="poster_back"> <br>
+					    Æ÷½ºÅÍ(¸ÞÀÎ) : <input type="text" name="poster_main"> <br>
+				
+					    <input type="hidden" name="command" value="add">
+					    <input type="submit">
+					    <input type="reset">
+				    </form>
+	            </div>
+			</article>
         </section>
     </div>
 </body>

@@ -1,4 +1,4 @@
-package dao;
+package com.spring.ex01.emp.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import dto.MovieDTO;
+import com.spring.ex01.emp.dto.MovieDTO;
 
 @Repository
 public class MovieDAO {
@@ -34,6 +34,12 @@ public class MovieDAO {
 //	영화 출력
 	public List movieList() {
 		List movieList = sqlSession.selectList("mapper.movie.movieList");
+		return movieList;
+	}
+	
+//	영화 출력 dto
+	public MovieDTO movieList_dto() {
+		MovieDTO movieList = sqlSession.selectOne("mapper.movie.movieList");
 		return movieList;
 	}
 	

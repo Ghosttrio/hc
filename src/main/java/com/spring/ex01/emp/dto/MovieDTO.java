@@ -1,11 +1,11 @@
-package dto;
+package com.spring.ex01.emp.dto;
 
 import org.springframework.stereotype.Component;
 
 @Component("movieDTO")
 public class MovieDTO {
 
-//	movie Å×ÀÌºí
+//	movie ï¿½ï¿½ï¿½Ìºï¿½
 	private int articleNO;
 	private String title;
 	private String title_en;
@@ -21,7 +21,7 @@ public class MovieDTO {
 	private String poster_back;
 	private String poster_main;
 
-//	comment_1 Å×ÀÌºí -> review Å×ÀÌºí·Î ÀüÈ¯ÇÏ±â
+//	comment_1 ï¿½ï¿½ï¿½Ìºï¿½ -> review ï¿½ï¿½ï¿½Ìºï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ï±ï¿½
 	private int lvl;
 	private String comment_id;
 	private int parentNO;
@@ -32,20 +32,20 @@ public class MovieDTO {
 	private int level;
 	private int count;
 	
-//	theater Å×ÀÌºí
+//	theater ï¿½ï¿½ï¿½Ìºï¿½
 	private String theater_name;
 	private String theater_id;
 	
-//	show Å×ÀÌºí
+//	show ï¿½ï¿½ï¿½Ìºï¿½
 	private String show_id;
 	private String showdate;
 	private String showtime;
 	
-//	area Å×ÀÌºí
+//	area ï¿½ï¿½ï¿½Ìºï¿½
 	private String area_id;
 	private String area_name;
 	
-//	¹ºÁö¸ð¸£°Ú´Â°Íµé
+//	ï¿½ï¿½ï¿½ï¿½ï¿½ð¸£°Ú´Â°Íµï¿½
 	private String nickname;
 	private String profile_image;
 	private String articleNO1;

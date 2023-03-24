@@ -1,11 +1,11 @@
-package service;
+package com.spring.ex01.emp.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dao.ManagerDAO;
+import com.spring.ex01.emp.dao.ManagerDAO;
 
 @Service
 public class ManagerService {

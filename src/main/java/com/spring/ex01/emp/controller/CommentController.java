@@ -1,4 +1,4 @@
-package controller;
+package com.spring.ex01.emp.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import dto.MovieDTO;
-import service.MovieService;
+import com.spring.ex01.emp.dto.MovieDTO;
+import com.spring.ex01.emp.service.MovieService;
 
 @Controller("commentController")
 public class CommentController {
@@ -23,7 +23,7 @@ public class CommentController {
 	@Autowired
 	private MovieDTO movieDTO;
 	
-// ?Œ“ê¸?
+// ?ï¿½ï¿½ï¿½?
 	@RequestMapping(value="/reply.do", method=RequestMethod.GET)
 	public String movieList(Model model,
 			@RequestParam(value="articleNO", required=false) int articleNO,
@@ -32,9 +32,9 @@ public class CommentController {
 			@RequestParam(value="comment_rate", required=false) int comment_rate,
 			@RequestParam(value="section", required=false) String section,
 			@RequestParam(value="pageNum", required=false) String pageNum) {
-		System.out.println("´ñ±Û ½ÇÇà");
+		System.out.println("ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		List article = movieService.viewArticle(articleNO);
-//		?™œ ?˜‘ê°™ì?ê±? ?‘ë²ˆí•˜ì§??
+//		?ï¿½ï¿½ ?ï¿½ï¿½ê°™ï¿½?ï¿½? ?ï¿½ï¿½ë²ˆí•˜ï¿½??
 		model.addAttribute("article", article);
 		model.addAttribute("movieList", article);
 		movieDTO.setArticleNO(articleNO);
@@ -57,7 +57,7 @@ public class CommentController {
 		articlesMap.put("pageNum", pageNum_);
 		model.addAttribute("articlesMap", articlesMap);
 		
-//		comment ¼ø¹ø ÀÔ·Â
+//		comment ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
 		
 		return "redirect:/movieInfo.do?articleNO="+articleNO;
 	}
@@ -70,7 +70,7 @@ public class CommentController {
 			@RequestParam(value="comment_id", required=false) String recomment_id,
 			@RequestParam(value="section", required=false) String section,
 			@RequestParam(value="pageNum", required=false) String pageNum) {
-		System.out.println("´ë´ñ±Û ½ÇÇà");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		List article  = movieService.viewArticle(articleNO);
 		model.addAttribute("movieList", article);
 		movieDTO.setArticleNO(articleNO);

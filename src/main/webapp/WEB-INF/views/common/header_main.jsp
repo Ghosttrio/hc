@@ -87,8 +87,17 @@
         }
         
         .ajaxList{
-        	background:grey;
-        	color:white;
+        	
+        	border:0;
+        	outline:0;
+        	color:black;
+        	width: 100%;
+		    height: 30px;
+		    background-color: f2f0e5;
+		    color:black;
+		    border-bottom: 1px solid black;
+		    cursor:pointer;
+        	
         }
         #schoolList{
         	position:relative;
@@ -150,9 +159,11 @@
 	        <div><a href="theater.do">극장</a></div>
 	        <div><a href="booking.do">예매</a></div>
 	        <div class="search">
-	        	<input id="schoolInput" type="text" data-cate="high" onkeyup="search(this);" placeholder="영화를 입력하세요">
-	        	<div id="schoolList"></div>
-        		<h1 id="selected"></h1>
+	        	<form action="movieInfo.do">
+		        	<input id="schoolInput" type="text" data-cate="high" onkeyup="search(this);" placeholder="영화를 입력하세요">
+		        	<div id="schoolList"></div>
+	        		<h1 id="selected"></h1>
+        		</form>
 	        </div>
 	    </div>
 	</header>
@@ -175,9 +186,12 @@ function search(target){
 			
             schoolList.empty();
             data.forEach((school)=>{
-                if(school['name'].includes(checkWord)){
-                	console.log(school['name']);
-                    schoolList.append("<div class=\"ajaxList\" style=\"cursor: pointer;  \" onclick=\"select(this);\">" + school['name'] + "</div> <br/>"); 
+                if(school['title'].includes(checkWord)){
+                	console.log(school['title']);
+                    schoolList.append(
+                  		"<input class=\"ajaxList\" type=\"submit\" value=\""+school['title']+"\">"+ 
+                  		"<br/><input type=\"hidden\" name=\"articleNO\" value="
+                  		+school['articleNO']+">"); 
                 }
             })
         }
@@ -185,10 +199,7 @@ function search(target){
 
 }    
 
-function select(target){
-    let selected = document.getElementById("selected");
-    selected.innerText = target.innerText;
-}
+
 
 
 </script>

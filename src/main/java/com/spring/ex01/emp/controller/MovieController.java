@@ -1,7 +1,6 @@
-package controller;
+package com.spring.ex01.emp.controller;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import service.MovieService;
+import com.spring.ex01.emp.service.MovieService;
 
 @Controller
 public class MovieController {

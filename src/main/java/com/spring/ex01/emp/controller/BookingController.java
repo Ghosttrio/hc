@@ -1,4 +1,4 @@
-package controller;
+package com.spring.ex01.emp.controller;
 
 import java.util.List;
 
@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import dto.MovieDTO;
-import service.MovieService;
+import com.spring.ex01.emp.dto.MovieDTO;
+import com.spring.ex01.emp.service.MovieService;
 
+	
 @Controller("bookingController")
 public class BookingController {
 
@@ -26,13 +27,16 @@ public class BookingController {
 	@RequestMapping(value="/booking.do", method=RequestMethod.GET)
 	public String Ticketing(Model model, HttpSession session/*,
 			@RequestParam(value="", required=false) String */) {
+//		영화 리스트 출력
 		List movieList = movieService.movieList();
+//		극장 리스트 출력
 		List theaterList = movieService.theaterList();
-//		List showList = movieService.showList();
+//		영화 리스트 전달
 		model.addAttribute("movieList", movieList);
+//		극장 리스트 전달
 		model.addAttribute("theaterList", theaterList);
+//		아이디 세션 전달
 		model.addAttribute("memberList",session.getAttribute("id"));
-//		model.addAttribute("showList", showList);
 		return "booking/booking";
 	}
 	
@@ -91,7 +95,6 @@ public class BookingController {
 		List movieList = movieService.movieList();
 		List theaterList = movieService.theaterList();
 		List showList = movieService.showList(movieDTO);
-		
 		
 		model.addAttribute("articleNO", articleNO);
 		model.addAttribute("theater_id", theater_id);

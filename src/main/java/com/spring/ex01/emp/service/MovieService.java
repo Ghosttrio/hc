@@ -1,4 +1,4 @@
-package service;
+package com.spring.ex01.emp.service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,8 +7,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dao.MovieDAO;
-import dto.MovieDTO;
+import com.spring.ex01.emp.dao.MovieDAO;
+import com.spring.ex01.emp.dto.MovieDTO;
 
 
 @Service("movieService")
@@ -20,6 +20,11 @@ public class MovieService {
 //	영화 출력
 	public List movieList() {
 		List movieList = movieDAO.movieList();
+		return movieList;
+	}
+//	영화 출력 dto
+	public MovieDTO movieList_dto() {
+		MovieDTO movieList = movieDAO.movieList_dto();
 		return movieList;
 	}
 	

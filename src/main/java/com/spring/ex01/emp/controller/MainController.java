@@ -1,4 +1,4 @@
-package controller;
+package com.spring.ex01.emp.controller;
 
 
 import java.util.List;
@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import service.MovieService;
+import com.spring.ex01.emp.service.MovieService;
 
 
 @Controller
@@ -22,9 +22,9 @@ public class MainController {
 	
 	@RequestMapping(value="/main.do", method=RequestMethod.GET)
 	public String main(Model model, HttpSession session) {
-//		¿µÈ­ Ãâ·Â
-		System.out.println("¸ÞÀÎÅÇ Ãâ·Â");
-//		·Î±×ÀÎ ¼¼¼ÇÀÌ ÀÖÀ¸¸é ¼¼¼Ç Àü´Þ
+//		ï¿½ï¿½È­ ï¿½ï¿½ï¿½
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½");
+//		ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		model.addAttribute("memberList", session.getAttribute("id"));
 		List movieList = movieService.movieList();
 		

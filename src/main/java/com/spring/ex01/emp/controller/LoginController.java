@@ -1,4 +1,4 @@
-package controller;
+package com.spring.ex01.emp.controller;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import dto.LoginDTO;
-import service.LoginService;
-import service.MovieService;
+import com.spring.ex01.emp.dto.LoginDTO;
+import com.spring.ex01.emp.service.LoginService;
+import com.spring.ex01.emp.service.MovieService;
 
 @Controller
 public class LoginController {

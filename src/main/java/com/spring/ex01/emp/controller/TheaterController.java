@@ -1,4 +1,4 @@
-package controller;
+package com.spring.ex01.emp.controller;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import service.MovieService;
-import service.TheaterService;
+import com.spring.ex01.emp.service.MovieService;
+import com.spring.ex01.emp.service.TheaterService;
 
 @Controller
 public class TheaterController {
@@ -26,16 +26,16 @@ public class TheaterController {
 	
 	@RequestMapping(value="/theater.do", method=RequestMethod.GET)
 	public String theater(Model model, HttpSession session) {
-		System.out.println("±ØÀåÆäÀÌÁö Ãâ·Â");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½");
 		model.addAttribute("memberList",session.getAttribute("id"));
-//		ÀüÃ¼±ØÀåÁ¤º¸
+//		ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		List theaterList = theaterService.theaterList();
 		model.addAttribute("theaterList",theaterList);
 		
-//		ÀüÃ¼¿µÈ­Á¤º¸
+//		ï¿½ï¿½Ã¼ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½
 		List movieList = movieService.movieList();
 		model.addAttribute("movieList",movieList);
-//		ÀüÃ¼»ó¿µÁ¤º¸
+//		ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		List showList = theaterService.showList();
 		model.addAttribute("showList",showList);
 		model.addAttribute("area_id","id_seoul");
@@ -46,14 +46,14 @@ public class TheaterController {
 	public String theaterList(Model model, HttpSession session,
 			@RequestParam(value="area_id", required=false) String area_id
 			) {
-//		ÀüÃ¼±ØÀåÁ¤º¸
+//		ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		List theaterList = theaterService.theaterList();
 		model.addAttribute("theaterList",theaterList);
 		
-//		ÀüÃ¼¿µÈ­Á¤º¸
+//		ï¿½ï¿½Ã¼ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½
 		List movieList = movieService.movieList();
 		model.addAttribute("movieList",movieList);
-//		ÀüÃ¼»ó¿µÁ¤º¸
+//		ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		List showList = theaterService.showList();
 		model.addAttribute("showList",showList);
 		
