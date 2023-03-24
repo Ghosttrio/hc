@@ -70,7 +70,7 @@ background: whitesmoke;
 
 .btns > div {
   padding: .6rem 1.5rem;
-  background: #111;
+  background: skyblue;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,7 +81,12 @@ background: whitesmoke;
   margin-right: .4rem;
 }
 
+
 .moveTopBtn:hover {
+  color: #000;
+  background: #febf00;
+}
+.moveBottomBtn:hover {
   color: #000;
   background: #febf00;
 }
@@ -100,15 +105,20 @@ background: whitesmoke;
   margin-left: .4rem;
   font-size: 1.4rem;
 }
+.event_content{
+	color:blue;
+	
+}
  </style>   
 </head>
 <body>
 <div class="content">
 	<c:forEach var="vo" items="${ secondEvent}">
 		<div class="secondimg"> 
-<!-- 			<h1> -->
-<%-- 				<a href="/replyForm.do?id=${param.id }">이벤트 참여 댓글쓰기</a> --%>
-<!-- 			</h1> -->
+
+					<div class="event_content">
+						<h1>이벤트 내용</h1>
+					</div>
 			<img src ="${vo.secondimage }">
 		</div>
 	</c:forEach>
@@ -154,7 +164,7 @@ background: whitesmoke;
 <!-- 							</td> -->
 						</tr>
 		</c:forEach>
-							<td>
+							<td id="bottom">
 								
 								<a href="/replyForm.do?id=${param.id }">
 									<input type="button" value="댓글쓰기"/>
@@ -165,8 +175,9 @@ background: whitesmoke;
 	<br>
 </div>
 <div class="btns">
-  <div class="moveTopBtn">맨 위로</div>
-  <div class="moveBottomBtn">맨 아래로</div>
+  <div class="moveTopBtn"><a href="#">맨 위로</a></div>
+  <div class="moveBottomBtn"><a href="#bottom" id="bottom">댓글확인</a></div>
+	<input type="hidden" id="bottom">
 </div>
 <!-- 	<div class="reply"> -->
 	

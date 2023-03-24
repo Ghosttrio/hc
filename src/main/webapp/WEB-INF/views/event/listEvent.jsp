@@ -41,7 +41,8 @@
     <title>Document</title>
     <script type="text/javascript">
 
-
+    
+    
 
     </script>
 <style>
@@ -94,6 +95,8 @@ padding: 25px 50px;
  background-color: lightblue;
  font-size: 20px;
 }
+
+
 </style>
 </head>
 
@@ -102,6 +105,13 @@ padding: 25px 50px;
 <button type="button" onclick="location.href='/addEvent.do'">이벤트 추가</button>
 <button type="button" onclick="location.href='/modifyEvent.do'">이벤트 수정/삭제</button>
 </div>
+
+<div class="btns">
+  <div class="moveTopBtn"><a href="#">맨 위로</a></div>
+  <div class="moveBottomBtn"><a href="#bottom" id="bottom">맨 아래로</a></div>
+	
+</div>
+
 	<div class="event_top">
           <h1>EVENT</h1>
     </div> 
@@ -112,18 +122,16 @@ padding: 25px 50px;
 <!--  원래화면         -->
 
 <c:forEach var="vo" items="${ eventsList}">
-		<div class=event_t >
+		<div class=event_t  >
 			
 				<a href="/viewEvent.do?id=${vo.id }">
 					<img src ="${vo.firstimage }" width = "100%" ><br>
 					${vo.title }<br>
 					${vo.eventday }<br>
-				</a>
-			
+				</a>	
 		</div>
-		
+	
 </c:forEach>
-
 
 </body>
 </html>
