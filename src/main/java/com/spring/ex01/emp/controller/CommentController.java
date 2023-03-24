@@ -64,7 +64,6 @@ public class CommentController {
 		return "redirect:/movieInfo.do?articleNO="+articleNO;
 	}
 	
-<<<<<<< HEAD
 	@RequestMapping(value="/reply2.do", method=RequestMethod.GET)
 	public String movieList(Model model,
 			@RequestParam(value="articleNO", required=false) int articleNO,
@@ -100,7 +99,6 @@ public class CommentController {
 	}
 	
 
-=======
 	
 	
 //	if(action.equals("/reply.do")) {
@@ -162,5 +160,4 @@ public class CommentController {
 //		
 //		nextPage="/changsoon/��ȭ����/movieInfo.jsp";
 //	}
->>>>>>> sm
 }
