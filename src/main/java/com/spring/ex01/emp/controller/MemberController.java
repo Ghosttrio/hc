@@ -37,7 +37,16 @@ public class MemberController {
 		return "loginMember";
 	}
 	
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+	
+	
+=======
+>>>>>>> master
+>>>>>>> 39a994152fc96f6b90ea3ea3115c70cee57b9ef9
 	//로그인(loginMember)
 	@RequestMapping(value="/loginMember", method = {RequestMethod.POST, RequestMethod.GET})
 	public String  loginMember(@ModelAttribute  MemberDTO memberDTO ,	Model model

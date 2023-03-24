@@ -97,6 +97,13 @@ public class MovieDAO {
 		return tot;
 	}
 	
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> master
+>>>>>>> 39a994152fc96f6b90ea3ea3115c70cee57b9ef9
 //	극장 출력
 	public List theaterList(){
 		List list = sqlSession.selectList("mapper.movie.theaterList");
@@ -131,5 +138,16 @@ public class MovieDAO {
 	}
 
 	
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+
+=======
+	
+	
+	
+>>>>>>> master
+>>>>>>> 39a994152fc96f6b90ea3ea3115c70cee57b9ef9
 }
 
