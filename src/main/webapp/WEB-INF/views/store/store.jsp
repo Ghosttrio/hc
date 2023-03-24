@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
+<<<<<<< HEAD
     import = "java.util.*,gayeong.*"
+=======
+>>>>>>> 85e46a346db7df8a03c0104a504f087a0b53cf2a
     isELIgnored = "false"
   %>
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -203,6 +206,7 @@
 		
 		<div class = "main">
 			
+<<<<<<< HEAD
 				<h2>영화관람권</h2>
 				<hr style="border: solid 1px black;">
 			<div id = "menu1">
@@ -247,6 +251,10 @@
 			         </div>   
 			    </c:forEach> 
 		     </div>
+=======
+		
+		    
+>>>>>>> 85e46a346db7df8a03c0104a504f087a0b53cf2a
 		</div>
 </body>
 </html>

@@ -21,9 +21,15 @@ public class StoreDTO {
 	private String user_id;
 	private String cart_id;
 	private int amount;	// 수량
+<<<<<<< HEAD
 	private int total;	// 금액
 	private Date store_date;	// 제품 담은 시간
 	private String store_pay;	// 결제여부
+=======
+	private int total;	// 총 금액
+	private Date store_date;	// 제품 담은 시간
+	private String store_pay;	// 결제여부 (장바구니 : N , 결제하기 : Y)
+>>>>>>> 85e46a346db7df8a03c0104a504f087a0b53cf2a
 	
 	
 	
@@ -93,7 +99,21 @@ public class StoreDTO {
 	public String getCart_id() {
 		return cart_id;
 	}
+<<<<<<< HEAD
 	public void setCart_id(String cart_id) {
 		this.cart_id = cart_id;
 	}
+=======
+	public String setCart_id(String cart_id) {
+		return this.cart_id = cart_id;
+	}
+	@Override
+	public String toString() {
+		return "StoreDTO [menu_id=" + menu_id + ", name=" + name + ", price=" + price + ", image=" + image
+				+ ", menu_type=" + menu_type + ", user_id=" + user_id + ", cart_id=" + cart_id + ", amount=" + amount
+				+ ", total=" + total + ", store_date=" + store_date + ", store_pay=" + store_pay + "]";
+	}
+	
+	
+>>>>>>> 85e46a346db7df8a03c0104a504f087a0b53cf2a
 }

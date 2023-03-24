@@ -37,6 +37,17 @@ public class MemberController {
 		return "loginMember";
 	}
 	
+<<<<<<< HEAD
+=======
+	   //로그인 View (/login.do) 
+	   @RequestMapping("/login.do")
+	   public String login() {
+	      return "loginMember";
+	   }
+	   
+	
+	
+>>>>>>> 85e46a346db7df8a03c0104a504f087a0b53cf2a
 	//로그인(loginMember)
 	@RequestMapping(value="/loginMember", method = {RequestMethod.POST, RequestMethod.GET})
 	public String  loginMember(@ModelAttribute  MemberDTO memberDTO ,	Model model

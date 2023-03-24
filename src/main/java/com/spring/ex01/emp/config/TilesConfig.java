@@ -16,7 +16,12 @@ public class TilesConfig {
 
         // tiles.xml 경로 명시
         configurer.setDefinitions(new String[] {
+<<<<<<< HEAD
             "/WEB-INF/tiles/tiles_member.xml"
+=======
+            "/WEB-INF/tiles/tiles_member.xml",
+            "/WEB-INF/tiles/tiles_store.xml"
+>>>>>>> 85e46a346db7df8a03c0104a504f087a0b53cf2a
         });
 
         // 리프레쉬 가능 여부 설정

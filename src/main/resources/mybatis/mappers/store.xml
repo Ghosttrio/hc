@@ -68,6 +68,7 @@
 		where menu_id = #{_parameter}
 	</select>
 	
+<<<<<<< HEAD
 	<!-- 장바구니 목록 -->
 	 <select id="cartlist" resultType="storeDTO">
          <![CDATA[
@@ -76,13 +77,40 @@
 	</select>
 	
 	
+=======
+
+>>>>>>> 85e46a346db7df8a03c0104a504f087a0b53cf2a
 	<!-- 장바구니 추가 -->
 	<insert id = "cartadd" parameterType="storeDTO">
 		 <![CDATA[
          	insert into STORE_CART
+<<<<<<< HEAD
         	 (cart_id, AMOUNT, PRICE, CART_DATE, STORE_PAY, menu_name, image, menu_id, user_id)
         	 values
         	 (#{cart_id}, #{AMOUNT}, #{price}, sysdate, #{STORE_PAY}, #{menu_name}, #{image}, #{menu_id}, #{user_id})
          ]]>
 	</insert>
+=======
+        	 (cart_id, amount, price, CART_DATE, store_pay, menu_name, image, menu_id, user_id)
+        	 values
+        	 (#{cart_id}, #{amount},#{price}, sysdate, #{store_pay}, #{name}, #{image}, #{menu_id}, #{user_id})
+         ]]>
+	</insert>
+	
+		<!-- 장바구니 목록 -->
+	 <select id="cartlist" parameterType="String"  resultType="storeDTO">
+         select * from STORE_CART
+			where cart_id = #{_parameter}
+	</select>
+	
+	<!-- 장바구니 중복 확인 -->
+	<select id = "selectCount" parameterType="storeDTO"  resultType="String">
+			SELECT DECODE(COUNT(*), 0, 'false', 'true')FROM  STORE_CART
+			WHERE MENU_ID = #{menu_id}
+			AND cart_id = #{cart_id}
+			and store_pay = #{store_pay}
+	</select>
+	
+	
+>>>>>>> 85e46a346db7df8a03c0104a504f087a0b53cf2a
 </mapper>

@@ -133,8 +133,12 @@ public class Store_managerController {
 		 
 		 
 		 model.addAttribute("msg", "메뉴가 수정 되었습니다");
+<<<<<<< HEAD
 		 
 		 
+=======
+
+>>>>>>> 85e46a346db7df8a03c0104a504f087a0b53cf2a
 		 return "forward:/StoreManager/list.do";
 		
 	}
@@ -154,7 +158,11 @@ public class Store_managerController {
 		
 		 System.out.println(menu_id);
 		 model.addAttribute("msg", "메뉴가 삭제 되었습니다");
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 85e46a346db7df8a03c0104a504f087a0b53cf2a
 		 
 		 return "forward:/StoreManager/list.do";
 		 

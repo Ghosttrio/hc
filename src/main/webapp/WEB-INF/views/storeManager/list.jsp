@@ -43,7 +43,11 @@
 					 </tr>
 				</c:forEach>
 			</c:if>
+<<<<<<< HEAD
 			<c:if test = "${empty StoreList }">
+=======
+			<c:if test = " ${empty StoreList }">
+>>>>>>> 85e46a346db7df8a03c0104a504f087a0b53cf2a
 				<tr>
 					<td colspan = "5" style = "text-align:center;">조회된 데이터가 없습니다</td>
 				</tr>

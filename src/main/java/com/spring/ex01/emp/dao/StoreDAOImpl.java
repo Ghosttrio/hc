@@ -101,10 +101,17 @@ public class StoreDAOImpl implements StoreDAO {
 	
 	// 스토어(장바구니 목록)
 		@Override
+<<<<<<< HEAD
 		public List cartlist() {
 			System.out.println("StoreDAOImpl > cartlist 호출");
 			
 			List list = sqlSession.selectList("mapper.store.cartlist");
+=======
+		public List cartlist(String cart_id) {
+			System.out.println("StoreDAOImpl > cartlist 호출");
+			
+			List list = sqlSession.selectList("mapper.store.cartlist", cart_id);
+>>>>>>> 85e46a346db7df8a03c0104a504f087a0b53cf2a
 			System.out.println("스토어(장바구니 목록) list.size : " + list.size());
 			logger.info("스토어 관리자(목록) list.size : " + list.size());
 			return list;
@@ -123,6 +130,15 @@ public class StoreDAOImpl implements StoreDAO {
 		
 	}
 	
+<<<<<<< HEAD
+=======
+	// 장바구니 중복 확인
+	public boolean selectCount(StoreDTO storeDTO) {
+		System.out.println("StoreDAOImpl > selectCount 호출 : storeDTO : " + storeDTO);
+		String result = sqlSession.selectOne("mapper.store.selectCount", storeDTO);
+		return Boolean.parseBoolean(result);
+	}
+>>>>>>> 85e46a346db7df8a03c0104a504f087a0b53cf2a
 	
 
 }

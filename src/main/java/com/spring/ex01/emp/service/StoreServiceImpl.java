@@ -100,6 +100,7 @@ public class StoreServiceImpl implements StoreService {
 		
 		return storeDTO;
 	}
+<<<<<<< HEAD
 	
 	// 장바구니 목록
 	@Override
@@ -111,6 +112,9 @@ public class StoreServiceImpl implements StoreService {
 		
 		return storeDAO.cartlist();
 	}
+=======
+
+>>>>>>> 85e46a346db7df8a03c0104a504f087a0b53cf2a
 	
 	// 장바구니 추가
 		@Override
@@ -119,6 +123,26 @@ public class StoreServiceImpl implements StoreService {
 			return storeDAO.cartadd(storeDTO);
 			
 		}
+<<<<<<< HEAD
 	
 
+=======
+		
+		
+	// 장바구니 목록
+	@Override
+	public List cartlist(String cart_id) {
+		
+		List list = storeDAO.cartlist(cart_id);
+		
+		return list;
+	}
+	
+	// 장바구니 중복 확인
+	@Override
+	public boolean findCart(StoreDTO storeDTO) {
+		return storeDAO.selectCount(storeDTO);
+	}
+	
+>>>>>>> 85e46a346db7df8a03c0104a504f087a0b53cf2a
 }
