@@ -21,11 +21,7 @@
 			<result property="member_gender" column="member_grade" />
 	</resultMap>	
 	
-	<!-- <![CDATA[
-					SQl 비교 구문 넣을 때만  xml에 사용한다.
-				]]>  -->
-	
-	<!-- 로그인 -->
+<!-- 로그인 -->
 	<select id="loginMember" resultType="memberDTO"  parameterType="memberDTO"  >
 		    <!-- *resultType 나가는 return타입 과 같고, parameterType 들어오는 전달인자-->
 				SELECT* 
@@ -95,49 +91,7 @@
 					WHERE member_id = #{_parameter}
 				]]>    
 	</delete>
-	
-  <!-- 관리자페이지 회원정보 -->
-  <select id="listMember" parameterType="List" resultMap="List">
-	          SELECT * 
-	          FROM MEMBER
-	          WHERE member_no = #{member_no}	
-</select>
 
-
-<!-- 마이페이지 영화 예매 내역 //영화 예매 테이블명 추가  -->
-<!--  	<select id="MovieMypage" resultType="String"  parameterType="String"  > -->
-<!-- 			<![CDATA[ -->
-<!-- 				SELECT* -->
-<!-- 				FROM MOVIE -->
-<!-- 		     	WHERE member_id=#{member_id} -->
-<!-- 		     	ORDER BY PAY_ORDER DESC -->
-<!-- 			]]> -->
-<!-- </select> -->
-  
-  <!-- 마이페이지 스토어 구매 내역 //스토어 구매 테이블 추가 -->
-<!--   <select id="storeMypage" resultType="String"  parameterType="String"  > -->
-<!-- 			    <![CDATA[ -->
-<!-- 			    	SELECT* -->
-<!-- 			    	FROM STORE -->
-<!-- 		            WHERE member_id=#{member_id} -->
-<!-- 		            ORDER BY PAY_ORDER DESC -->
-<!-- 				]]> -->
-<!-- </select> -->
-
-  <!-- 마이페이지 문의 내역 //문의 내역(QnA) 테이블 추가 -->
-<!--   <select id="storeMypage" resultType="String"  parameterType="String"  > -->
-<!-- 			    <![CDATA[ -->
-<!-- 			    	SELECT* -->
-<!-- 			    	FROM QnA -->
-<!-- 		            WHERE member_id=#{member_id} -->
-<!-- 		            ORDER BY qna DESC -->
-<!-- 				]]> -->
-<!-- </select> -->
   
 	
-
-		
 </mapper>
-
-
-

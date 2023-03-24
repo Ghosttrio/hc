@@ -113,7 +113,10 @@
 <body>
 	<div id="wrap">
 		
+<<<<<<< HEAD
 		
+=======
+>>>>>>> master
 	</div>
 		
 		

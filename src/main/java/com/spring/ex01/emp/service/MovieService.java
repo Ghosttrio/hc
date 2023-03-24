@@ -115,12 +115,10 @@ public class MovieService {
 		List showList = movieDAO.showList(movieDTO);
 		return showList;
 	}
-
 	
 	
 //	public void upComment2(MovieDTO movieDTO) {
 //		movieDAO.upComment2(articleNO, upComment2, comment_id, comment_text);
 //	}
-
 	
 }
