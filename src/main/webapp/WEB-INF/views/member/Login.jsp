@@ -1,11 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"
-	 isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+    isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <link  href="/css/MemberLogin.css" rel="stylesheet" type="text/css" />
-
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
@@ -34,7 +33,6 @@
 	  </script>
 </c:if>
 
-</head>
 <body>
 
     <section class="login">
@@ -57,7 +55,7 @@
                 <div class="sign-in">
                 <img id="humanimg" src="/image/loginHuman.png">
                 
-	                <form method="post" action="${contextPath }/member/loginMember">
+	                <form method="post" action="/member/loginMember">
 			                <input id="inputId" type="text" placeholder="아이디를 입력하세요" maxlength="20" name="member_id">
 			                <input id="inputPwd" type="password" placeholder="비밀번호를 입력하세요" maxlength="20" name="member_pwd">
 			                <button class="submit">로그인</button><br>
@@ -67,5 +65,6 @@
             </div>
         </div>
     </section>  
-</body>
+</body
+>
 </html>

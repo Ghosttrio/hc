@@ -10,5 +10,7 @@ public interface MemberDAO {
 	public void addMember(MemberDTO memberDTO) throws Exception;
 	public String checkMember(String id) throws DataAccessException;
 	public MemberDTO mypage(MemberDTO memberDTO) throws DataAccessException;
+	public int updateMypage(MemberDTO memberDTO) throws DataAccessException;
+	public void delMember(String id)	throws Exception;
 	
 }

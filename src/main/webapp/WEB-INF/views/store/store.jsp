@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import = "java.util.*,gayeong.*"
     isELIgnored = "false"
   %>
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -203,50 +202,8 @@
 		
 		<div class = "main">
 			
-				<h2>영화관람권</h2>
-				<hr style="border: solid 1px black;">
-			<div id = "menu1">
-				<c:forEach 	var = "card" items = "${store_list_card }">
-				 	<div class="menu">
-			            <div class="card_img"><a href="/HumanCinema/menu/info_page.do?menu_id=${card.menu_id }"><img src="${card.image }" width="250px" height= "250px"></a></div>
-			               <div class = "menu1-1">
-					            <div class="card_name">${card.name }</div> 
-					            <div class = "card_price">${card.price }</div>
-				           </div>
-			         </div>   
-			    </c:forEach> 
-		    </div>
-		 
-		 	<div id = "menu2">
-				<h2>스낵</h2>
-				<hr style="border: solid 1px black;">
-			
-				<c:forEach 	var = "snack" items = "${store_list_snack }" end = "2"> 
-				
-				 	<div class="menu">
-				 	 	<div class="img"><a href="/HumanCinema/menu/info_page.do?menu_id=${snack.menu_id }"><img src="${snack.image }" width="250px" height= "250px"></a></div>
-					<div class = "menu2-1">
-			            <div class="name">${snack.name }</div> 
-			            <div class = "price">${snack.price }</div>
-			         </div>   
-			        </div>
-			    </c:forEach>
-			      
-		     </div>
+		
 		    
-		     	<div id = "menu3">
-				<h2>음료</h2>
-				<hr style="border: solid 1px black;">
-				<c:forEach 	var = "drink" items = "${store_list_drink }" end = "2">
-				 	<div class="menu">
-			            <div class="img"><a href="/HumanCinema/menu/info_page.do?menu_id=${drink.menu_id }"><img src="${drink.image }" width="250px" height= "250px"></a></div>
-			        <div class = "menu2-1">
-			            <div class="name">${drink.name }</div> 
-			            <div class = "price">${drink.price }</div>
-			        </div>
-			         </div>   
-			    </c:forEach> 
-		     </div>
 		</div>
 </body>
 </html>

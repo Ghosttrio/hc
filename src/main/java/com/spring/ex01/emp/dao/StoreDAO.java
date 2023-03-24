@@ -22,9 +22,11 @@ public interface StoreDAO {
 	
 	StoreDTO storeinfo(String menu_id);
 
-	int cartadd(StoreDTO storeDTO);
+	public int cartadd(StoreDTO storeDTO);
 
-	public abstract List cartlist();
+	public abstract List cartlist(String cart_id);
+
+	public boolean selectCount(StoreDTO storeDTO);
 	
 
 	
