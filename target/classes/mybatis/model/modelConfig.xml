@@ -8,9 +8,9 @@
         <setting name="jdbcTypeForNull" value="NULL" />
     </settings>
     
-    
 	<typeAliases>
+		<typeAlias type="com.spring.ex01.emp.dto.MemberDTO"  alias="memberDTO" />
 		<typeAlias type="com.spring.ex01.emp.dto.MovieDTO"  alias="movieDTO" />
-		<typeAlias type="com.spring.ex01.emp.dto.EventDTO"  alias="eventDTO" />
+		<typeAlias type="com.spring.ex01.emp.dto.StoreDTO"  alias="storeDTO" />
 	</typeAliases>
 </configuration>
