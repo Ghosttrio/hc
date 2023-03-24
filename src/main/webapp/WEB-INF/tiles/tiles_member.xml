@@ -7,16 +7,12 @@
    <definition name="baseLayout"  template="/WEB-INF/views/common/layout.jsp">
       <put-attribute name="title" value="" />
       <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
-      
-      <!-- 마이페이지 전용 사이드 -->
       <put-attribute name="side" value="/WEB-INF/views/common/side_member.jsp"/>
-      
-      <!--아래 각각의 페이지 연결 -->
       <put-attribute name="body" value="" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
-   
-   
+  
+
    <!-- 임시 메인 페이지  -->
          <definition name="main" extends="baseLayout">
          <put-attribute name="title" value="메인 페이지" />
@@ -64,6 +60,7 @@
          <put-attribute name="title" value="관리자 페이지" />
          <put-attribute name="body" value="/WEB-INF/views/member/Mypage_manager.jsp" />
       </definition>  
+   
 
       
 </tiles-definitions>
