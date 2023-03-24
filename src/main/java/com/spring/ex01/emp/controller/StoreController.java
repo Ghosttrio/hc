@@ -2,17 +2,21 @@ package com.spring.ex01.emp.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.ex01.emp.dao.StoreDAO;
+import com.spring.ex01.emp.dto.MemberDTO;
 import com.spring.ex01.emp.dto.StoreDTO;
 import com.spring.ex01.emp.service.StoreService;
 
@@ -39,8 +43,8 @@ public class StoreController {
 	
 	@RequestMapping("/storemain.do")
 	public String storemain() {
-		
-		return "store/store";
+		System.out.println("/storemain.do");
+		return "storemain";
 	}
 	
 	
@@ -62,7 +66,7 @@ public class StoreController {
 		logger.warn("StoreController > type : menu_type = " + menu_type);
 		
 		
-		return "store/menu";
+		return "storemenu";
 	}
 	
 	// 스토어 (정보 페이지)
@@ -81,17 +85,74 @@ public class StoreController {
 		model.addAttribute("storeDTO", storeDTO);
 		
 		
-		return "store/storeinfo";
+		return "storeinfo";
 	}
 	
+	// 스토어 (장바구니 추가)
+		@ResponseBody
+		@RequestMapping(value = "/cartadd.do" , method= {RequestMethod.GET, RequestMethod.POST})
+		public String cartadd(
+				HttpServletRequest request,
+				Model model,
+				@RequestBody
+				StoreDTO storeDTO,
+				@RequestParam("menu_id") String menu_id
+				) throws Exception  {
+		
+			System.out.println("cartadd !!!!! menu_id : " + menu_id);
+			MemberDTO memberDTO = (MemberDTO) request.getSession().getAttribute("member");
+			
+			if ( memberDTO != null ) {
+				
+				// user_id 가져오기
+				String user_id = memberDTO.getMember_id();
+				System.out.println("user_id : " + user_id);
+	
+				// 로그인 되어 있음
+				if (user_id != null && user_id != "") {
+				
+					// 장바구니 결제여부 "N"
+					storeDTO.setStore_pay("N");
+					// cart_id 저장
+					String cart_id = storeDTO.setCart_id("cart_" + user_id);
+									
+					// user_id 저장
+					storeDTO.setUser_id(user_id);
+					
+					System.out.println(cart_id);
+					// 중복확인
+					boolean overlap = storeService.findCart(storeDTO);
+					System.out.println("!!!!!!!!!!!!! : " + overlap);
+					if(overlap == true) {
+						return "already_exsted";
+						
+					} else {
+						
+						int count = storeService.cartadd(storeDTO);
+						 System.out.println("insert결과 : " + count);
+					
+						 // storeinfo.jsp 에 cart_id return
+						 return cart_id;
+					}
+					
+				}
+			
+			} 		
+				
+				return "login";
+
+		}
+		
 	// 스토어 (장바구니 목록)
 		@RequestMapping(value = "/cartlist.do" , method= {RequestMethod.GET, RequestMethod.POST})
 		public String cartlist(
-				@RequestParam("user_id") String user_id,
-				@RequestParam("menu_id") String menu_id,
+				@RequestParam("cart_id") String cart_id,
+				StoreDTO storeDTO,
 				Model model) {
-				
-				List cartlist = storeService.cartlist();
+			
+				System.out.println("cart_id_cartlist.do: "+ cart_id);
+			
+				List cartlist = storeService.cartlist(cart_id);
 				
 				model.addAttribute("cartlist", cartlist);
 				
@@ -100,41 +161,12 @@ public class StoreController {
 				// 장바구니에 메뉴가 담겼습니다
 				
 				
-				return "store/cart";	
+				return "storecart";	
 		}
 	
-	// 스토어 (장바구니 추가)
-	@RequestMapping(value = "/cartadd.do" , method= {RequestMethod.GET, RequestMethod.POST})
-	public String cartadd(
-			@RequestParam("user_id") String user_id,
-			@RequestParam("menu_id") String menu_id,
-			Model model,
-			@ModelAttribute StoreDTO storeDTO
-			) {
-		System.out.println("user_id : " + storeDTO.getUser_id());
-		
-		if (user_id != null || user_id != "") {
-		
-		int count = storeService.cartadd(storeDTO);
-		 System.out.println("insert결과 : " + count);
-		 
-		 // 장바구니에 담김 보실?
-		 // ㅇㅇ
-		 
-		 return "redirect:/Store/cartlist.do";
-		 
-		 // ㄴㄴ
-		 // 정보창
-		 
-		} else {
-			
-			
-			// 로그인해주세요
-			
-			return "store/login";
-		}
 	
-	}
+	
+	
 	
 	
 	

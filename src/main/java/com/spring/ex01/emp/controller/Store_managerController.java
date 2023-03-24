@@ -133,8 +133,7 @@ public class Store_managerController {
 		 
 		 
 		 model.addAttribute("msg", "메뉴가 수정 되었습니다");
-		 
-		 
+
 		 return "forward:/StoreManager/list.do";
 		
 	}
@@ -154,7 +153,7 @@ public class Store_managerController {
 		
 		 System.out.println(menu_id);
 		 model.addAttribute("msg", "메뉴가 삭제 되었습니다");
-	
+
 		 
 		 return "forward:/StoreManager/list.do";
 		 
