@@ -78,38 +78,38 @@
                             <th colspan="3">회원정보2</th>
                             <tr>
                                 <td id="inputset1">아이디</td>
-                                <td><input id="inputset2" name="id" value='${result.id}' disabled></td>
+                                <td><input id="inputset2" name="member_id" value='${member.member_id}' readonly="readonly"></td>
                                 <td id="btn"><input class="btnSlide" type="submit" value="수정하기" ></td> 
+                            </tr>
+                            <!-- 기존비밀번호 입력 하고 버튼 비활성하고
+   	                         		 신규 비밀번호1 확인용 비밀번호2 입력란 만들기-->
+                         	<tr>
+                                <td id="inputset1">기존비밀번호</td>
+                                <td colspan="2"><input id="inputSet" name="member_pwd" value='' placeholder="비밀번호를 입력하세요"></td>
                             </tr>
                             <tr>
                                 <td id="inputset1">비밀번호</td>
-                                <td><input id="inputSet2" name="pwd1" type="password" size="40" value='${result.pwd1}' placeholder="비밀번호를 입력하세요"></td>
-                                <td id="btn"><input class="btnSlide" type="reset" value="다시입력" ></td>
+                                <td><input id="inputSet2" name="inputPwd1" type="password" size="40" value='${inputPwd1}' placeholder="변경할 비밀번호를 입력하세요"></td>
                             </tr>
                             <tr>
                                 <td id="inputset1">비밀번호 확인</td>
-                                <td colspan="2"><input id="inputSet2" name="pwd2" type="password" size="40" value='${result.pwd2}'placeholder="다시 한번 입력하세요"></td>
+                                <td colspan="2"><input id="inputSet2" name="inputPwd2" type="password" size="40" value='${inputPwd2}'placeholder="다시 한번 입력하세요"></td>
                             </tr>
                             <tr>
                                 <td id="inputset1">이름</td>
-                                <td colspan="2"><input id="inputSet2" name="name" value='${result.name}'></td>
+                                <td colspan="2"><input id="inputSet2" name="member_name" value='${member.member_name}'></td>
                             </tr>
                             <tr>
                                 <td id="inputset1">이메일</td>
-                                <td colspan="2"><input id="inputSet2" name="email" value='${result.email}'></td>
+                                <td colspan="2"><input id="inputSet2" name="member_email" value='${member.member_email}'></td>
+                            </tr>
+                            <tr>
+                                <td id="inputset1">전화번호</td>
+                                <td colspan="2"><input id="inputSet2" name="member_number" value='${member.member_number}'></td>
                             </tr>
                       </table>
                     </form>
-                    <br/>
-	         		<form action="mypage.do">
-                        <table>
-                        <th colspan="2">회원탈퇴</th>
-                        <tr>
-                            <td><input type="password" name="pwd" placeholder="비밀번호를 입력하세요"></td>
-                            <td id="btn"><input class="button" type="submit" value="입력"></td>
-                        </tr>
-                        </table>
-                    </form>
+	         		
                 </article>
               </section>
 </body>

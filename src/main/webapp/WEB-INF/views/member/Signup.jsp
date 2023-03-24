@@ -104,11 +104,9 @@
 	    }
 	  </script>
 </c:if>
-
     
-</head>
-<body>
 
+<body>
     <section class="login">
         <div class="login_box">
             <div class="left_img">
@@ -149,4 +147,5 @@
         </div>
     </section>       
 </body>
+
 </html>

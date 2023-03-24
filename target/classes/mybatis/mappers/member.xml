@@ -21,11 +21,15 @@
 			<result property="member_gender" column="member_grade" />
 	</resultMap>	
 	
+<<<<<<< HEAD
 	<!-- <![CDATA[
 					SQl 비교 구문 넣을 때만  xml에 사용한다.
 				]]>  -->
 	
 	<!-- 로그인 -->
+=======
+<!-- 로그인 -->
+>>>>>>> master
 	<select id="loginMember" resultType="memberDTO"  parameterType="memberDTO"  >
 		    <!-- *resultType 나가는 return타입 과 같고, parameterType 들어오는 전달인자-->
 				SELECT* 
@@ -95,6 +99,7 @@
 					WHERE member_id = #{_parameter}
 				]]>    
 	</delete>
+<<<<<<< HEAD
 	
   <!-- 관리자페이지 회원정보 -->
   <select id="listMember" parameterType="List" resultMap="List">
@@ -141,3 +146,6 @@
 
 
 
+=======
+</mapper>
+>>>>>>> master

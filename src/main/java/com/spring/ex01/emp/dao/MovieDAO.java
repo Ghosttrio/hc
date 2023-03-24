@@ -97,7 +97,10 @@ public class MovieDAO {
 		return tot;
 	}
 	
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 //	극장 출력
 	public List theaterList(){
 		List list = sqlSession.selectList("mapper.movie.theaterList");
@@ -132,7 +135,13 @@ public class MovieDAO {
 	}
 
 	
+<<<<<<< HEAD
 
 
+=======
+	
+	
+	
+>>>>>>> master
 }
 

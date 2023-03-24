@@ -4,11 +4,15 @@
 
 <configuration>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
    <settings>
         <setting name="jdbcTypeForNull" value="NULL" />
     </settings>
     
+<<<<<<< HEAD
 
 	<typeAliases>
 		<typeAlias type="com.spring.ex01.emp.dto.MemberDTO"  alias="memberDTO" />
@@ -21,6 +25,14 @@
 		<!-- 꼭 입력해야 한다 -->
 		<typeAlias type="com.spring.ex01.emp.dto.NoticeDTO"  alias="noticeDTO" />
 
+=======
+	<typeAliases>
+		<typeAlias type="com.spring.ex01.emp.dto.MemberDTO"  alias="memberDTO" />
+		<typeAlias type="com.spring.ex01.emp.dto.MovieDTO"  alias="movieDTO" />
+		<typeAlias type="com.spring.ex01.emp.dto.EventDTO"  alias="eventDTO" />
+		<typeAlias type="com.spring.ex01.emp.dto.StoreDTO"  alias="storeDTO" />
+		<typeAlias type="com.spring.ex01.emp.dto.NoticeDTO"  alias="noticeDTO" />
+>>>>>>> master
 	</typeAliases>
 	
 	
