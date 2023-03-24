@@ -93,7 +93,7 @@ public class StoreDTO {
 	public String getCart_id() {
 		return cart_id;
 	}
-	public void setCart_id(String cart_id) {
-		this.cart_id = cart_id;
+	public String setCart_id(String cart_id) {
+		return this.cart_id = cart_id;
 	}
 }

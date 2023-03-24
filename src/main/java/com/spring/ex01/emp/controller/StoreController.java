@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -94,45 +94,48 @@ public class StoreController {
 		public String cartadd(
 				HttpServletRequest request,
 				Model model,
-				@ModelAttribute 
-				StoreDTO storeDTO
-				)throws Exception  {
+				@RequestBody
+				StoreDTO storeDTO,
+				@RequestParam("menu_id") String menu_id
+				) throws Exception  {
 		
-			
+			System.out.println("cartadd !!!!! menu_id : " + menu_id);
 			MemberDTO memberDTO = (MemberDTO) request.getSession().getAttribute("member");
 			
 			if ( memberDTO != null ) {
 				
+				// user_id 가져오기
 				String user_id = memberDTO.getMember_id();
-				String menu_id = storeDTO.getMenu_id();
 				System.out.println("user_id : " + user_id);
-				System.out.println("menu_id : " + menu_id);
-			
-				
+	
 				// 로그인 되어 있음
 				if (user_id != null && user_id != "") {
 				
 					// 장바구니 결제여부 "N"
 					storeDTO.setStore_pay("N");
 					// cart_id 저장
-					storeDTO.setCart_id("cart_" + user_id);
+					String cart_id = storeDTO.setCart_id("cart_" + user_id);
+									
 					// user_id 저장
 					storeDTO.setUser_id(user_id);
 					
-					int count = storeService.cartadd(storeDTO);
-					 System.out.println("insert결과 : " + count);
-					 
-					 // 장바구니에 담김 보실?
-					 // ㅇㅇ
-					 
-					 return "cartlist";
-					 
-				 // ㄴㄴ
-				 // 정보창
-				 
+					// 중복확인
+					boolean overlap = storeService.findCart(storeDTO);
+					if(overlap == true) {
+						return "already_exsted";
+						
+					} else {
+						
+						int count = storeService.cartadd(storeDTO);
+						 System.out.println("insert결과 : " + count);
+					
+						 // storeinfo.jsp 에 cart_id return
+						 return cart_id;
+					}
+					
 				}
 			
-			} 
+			} 		
 				
 				return "login";
 
@@ -141,11 +144,13 @@ public class StoreController {
 	// 스토어 (장바구니 목록)
 		@RequestMapping(value = "/cartlist.do" , method= {RequestMethod.GET, RequestMethod.POST})
 		public String cartlist(
-				@RequestParam("user_id") String user_id,
-				@RequestParam("menu_id") String menu_id,
+				@RequestParam("cart_id") String cart_id,
+				StoreDTO storeDTO,
 				Model model) {
-				
-				List cartlist = storeService.cartlist();
+			
+				System.out.println("cart_id_cartlist.do: "+ cart_id);
+			
+				List cartlist = storeService.cartlist(cart_id);
 				
 				model.addAttribute("cartlist", cartlist);
 				

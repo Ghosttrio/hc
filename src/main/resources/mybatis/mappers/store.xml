@@ -68,14 +68,7 @@
 		where menu_id = #{_parameter}
 	</select>
 	
-	<!-- 장바구니 목록 -->
-	 <select id="cartlist" resultType="storeDTO">
-         <![CDATA[
-         	select * from STORE_CART
-         ]]>
-	</select>
-	
-	
+
 	<!-- 장바구니 추가 -->
 	<insert id = "cartadd" parameterType="storeDTO">
 		 <![CDATA[
@@ -86,6 +79,19 @@
          ]]>
 	</insert>
 	
+		<!-- 장바구니 목록 -->
+	 <select id="cartlist" parameterType="String"  resultType="storeDTO">
+         select * from STORE_CART
+			where cart_id = #{_parameter}
+	</select>
+	
+	<select id = "selectCount" parameterType="String"  resultType="storeDTO">
+		<![CDATA[
+			SELECT DECODE(COUNT(*), 0, 'false', 'true')FROM  STORE_CART
+			WHERE MENU_ID = #{menu_id},
+			AND cart_id = #{cart_id}
+		 ]]>
+	</select>
 	
 	
 </mapper>

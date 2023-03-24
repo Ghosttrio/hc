@@ -24,7 +24,9 @@ public interface StoreDAO {
 
 	public int cartadd(StoreDTO storeDTO);
 
-	public abstract List cartlist();
+	public abstract List cartlist(String cart_id);
+
+	public abstract boolean selectCount(StoreDTO storeDTO);
 	
 
 	

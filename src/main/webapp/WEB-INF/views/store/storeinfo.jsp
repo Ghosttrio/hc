@@ -142,7 +142,13 @@
 						<div id='result1'><span id = "total">${storeDTO.price}</span>원</div>
      				</div>
     
-   			
+   					<div>
+						 <br>	
+						<button type = "submit"  formaction="/Store/storeOrder" >구매하기</button>
+						<button type = "button" id = "cart">장바구니</button>
+						<input type = "hidden" id = "menu_id" value = "${storeDTO.menu_id}">
+					</div>
+		</div>
    			
 <script>
 		// 수량 선택 후 자동계산	
@@ -154,7 +160,7 @@
 			 let number = resultElement.innerText;
 			  
 			  // 더하기/빼기
-			  if(type === 'plus') {
+			  if(type == 'plus') {
 				  
 			    number = parseInt(number) + 1;
 			    
@@ -163,7 +169,7 @@
 			    	number = 10;
 			    }
 			       
-			  }else if(type === 'minus')  {
+			  }else if(type == 'minus')  {
 			    number = parseInt(number) - 1;
 			    if(number < 1){
 			    	number = 1;
@@ -172,34 +178,47 @@
 			  }
 			  
 			  // 결과 출력
-			  resultElement.innerText = number;
-			  
-			  
-			  // 총 수량 출력
-			 const result1Element = document.getElementById('result1');
+		  resultElement.innerText = number;
+		  
+		  
+		  // 총 수량 출력
+		/*  const result1Element = document.getElementById('result1');
 			  
 			  let total = parseInt ('${storeDTO.price}') * number ;
 			  console.log(total);
 			  
-			  result1Element.innerText = total + "원";
+			  result1Element.innerText = "<span id='total'>"total + "원"; */
+			  
+
+			  const result1Element = document.getElementById('total');
+			  
+			  let total = parseInt ('${storeDTO.price}') * number ;
+			  console.log(total);
+			  
+			  result1Element.innerText = total;
 			    
 			}
-</script>
 
-		<div>
-			 <br>	
-			<button type = "submit"  formaction="/Store/storeOrder" >구매하기</button>
-			<button type = "button" id = "cart">장바구니</button>
-			<input type = "hidden" id = "menu_id" value = "${storeDTO.menu_id}">
-		</div>
-	</div>
-
-<script>	
 		
 	 $("#cart").click(function(){
 		 
-		 let name = $("#menu_id").val();
-			console.log(name);
+		 let menu_id = $("#menu_id").val();
+			console.log(menu_id);
+			
+		 let amount = $("#result").text();
+			console.log(amount);
+			
+		 let price = $("#price").text();
+			console.log(price);
+			
+		 let menu_name = $("#menu_name").text();
+			console.log(menu_name);
+		
+		let total1 = $("#total").text();
+			console.log(total1);
+			
+		let image = $("#image").attr("src");
+			console.log(image);
 			
 		/* 	let name = $("#menu_name").text();
 			let image = $("#image").text();
@@ -208,31 +227,46 @@
 			let total = $("#result1").text();
  */
  
+ 	
  
+ 	let data = {
+			name : $("#menu_name").text(),
+			image : $("#image").attr("src"), 
+			amount : $("#result").text(),
+			price : $("#price").text(),
+			total : $("#total").text(),
+			menu_id : $("#menu_id").val()
+		}
+ 
+ 		console.log(data)
 			$.ajax({
-				url : "/Store/cartadd.do",
-				dataType : "text",
+				url : "/Store/cartadd.do?menu_id="+menu_id,
 				type : 'post',
-				data : {
-					name : $("#menu_name").text(),
-					image : $("#image").text(), 
- 					amount : $("#result").text(),
- 					price : $("#price").text(),
- 					total : $("#total").text(),
- 					menu_id : $("#menu_id").val()
-				},
+				contentType: "application/json",
+				data : JSON.stringify(data),
 					
 				success : function(data) {
 					console.log("data", data);
-							if(data == "cartlist"){
-								location.href = "/Store/cartlist.do"
-							} else if(data == "login"){
-								location.href = "/member/login.do"
-							}
-			    },				
-				error : function() {
 					
-					alert("error");
+					if(data == "login"){
+						location.href = "/member/login.do"
+						
+					} else if (data == "already_exsted"){
+					 	alert("이미 카트에 등록된 제품입니다.");
+					 	
+					} else {
+						location.href = "/Store/cartlist.do?cart_id="+data
+			
+					}
+							/* if(data == "cartlist"){
+								let a = '${storeDTO.cart_id}';
+								console.log(a) 	}  */
+						
+			    },				
+				error : function(e) {
+					
+					console.log(e)
+					alert("error:");
 				}
 			     
 			});
