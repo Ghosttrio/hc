@@ -74,6 +74,9 @@ public class MovieService {
 		articlesMap.put("totArticles", totArticles);
 		return articlesMap;
 	}
+	
+	
+	
 //	public void upComment2(MovieDTO movieDTO) {
 //		movieDAO.upComment2(articleNO, upComment2, comment_id, comment_text);
 //	}

@@ -90,5 +90,9 @@
          	select count(commentNO) from comment_1
          ]]>
 	</select>
+	
+	<select id="notice" resultType="noticeDTO">
+		select * from notice
+	</select>
 
 </mapper>

@@ -3,8 +3,12 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+
 	<typeAliases>
 		<typeAlias type="com.spring.ex01.emp.dto.MovieDTO"  alias="movieDTO" />
-		<typeAlias type="com.spring.ex01.emp.dto.StoreDTO"  alias="storeDTO" />
+		<!-- 꼭 입력해야 한다 -->
+		<typeAlias type="com.spring.ex01.emp.dto.NoticeDTO"  alias="noticeDTO" />
 	</typeAliases>
+	
+	
 </configuration>
