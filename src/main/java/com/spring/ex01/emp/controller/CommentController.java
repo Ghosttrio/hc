@@ -23,7 +23,7 @@ public class CommentController {
 	@Autowired
 	private MovieDTO movieDTO;
 	
-// 댓글
+// ?���?
 	@RequestMapping(value="/reply.do", method=RequestMethod.GET)
 	public String movieList(Model model,
 			@RequestParam(value="articleNO", required=false) int articleNO,
@@ -32,9 +32,9 @@ public class CommentController {
 			@RequestParam(value="comment_rate", required=false) int comment_rate,
 			@RequestParam(value="section", required=false) String section,
 			@RequestParam(value="pageNum", required=false) String pageNum) {
-		System.out.println("댓글 실행");
+		System.out.println("��� ����");
 		List article = movieService.viewArticle(articleNO);
-//		왜 똑같은걸 두번하지?
+//		?�� ?��같�?�? ?��번하�??
 		model.addAttribute("article", article);
 		model.addAttribute("movieList", article);
 		movieDTO.setArticleNO(articleNO);
@@ -57,7 +57,44 @@ public class CommentController {
 		articlesMap.put("pageNum", pageNum_);
 		model.addAttribute("articlesMap", articlesMap);
 		
-		return "redirect:/movie/movieInfo.do?articleNO="+articleNO;
+//		comment ���� �Է�
+		
+		return "redirect:/movieInfo.do?articleNO="+articleNO;
 	}
 	
+	@RequestMapping(value="/reply2.do", method=RequestMethod.GET)
+	public String movieList(Model model,
+			@RequestParam(value="articleNO", required=false) int articleNO,
+			@RequestParam(value="commentNO", required=false) int commentNO,
+			@RequestParam(value="comment_text", required=false) String recomment_text,
+			@RequestParam(value="comment_id", required=false) String recomment_id,
+			@RequestParam(value="section", required=false) String section,
+			@RequestParam(value="pageNum", required=false) String pageNum) {
+		System.out.println("���� ����");
+		List article  = movieService.viewArticle(articleNO);
+		model.addAttribute("movieList", article);
+		movieDTO.setArticleNO(articleNO);
+		movieDTO.setCommentNO(commentNO);
+		movieDTO.setComment_text(recomment_text);
+		movieDTO.setComment_id(recomment_id);
+		movieService.insertComment2(movieDTO);
+		
+		int section_ = Integer.parseInt(((section==null) ? "1" : section));
+		int pageNum_ = Integer.parseInt(((pageNum==null) ? "1" : pageNum));
+		
+		
+		Map pagingMap = new HashMap();
+		pagingMap.put("section", section_);
+		pagingMap.put("pageNum", pageNum_);
+		pagingMap.put("articleNO", articleNO);
+		Map articlesMap = movieService.commentList(pagingMap);
+		articlesMap.put("section", section_);
+		articlesMap.put("pageNum", pageNum_);
+		model.addAttribute("articlesMap", articlesMap);
+		
+		
+		return "redirect:/movieInfo.do?articleNO="+articleNO;
+	}
+	
+
 }

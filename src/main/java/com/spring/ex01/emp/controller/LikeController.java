@@ -9,17 +9,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spring.ex01.emp.service.MovieService;
 
 @RestController("likeController")
-@RequestMapping("/like")
 public class LikeController {
 
 	@Autowired
 	MovieService movieService;
 	
-	@RequestMapping(value="/", method=RequestMethod.POST)
+	@RequestMapping(value="/like.do", method=RequestMethod.POST)
 	public int movieLike(
 			@RequestParam(value="command1", required=false) String command1,
 			@RequestParam(value="articleNO1", required=false) String articleNO1) {
-		System.out.println("���ƿ� �޼ҵ� ����");
+		System.out.println("좋아요 실행");
 		System.out.println(command1);
 		System.out.println(articleNO1);
 		int like = 0;

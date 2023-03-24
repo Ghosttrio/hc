@@ -18,9 +18,9 @@
         
         /* »ó´ÜÅÇ */
         header {
-        	border-top: 2px solid black; 
             height: 150px;
-            border-bottom: 2px solid black; 
+            
+           /*  border-bottom: 1px solid white; */
         }
         header > div {
             display: inline-block;
@@ -59,7 +59,7 @@
         	text-decoration:none;
         	font-size: 20px;
         	font-weight:600;
-        	color:black;
+        	color:white;
         	
         }
         .tab_h > div {
@@ -78,16 +78,16 @@
 			
         }
         
-        
-        
+       
         .login a{
         	text-decoration:none;
-        	color:black;
+        	color:white;
         	font-size:20px;
         	font-weight:600;
         }
         
         .ajaxList{
+        	
         	border:0;
         	outline:0;
         	color:black;
@@ -97,13 +97,13 @@
 		    color:black;
 		    border-bottom: 1px solid black;
 		    cursor:pointer;
+        	
         }
         #schoolList{
         	position:relative;
 			z-index:100;
         }
-        
-         .login2 a {
+        .login2 a {
         	text-decoration: none;
         	font-size:11px;
         }
@@ -120,15 +120,16 @@
        
         .login2 *{
         	
-        	color:black;
+        	color:white;
         }
+        
         
 </style>
 
 </head>
 <body>
 	<header>
-	    <div class="logo"><a href="main.do"><img src="resources/image/LOGO3.jpg" width="300px" height="100px"></a></div>
+	    <div class="logo"><a href="main.do"><img src="resources/image/LOGO2.jpg" width="300px" height="100px"></a></div>
 	    <c:set var="member" value="${memberList }" />
 	    
 	    <c:choose>
@@ -149,6 +150,7 @@
 		    			·Î±×¾Æ¿ô
 		    		</a>
     			</div>
+	    		
 		    </c:when>
 	    </c:choose>
 	    
@@ -196,6 +198,7 @@ function search(target){
     })
 
 }    
+
 
 
 
