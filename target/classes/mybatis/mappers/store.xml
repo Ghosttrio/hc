@@ -85,12 +85,12 @@
 			where cart_id = #{_parameter}
 	</select>
 	
-	<select id = "selectCount" parameterType="String"  resultType="storeDTO">
-		<![CDATA[
+	<!-- 장바구니 중복 확인 -->
+	<select id = "selectCount" parameterType="storeDTO"  resultType="String">
 			SELECT DECODE(COUNT(*), 0, 'false', 'true')FROM  STORE_CART
-			WHERE MENU_ID = #{menu_id},
+			WHERE MENU_ID = #{menu_id}
 			AND cart_id = #{cart_id}
-		 ]]>
+			and store_pay = #{store_pay}
 	</select>
 	
 	

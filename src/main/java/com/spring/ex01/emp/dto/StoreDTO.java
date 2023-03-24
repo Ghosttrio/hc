@@ -96,4 +96,12 @@ public class StoreDTO {
 	public String setCart_id(String cart_id) {
 		return this.cart_id = cart_id;
 	}
+	@Override
+	public String toString() {
+		return "StoreDTO [menu_id=" + menu_id + ", name=" + name + ", price=" + price + ", image=" + image
+				+ ", menu_type=" + menu_type + ", user_id=" + user_id + ", cart_id=" + cart_id + ", amount=" + amount
+				+ ", total=" + total + ", store_date=" + store_date + ", store_pay=" + store_pay + "]";
+	}
+	
+	
 }

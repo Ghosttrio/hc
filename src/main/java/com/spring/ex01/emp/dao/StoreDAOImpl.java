@@ -125,7 +125,7 @@ public class StoreDAOImpl implements StoreDAO {
 	
 	// 장바구니 중복 확인
 	public boolean selectCount(StoreDTO storeDTO) {
-		System.out.println("StoreDAOImpl > selectCount 호출");
+		System.out.println("StoreDAOImpl > selectCount 호출 : storeDTO : " + storeDTO);
 		String result = sqlSession.selectOne("mapper.store.selectCount", storeDTO);
 		return Boolean.parseBoolean(result);
 	}

@@ -119,8 +119,10 @@ public class StoreController {
 					// user_id 저장
 					storeDTO.setUser_id(user_id);
 					
+					System.out.println(cart_id);
 					// 중복확인
 					boolean overlap = storeService.findCart(storeDTO);
+					System.out.println("!!!!!!!!!!!!! : " + overlap);
 					if(overlap == true) {
 						return "already_exsted";
 						
