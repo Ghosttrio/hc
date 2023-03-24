@@ -40,6 +40,18 @@ public class MemberDAOImpl implements MemberDAO{
 		return member;
 	}
 	
+	@Override	//마이페이지 회원 정보 수정(updateMypage)
+	public int updateMypage(MemberDTO memberDTO) throws DataAccessException {
+		System.out.println("updateMypage: "+memberDTO);
+		int member =  sqlSession.update("mapper.member.updateMypage",memberDTO);
+		System.out.println("MemberDAOImpl, updateMypage: "+member);
+		return member;
+	}
+	
+	@Override	//마이페이지 회원탈퇴(delMember)
+	public void delMember(String id) throws Exception {
+		sqlSession.delete("mapper.member.delMember", id);
+	}
 	
 
 }

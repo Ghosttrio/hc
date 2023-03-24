@@ -30,4 +30,15 @@ public class MemberServiceImpl implements MemberService {
 	public MemberDTO mypage(MemberDTO memberDTO) throws Exception {
 		return memberDAO.mypage(memberDTO);
 	}
+	
+	@Override	//마이페이지 회원정보 수정(updateMypage)
+	public int updateMypage(MemberDTO memberDTO)  throws Exception {
+		System.out.println("updateMypage 서비스:"+memberDTO);
+		return memberDAO.updateMypage(memberDTO);
+	}
+
+	@Override	//마이페이지 회원탈퇴(delMember)
+	public void delMember(String id) throws Exception {
+		memberDAO.delMember(id);
+	}
 }

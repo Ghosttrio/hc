@@ -21,28 +21,24 @@
 				
 	</resultMap>	
 	
-	<!-- 로그인 -->
+<!-- 로그인 -->
 	<select id="loginMember" resultType="memberDTO"  parameterType="memberDTO"  >
-		    <![CDATA[
+		    <!-- *resultType 나가는 return타입 과 같고, parameterType 들어오는 전달인자-->
 				SELECT* 
 				FROM MEMBER
 				WHERE member_id = #{member_id}
 				AND member_pwd = #{member_pwd}		
-			]]>
-		</select>
+	</select>
 	
 	<!-- 회원가입 아이디 중복체크  -->
 	<select id="checkMember" resultType="String" parameterType="String" >
-			<![CDATA[
 				  SELECT decode(count(*),1, 'true', 0, 'false')
 				  FROM MEMBER
 				   WHERE member_id = #{_parameter}
-			  ]]>
 	</select>
 	
 	<!-- 회원가입  -->
 	<insert id="addMember"  parameterType="memberDTO">
-		  <![CDATA[
 			  INSERT
 			  INTO MEMBER(member_id
 			    						, member_pwd
@@ -56,67 +52,43 @@
 					    	,#{member_email}
 					    	,#{member_number}
 					    	)
-			]]>      
   </insert>   
   
   	<!-- 마이페이지 회원 정보 출력 -->
 	<select id="mainMypage"  resultType="memberDTO" parameterType="memberDTO"  >
-		    <![CDATA[
+		    <!-- *resultType 나가는 return타입 과 같고, parameterType 들어오는 전달인자-->
 				SELECT* 
 				FROM MEMBER
 				WHERE member_id = #{member_id}
 				AND member_name = #{member_name}
 				AND member_email = #{member_email}		
 				AND member_number = #{member_number}		
-			]]>
 		</select>
-		
+  
+<!--   마이페이지 회원 정보 수정 -->
+	  <update id="updateMypage"  parameterType="memberDTO" >
+	  				UPDATE 
+	 						MEMBER
+					SET 
+					 member_pwd = #{member_pwd}
+					, member_name = #{member_name} 
+					, member_email = #{member_email} 
+					, member_number = #{member_number} 
+					, member_birth_y = #{member_birth_y} 
+					, member_birth_m = #{member_birth_m} 
+					, member_birth_d = #{member_birth_d} 
+					, member_gender = #{member_gender} 
+					, member_grade = #{member_grade} 
+					WHERE
+						member_id = #{member_id} 
+	  </update>
+	  
+    <!-- 회원탈퇴 -->
+	<delete id="delMember" parameterType="String">
+			  <![CDATA[
+					DELETE 
+					FROM MEMBER
+					WHERE member_id = #{_parameter}
+				]]>    
+	</delete>
 </mapper>
-
-
-
-<<<<<<< HEAD
-=======
-<!-- 좋아요 출력 -->
-	<select id="selectLike" resultType="int" parameterType="int">
-         <![CDATA[
-         	select like_num from practice where articleNO=#{articleNO}
-         ]]>
-	</select>
-
-<!-- 댓글 추가 -->
-	<insert id="insertComment" parameterType="movieDTO">
-         <![CDATA[
-         	INSERT INTO comment_1 (articleNO, commentNO, parentNO, comment_id, comment_text, comment_rate) 
-         	VALUES (#{articleNO}, #{commentNO}, 0, #{comment_id}, #{comment_text}, #{comment_rate})
-         ]]>
-	</insert>
-	
-<!-- 댓글출력(페이징) -->
-	<select id="commentList" resultType="movieDTO" parameterType="java.util.HashMap">
-         <![CDATA[
-        SELECT recnum, lvl, articleNO, commentNO, parentNO, comment_text, comment_id, comment_rate FROM (
-			SELECT rownum AS recnum, lvl, articleNO, commentNO, parentNO, comment_text, comment_id, comment_rate 
-			FROM (SELECT LEVEL AS lvl, articleNO, commentNO, parentNO, comment_text, comment_id, comment_rate 
-					FROM COMMENT_1 
-					START WITH parentNO=0 
-					CONNECT BY NOCYCLE PRIOR commentNO = parentNO 
-					ORDER SIBLINGS BY commentNO DESC)) 
-			WHERE articleNO = #{articleNO} and recnum BETWEEN (#{section}-1)*100 + (#{pageNum}-1)*10+1 AND (#{section}-1)*100+#{pageNum}*10 
-         ]]>
-	</select>
-	
-	
-<!-- 전체 댓글 개수 -->
-	<select id="tot" resultType="int" parameterType="int">
-         <![CDATA[
-         	select count(commentNO) from comment_1
-         ]]>
-	</select>
-	
-	<select id="notice" resultType="noticeDTO">
-		select * from notice
-	</select>
-
-</mapper>
->>>>>>> sm

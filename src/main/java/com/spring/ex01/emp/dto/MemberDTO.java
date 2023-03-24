@@ -12,20 +12,24 @@ public class MemberDTO {
 	private String member_name;
 	private String member_email;
 	private String member_number;
+	
 	private Date joinDate;
 	private String member_birth_y;
 	private String member_birth_m;
 	private String member_birth_d;
 	private String member_gender;
 	private String member_grade;
-	
+
+	private String member_no;
+
 	
 	@Override
 	public String toString() {
 		return "MemberDTO [member_id=" + member_id + ", member_pwd=" + member_pwd + ", member_name=" + member_name
 				+ ", member_email=" + member_email + ", member_number=" + member_number + ", joinDate=" + joinDate
 				+ ", member_birth_y=" + member_birth_y + ", member_birth_m=" + member_birth_m + ", member_birth_d="
-				+ member_birth_d + ", member_gender=" + member_gender + ", member_grade=" + member_grade + "]";
+				+ member_birth_d + ", member_gender=" + member_gender + ", member_grade=" + member_grade
+				+ ", member_no=" + member_no + "]";
 	}
 	
 	public String getMember_id() {
@@ -93,6 +97,13 @@ public class MemberDTO {
 	}
 	public void setMember_grade(String member_grade) {
 		this.member_grade = member_grade;
+	}
+	
+	public String getMember_no() {
+		return member_no;
+	}
+	public void setMember_no(String member_no) {
+		this.member_no = member_no;
 	}
 	
 }
