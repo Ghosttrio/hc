@@ -120,10 +120,12 @@ public class StoreController {
 					storeDTO.setUser_id(user_id);
 					
 					System.out.println(cart_id);
+					
 					// 중복확인
 					boolean overlap = storeService.findCart(storeDTO);
 					System.out.println("!!!!!!!!!!!!! : " + overlap);
 					if(overlap == true) {
+						
 						return "already_exsted";
 						
 					} else {
@@ -148,13 +150,14 @@ public class StoreController {
 		public String cartlist(
 				@RequestParam("cart_id") String cart_id,
 				StoreDTO storeDTO,
-				Model model) {
+				Model model) throws Exception  {
 			
 				System.out.println("cart_id_cartlist.do: "+ cart_id);
 			
 				List cartlist = storeService.cartlist(cart_id);
 				
 				model.addAttribute("cartlist", cartlist);
+			
 				
 				logger.warn("StoreController > cartlist : cartlist.size = " + cartlist.size());
 				
@@ -164,7 +167,21 @@ public class StoreController {
 				return "storecart";	
 		}
 	
-	
+//	// 장바구니 수정
+//		@ResponseBody
+//		@RequestMapping(value = "/amount_bt" , method= {RequestMethod.GET, RequestMethod.POST})
+//		public String amount_bt(
+//					HttpServletRequest request,
+//					Model model,
+//					@RequestBody
+//					StoreDTO storeDTO
+//				) throws Exception  {
+//			
+//			
+//		// 장바구니 수량 수정
+//			List amount_bt = storeService.cartlist(amount,cart_id,menu_id);
+//		}
+		
 	
 	
 	

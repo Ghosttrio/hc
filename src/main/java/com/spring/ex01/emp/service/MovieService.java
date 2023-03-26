@@ -86,14 +86,6 @@ public class MovieService {
 		articlesMap.put("totArticles", totArticles);
 		return articlesMap;
 	}
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> master
->>>>>>> 39a994152fc96f6b90ea3ea3115c70cee57b9ef9
 	public List theaterList() {
 		List theaterList = movieDAO.theaterList();
 		return theaterList;
@@ -122,26 +114,11 @@ public class MovieService {
 		List showList = movieDAO.showList(movieDTO);
 		return showList;
 	}
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-=======
 	
-	
->>>>>>> master
->>>>>>> 39a994152fc96f6b90ea3ea3115c70cee57b9ef9
 	
 	
 //	public void upComment2(MovieDTO movieDTO) {
 //		movieDAO.upComment2(articleNO, upComment2, comment_id, comment_text);
 //	}
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> master
->>>>>>> 39a994152fc96f6b90ea3ea3115c70cee57b9ef9
 	
 }

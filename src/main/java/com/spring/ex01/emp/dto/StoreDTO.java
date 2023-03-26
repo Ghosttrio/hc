@@ -20,6 +20,7 @@ public class StoreDTO {
 	// 스토어 결제정보 (장바구니, 구매하기)
 	private String user_id;
 	private String cart_id;
+	private String menu_name;
 	private int amount;	// 수량
 	private int total;	// 총 금액
 	private Date store_date;	// 제품 담은 시간
@@ -95,6 +96,12 @@ public class StoreDTO {
 	}
 	public String setCart_id(String cart_id) {
 		return this.cart_id = cart_id;
+	}
+	public String getMenu_name() {
+		return menu_name;
+	}
+	public void setMenu_name(String menu_name) {
+		this.menu_name = menu_name;
 	}
 	@Override
 	public String toString() {

@@ -93,5 +93,16 @@
 			and store_pay = #{store_pay}
 	</select>
 	
+	<!-- 장바구니 수량 변경 -->
+	<update id="amount_bt" parameterType="storeDTO" >
+		  UPDATE
+				STORE_CART
+			SET
+				amount = #{amount}
+			WHERE
+				cart_id = #{cart_id}
+				AND MENU_ID = #{menu_id}	
+	</update>
+	
 	
 </mapper>

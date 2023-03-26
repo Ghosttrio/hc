@@ -249,12 +249,14 @@
 					console.log("data", data);
 					
 					if(data == "login"){
+						alert("로그인이 필요한 페이지입니다.");
 						location.href = "/member/login.do"
 						
 					} else if (data == "already_exsted"){
-					 	alert("이미 카트에 등록된 제품입니다.");
+					 	alert("이미 장바구니에 등록된 제품입니다.");
 					 	
 					} else {
+						alert("장바구니에 담았습니다.");
 						location.href = "/Store/cartlist.do?cart_id="+data
 			
 					}

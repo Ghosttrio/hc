@@ -209,7 +209,6 @@ display:inline-block;
 <body>
     <div id="wrap">
         
-		<jsp:include page="../common/header.jsp"></jsp:include>
 		<h1>전체영화</h1>
 		<div class="tab">
 		    <div id="tab1">상영중</div>
