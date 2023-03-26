@@ -7,11 +7,25 @@
    <definition name="baseLayout"  template="/WEB-INF/views/common/layout.jsp">
       <put-attribute name="title" value="" />
       <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+<<<<<<< HEAD
       <put-attribute name="side" value=""/>
       <put-attribute name="body" value=""/>
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
    
+=======
+      <put-attribute name="side" value="/WEB-INF/views/common/side_member.jsp"/>
+      <put-attribute name="body" value="" />
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+   </definition>
+  
+
+   <!-- 임시 메인 페이지  -->
+         <definition name="main" extends="baseLayout">
+         <put-attribute name="title" value="메인 페이지" />
+         <put-attribute name="body" value="/WEB-INF/views/main/main.jsp" />
+      </definition>
+>>>>>>> 2ce438927c79584516e30a9d9888a7e3ebb909f8
 
 <!-- 로그인 페이지  -->
 	  <definition name="loginMember" extends="baseLayout">
@@ -46,6 +60,22 @@
          <put-attribute name="body" value="/WEB-INF/views/member/Mypage_update.jsp" />
       </definition>  
       
+<<<<<<< HEAD
 	
+=======
+<!-- 예매내역 페이지  -->      
+      <definition name="purchaseMypage" extends="baseLayout">
+         <put-attribute name="title" value="예매내역 페이지" />
+         <put-attribute name="body" value="/WEB-INF/views/member/Mypage_purchase.jsp" />
+      </definition>  
+      
+<!-- 관리자 페이지  -->      
+      <definition name="managerMember" extends="baseLayout">
+         <put-attribute name="title" value="관리자 페이지" />
+         <put-attribute name="body" value="/WEB-INF/views/member/Mypage_manager.jsp" />
+      </definition>  
+   
+
+>>>>>>> 2ce438927c79584516e30a9d9888a7e3ebb909f8
       
 </tiles-definitions>

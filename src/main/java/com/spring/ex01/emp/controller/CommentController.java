@@ -33,6 +33,7 @@ public class CommentController {
 			@RequestParam(value="section", required=false) String section,
 			@RequestParam(value="pageNum", required=false) String pageNum) {
 		System.out.println("��� ����");
+		
 		List article = movieService.viewArticle(articleNO);
 //		?�� ?��같�?�? ?��번하�??
 		model.addAttribute("article", article);
@@ -98,7 +99,10 @@ public class CommentController {
 		return "redirect:/movieInfo.do?articleNO="+articleNO;
 	}
 	
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2ce438927c79584516e30a9d9888a7e3ebb909f8
 	
 	
 //	if(action.equals("/reply.do")) {

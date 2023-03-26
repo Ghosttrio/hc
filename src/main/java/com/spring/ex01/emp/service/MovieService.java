@@ -115,7 +115,10 @@ public class MovieService {
 		return showList;
 	}
 	
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 2ce438927c79584516e30a9d9888a7e3ebb909f8
 	
 	
 //	public void upComment2(MovieDTO movieDTO) {

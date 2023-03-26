@@ -82,7 +82,11 @@
             <div id="h3"><a href="/HumanCinema/cinema/cinema.do">
             	<span style="cursor: pointer">극장</span></a></div>
             	
+<<<<<<< HEAD
             <div id="logo_human"><a href="/main/main.do">
+=======
+            <div id="logo_human"><a href="/main.do">
+>>>>>>> 2ce438927c79584516e30a9d9888a7e3ebb909f8
         		<img src="/image/headerLogo.png"/></a></div>
         		
 			<div id="h4"><a href="/Store/storemain.do">
@@ -91,7 +95,7 @@
             <div id="h5"><a href="/HumanCinema/event1/event1.do">
             	<span style="cursor: pointer">이벤트</span></a></div>
             
-            <div id="h6"><a href="/HumanCinema/board/listArticles.do">
+            <div id="h6"><a href="/notice/ntl">
             	<span style="cursor: pointer">고객센터</span></a></div>
         </div>
         
