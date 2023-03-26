@@ -24,6 +24,7 @@ import com.spring.ex01.emp.service.NoticeService;
 
 
 @Controller
+@RequestMapping("/notice")
 public class NoticeController {
 	
 	// @Autowired : 의존관계를 자동설정할 때 사용하며 타입을 이용하여 의존하는 객체를 삽입해 준다
