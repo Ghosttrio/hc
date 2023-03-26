@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-    .login {
+   .login {
 	    height: 100vh;
 	    width: 100%;
 	    position: relative;}
@@ -20,7 +20,6 @@
         
     .login_box .left_img{width: 600px; height: 900px;}
     .login_box .right_login{width: 65%; height: 100%; padding: 25px 25px;}
-
     .right_login .sign-in{
         display: flex;
         align-items: center;
@@ -43,9 +42,7 @@
         border: 1px solid lightgray;
         border-radius: 20px;
     }
-
     .right{background: linear-gradient(-45deg, #dcd7e0, #fff);}
-
     .submit {
         margin: auto;
         margin-top: 30px;
@@ -73,6 +70,7 @@
         background-size: width 600px height 500px;
     }
     section {display: flex; overflow: hidden;}
+    
     #mainimg{
     	width: 430px; 
         height: 600px;
@@ -82,4 +80,6 @@
         width: 300px; 
         height: 120px;
     }
+    
+    
     

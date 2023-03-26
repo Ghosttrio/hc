@@ -12,24 +12,22 @@ public class MemberDTO {
 	private String member_name;
 	private String member_email;
 	private String member_number;
-	
-	private Date joinDate;
-	private String member_birth_y;
-	private String member_birth_m;
-	private String member_birth_d;
+	private String member_phone;
+	private String member_birth;
 	private String member_gender;
 	private String member_grade;
-
+	private String member_agree_mail;
+	private String member_expire;
 	private String member_no;
-
+	private Date joinDate;
 	
 	@Override
 	public String toString() {
 		return "MemberDTO [member_id=" + member_id + ", member_pwd=" + member_pwd + ", member_name=" + member_name
-				+ ", member_email=" + member_email + ", member_number=" + member_number + ", joinDate=" + joinDate
-				+ ", member_birth_y=" + member_birth_y + ", member_birth_m=" + member_birth_m + ", member_birth_d="
-				+ member_birth_d + ", member_gender=" + member_gender + ", member_grade=" + member_grade
-				+ ", member_no=" + member_no + "]";
+				+ ", member_email=" + member_email + ", member_number=" + member_number + ", member_phone="
+				+ member_phone + ", member_birth=" + member_birth + ", member_gender=" + member_gender
+				+ ", member_grade=" + member_grade + ", member_agree_mail=" + member_agree_mail + ", member_expire="
+				+ member_expire + ", member_no=" + member_no + ", joinDate=" + joinDate + "]";
 	}
 	
 	public String getMember_id() {
@@ -62,29 +60,17 @@ public class MemberDTO {
 	public void setMember_number(String member_number) {
 		this.member_number = member_number;
 	}
-	public Date getJoinDate() {
-		return joinDate;
+	public String getMember_phone() {
+		return member_phone;
 	}
-	public void setJoinDate(Date joinDate) {
-		this.joinDate = joinDate;
+	public void setMember_phone(String member_phone) {
+		this.member_phone = member_phone;
 	}
-	public String getMember_birth_y() {
-		return member_birth_y;
+	public String getMember_birth() {
+		return member_birth;
 	}
-	public void setMember_birth_y(String member_birth_y) {
-		this.member_birth_y = member_birth_y;
-	}
-	public String getMember_birth_m() {
-		return member_birth_m;
-	}
-	public void setMember_birth_m(String member_birth_m) {
-		this.member_birth_m = member_birth_m;
-	}
-	public String getMember_birth_d() {
-		return member_birth_d;
-	}
-	public void setMember_birth_d(String member_birth_d) {
-		this.member_birth_d = member_birth_d;
+	public void setMember_birth(String member_birth) {
+		this.member_birth = member_birth;
 	}
 	public String getMember_gender() {
 		return member_gender;
@@ -98,12 +84,29 @@ public class MemberDTO {
 	public void setMember_grade(String member_grade) {
 		this.member_grade = member_grade;
 	}
-	
+	public String getMember_agree_mail() {
+		return member_agree_mail;
+	}
+	public void setMember_agree_mail(String member_agree_mail) {
+		this.member_agree_mail = member_agree_mail;
+	}
+	public String getMember_expire() {
+		return member_expire;
+	}
+	public void setMember_expire(String member_expire) {
+		this.member_expire = member_expire;
+	}
 	public String getMember_no() {
 		return member_no;
 	}
 	public void setMember_no(String member_no) {
 		this.member_no = member_no;
+	}
+	public Date getJoinDate() {
+		return joinDate;
+	}
+	public void setJoinDate(Date joinDate) {
+		this.joinDate = joinDate;
 	}
 	
 }
