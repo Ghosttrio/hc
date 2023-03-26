@@ -10,25 +10,6 @@
 
 </head>
 
-<c:choose>	
-	<c:when test ='${msg == "null_id" }'>
-		<script>
-			window.onload = function(){
-				alert("로그인 후 이용해주세요");
-				window.location.href = "/HumanCinema/user/login";
-			}
-		</script>
-	</c:when>
-	<c:when test = '${msg == "login" }'> 
-		<script>
-			window.onload = function(){
-				alert("메뉴가 장바구니에 담겼습니다. 확인하시겠습니까?");
-			}
-		</script>
-	</c:when>
-</c:choose>
-
-
 <style>
 .name{
 		font-size: 30px;

@@ -126,4 +126,11 @@ public class StoreServiceImpl implements StoreService {
 		return storeDAO.selectCount(storeDTO);
 	}
 	
+	// 장바구니 수량 수정
+	@Override
+	public int cart_update(StoreDTO storeDTO) {
+		int count = storeDAO.cart_update(storeDTO);
+		return count;
+	}
+	
 }

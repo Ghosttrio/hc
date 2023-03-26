@@ -29,5 +29,8 @@ public interface StoreDAO {
 	public boolean selectCount(StoreDTO storeDTO);
 	
 
+	public int cart_update(StoreDTO storeDTO);
+	
+
 	
 }

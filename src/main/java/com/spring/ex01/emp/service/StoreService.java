@@ -27,5 +27,7 @@ public interface StoreService {
 	
 	List cartlist(String cart_id);
 
-	boolean findCart(StoreDTO storeDTO);;
+	boolean findCart(StoreDTO storeDTO);
+
+	int cart_update(StoreDTO storeDTO);;
 }

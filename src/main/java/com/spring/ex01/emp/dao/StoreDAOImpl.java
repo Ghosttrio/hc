@@ -130,5 +130,12 @@ public class StoreDAOImpl implements StoreDAO {
 		return Boolean.parseBoolean(result);
 	}
 	
+	// 장바구니 수량 수정
+	public int cart_update(StoreDTO storeDTO) {
+		int count = sqlSession.insert("mapper.store.cart_update", storeDTO);
+		System.out.println("StoreDAOImpl > cart_update" + count);
+		return count;
+	}
+	
 
 }

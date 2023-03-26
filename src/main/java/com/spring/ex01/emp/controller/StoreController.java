@@ -167,22 +167,50 @@ public class StoreController {
 				return "storecart";	
 		}
 	
-//	// 장바구니 수정
-//		@ResponseBody
-//		@RequestMapping(value = "/amount_bt" , method= {RequestMethod.GET, RequestMethod.POST})
-//		public String amount_bt(
-//					HttpServletRequest request,
-//					Model model,
-//					@RequestBody
-//					StoreDTO storeDTO
-//				) throws Exception  {
-//			
-//			
-//		// 장바구니 수량 수정
-//			List amount_bt = storeService.cartlist(amount,cart_id,menu_id);
-//		}
-		
+	// 장바구니 수정
+		@ResponseBody
+		@RequestMapping(value = "/cartupdate" , method= {RequestMethod.PUT, RequestMethod.POST})
+		public String cart_update(
+				
+					HttpServletRequest request,
+					Model model,
+					@RequestBody
+					StoreDTO storeDTO,
+					@RequestParam("cart_id") String cart_id
+				) throws Exception  {
 	
+			
+		// 장바구니 수량 수정
+		
+			System.out.println(cart_id);
+			
+			if(cart_id != null && cart_id != "") {
+			
+				int count = storeDAO.cart_update(storeDTO);
+				
+				logger.warn("StoreController > cart_update : count.size = " + count );
+				
+				return "cart_update";
+				
+			} 
+			
+			return "storecart"; 
+			
+			
+			
+			
+			
+			
+			
+		}
+		
+		// 장바구니 삭제 
+		
+		
+		
+		// 장바구니 -> 구매하기
+		
+		
 	
 	
 	

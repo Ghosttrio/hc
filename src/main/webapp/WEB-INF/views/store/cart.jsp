@@ -43,6 +43,7 @@
 								<input type = "submit" value = "구매하기">
 								<input type = "submit" value = "메뉴삭제">
 								<input type = "hidden" id = "menu_id" value = "${list.menu_id}">
+								<input type = "hidden" id = "cart_id" value = "${list.cart_id}">
 							</td>
 						</tr>
 						</c:forEach>
@@ -70,30 +71,33 @@
 	// 수량 수정 버튼 클릭 -> DB에 수량 변경 후 저장
 	$("#amount_bt").click(function(){
 		
-	 	let data = {
-				name : $("#menu_name").text(),
-				image : $("#image").attr("src"), 
-				amount : $("#amount").text(),
-				price : $("#price").text(),
-				total : $("#total").text(),
-				menu_id : $("#menu_id").val()
+	 	let data = {	
+				amount : $("#amount").val(),
+				cart_id : $("#cart_id").val()
 			}
-
-	 	
+	 
+	
 		console.log(data)
 		$.ajax({
-			url : '/Store/cartadd.do?menu_id='+encodeURI(menu_id),
+			url : "/Store/cartupdate?cart_id="+data,
 			type : 'post',
-			contentType: "application/json",
+			contentType: "application/json; charset=UTF-8",
 			data : JSON.stringify(data),
 				
 			success : function(data) {
 				console.log("data", data);
+				
+				if(data == "cart_update"){
+					alert("수정 되었습니다.");
+					location.href = "/Store/cartlist.do?cart_id="+data
+				}
+					
 		    },				
 			error : function(e) {
 				
 				console.log(e)
 				alert("error:");
+				
 			}
 		     
 		});
