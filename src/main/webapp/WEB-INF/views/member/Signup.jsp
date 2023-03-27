@@ -111,16 +111,16 @@
         <div class="login_box">
             <div class="left_img">
                 <div class="slider">
-                    <img id="mainimg" src="/image/loginPoster01.jpg">
-                    <img id="mainimg" src="/image/loginPoster02.jpg">
-                    <img id="mainimg" src="/image/loginPoster03.jpg">
-                    <img id="mainimg" src="/image/loginPoster04.jpg">
-                    <img id="mainimg" src="/image/loginPoster05.jpg">
-                    <img id="mainimg" src="/image/loginPoster06.jpg">
-                    <img id="mainimg" src="/image/loginPoster07.jpg">
-                    <img id="mainimg" src="/image/loginPoster08.jpg">
-                    <img id="mainimg" src="/image/loginPoster09.jpg">
-                    <img id="mainimg" src="/image/loginPoster10.jpg">
+                	 <img id="mainimg" src="/image/member/poster01.jpg">
+                    <img id="mainimg" src="/image/member/poster02.jpg">
+                    <img id="mainimg" src="/image/member/poster03.jpg">
+                    <img id="mainimg" src="/image/member/poster04.jpg">
+                    <img id="mainimg" src="/image/member/poster05.jpg">
+                    <img id="mainimg" src="/image/member/poster06.jpg">
+                    <img id="mainimg" src="/image/member/poster07.jpg">
+                    <img id="mainimg" src="/image/member/poster08.jpg">
+                    <img id="mainimg" src="/image/member/poster09.jpg">
+                    <img id="mainimg" src="/image/member/poster10.jpg">
                 </div>
             </div>
             
@@ -139,7 +139,7 @@
                      <div class="inputSet"><input id="inputEmail"  type="text" name="member_email" placeholder="이메일을 입력하세요" ></div>
                      <div class="inputSet"><input id="inputNumber"  type="text" name="member_number" placeholder="전화번호를 입력하세요" ></div>
                  </div>
-                 <button  type="submit" class="submit"  id="new"  disabled="disabled">회원가입</button><br>
+                 <button  type="submit" class="button"  id="new"  disabled="disabled">회원가입</button><br>
                  </form>
                  
                </div>

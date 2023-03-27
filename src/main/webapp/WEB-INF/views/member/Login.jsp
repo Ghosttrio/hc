@@ -32,28 +32,30 @@
 	    }
 	  </script>
 </c:if>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8c1723acbc9cf277a5751e29ab802b2c030670d5
 <body>
-
     <section class="login">
         <div class="login_box">
             <div class="left_img">
                 <div class="slider">
-                    <img id="mainimg" src="/image/loginPoster01.jpg">
-                    <img id="mainimg" src="/image/loginPoster02.jpg">
-                    <img id="mainimg" src="/image/loginPoster03.jpg">
-                    <img id="mainimg" src="/image/loginPoster04.jpg">
-                    <img id="mainimg" src="/image/loginPoster05.jpg">
-                    <img id="mainimg" src="/image/loginPoster06.jpg">
-                    <img id="mainimg" src="/image/loginPoster07.jpg">
-                    <img id="mainimg" src="/image/loginPoster08.jpg">
-                    <img id="mainimg" src="/image/loginPoster09.jpg">
-                    <img id="mainimg" src="/image/loginPoster10.jpg">
+                    <img id="mainimg" src="/image/member/poster01.jpg">
+                    <img id="mainimg" src="/image/member/poster02.jpg">
+                    <img id="mainimg" src="/image/member/poster03.jpg">
+                    <img id="mainimg" src="/image/member/poster04.jpg">
+                    <img id="mainimg" src="/image/member/poster05.jpg">
+                    <img id="mainimg" src="/image/member/poster06.jpg">
+                    <img id="mainimg" src="/image/member/poster07.jpg">
+                    <img id="mainimg" src="/image/member/poster08.jpg">
+                    <img id="mainimg" src="/image/member/poster09.jpg">
+                    <img id="mainimg" src="/image/member/poster10.jpg">
                 </div>
             </div>
             <div class="right_login">
                 <div class="sign-in">
-                <img id="humanimg" src="/image/loginHuman.png">
+                <img id="humanimg" src="/image/member/loginLogo.png">
                 
 	                <form method="post" action="/member/loginMember">
 			                <input id="inputId" type="text" placeholder="아이디를 입력하세요" maxlength="20" name="member_id">
