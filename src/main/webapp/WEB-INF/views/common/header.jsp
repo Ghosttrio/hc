@@ -80,17 +80,13 @@
             <div id="h3"><a href="/HumanCinema/cinema/cinema.do">
             	<span style="cursor: pointer">극장</span></a></div>
             	
-<<<<<<< HEAD
-            <div id="logo_human"><a href="/main.do">
-=======
             <div id="logo_human"><a href="/main/main.do">
->>>>>>> 8c1723acbc9cf277a5751e29ab802b2c030670d5
         		<img src="/image/headerLogo.png"/></a></div>
         		
 			<div id="h4"><a href="/Store/storemain.do">
             	<span style="cursor: pointer">스토어</span></a></div>
             
-            <div id="h5"><a href="/login">
+            <div id="h5"><a href="/HumanCinema/event1/event1.do">
             	<span style="cursor: pointer">이벤트</span></a></div>
             
             <div id="h6"><a href="/notice/ntl">

@@ -5,6 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <link  href="/css/MemberLogin.css" rel="stylesheet" type="text/css" />
+
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
@@ -32,10 +33,6 @@
 	    }
 	  </script>
 </c:if>
-<<<<<<< HEAD
-
-=======
->>>>>>> 8c1723acbc9cf277a5751e29ab802b2c030670d5
 <body>
     <section class="login">
         <div class="login_box">

@@ -100,7 +100,6 @@ public class CommentController {
 	}
 	
 	
-
 //	if(action.equals("/reply.do")) {
 //		String articleNO = request.getParameter("articleNO");
 //		movieVO = movieService.viewArticle(Integer.parseInt(articleNO));

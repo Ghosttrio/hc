@@ -54,54 +54,6 @@
 	}
 </style>
 
-<<<<<<< HEAD
-<!--  -->
-	
-    <div id="content-wrap">
-      <aside id="mypage"><h1>마이페이지</h1></aside>
-            </div>
-              <section>
-                <article class="UserInformation">
-                   <form method="post"  action="/member/updateMypage" >
-                        <table>
-                            <th colspan="3">회원정보2</th>
-                            <tr>
-                                <td id="inputset1">아이디</td>
-                                <td><input id="inputset2" name="member_id" value='${member.member_id}' readonly="readonly"></td>
-                                <td id="btn"><input class="btnSlide" type="submit" value="수정하기" ></td> 
-                            </tr>
-                            <!-- 기존비밀번호 입력 하고 버튼 비활성하고
-   	                         		 신규 비밀번호1 확인용 비밀번호2 입력란 만들기-->
-                         	<tr>
-                                <td id="inputset1">기존비밀번호</td>
-                                <td colspan="2"><input id="inputSet" name="member_pwd" value='' placeholder="비밀번호를 입력하세요"></td>
-                            </tr>
-                            <tr>
-                                <td id="inputset1">비밀번호</td>
-                                <td><input id="inputSet2" name="inputPwd1" type="password" size="40" value='${inputPwd1}' placeholder="변경할 비밀번호를 입력하세요"></td>
-                            </tr>
-                            <tr>
-                                <td id="inputset1">비밀번호 확인</td>
-                                <td colspan="2"><input id="inputSet2" name="inputPwd2" type="password" size="40" value='${inputPwd2}'placeholder="다시 한번 입력하세요"></td>
-                            </tr>
-                            <tr>
-                                <td id="inputset1">이름</td>
-                                <td colspan="2"><input id="inputSet2" name="member_name" value='${member.member_name}'></td>
-                            </tr>
-                            <tr>
-                                <td id="inputset1">이메일</td>
-                                <td colspan="2"><input id="inputSet2" name="member_email" value='${member.member_email}'></td>
-                            </tr>
-                            <tr>
-                                <td id="inputset1">전화번호</td>
-                                <td colspan="2"><input id="inputSet2" name="member_number" value='${member.member_number}'></td>
-                            </tr>
-                      </table>
-                    </form>
-	         		
-                </article>
-              </section>
-=======
 <!-- <body background="/image/member/test.png"/> -->
 
 <body>
@@ -172,6 +124,5 @@
 			</form>
 		</table>
 	</div>
->>>>>>> 8c1723acbc9cf277a5751e29ab802b2c030670d5
 </body>
 </html>

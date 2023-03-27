@@ -21,11 +21,8 @@
 			<result property="joinDate" column="joinDate" />
 	</resultMap>	
 	
-<!-- 로그인 -->
+	<!-- 로그인 -->
 	<select id="loginMember" resultType="memberDTO"  parameterType="memberDTO"  >
-
-		    <!-- *resultType 나가는 return타입 과 같고, parameterType 들어오는 전달인자-->
-
 				SELECT* 
 				FROM MEMBER
 				WHERE member_id = #{member_id}
@@ -58,9 +55,6 @@
   
   	<!-- 마이페이지 회원 정보 출력 -->
 	<select id="mainMypage"  resultType="memberDTO" parameterType="memberDTO"  >
-
-		    <!-- *resultType 나가는 return타입 과 같고, parameterType 들어오는 전달인자-->
-
 				SELECT* 
 				FROM MEMBER
 				WHERE member_id = #{member_id}
@@ -78,34 +72,18 @@
 					, member_name = #{member_name} 
 					, member_email = #{member_email} 
 					, member_number = #{member_number} 
-
-					, member_birth_y = #{member_birth_y} 
-					, member_birth_m = #{member_birth_m} 
-					, member_birth_d = #{member_birth_d} 
-					, member_gender = #{member_gender} 
-					, member_grade = #{member_grade} 
-
 					, member_phone = #{member_phone} 
 					, member_birth = #{member_birth} 
 					, member_gender = #{member_gender} 
 					, member_agree_mail = #{member_agree_mail} 
-
 					WHERE
 						member_id = #{member_id} 
 	  </update>
 	  
     <!-- 회원탈퇴 -->
 	<delete id="delMember" parameterType="String">
-
-			  <![CDATA[
 					DELETE 
 					FROM MEMBER
 					WHERE member_id = #{_parameter}
-				]]>    
-
-					DELETE 
-					FROM MEMBER
-					WHERE member_id = #{_parameter}
-
 	</delete>
 </mapper>
