@@ -106,9 +106,6 @@ padding: 25px 50px;
 <button type="button" onclick="location.href='/modifyEvent.do'">이벤트 수정/삭제</button>
 </div>
 
-<div class="btns">
-  <div class="moveTopBtn"><a href="#">맨 위로</a></div>
-  <div class="moveBottomBtn"><a href="#bottom" id="bottom">맨 아래로</a></div>
 	
 </div>
 

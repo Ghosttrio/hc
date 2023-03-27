@@ -8,17 +8,13 @@
         <setting name="jdbcTypeForNull" value="NULL" />
     </settings>
     
-<<<<<<< HEAD
-    
-=======
->>>>>>> 33e621b3ac1e8fd01e57b44f5c10c086e0747144
 	<typeAliases>
 		<typeAlias type="com.spring.ex01.emp.dto.MemberDTO"  alias="memberDTO" />
 		<typeAlias type="com.spring.ex01.emp.dto.MovieDTO"  alias="movieDTO" />
-<<<<<<< HEAD
 		<typeAlias type="com.spring.ex01.emp.dto.EventDTO"  alias="eventDTO" />
-=======
 		<typeAlias type="com.spring.ex01.emp.dto.StoreDTO"  alias="storeDTO" />
->>>>>>> 33e621b3ac1e8fd01e57b44f5c10c086e0747144
+		<typeAlias type="com.spring.ex01.emp.dto.NoticeDTO"  alias="noticeDTO" />
 	</typeAliases>
+	
+	
 </configuration>

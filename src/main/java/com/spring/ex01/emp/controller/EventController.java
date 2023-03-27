@@ -32,7 +32,7 @@ public class EventController {
 	@Autowired
 	EventService eventService;
 	
-	//이벤트 목록
+	//이벤트 목록 관리자용
 	@RequestMapping(value="/event1/event1.do")
 	public String getList(Model model) {
 		List list = eventService.getList();
@@ -40,7 +40,7 @@ public class EventController {
 		model.addAttribute("eventsList", list);
 		logger.warn("EventController > getList : list.size = "+ list.size());
 		
-		return "event/listEvent";
+		return "listEvent.sg";
 	}
 	
 	//이벤트 목록 일반용
@@ -51,7 +51,7 @@ public class EventController {
 		model.addAttribute("eventsList", list);
 		logger.warn("EventController > getList : list.size = "+ list.size());
 		
-		return "event/listEvent2";
+		return "listEvent2.sg";
 	}
 	
 	
@@ -85,7 +85,7 @@ public class EventController {
 		
 		
 		
-		return "event/addEvent2";
+		return "addEvent2.sg";
 	}
 	
 	//두번째 이미지 보여주는 창
@@ -114,7 +114,7 @@ public class EventController {
 		model.addAttribute("listArticles", list2);
 		logger.warn("EventController > getList : list.size = "+ list.size());
 		
-		return "event/viewEvent";
+		return "viewEvent.sg";
 	}
 	
 	//이벤트 수정창
@@ -138,7 +138,7 @@ public class EventController {
 		model.addAttribute("eventsList", list);
 		
 		
-		return "event/modify";
+		return "modify.sg";
 	}
 	
 	
@@ -147,7 +147,7 @@ public class EventController {
 		
 		
 
-		return "event/modEventForm";
+		return "modEventForm.sg";
 	}
 	
 	//이벤트 삭제창
@@ -178,7 +178,7 @@ public class EventController {
 		model.addAttribute("listArticles", list);
 		logger.warn("EventController > ListArticles : list.size = "+ list.size());
 		
-		return "article/listArticles";
+		return "listArticles.sg2";
 	}
 	
 	//댓글추가창
@@ -202,7 +202,7 @@ public class EventController {
 		System.out.println("replyForm.do:id;"+id);
 		
 		model.addAttribute("id",id);
-		return "article/articleForm";
+		return "articleForm.sg2";
 	}
 	
 	//이벤트 대댓글 추가 창
@@ -220,7 +220,7 @@ public class EventController {
 		
 		model.addAttribute("id",id);
 		
-		return "article/replyForm";
+		return "replyForm.sg2";
 	}
 //	@RequestMapping(value="/replyForm3.do")
 //	public String replyForm3(Model model,@RequestParam("id") String id) {
@@ -271,7 +271,7 @@ public class EventController {
 			model.addAttribute("dto", dto);
 			
 			System.out.println("modArticle.do 실행");
-			return "article/modArticle";
+			return "modArticle.sg2";
 	}
 	
 	
@@ -329,7 +329,7 @@ public class EventController {
 			model.addAttribute("listArticles", list2);
 			logger.warn("EventController > getList : list.size = "+ list.size());
 			
-			return "event/viewEvent2";
+			return "viewEvent2.sg";
 		}
 	
 }

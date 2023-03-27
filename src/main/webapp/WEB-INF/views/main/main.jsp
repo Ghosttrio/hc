@@ -16,8 +16,6 @@
 </head>
 <body>
     <div id="wrap">
-    	<!-- 헤더영역 -->
-    	<jsp:include page="../common/header_main.jsp"></jsp:include>
     	<!-- 메인이미지 -->
     	<div class="main_image">
 	    	<c:forEach var="movie" items="${movieList }" begin="0" end="0" varStatus="status">
