@@ -6,6 +6,7 @@
 
 <style>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	#content-wrap{ 
 		display: inline-block;  /* body 옆에 붙도록 줌*/
 	} 
@@ -21,11 +22,18 @@
 =======
 	table {
 >>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
+=======
+	table {
+>>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
 	  border: 1px #49443f solid;
 	  box-shadow: 0 2px 5px rgba(0,0,0,.25);
 	  font-size: .9em;
 	  margin: auto;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	  width: 60%;
+>>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
 =======
 	  width: 60%;
 >>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
@@ -43,7 +51,11 @@
     td, th {
 		vertical-align: middle;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		padding: 15px;
+=======
+		padding: 15px 50px;
+>>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
 =======
 		padding: 15px 50px;
 >>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a

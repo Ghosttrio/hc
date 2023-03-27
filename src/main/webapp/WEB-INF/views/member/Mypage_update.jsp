@@ -5,6 +5,7 @@
 
 <style>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	#content-wrap{ 
 		display: inline-block;  /* body 옆에 붙도록 줌*/
 	} 
@@ -54,6 +55,8 @@
 		letter-spacing: 1.2px; /* 자간 간격 */
 	}
 =======
+=======
+>>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
 table {
 	background-color: white;
 	border: 1px #49443f solid;
@@ -97,6 +100,9 @@ input {
 	letter-spacing: 2px; /* 자간 간격 */
 	padding: 10px;
 }
+<<<<<<< HEAD
+>>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
+=======
 >>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
 </style>
 

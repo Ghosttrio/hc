@@ -15,12 +15,15 @@
    
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
       <put-attribute name="side" value=""/>
       <put-attribute name="body" value=""/>
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
    
 =======
+=======
+>>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
       <put-attribute name="side" value="/WEB-INF/views/common/side_member.jsp"/>
       <put-attribute name="body" value="" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
@@ -69,8 +72,11 @@
       </definition>  
       
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
 	
 =======
 <!-- 예매내역 페이지  -->      

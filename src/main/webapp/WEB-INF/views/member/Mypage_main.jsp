@@ -3,6 +3,7 @@
 
 <style>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	#content-wrap{ 
 		display: inline-block;  /* body 옆에 붙도록 줌*/
 	} 
@@ -52,6 +53,8 @@
 		letter-spacing: 1.2px; /* 자간 간격 */
 	}
 =======
+=======
+>>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
 table {
 	border: 1px #49443f solid;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, .25);
@@ -93,6 +96,9 @@ input {
 	opacity: 0.85; /* 투명도 */
 	letter-spacing: 1.2px; /* 자간 간격 */
 }
+<<<<<<< HEAD
+>>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
+=======
 >>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
 </style>
 
