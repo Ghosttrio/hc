@@ -18,8 +18,7 @@ public class TilesConfig {
         configurer.setDefinitions(new String[] {
             "/WEB-INF/tiles/tiles_member.xml",
             "/WEB-INF/tiles/tiles_store.xml",
-            "/WEB-INF/tiles/tiles_notice.xml",
-            "/WEB-INF/tiles/tiles_event.xml"
+            "/WEB-INF/tiles/tiles_notice.xml"
         });
 
         // 리프레쉬 가능 여부 설정

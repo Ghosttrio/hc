@@ -8,14 +8,11 @@
 <meta charset="UTF-8">
 <title>header</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@400;700&family=East+Sea+Dokdo&family=Poor+Story&display=swap');
        
        	a{text-decoration: none;}
        	
         header{
-            /* font-family: 'Dongle', sans-serif; */
-            /* font-family: 'East Sea Dokdo', cursive; */
-            font-family: 'Poor Story', cursive;
+            font-family: 'Courier New', Courier, monospace;
             margin-top: 30px;
             text-decoration:none;
 		
@@ -35,9 +32,9 @@
         .header_list div{
             width: 100px;
             line-height: 100px;
-            font-weight: 500;
+            font-weight: 600;
             color: white;
-            font-size: 25px;
+            font-size: 20px;
         }
         .header_list a{
         	color:white;
@@ -52,18 +49,21 @@
             vertical-align: middle;
         }
         .login_signup {
-            margin-top: 10px;
             display: flex;
             justify-content: flex-end;
             color:black;  
+            word-spacing: 20px;
+            padding-bottom: 20px;
         }
         .login_signup div{
-            margin-right: 40px;
+        	margin-top: 10px;
+            margin-right: 50px;
             font-weight: 600;
-            font-size: 20px;
+            font-size: 17px;
         }
         .login_signup a{
         	color:black;
+        	
         }
     </style>
 
@@ -80,13 +80,13 @@
             <div id="h3"><a href="/HumanCinema/cinema/cinema.do">
             	<span style="cursor: pointer">극장</span></a></div>
             	
-            <div id="logo_human"><a href="/main.do">
+            <div id="logo_human"><a href="/main/main.do">
         		<img src="/image/headerLogo.png"/></a></div>
         		
 			<div id="h4"><a href="/Store/storemain.do">
             	<span style="cursor: pointer">스토어</span></a></div>
             
-            <div id="h5"><a href="/login">
+            <div id="h5"><a href="/HumanCinema/event1/event1.do">
             	<span style="cursor: pointer">이벤트</span></a></div>
             
             <div id="h6"><a href="/notice/ntl">
@@ -94,16 +94,16 @@
         </div>
         
         <div class="login_signup">
-            <div id="h7">
+         <div id="h7">
 	            	<c:choose>
-	            			<c:when test="${isLogOn ==true and member!=null}">
-	            				<h3>${member.member_id }님 로그인 중</h3>
-		            			<a href="/member/logout" style="cursor: pointer"><h4>로그아웃</h4></a>
-		            			<a href="/member/mypage.do" style="cursor: pointer"><h4>마이페이지</h4></a>
-		        	 	 </c:when>
+            			<c:when test="${isLogOn ==true and member!=null}">
+	            				${member.member_id }님	|
+		            			<a href="/member/logout" style="cursor: pointer">로그아웃</a> |
+		            			<a href="/member/mypage.do" style="cursor: pointer">마이페이지</a>
+		        	 	</c:when>
 		          		<c:otherwise>
-			       			 <a href="/member/login.do" style="cursor: pointer"><h4>로그인</h4></a>
-			       			 <a href="/member/add.do" style="cursor: pointer"><h4>회원가입</h4></a>
+			       			 <a href="/member/login.do" style="cursor: pointer">로그인</a> |
+			       			 <a href="/member/add.do" style="cursor: pointer">회원가입</a>
 			     		 </c:otherwise>
 			   		</c:choose>     
        		 </div>
