@@ -5,8 +5,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <style>
-<<<<<<< HEAD
-<<<<<<< HEAD
 	#content-wrap{ 
 		display: inline-block;  /* body 옆에 붙도록 줌*/
 	} 
@@ -19,24 +17,10 @@
 	table {
 	 width: 780px;
 	 margin-top:50px;
-=======
-	table {
->>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
-=======
-	table {
->>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
 	  border: 1px #49443f solid;
 	  box-shadow: 0 2px 5px rgba(0,0,0,.25);
 	  font-size: .9em;
 	  margin: auto;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-	  width: 60%;
->>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
-=======
-	  width: 60%;
->>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
 	  border-collapse: collapse; /*테이블 테두리 셀의 테두리 사이 간격*/
 	  border-radius: 5px;/*테이블 둥근 테두리*/
 	  overflow: hidden;
@@ -50,15 +34,7 @@
 	}
     td, th {
 		vertical-align: middle;
-<<<<<<< HEAD
-<<<<<<< HEAD
 		padding: 15px;
-=======
-		padding: 15px 50px;
->>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
-=======
-		padding: 15px 50px;
->>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
 		text-align: center;
 		border-bottom: 1px solid rgba(0,0,0,.1); /* 테이블 구분선 */
     }

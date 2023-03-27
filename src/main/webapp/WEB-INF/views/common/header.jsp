@@ -8,14 +8,11 @@
 <meta charset="UTF-8">
 <title>header</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@400;700&family=East+Sea+Dokdo&family=Poor+Story&display=swap');
        
        	a{text-decoration: none;}
        	
         header{
-            /* font-family: 'Dongle', sans-serif; */
-            /* font-family: 'East Sea Dokdo', cursive; */
-            font-family: 'Poor Story', cursive;
+            font-family: 'Courier New', Courier, monospace;
             margin-top: 30px;
             text-decoration:none;
 		
@@ -35,9 +32,9 @@
         .header_list div{
             width: 100px;
             line-height: 100px;
-            font-weight: 500;
+            font-weight: 600;
             color: white;
-            font-size: 25px;
+            font-size: 20px;
         }
         .header_list a{
         	color:white;
@@ -56,12 +53,13 @@
             justify-content: flex-end;
             color:black;  
             word-spacing: 20px;
+            padding-bottom: 20px;
         }
         .login_signup div{
         	margin-top: 10px;
             margin-right: 50px;
             font-weight: 600;
-            font-size: 18px;
+            font-size: 17px;
         }
         .login_signup a{
         	color:black;
@@ -82,20 +80,7 @@
             <div id="h3"><a href="/HumanCinema/cinema/cinema.do">
             	<span style="cursor: pointer">극장</span></a></div>
             	
-<<<<<<< HEAD
             <div id="logo_human"><a href="/main/main.do">
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <div id="logo_human"><a href="/main/main.do">
-=======
-            <div id="logo_human"><a href="/main.do">
->>>>>>> 2ce438927c79584516e30a9d9888a7e3ebb909f8
->>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
-=======
-            <div id="logo_human"><a href="/main.do">
->>>>>>> 2ce438927c79584516e30a9d9888a7e3ebb909f8
->>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
         		<img src="/image/headerLogo.png"/></a></div>
         		
 			<div id="h4"><a href="/Store/storemain.do">

@@ -5,17 +5,11 @@
 	rel="stylesheet">
 
 <style>
-<<<<<<< HEAD
-<<<<<<< HEAD
 #sidebar-left{
 	display: inline-block;	/* body 옆에 붙도록 줌*/
 	vertical-align: top;	/*테이블 이랑 상단을 동일하게 둔다.*/
 	margin-top: 50px;	/*상단에 붙어서 조금 띄어줌*/
 }
-=======
->>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
-=======
->>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
 .menu {
 	display: block;
 	opacity: 0.85; /* 투명도 */
@@ -28,13 +22,7 @@
 	padding: 10px;
 	box-sizing: border-box;
 	flot: right;
-<<<<<<< HEAD
-<<<<<<< HEAD
 	
-=======
->>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
-=======
->>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
 }
 
 .menu ul {
@@ -68,13 +56,7 @@
 	line-height: 1.5;
 	font-size: 0.9em; /* 글씨크기 */
 	padding: 0 0 0 20px; /* */
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
-=======
->>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
 }
 
 #expand-menu {
@@ -127,8 +109,6 @@ menu #expand-menu:not(:checked) ~ ul { /* 데스크탑 화면에서도 메뉴를
 
 </head>
 <body>
-<<<<<<< HEAD
-<<<<<<< HEAD
 	<form>
 		<!-- 	<form id="adminMember" method="post" action="/member/">	</form> -->
 		<div class="menu">
@@ -146,26 +126,4 @@ menu #expand-menu:not(:checked) ~ ul { /* 데스크탑 화면에서도 메뉴를
 			</ul>
 		</div>
 	</form>
-=======
-=======
->>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
-	<!-- 	<form id="adminMember" method="post" action="/member/">	</form> -->
-	<div class="menu">
-		<label for="expand-menu"><div>메뉴</div></label> <input type="checkbox"
-			id="expand-menu" name="expand-menu">
-		<ul>
-			<li><a href="/member/mypage.do" class="item"><div>프로필</div></a></li>
-			<li><a href="/member/update.do" class="item"><div>회원정보수정</div></a></li>
-			<li><a href="/member/del.do" class="item"><div>회원탈퇴</div></a></li>
-<!-- 			<li> -->
-<!-- 				<a href="/member/adminMem.do" class="item">  -->
-<%-- 				<c:if test="${memberDTO.member_id =='admin' }">관리자 회원 리스트</c:if> --%>
-<!-- 				</a> -->
-<!-- 			</li> -->
-		</ul>
-	</div>
-<<<<<<< HEAD
->>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
-=======
->>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
 </body>
