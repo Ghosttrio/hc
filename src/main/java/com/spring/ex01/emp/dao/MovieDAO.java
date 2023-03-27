@@ -131,7 +131,12 @@ public class MovieDAO {
 	}
 
 	
+<<<<<<< HEAD
 
+=======
+	
+	
+>>>>>>> 9db47a466395473ca1a98cc330e1b8ddfbefde57
 	
 }
 
