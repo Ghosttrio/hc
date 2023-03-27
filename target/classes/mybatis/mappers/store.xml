@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="mapper.store">
+
+		<!-- 관리자페이지(스토어 메뉴 목록) -->
+	 <select id="StoreList" resultType="storeDTO">
+         <![CDATA[
+         	select * from store
+         ]]>
+	</select>
+	
+		<!-- 관리자페이지(스토어 메뉴 추가) -->
+		
+	<insert id="StoreAdd" parameterType="storeDTO">
+         <![CDATA[
+         	insert into store
+        	 (menu_id, name, price, image, menu_type)
+        	 values
+        	 (#{menu_id}, #{name}, #{price}, #{image}, #{menu_type})
+         ]]>
+	</insert>
+	
+	<!-- menu_id 리스트 -->
+	<select id="selectStore" parameterType="String" resultType="storeDTO">
+		select * from store
+		where menu_id = #{_parameter}
+	</select>
+	
+	
+		<!-- 관리자페이지(스토어 메뉴 수정) -->
+		
+	<update id="StoreUpdate" parameterType="storeDTO" >
+	        UPDATE
+				store
+			SET
+				name = #{name},
+				price = #{price},
+				image = #{image},
+				menu_type = #{menu_type}
+			WHERE
+				menu_id = #{menu_id}
+	</update>
+	
+	
+	<!-- 관리자페이지(스토어 메뉴 삭제) -->
+	
+	<delete id="DeleteStore" parameterType="String">
+		DELETE
+		FROM  store
+		WHERE menu_id = #{_parameter}
+	</delete>
+	
+	
+	<!--  스토어 (메뉴타입) -->
+	
+	<select id="selectMenu" parameterType="String" resultType="storeDTO">
+		select * from store
+		where menu_type = #{_parameter}
+	</select>
+	
+	
+	<!-- menu_id 리스트 -->
+	<select id="storeinfo" parameterType="String" resultType="storeDTO">
+		select * from store
+		where menu_id = #{_parameter}
+	</select>
+	
+
+	<!-- 장바구니 추가 -->
+	<insert id = "cartadd" parameterType="storeDTO">
+		 <![CDATA[
+         	insert into STORE_CART
+        	 (cart_id, amount, price, CART_DATE, store_pay, menu_name, image, menu_id, user_id)
+        	 values
+        	 (#{cart_id}, #{amount},#{price}, sysdate, #{store_pay}, #{name}, #{image}, #{menu_id}, #{user_id})
+         ]]>
+	</insert>
+	
+		<!-- 장바구니 목록 -->
+	 <select id="cartlist" parameterType="String"  resultType="storeDTO">
+         select * from STORE_CART
+			where cart_id = #{_parameter}
+	</select>
+	
+	<!-- 장바구니 중복 확인 -->
+	<select id = "selectCount" parameterType="storeDTO"  resultType="String">
+			SELECT DECODE(COUNT(*), 0, 'false', 'true')FROM  STORE_CART
+			WHERE MENU_ID = #{menu_id}
+			AND cart_id = #{cart_id}
+			and store_pay = #{store_pay}
+	</select>
+	
+	
+</mapper>

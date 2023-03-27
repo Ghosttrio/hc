@@ -5,18 +5,11 @@
 <mapper namespace="event">
 
 <!-- 이벤트목록 -->
+<!-- select id= DAOImpl에있음 -->
 <select id="selectEventList" resultType="eventDTO">
 		SELECT * From event
 	</select>
 	
-<!-- 댓글목록	 -->
-<select id="listArticles" resultType="eventDTO">
-		SELECT LEVEL, articleNO, parentNO, title, content, id
-					 from e_board
-					 START WITH parentNO=0
-					CONNECT BY PRIOR articleNO=parentNO
-					 ORDER SIBLINGS BY articleNO DESC
-	</select>
 	
 <!-- 이벤트 목록 추가 -->
 <insert id="addEvent" parameterType="eventDTO">
@@ -25,4 +18,90 @@
 		VALUES
 			(#{id}, #{title}, #{firstimage}, #{secondimage}, #{eventday} )
 	</insert>
+
+<!-- 두번째 이미지 표시 -->
+<select id="viewEvent" resultType="eventDTO" parameterType="String">
+		select secondimage from event 
+		where id=#{id}
+		
+<!-- 		select replyId,replyTitle, content from event  -->
+<!-- 		where id=#{id} -->
+</select>
+	
+<!-- 이벤트 수정  -->
+<update id="updateEvent" parameterType="eventDTO">
+		UPDATE
+			event
+		SET
+			id = #{id},
+			title = #{title},
+			firstimage = #{firstimage},
+			secondimage = #{secondimage},
+			eventday = #{eventday}
+		WHERE
+			id = #{id}
+	</update>
+
+<!-- 이벤트 삭제 -->
+<delete id="deleteEvent" parameterType="eventDTO">
+	delete
+	 	event
+	where
+		id= #{id}
+</delete>
+
+<!-- 댓글 -->
+
+<select id="viewEvent_review" resultType="eventDTO" parameterType="String">
+		
+		
+
+				SELECT LEVEL, id,articleNO, parentNO, replyTitle, content, replyId
+					 from event_review 
+					 WHERE id = #{id}
+					 START WITH parentNO=0
+					CONNECT BY nocycle PRIOR articleNO = parentNO
+					ORDER SIBLINGS BY articleNO DESC
+	</select>
+	
+
+<!-- 댓글목록	 -->
+<select id="listArticles" resultType="eventDTO">
+		SELECT LEVEL, id,articleNO, parentNO, replyTitle, content, replyId
+					 from event_review
+					 START WITH parentNO=0
+					CONNECT BY PRIOR articleNO=parentNO
+					 ORDER SIBLINGS BY articleNO DESC
+	</select>
+	
+<!-- 댓글추가	 -->
+<insert id="ReplyForm" parameterType="eventDTO">
+		INSERT INTO
+			event_review (id, articleNO,  parentNO,  replyTitle, content,replyId,writeDate)
+		VALUES
+			( #{id},event_review_seq.nextval, #{parentNO}, #{replyTitle}, #{content}, #{replyId}, sysdate)
+	</insert>
+	
+	
+	
+	
+	
+	
+	
+<!-- 댓글 수정  -->
+<update id="modArticle" parameterType="eventDTO">
+		UPDATE
+			event_review
+		SET
+			replyId = #{replyId},
+			replyTitle = #{replyTitle},
+			content = #{content}
+		WHERE
+			articleNO = #{articleNO}
+	</update>	
+<!-- 	디테일 -->
+<select id="selectReplyId" parameterType="String" resultType="eventDTO">
+		select * from event_review
+		where replyId = #{_parameter}
+	</select>
 </mapper>

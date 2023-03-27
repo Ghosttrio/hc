@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+   <definition name="baseLayout"  template="/WEB-INF/views/common/layout.jsp">
+      <put-attribute name="title" value="" />
+      <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+      <put-attribute name="side" value="/WEB-INF/views/common/side.jsp"/>
+      <put-attribute name="body" value="" />
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+   </definition>
+   
+      <!--  메인 페이지  -->
+         <definition name="main" extends="baseLayout">
+         <put-attribute name="title" value="메인 페이지" />
+         <put-attribute name="body" value="/WEB-INF/views/main/main.jsp" />
+      </definition>
+      
+<!--     이벤트  -->
+  		<definition name="*.sg" extends="baseLayout">
+         <put-attribute name="title" value="이벤트  페이지" />
+         <put-attribute name="body" value="/WEB-INF/views/event/{1}.jsp" />
+	    </definition>
+	    
+<!--     이벤트 댓글용 -->
+  		<definition name="*.sg2" extends="baseLayout">
+         <put-attribute name="title" value="댓글 페이지" />
+         <put-attribute name="body" value="/WEB-INF/views/article/{1}.jsp" />
+	    </definition>
+	    
+<!--     이벤트 댓글용 -->
+  		<definition name="*.sg3" extends="baseLayout">
+         <put-attribute name="title" value="로그인 페이지" />
+         <put-attribute name="body" value="/WEB-INF/views/loginEvent/{1}.jsp" />
+	    </definition>
+	    
+	    
+<!--     이벤트 댓글용 -->
+  		<definition name="*.sg4" extends="baseLayout">
+         <put-attribute name="title" value="로그인 페이지" />
+         <put-attribute name="body" value="/WEB-INF/views/member/{1}.jsp" />
+	    </definition>
+	    
+<!--     로그인 페이지 -->
+  		<definition name="*.sg4" extends="baseLayout">
+         <put-attribute name="title" value="로그인 페이지" />
+         <put-attribute name="body" value="/WEB-INF/views/member/{1}.jsp" />
+	    </definition>
+	    
+	  </tiles-definitions>
+	  
+	    
+	
+      

@@ -3,8 +3,18 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+
+   <settings>
+        <setting name="jdbcTypeForNull" value="NULL" />
+    </settings>
+    
 	<typeAliases>
+		<typeAlias type="com.spring.ex01.emp.dto.MemberDTO"  alias="memberDTO" />
 		<typeAlias type="com.spring.ex01.emp.dto.MovieDTO"  alias="movieDTO" />
-		<typeAlias type="com.myspring.dto.EventDTO"  alias="eventDTO" />
+		<typeAlias type="com.spring.ex01.emp.dto.EventDTO"  alias="eventDTO" />
+		<typeAlias type="com.spring.ex01.emp.dto.StoreDTO"  alias="storeDTO" />
+		<typeAlias type="com.spring.ex01.emp.dto.NoticeDTO"  alias="noticeDTO" />
 	</typeAliases>
+	
+	
 </configuration>

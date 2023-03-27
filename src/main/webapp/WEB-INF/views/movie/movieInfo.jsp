@@ -4,15 +4,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <% request.setCharacterEncoding("utf-8"); %>
+
+
+<!-- 댓글 리스트 -->
 <c:set var="articlesList" value="${articlesMap.articlesList }" />
+<!-- 총 댓글 수 -->
 <c:set var="totArticles" value="${articlesMap.totArticles }" />
+<!-- 섹션 -->
 <c:set var="section" value="${articlesMap.section }" />
+<!-- 페이지 번호 -->
 <c:set var="pageNum" value="${articlesMap.pageNum }" />
 
 <c:set var = "total" value = "0" />
 <c:forEach var="result" items="${articlesList}" varStatus="status">     
-<c:set var= "total" value="${total + result.comment_rate}"/>
-
+	<c:set var= "total" value="${total + result.comment_rate}"/>
 </c:forEach>
 
 <c:set var = "total1" value = "0" />
@@ -29,35 +34,28 @@
     <title>영화정보</title>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <style>
-#wrap {
-    width: 1300px;
-    height: 2000px;
-    margin : 0 auto
-    
-}
 
-#header{
-    height: 100px;
-}
-
+/* 상단부분 위치설정 */
 #info{
     background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7) );
     background-size:100%;
     height: 600px;
+    position:relative;
 }
 
 #back {
-
-	position: absolute;
-	z-index:-1;
-	
-}
-#back img {
-	width: 1300px;
+	width:100%;
 	height: 600px;
+	overflow:hidden;
+	position:absolute;
+	z-index:-2;
 }
 
-
+#back img {
+	width:100%;
+	position:relative;
+	z-index:-1;
+}
 
 
 #info > div {
@@ -66,12 +64,22 @@
 }
 
 #left{
+	postion:absolute;
     width: 500px;
     height: 600px;
     text-align: left;
     margin-left: 70px;
 }
+#right{
+    margin-left: 280px;
+    width: 290px;
+    height: 600px;
+    text-align: center;
+    position:absolute;
+}
 
+
+/* left안의 속성 */
 #title1{
     font-size: 50px;
     margin-top: 40px;
@@ -82,22 +90,22 @@
     margin-bottom: 330px;
     color:white;
 }
-.btn0 {
-    width: 150px;
+/* 좋아요버튼 */
+#btn0 {
+    width: 110px;
     height: 50px;
+    background-color: black;
+    color:white;
+    border: 1px solid white;
+    border-radius:5%;
+    cursor:pointer;
 }
+
 .rate {
     display: inline-block;
     color:white;
     font-size: 25px;
-    margin-left: 10px;
-}
-#right{
-    margin-left: 350px;
-    width: 290px;
-    height: 600px;
-    text-align: center;
-    
+    margin-top:5px;
 }
 
 .poster {
@@ -108,72 +116,18 @@
     margin-top: 20px;
     width: 150px;
     height: 50px;
+    background-color: #037b94;
+    color:white;
+    border: 0;
+    outline: 0;
+    border-radius:5%;
+    cursor:pointer;
 }
-
+/* 영화정보위치 */
 #info2{
     height: 300px;
     padding: 40px;
 }
-
-#comment{
-    padding: 40px;
-    height: 700px;
-}
-
-
-
-/* 상단바 */
-	
-        header{
-            color: white;
-            margin-top: 30px;
-        }
-        .header_list {
-            background-color: black;
-            
-            display: flex;
-            justify-content: space-around;
-            text-align: center;
-            height: 100px;
-        }
-        .header_list >div{
-            width: 100px;
-            line-height: 100px;
-            font-weight: 600;
-            font-size: 20px;
-        }
-        .header_list a {
-        	text-decoration:none;
-        	color: white;
-        }
-        #logo_human{
-            width: 150px;
-            height: 100px;
-        }
-        #logo_human img{
-            width: 150px;
-            height: 100px;
-        }
-        
-        .login_signup {
-        	
-            margin-top: 10px;
-            display: flex;
-            justify-content: flex-end;
-            color: white;
-                       
-        }
-        .login_signup div{
-            margin-left: 20px;
-            font-weight: 600;
-            
-        }
-        .login_signup a{
-            text-decoration:none;
-            color: white;
-            
-        }
-
 
 
 /* 더보기 */
@@ -208,105 +162,120 @@
     background-color: gainsboro;
 }
 
-.comment_wrap1{
-	
+
+
+/* 관람평 */
+#comment{
+    padding: 40px;
+    height: 700px;
 }
-
-.comment_wrap1 div {
-
-}
-
-.no-uline{text-decoration:none;
-display:inline-block;
-}
-
-
-.sel-page{text-decoration:none; color:red;
-display:inline-block;
-}
-
-#paging{
-	text-align:center;
-}
-
-
-
-.c_total{
-	font-size:20px;
-	font-weight:600;
-	margin-bottom:20px;
-}
-
 
 .comment_wrap1{
 	margin-bottom:20px;
 }
-
-.comment_wrap1 div{
+.comment_wrap1 input{
 	display:inline-block;
 	vertical-align:top;
-}
-
-.comment_wrap2{
-	background-color:rgb(227, 227, 227);
-	margin-bottom: 20px;
 	
 }
-
-
 .a{
-	width:132px;
-	height:100px;
+	width:5%;
+	height:67px;
+	background-color: black;
+    color:white;
+    border: 1px solid white;
+    border-radius:5%;
+    cursor:pointer;
+    font-weight:600;
 }
 .b{
-	width:800px;
-	height:100px;
+	width:76%;
+	height:60px;
+	
 }
 .c{	
-	width:150px;
-	height:100px;
-
+	width:5%;
+	height:60px;
+	font-size:20px;
 }
+
 #comment_btn{
-	width:100px;
-	height:105px;
+	width: 10%;
+	height:67px;
+	background-color: black;
+    color:white;
+    border: 1px solid white;
+    border-radius:5%;
+    cursor:pointer;
+    font-weight:600;
 }
 
-.qq > div{
+
+/* 댓글목록 */
+
+.comment_wrap2{
+	background-color:#f8f8fa;
+	margin-bottom: 20px;
+	padding:5px;
+	
+}
+
+.comment_box > div{
 	display:inline-block;
-	height:100px;
-	vertical-align:top;
-	text-align:center;
-	margin:0 auto;
+	vertical-align:middle
 }
-.d{
-	width:140px;
-	height:105px;
-	line-height: 100px;
-}
-.e{
-	width:800px;
-	height:100px;
-	line-height: 100px;
-}
-.f{	
-	width:150px;
-	height:100px;
-	line-height: 100px;
 
+.commentNO{
+	font-size:20px;
+	font-weight:600;
 }
-.g{
-	width:100px;
-	height:50px;
+
+.comment_id{
+	font-size:30px;
+	font-weight:600;
+	margin-left:20px;
 }
-.h{
-	width:100px;
-	height:50px;
+
+.comment_rate{
+	font-size:30px;
+	font-weight:600;
+	margin-left:20px;
 }
-.i{
-	width:100px;
+
+.comment_rate{
+	font-size:30px;
+	margin-left:20px;
+	margin-right:20px;
+	color:red;
+}
+
+.comment_manager{
 	float:right;
 }
+.comment_update{
+	background-color: black;
+    color:white;
+    border: 1px solid white;
+    border-radius:5%;
+    cursor:pointer;
+    font-weight:600;
+}
+.comment_delete{
+	background-color: black;
+    color:white;
+    border: 1px solid white;
+    border-radius:5%;
+    cursor:pointer;
+    font-weight:600;
+}
+.commentNO_box >div{
+	text-align:center;
+}
+
+
+
+
+
 
 
 /* 대댓글 폼 */
@@ -322,48 +291,48 @@ display:inline-block;
 }
 
 .recomment_id{
-	width:100px;
+	width:7%;
 	height:50px;
+	background-color: black;
+    color:white;
+    border: 1px solid white;
+    border-radius:5%;
+    cursor:pointer;
+    font-weight:600;
 }
 
 .recomment_text{
-	width:900px;
-	height:50px;
+	width:70%;
+	height:40px;
 }
 
 .recomment_btn{
-	width:100px;
-	height:55px;
+	width:10%;
+	height:50px;
+	background-color: black;
+    color:white;
+    border: 1px solid white;
+    border-radius:5%;
+    cursor:pointer;
+    font-weight:600;
 }
 
 
 /* 대댓글 출력 */
 
-/* <div class="comment_wrap22">
-	<div class="qqq">
-       	<div class="recomment_ll">ㄴ[답글]</div>
-       	<div class="dd">${comment.comment_id }</div>
-		<div class="ee">${comment.comment_text}</div>
-		<div class="ii">
-			<input class="gg" type="button" value="수정">
-			<input class="hh" type="button" value="삭제">
-		</div>
-	</div>
-</div> */
-
 .comment_wrap22 {
-	background-color: lightslategrey;
+	background-color: #bebec1;
 	margin-left:40px;
 	margin-bottom:10px;
 }
 .qqq div{
 	display:inline-block;
-	line-height:60px;
+	line-height:50px;
 	margin-left : 10px;
 	font-size:20px;
 }
 .qqq{
-	height:60px;
+	height:50px;
 }
 .recomment_ll{
 	font-weight:600;
@@ -371,12 +340,40 @@ display:inline-block;
 }
 
 
+/* 페이징 */
+
+
+.no-uline{text-decoration:none;
+display:inline-block;
+}
+.sel-page{text-decoration:none; color:red;
+display:inline-block;
+}
+#paging{
+	text-align:center;
+}
+#paging input {
+	background-color: black;
+    color:white;
+    border: 1px solid white;
+    border-radius:5%;
+    cursor:pointer;
+    font-weight:600;
+    width:30px;
+    height:30px;
+}
+.c_total{
+	font-size:20px;
+	font-weight:600;
+	margin-bottom:20px;
+}
 
 
 </style>
 <script>
-// 더보기
+
 	window.onload =() =>{
+		// 더보기
 		document.querySelector(".more").addEventListener("mouseover",function(){
 		    document.querySelector(".more").classList.add("more1");
 		});
@@ -396,28 +393,30 @@ display:inline-block;
 		});
 		
 		
-		for (let k = 1; k < 5; k++) {
-	    	document.querySelector("#like_btn"+k).addEventListener("click", function(){
-	       	 $.ajax({
-	    		    url: "../movie1",
-	    		    type: "POST",
-	    		    dataType: "html",
-	    		   	data:{
-	    	            command : $('#command').val(),
-	    	            articleNO1 : $('#articleNO1'+k).val()
-	    	        },
-	    		    success:function(data){      					
-	    		    	let a = JSON.parse(data).like;
-	    		    	console.log(a);
-	    		    	 /* 화면에 표시하는 방법  */
-	    		    	$("#like_btn"+k).val("좋아요 "+a);
-	    		    },   
-	    		    error: 
-	    		    function (request, status, error){  
-	    		    }
-	    		  });
-	       })
-	    }
+		 for (let k = 1; k < 5; k++) {
+				document.querySelector(".like_btn"+k).addEventListener("click", function(){
+			   	 $.ajax({
+					    url: "like.do",
+					    type: "POST",
+					    dataType: "html",
+					   	data:{
+				            command : $('.command').val(),
+				            articleNO1 : $('.articleNO1'+k).val()
+				        },
+					    success:function(data){  
+					    	alert("성공");
+					    	let a = data;
+					    	console.log(a);
+					    	 /* 화면에 표시하는 방법  */
+					    	$(".like_btn"+k).val("♡ "+a);
+					    },   
+					    error: 
+					    function (request, status, error){  
+					    }
+					  });
+			   })
+			}
+		
 		
 	}
 </script>
@@ -425,29 +424,37 @@ display:inline-block;
 <body>
     <div id="wrap">
     
-        <jsp:include page="../common/Header.jsp"></jsp:include>
+        <jsp:include page="../common/header.jsp"></jsp:include>
 	    
+	    <!-- articleNO에 맞는 영화리스트  -->
         <!-- 영화이미지 div -->
         <c:forEach var="movie" items="${movieList }" varStatus="status">
         	
+        	<!-- 상단부분 -->
 	        <div id="info">
-	        	<div id="back"><img src="${movie.poster_back }"></div>
+        		<div id="back"><img src="${movie.poster_back }"></div>
 	            <div id="left">
 	                <div id="title1">${movie.title}</div>
 	                <div id="title2">${movie.title_en}</div>
 	                
-	                <form id="like_form">
-					  	<input id="like_num" type="hidden" name="like_num" value="${movie.like_num}">
-					  	<input id="articleNO1${status.count }" type="hidden" name="articleNO1" value="${movie.articleNO}">
-					  	<input id="command" type="hidden" name="command" value="like_it">
-					  	<input id="like_btn${status.count }" class="btn0" name="like_num2" type="button" value="좋아요 ${movie.like_num }">
-				  	</form>
+	                <form action="like.do">
+	    	    		<input class="like_num" type="hidden" name="like_num" value="${movie.like_num}">
+					  	<input class="articleNO1${status.count }" type="hidden" name="articleNO1" value="${movie.articleNO}">
+					  	<input class="command" type="hidden" name="command1" value="like_it">
+					  	<input id="btn0" class="like_btn${status.count }" type="button" value="♡ ${movie.like_num }">
+    	    		</form>
+	                
+	             
+				  	
 				  	
 	                <div class="rate">평점 : ${String.format("%.1f", (total / totArticles))}</div>
 	            </div>
 	            <div id="right">
 	                <div class="poster"><img src="${movie.poster_main}" width="290" height="404"></div>
-	                <input class="btn1" type="button" value="예매">
+	                <form action="booking.do">
+	                	<input type="hidden" name="articleNO" value="${articleNO }">
+	                	<input class="btn1" type="submit" value="예매">
+	                </form>
 	            </div>
         	</div>
         	<div id="info2">
@@ -470,139 +477,142 @@ display:inline-block;
         	</div>
         	
         <!-- 댓글영역 -->
-  				<div id="comment">
-            	<div class="c_total">${movie.title}에 대한 ${total1 }개의 이야기가 있어요!</div>
-	            <div class="comment_wrap1">
-	            	<h3>관람평쓰기</h3>
-					<form method="get" action="/reply.do">
-						<input type="hidden" name="articleNO" value="${movie.articleNO }">
-						<div><input class="a" type="text" name="comment_text" placeholder="       아이디 입력"></div>
-						<div><input class="b" type="text" name = "comment_id" placeholder="  관람평을 입력해주세요"></div>
-						<div><input class="c" type="number" min="0" max="10" name = "comment_rate" placeholder="  평점입력(0~10)"></div>
-						<div><input id="comment_btn" type="submit" value="관람평쓰기"></div>
-					</form>
-				</div>
-				<br>
+			<div id="comment">
+				<!-- db에서 부모요소만 출력하게 -->
+	           	<div class="c_total">${movie.title}에 대한 ${total1 }개의 이야기가 있어요!</div>
+		            <div class="comment_wrap1">
+		            	<h3>관람평쓰기</h3>
+						<form method="get" action="/reply.do">
+							<input type="hidden" name="articleNO" value="${movie.articleNO }">
+							<a href="login.do"><input class="a" type="button" name="comment_login" value="로그인"></a>
+							<!-- <div><input class="a" type="text" name="comment_text" placeholder="아이디"></div> -->
+							<input class="b" type="text" name = "comment_id" placeholder="  관람평을 입력해주세요">
+							<input class="c" type="number" min="0" max="10" name = "comment_rate" placeholder="평점">
+							<input id="comment_btn" type="submit" value="관람평쓰기">
+						</form>
+					</div>
+					<br>
+				
+				
 				<h3>댓글목록</h3>
 				<c:forEach var="comment" items="${articlesList }">
-				
-		            <c:choose>
-		            	<c:when test="${comment.lvl == 1}">
-				            <div class="comment_wrap2">
-				            	<div class="qq">
-					            	<%-- <div>댓글번호: ${comment.commentNO}</div> --%>
-					            	<div class="d">${comment.comment_id }</div>
-									<div class="e">${comment.comment_text}</div>
-									<div class="f">평점: ${comment.comment_rate}</div>
-									<div class="i">
-										<input class="g" type="button" value="수정">
-										<input class="h" type="button" value="삭제">
-									</div>
+	            <c:choose>
+	            	<c:when test="${comment.lvl == 1}">
+			            <div class="comment_wrap2">
+			            	<div class="comment_box">
+				            	<div class="commentNO_box">
+				            		<div style="font-size:15px;">댓글번호</div>
+				            		<div class="commentNO">${comment.commentNO}</div>
+			            		</div>
+				            	<div class="comment_id">${comment.comment_id }</div>
+				            	<div class="comment_rate">${comment.comment_rate}점</div>
+								<div class="comment_text">${comment.comment_text}</div>
+								<div class="comment_manager">
+									<input class="comment_update" type="button" value="수정">
+									<input class="comment_delete" type="button" value="삭제">
 								</div>
-				            	
-				            	<div class="recomment">
-			        				<form method="get" action="../movie1/reply2.do">
-			        					<div class="recomment_l"><h3>ㄴ</h3></div>
-										<input type="hidden" name="articleNO" value="${movie.articleNO }">
-										<input type="hidden" name="commentNO" value="${comment.commentNO }">
-										<div><input class="recomment_id" type="text" name="recomment_text" placeholder="아이디입력"></div>
-										<div><input class="recomment_text" type="text" name = "recomment_id" placeholder="대댓글입력"></div>
-										<div><input class="recomment_btn" type="submit" value="대댓글입력"></div>
-									</form>
-				            	</div>
-				            </div>
-			            </c:when>
-			            <c:when test="${comment.lvl > 1}">
-				            <div class="comment_wrap22">
-				            	<div class="qqq">
-					            	<%-- <div>댓글번호: ${comment.commentNO}</div> --%>
-					            	<div class="recomment_ll">ㄴ </div>
-					            	<div class="dd">${comment.comment_id }님의 답글:</div>
-									<div class="ee">${comment.comment_text}</div>
-									<!-- <div class="ii">
-										<input class="gg" type="button" value="수정">
-										<input class="hh" type="button" value="삭제">
-									</div> -->
-								</div>
-				            </div>
-			            </c:when>
-		            </c:choose>
-            	</c:forEach>
-            	
-            	
-            	
-		            	<!-- 페이징 -->
-		        	<div id="paging" style="height:100px">
-			        	<c:if test="${totArticles != null }">
-			        		<c:choose>
-			        			<c:when test="${totArticles > 100 }">
-				        			<c:forEach var="page" begin="1" end="10" step="1">
-				        				<c:if test="${section > 1 && page == 1 }">
-				        					<div class="no-uline">
-					        					<form action="movieInfo.do" method="get">
-						        					<input type="hidden" name="articleNO" value="${movie.articleNO }">
-					        						<input type="hidden" name="section" value="${section-1 }">
-					        						<input type="hidden" name="pageNum" value="${(section-1)*10 }">
-					        						<input type="submit" value="pre">
-					        					</form>
-				        					</div>
-				        				</c:if>
-				        				<div class="no-uline">
-					        				<form action="movieInfo.do" method="get">
+							</div>
+			            	
+			            	<div class="recomment">
+		        				<form method="get" action="/reply.do">
+		        					<div class="recomment_l"><h3>ㄴ</h3></div>
+									<input type="hidden" name="articleNO" value="${movie.articleNO }">
+									<input type="hidden" name="commentNO" value="${comment.commentNO }">
+									<a href="login.do"><input class="recomment_id" type="button" name="recomment_text" value="로그인"></a>
+									<input class="recomment_text" type="text" name = "recomment_id" placeholder="대댓글입력">
+									<input class="recomment_btn" type="submit" value="대댓글입력">
+								</form>
+			            	</div>
+			            	
+			            	
+			            </div>
+		            </c:when>
+		            <c:when test="${comment.lvl > 1}">
+			            <div class="comment_wrap22">
+			            	<div class="qqq">
+				            	<div class="recomment_ll">ㄴ </div>
+				            	<div class="dd">${comment.comment_id }님의 답글:</div>
+								<div class="ee">${comment.comment_text}</div>
+							</div>
+			            </div>
+		            </c:when>
+	            </c:choose>
+           	</c:forEach>
+           	
+           	
+           	
+	            	<!-- 페이징 -->
+	        	<div id="paging" style="height:100px">
+		        	<c:if test="${totArticles != null }">
+		        		<c:choose>
+		        			<c:when test="${totArticles > 100 }">
+			        			<c:forEach var="page" begin="1" end="10" step="1">
+			        				<c:if test="${section > 1 && page == 1 }">
+			        					<div class="no-uline">
+				        					<form action="movieInfo.do" method="get">
 					        					<input type="hidden" name="articleNO" value="${movie.articleNO }">
-				        						<input type="hidden" name="section" value="${section}">
-				        						<input type="hidden" name="pageNum" value="${page}">
-				        						<input type="submit" value="${(section-1)*10 +page}">
+				        						<input type="hidden" name="section" value="${section-1 }">
+				        						<input type="hidden" name="pageNum" value="${(section-1)*10 }">
+				        						<input type="submit" value="pre">
 				        					</form>
 			        					</div>
-			        			
-				        				<c:if test="${page == 10 }">
-					        				<form class="no-uline" action="movieInfo.do" method="get">
-					        					<input type="hidden" name="articleNO" value="${movie.articleNO }">
-				        						<input type="hidden" name="section" value="${section+1 }">
-				        						<input type="hidden" name="pageNum" value="${section*10+1}">
-				        						<input type="submit" value="next">
-				        					</form>
-				        				</c:if>
-				        			</c:forEach>
-				        		</c:when>
-				        		<c:when test="${totArticles == 100 }">
-				        			<c:forEach var="page" begin="1" end="10" step="1">
-				        				<a class="no-uline" href="#">${page}</a>
-				        			</c:forEach>
-				        		</c:when>
-				        		<c:when test="${totArticles < 100 }">
-				        			<c:forEach var="page" begin="1" end="${totArticles/10 + 1}" step="1">
-				        				<c:choose>
-				        					<c:when test="${page==pageNum }">
-					        					<div class="sel-page">
-						        					<form action="movieInfo.do" method="get">
-						        						<input type="hidden" name="articleNO" value="${movie.articleNO }">
-						        						<input type="hidden" name="section" value="${section}">
-						        						<input type="hidden" name="pageNum" value="${page }">
-						        						<input type="submit" value="${page }">
-						        					</form>
-					        					</div>
-				        					</c:when>
-				        					<c:otherwise>
-					        					<div class="no-uline">
-						        					<form action="movieInfo.do" method="get">
-						        						<input type="hidden" name="articleNO" value="${movie.articleNO }">
-						        						<input type="hidden" name="section" value="${section}">
-						        						<input type="hidden" name="pageNum" value="${page }">
-						        						<input type="submit" value="${page }">
-						        					</form>
-					        					</div>
-				        					</c:otherwise>
-				        				</c:choose>
-				        			</c:forEach>
-				        		</c:when>
-		        			</c:choose>
-			        	</c:if>
-			        </div>
-            	
-            	
-         		</div>
+			        				</c:if>
+			        				<div class="no-uline">
+				        				<form action="movieInfo.do" method="get">
+				        					<input type="hidden" name="articleNO" value="${movie.articleNO }">
+			        						<input type="hidden" name="section" value="${section}">
+			        						<input type="hidden" name="pageNum" value="${page}">
+			        						<input type="submit" value="${(section-1)*10 +page}">
+			        					</form>
+		        					</div>
+		        			
+			        				<c:if test="${page == 10 }">
+				        				<form class="no-uline" action="movieInfo.do" method="get">
+				        					<input type="hidden" name="articleNO" value="${movie.articleNO }">
+			        						<input type="hidden" name="section" value="${section+1 }">
+			        						<input type="hidden" name="pageNum" value="${section*10+1}">
+			        						<input type="submit" value="next">
+			        					</form>
+			        				</c:if>
+			        			</c:forEach>
+			        		</c:when>
+			        		<c:when test="${totArticles == 100 }">
+			        			<c:forEach var="page" begin="1" end="10" step="1">
+			        				<a class="no-uline" href="#">${page}</a>
+			        			</c:forEach>
+			        		</c:when>
+			        		<c:when test="${totArticles < 100 }">
+			        			<c:forEach var="page" begin="1" end="${totArticles/10 + 1}" step="1">
+			        				<c:choose>
+			        					<c:when test="${page==pageNum }">
+				        					<div class="sel-page">
+					        					<form action="movieInfo.do" method="get">
+					        						<input type="hidden" name="articleNO" value="${movie.articleNO }">
+					        						<input type="hidden" name="section" value="${section}">
+					        						<input type="hidden" name="pageNum" value="${page }">
+					        						<input type="submit" value="${page }">
+					        					</form>
+				        					</div>
+			        					</c:when>
+			        					<c:otherwise>
+				        					<div class="no-uline">
+					        					<form action="movieInfo.do" method="get">
+					        						<input type="hidden" name="articleNO" value="${movie.articleNO }">
+					        						<input type="hidden" name="section" value="${section}">
+					        						<input type="hidden" name="pageNum" value="${page }">
+					        						<input type="submit" value="${page }">
+					        					</form>
+				        					</div>
+			        					</c:otherwise>
+			        				</c:choose>
+			        			</c:forEach>
+			        		</c:when>
+	        			</c:choose>
+		        	</c:if>
+		        </div>
+           	
+           	
+        		</div>
          	
    		</c:forEach>
    	</div>

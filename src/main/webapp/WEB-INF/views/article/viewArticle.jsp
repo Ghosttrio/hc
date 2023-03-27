@@ -10,10 +10,22 @@
 <title>Insert title here</title>
 
 <h1>이벤트 참여 목록</h1>	
+<style>
+body {
+background: whitesmoke;
+
+
+}
+head {
+background: whitesmoke;
+
+
+}
+</style>
 </head>
 <body>
 <h1>
-<a href="/HumanCinema/event1/event1.do">홈으로 돌아가기</a>
+<a href="/event1/event1.do">홈으로 돌아가기</a>
 </h1>
 <table class=event_mem border="1">
 <c:forEach var="vo" items="${ list}">

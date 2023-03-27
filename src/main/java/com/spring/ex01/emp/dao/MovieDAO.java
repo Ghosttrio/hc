@@ -10,72 +10,128 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.ex01.emp.dto.MovieDTO;
 
-
-
-
-@Repository("movieDAO")
+@Repository
 public class MovieDAO {
-
+	
 	@Autowired
 	private SqlSession sqlSession;
 	
-	@Autowired
-	private MovieDTO movieDTO;
+	/*
+	 * public List movieList() { List movieList =
+	 * sqlSession.selectList("mapper.movie.movieList"); return movieList; }
+	 * 
+	 * // 醫뗭븘�슂 �뾽�뜲�씠�듃 public void update_Like(int articleNO){
+	 * sqlSession.insert("mapper.movie.updateLike", articleNO); }
+	 * 
+	 * // 醫뗭븘�슂 異쒕젰 public int select_Like(int articleNO) { int like =
+	 * sqlSession.selectOne("mapper.movie.selectLike", articleNO); return like; }
+	 * 
+	 * // articleNO 留욌뒗 �쁺�솕異쒕젰 public List viewArticle(int articleNO) { List list =
+	 * sqlSession.selectList("mapper.movie.movieInfo", articleNO); return list; }
+	 */
 	
-//	��ȭ ���
+	
+//	영화 출력
 	public List movieList() {
-		List movieList = new ArrayList();
-		movieList = sqlSession.selectList("mapper.member.movieList");
+		List movieList = sqlSession.selectList("mapper.movie.movieList");
 		return movieList;
 	}
 	
-//	��ȭ ��ȣ�� �´� ��ȭ ���
+//	영화 출력 dto
+	public MovieDTO movieList_dto() {
+		MovieDTO movieList = sqlSession.selectOne("mapper.movie.movieList");
+		return movieList;
+	}
+	
+//	占쏙옙화 占쏙옙호占쏙옙 占승댐옙 占쏙옙화 占쏙옙占�
 	public List viewArticle(int articleNO) {
-		List list = sqlSession.selectList("mapper.member.movieInfo", articleNO);
+		List list = sqlSession.selectList("mapper.movie.movieInfo", articleNO);
 		return list;
 	}
 	
-//	��ȭ �߰�
+//	占쏙옙화 占쌩곤옙
 	public void movieAdd(MovieDTO movieDTO) {
-		sqlSession.selectList("mapper.member.movieAdd", movieDTO);
+		sqlSession.selectList("mapper.movie.movieAdd", movieDTO);
 	}
 	
-//	영화 삭제
+//	�쁺�솕 �궘�젣
 	public void movieDelete(String title) {
-		sqlSession.selectList("mapper.member.movieDelete", title);
+		sqlSession.selectList("mapper.movie.movieDelete", title);
 	}
 	
-//	영화 수정
+//	�쁺�솕 �닔�젙
 	public void movieUpdate(MovieDTO movieDTO) {
-		sqlSession.update("mapper.member.movieUpdate", movieDTO);
+		sqlSession.update("mapper.movie.movieUpdate", movieDTO);
 	}
 	
-//	���ƿ� ������Ʈ
+//	占쏙옙占싣울옙 占쏙옙占쏙옙占쏙옙트
 	public void update_Like(int articleNO){
-		sqlSession.insert("mapper.member.updateLike", articleNO);
+		sqlSession.insert("mapper.movie.updateLike", articleNO);
 	}
 	
-//	���ƿ� ���
+//	占쏙옙占싣울옙 占쏙옙占�
 	public int select_Like(int articleNO) {
-		int like = sqlSession.selectOne("mapper.member.selectLike", articleNO);
+		int like = sqlSession.selectOne("mapper.movie.selectLike", articleNO);
 		return like;
 	}
 	
-//	댓글 입력
+//	�뙎湲� �엯�젰
 	public void insertComment(MovieDTO movieDTO) {
-		sqlSession.insert("mapper.member.insertComment", movieDTO);
+		sqlSession.insert("mapper.movie.insertComment", movieDTO);
 	}
 	
-//	댓글 출력(페이징)
+//	�뙎湲� �엯�젰
+	public void insertComment2(MovieDTO movieDTO) {
+		sqlSession.insert("mapper.movie.insertComment2", movieDTO);
+	}
+	
+//	�뙎湲� 異쒕젰(�럹�씠吏�)
 	public List movieList(Map pagingMap) {
-		List movieList = sqlSession.selectList("mapper.member.commentList", pagingMap);
+		List movieList = sqlSession.selectList("mapper.movie.commentList", pagingMap);
 		return movieList;
 	}
 	
-//	(페이징 기능) 댓글 개수 구하기
+//	(�럹�씠吏� 湲곕뒫) �뙎湲� 媛쒖닔 援ы븯湲�
 	public int selectTotArticles() {
-		int tot = sqlSession.selectOne("mapper.member.tot");
+		int tot = sqlSession.selectOne("mapper.movie.tot");
 		return tot;
 	}
 	
+//	극장 출력
+	public List theaterList(){
+		List list = sqlSession.selectList("mapper.movie.theaterList");
+		return list;
+	}
+	
+//	상영 정보 출력
+	public List showList(){
+		List list = sqlSession.selectList("mapper.movie.showList");
+		return list;
+	}
+	
+	
+	
+//	영화출력 오버라이드(예매)
+	public List movieList(MovieDTO movieDTO) {
+		List movieList = new ArrayList();
+		movieList = sqlSession.selectList("mapper.movie.movieList", movieDTO);
+		return movieList;
+	}
+	
+//	극장출력 오버라이드(예매)
+	public List theaterList(MovieDTO movieDTO) {
+		List theaterList = new ArrayList();
+		theaterList = sqlSession.selectList("mapper.movie.theaterList", movieDTO);
+		return theaterList;
+	}
+//	상영정보출력 오버라이드(예매)
+	public List showList(MovieDTO movieDTO) {
+		List showList = sqlSession.selectList("mapper.movie.showList2", movieDTO);
+		return showList;
+	}
+
+	
+
+	
 }
+
