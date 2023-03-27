@@ -52,18 +52,20 @@
             vertical-align: middle;
         }
         .login_signup {
-            margin-top: 10px;
             display: flex;
             justify-content: flex-end;
             color:black;  
+            word-spacing: 20px;
         }
         .login_signup div{
-            margin-right: 40px;
+        	margin-top: 10px;
+            margin-right: 50px;
             font-weight: 600;
-            font-size: 20px;
+            font-size: 18px;
         }
         .login_signup a{
         	color:black;
+        	
         }
     </style>
 
@@ -80,7 +82,15 @@
             <div id="h3"><a href="/HumanCinema/cinema/cinema.do">
             	<span style="cursor: pointer">극장</span></a></div>
             	
+<<<<<<< HEAD
+            <div id="logo_human"><a href="/main/main.do">
+=======
+<<<<<<< HEAD
+            <div id="logo_human"><a href="/main/main.do">
+=======
             <div id="logo_human"><a href="/main.do">
+>>>>>>> 2ce438927c79584516e30a9d9888a7e3ebb909f8
+>>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
         		<img src="/image/headerLogo.png"/></a></div>
         		
 			<div id="h4"><a href="/Store/storemain.do">
@@ -94,16 +104,16 @@
         </div>
         
         <div class="login_signup">
-            <div id="h7">
+         <div id="h7">
 	            	<c:choose>
-	            			<c:when test="${isLogOn ==true and member!=null}">
-	            				<h3>${member.member_id }님 로그인 중</h3>
-		            			<a href="/member/logout" style="cursor: pointer"><h4>로그아웃</h4></a>
-		            			<a href="/member/mypage.do" style="cursor: pointer"><h4>마이페이지</h4></a>
-		        	 	 </c:when>
+            			<c:when test="${isLogOn ==true and member!=null}">
+	            				${member.member_id }님	|
+		            			<a href="/member/logout" style="cursor: pointer">로그아웃</a> |
+		            			<a href="/member/mypage.do" style="cursor: pointer">마이페이지</a>
+		        	 	</c:when>
 		          		<c:otherwise>
-			       			 <a href="/member/login.do" style="cursor: pointer"><h4>로그인</h4></a>
-			       			 <a href="/member/add.do" style="cursor: pointer"><h4>회원가입</h4></a>
+			       			 <a href="/member/login.do" style="cursor: pointer">로그인</a> |
+			       			 <a href="/member/add.do" style="cursor: pointer">회원가입</a>
 			     		 </c:otherwise>
 			   		</c:choose>     
        		 </div>

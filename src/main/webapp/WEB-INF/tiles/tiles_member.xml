@@ -7,6 +7,20 @@
    <definition name="baseLayout"  template="/WEB-INF/views/common/layout.jsp">
       <put-attribute name="title" value="" />
       <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+<<<<<<< HEAD
+      <put-attribute name="side" value=""/>
+      <put-attribute name="body" value=""/>
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+   </definition>
+   
+=======
+<<<<<<< HEAD
+      <put-attribute name="side" value=""/>
+      <put-attribute name="body" value=""/>
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+   </definition>
+   
+=======
       <put-attribute name="side" value="/WEB-INF/views/common/side_member.jsp"/>
       <put-attribute name="body" value="" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
@@ -18,7 +32,9 @@
          <put-attribute name="title" value="메인 페이지" />
          <put-attribute name="body" value="/WEB-INF/views/main/main.jsp" />
       </definition>
+>>>>>>> 2ce438927c79584516e30a9d9888a7e3ebb909f8
 
+>>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
 <!-- 로그인 페이지  -->
 	  <definition name="loginMember" extends="baseLayout">
          <put-attribute name="title" value="로그인 페이지" />
@@ -33,22 +49,30 @@
       
 <!-- 회원 탈퇴 페이지  -->      
       <definition name="delMember" extends="baseLayout">
-         <put-attribute name="title" value="마이 페이지" />
+         <put-attribute name="title" value="회원 탈퇴 페이지" />
+         <put-attribute name="side" value="/WEB-INF/views/member/Mypage_nav.jsp"/>
          <put-attribute name="body" value="/WEB-INF/views/member/Mypage_del.jsp" />
       </definition>   
       
 <!-- 마이 페이지  -->      
       <definition name="mainMypage" extends="baseLayout">
          <put-attribute name="title" value="마이 페이지" />
+         <put-attribute name="side" value="/WEB-INF/views/member/Mypage_nav.jsp"/>
          <put-attribute name="body" value="/WEB-INF/views/member/Mypage_main.jsp" />
       </definition>  
       
 <!-- 정보수정 페이지  -->      
       <definition name="updateMypage" extends="baseLayout">
          <put-attribute name="title" value="수정 페이지" />
+         <put-attribute name="side" value="/WEB-INF/views/member/Mypage_nav.jsp"/>
          <put-attribute name="body" value="/WEB-INF/views/member/Mypage_update.jsp" />
       </definition>  
       
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+	
+=======
 <!-- 예매내역 페이지  -->      
       <definition name="purchaseMypage" extends="baseLayout">
          <put-attribute name="title" value="예매내역 페이지" />
@@ -62,5 +86,7 @@
       </definition>  
    
 
+>>>>>>> 2ce438927c79584516e30a9d9888a7e3ebb909f8
       
+>>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
 </tiles-definitions>

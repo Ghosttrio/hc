@@ -1,116 +1,174 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    isELIgnored="false"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>마이페이지(회원정보)</title>
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <style>
-	#mypage{
-	margin-left: 15%;
-	margin-bottom: 30px;
-	}
-	
-	body {
-	    background: #f5f5f5
-	    /* font-family: 'Dongle', sans-serif; */
-	    /* font-family: 'East Sea Dokdo', cursive; */
-	    font-family:'Poor Story', cursive;
-	    text-decoration: none;
-	}
+<<<<<<< HEAD
+	#content-wrap{ 
+		display: inline-block;  /* body 옆에 붙도록 줌*/
+	} 
+	#content{ 
+		display: inline-block;  /* body 옆에 붙도록 줌*/
+		margin-top: 50px;
+		margin-left: 20px;
+	} 
 	
 	table {
+	 width: 780px;
+	 margin-top:50px;
 	  border: 1px #49443f solid;
-	  font-size: .9em;
 	  box-shadow: 0 2px 5px rgba(0,0,0,.25);
-	  margin-left: auto;
-	  margin-right: auto;
-	  width: 75%;
-	  border-collapse: collapse;
-	  border-radius: 5px;
+	  font-size: .9em;
+	  margin: auto;
+	  border-collapse: collapse; /*테이블 테두리 셀의 테두리 사이 간격*/
+	  border-radius: 5px;/*테이블 둥근 테두리*/
 	  overflow: hidden;
 	}
 	th {
-	    text-align: left;
-	    letter-spacing: 1px;
+	    letter-spacing: 3px; /*테이블 상단 자간*/
 	    font-size: large;
 	    background-color: black;
 	    opacity: 0.85;/* 투명도 */
 	    color: white;
 	}
-	#inputset1{outline: none;}
-	input{	border: none;}
-	
-	 td, th {
-	    padding: 15px 50px;
-	    vertical-align: middle;
+    td, th {
+		vertical-align: middle;
+		padding: 15px;
+		text-align: center;
+		border-bottom: 1px solid rgba(0,0,0,.1); /* 테이블 구분선 */
+    }
+	input{
+        border: none;   /* 입력란 라인제거*/
+    }
+	/* 회원탈퇴 버튼 css*/
+	#btn input{
+		border: 0;	/*초기화 */
+		outline: none; /*초기화 */
+		width: 40%;	/*버튼 넓이는 테이블 40%가 어떨까나 */
+		height: 40px;	/* 버튼 높이*/
+		border-radius: 10px;
+		background: black;
+		color: white;	/* 글자색상은 흰색 */
+		opacity: 0.85;/* 투명도 */
+		letter-spacing: 1.2px; /* 자간 간격 */
 	}
-	td {border-bottom: 1px solid rgba(0,0,0,.1);  background: #fff;}
-	
-	#btn input {
-	width: 100%;
-	height: 35px;
-	border: 0;
-	outline: none;
+=======
+table {
+	background-color: white;
+	border: 1px #49443f solid;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, .25);
+	font-size: .9em;
+	margin: auto;
+	width: 60%;
+	border-collapse: collapse; /*테이블 테두리 셀의 테두리 사이 간격*/
+	border-radius: 5px; /*테이블 둥근 테두리*/
+	overflow: hidden;
+}
+
+th {
+	letter-spacing: 3px; /*테이블 상단 자간*/
+	font-size: large;
+	background-color: black;
+	opacity: 0.85; /* 투명도 */
+	color: white;
+}
+
+td, th {
+	vertical-align: middle;
+	padding: 15px 20px;
+	border-bottom: 1px solid rgba(0, 0, 0, .1); /* 테이블 구분선 */
+	text-align: center;
+}
+
+input {
+	border: none; /* 입력란 라인제거*/
+}
+/* 회원탈퇴 버튼 css*/
+#btn input {
+	border: 0; /*초기화 */
+	outline: none; /*초기화 */
+	width: 40%; /*버튼 넓이는 테이블 40%가 어떨까나 */
+	height: 40px; /* 버튼 높이*/
 	border-radius: 10px;
 	background: black;
-	color: white;
-	opacity: 0.85;/* 투명도 */
-	letter-spacing: 1px;
-	}
-
+	color: white; /* 글자색상은 흰색 */
+	opacity: 0.85; /* 투명도 */
+	letter-spacing: 2px; /* 자간 간격 */
+	padding: 10px;
+}
+>>>>>>> b0043d89686ea51e09d9636f15e821a5b71f9e0a
 </style>
-</head>
-<body>
 
-<!--  -->
-	
-    <div id="content-wrap">
-      <aside id="mypage"><h1>마이페이지</h1></aside>
-            </div>
-              <section>
-                <article class="UserInformation">
-                   <form method="post"  action="/member/updateMypage" >
-                        <table>
-                            <th colspan="3">회원정보2</th>
-                            <tr>
-                                <td id="inputset1">아이디</td>
-                                <td><input id="inputset2" name="member_id" value='${member.member_id}' readonly="readonly"></td>
-                                <td id="btn"><input class="btnSlide" type="submit" value="수정하기" ></td> 
-                            </tr>
-                            <!-- 기존비밀번호 입력 하고 버튼 비활성하고
-   	                         		 신규 비밀번호1 확인용 비밀번호2 입력란 만들기-->
-                         	<tr>
-                                <td id="inputset1">기존비밀번호</td>
-                                <td colspan="2"><input id="inputSet" name="member_pwd" value='' placeholder="비밀번호를 입력하세요"></td>
-                            </tr>
-                            <tr>
-                                <td id="inputset1">비밀번호</td>
-                                <td><input id="inputSet2" name="inputPwd1" type="password" size="40" value='${inputPwd1}' placeholder="변경할 비밀번호를 입력하세요"></td>
-                            </tr>
-                            <tr>
-                                <td id="inputset1">비밀번호 확인</td>
-                                <td colspan="2"><input id="inputSet2" name="inputPwd2" type="password" size="40" value='${inputPwd2}'placeholder="다시 한번 입력하세요"></td>
-                            </tr>
-                            <tr>
-                                <td id="inputset1">이름</td>
-                                <td colspan="2"><input id="inputSet2" name="member_name" value='${member.member_name}'></td>
-                            </tr>
-                            <tr>
-                                <td id="inputset1">이메일</td>
-                                <td colspan="2"><input id="inputSet2" name="member_email" value='${member.member_email}'></td>
-                            </tr>
-                            <tr>
-                                <td id="inputset1">전화번호</td>
-                                <td colspan="2"><input id="inputSet2" name="member_number" value='${member.member_number}'></td>
-                            </tr>
-                      </table>
-                    </form>
-	         		
-                </article>
-              </section>
+<!-- <body background="/image/member/test.png"/> -->
+
+<body>
+	<div id="content-wrap">
+		<table>
+			<form method="post" action="/member/updateMypage">
+				<th colspan="4">회원정보수정</th>
+				<tr>
+					<td id="inputset">아이디</td>
+					<td><input id="inputset" name="member_id"
+						value=' ${member.member_id}' readonly="readonly"></td>
+					<td id="inputset">이름</td>
+					<td><input id="inputSet" name="member_name"
+						value='${member.member_name}'></td>
+				</tr>
+				<tr>
+					<td id="inputset">본인인증</td>
+					<td><input id="inputSet" name="member_pwd"
+						value='${member.member_pwd}' placeholder="현재 비밀번호를 입력하세요"></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td id="inputset">변경할 비밀번호</td>
+					<td><input id="inputSet2" name="inputPwd1" type="password"
+						value='${inputPwd1}' placeholder="변경할 비밀번호를 입력하세요"></td>
+					<td id="inputset">비밀번호 확인</td>
+					<td><input id="inputSet" name="inputPwd2" type="password"
+						value='${inputPwd2}' placeholder="다시 한번 입력하세요"></td>
+				</tr>
+				<tr>
+					<td id="inputset">전화번호</td>
+					<td><input id="inputSet" name="member_number" placeholder="예시: 02-0000-0000"
+						value='${member.member_number}'></td>
+					<td id="inputset">휴대폰번호</td>
+					<td><input id="inputSet" name="member_phone" placeholder="예시: 010-0000-0000"
+						value='${member.member_phone}'></td>
+				</tr>
+				<tr>
+					<td id="inputset">이메일</td>
+					<td><input id="inputSet2" name="member_email" placeholder="예시: human@cinema.com"
+						value='${member.member_email}'></td>
+					<td id="inputset">수신동의</td>
+					<td><input id="inputSet2" name="member_agree_mail" value='${member.member_agree_mail}'
+						placeholder="혜택정보를 이메일로 받아보시겠어요?"></td>
+
+				</tr>
+				<tr>
+					<td id="inputset">생년월일</td>
+					<td><input id="inputSet" name="member_birth" placeholder="예시: 1900-00-00"
+						value='${member.member_birth}'></td>
+					<td id="inputset">성별</td>
+					<td><input id="inputSet" name="member_gender" placeholder="예시: 남성/여성"
+						value='${member.member_gender}'></td>
+				</tr>
+				<tr>
+					<td id="inputset"'>개인정보 유효기간</td>
+					<td colspan="3">
+						개인정보 유효기간을 
+						<input id="inputset" name="member_expire" type="checkbox"><label for="checker1">2년</label>
+						<input id="inputset" name="member_expire" type="checkbox"><label for="checker2">3년</label>
+						<input id="inputset" name="member_expire" type="checkbox"><label for="checker3" disabled>탈퇴</label>
+						시 으로요청합니다.<br> 1년 동안 로그인 이력이 없는 경우 개인정보는 접근이 통제된 안전한 곳에
+						분리 보관됩니다. <br>
+					</td>
+				</tr>
+			<td colspan="4" id="btn"><input class="btnSlide" type="submit" value="수정하기"></td>
+			</form>
+		</table>
+	</div>
 </body>
 </html>

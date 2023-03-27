@@ -74,11 +74,10 @@
 					, member_name = #{member_name} 
 					, member_email = #{member_email} 
 					, member_number = #{member_number} 
-					, member_birth_y = #{member_birth_y} 
-					, member_birth_m = #{member_birth_m} 
-					, member_birth_d = #{member_birth_d} 
+					, member_phone = #{member_phone} 
+					, member_birth = #{member_birth} 
 					, member_gender = #{member_gender} 
-					, member_grade = #{member_grade} 
+					, member_agree_mail = #{member_agree_mail} 
 					WHERE
 						member_id = #{member_id} 
 	  </update>
