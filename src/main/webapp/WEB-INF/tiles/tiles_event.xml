@@ -26,8 +26,27 @@
 	    
 <!--     이벤트 댓글용 -->
   		<definition name="*.sg2" extends="baseLayout">
-         <put-attribute name="title" value="이벤트 댓글용 페이지" />
+         <put-attribute name="title" value="댓글 페이지" />
          <put-attribute name="body" value="/WEB-INF/views/article/{1}.jsp" />
+	    </definition>
+	    
+<!--     이벤트 댓글용 -->
+  		<definition name="*.sg3" extends="baseLayout">
+         <put-attribute name="title" value="로그인 페이지" />
+         <put-attribute name="body" value="/WEB-INF/views/loginEvent/{1}.jsp" />
+	    </definition>
+	    
+	    
+<!--     이벤트 댓글용 -->
+  		<definition name="*.sg4" extends="baseLayout">
+         <put-attribute name="title" value="로그인 페이지" />
+         <put-attribute name="body" value="/WEB-INF/views/member/{1}.jsp" />
+	    </definition>
+	    
+<!--     로그인 페이지 -->
+  		<definition name="*.sg4" extends="baseLayout">
+         <put-attribute name="title" value="로그인 페이지" />
+         <put-attribute name="body" value="/WEB-INF/views/member/{1}.jsp" />
 	    </definition>
 	    
 	  </tiles-definitions>

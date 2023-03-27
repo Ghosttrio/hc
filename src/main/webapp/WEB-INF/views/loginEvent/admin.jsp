@@ -62,7 +62,7 @@ button {
 }
 
 .adminlogin{
-	width: 350%;
+	
 	height: 500%;
 	color: blue;
 	text-align: center;
@@ -79,7 +79,7 @@ button {
 
 <div class="adminlogin">
 	<h1>
-	<c:out value="${id}님 환영합니다!"/>
+	<c:out value="${user_id}님 환영합니다!"/>
 	</h1>
 
 

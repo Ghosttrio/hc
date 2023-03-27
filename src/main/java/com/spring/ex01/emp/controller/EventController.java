@@ -14,11 +14,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.ex01.emp.dto.EventDTO;
+import com.spring.ex01.emp.dto.MemberDTO;
+import com.spring.ex01.emp.dto.StoreDTO;
 import com.spring.ex01.emp.service.EventService;
 
 
@@ -37,10 +40,12 @@ public class EventController {
 	public String getList(Model model) {
 		List list = eventService.getList();
 		
+		
 		model.addAttribute("eventsList", list);
 		logger.warn("EventController > getList : list.size = "+ list.size());
 		
 		return "listEvent.sg";
+		
 	}
 	
 	//이벤트 목록 일반용
@@ -53,6 +58,7 @@ public class EventController {
 		
 		return "listEvent2.sg";
 	}
+	
 	
 	
 	
@@ -277,6 +283,44 @@ public class EventController {
 	
 //로그인 관련
 	
+//	@Controller
+//	public class loginController {
+////		아이디와 비밀번호를 입려받은 후 아이디가 admin일 경우 admin.jsp로 이동
+////		아이디가 user일 경우 user.jsp로 이동
+//		
+////		-admin.jsp
+////		-user.jsp
+//		
+//		@GetMapping("loginForm")
+//		public String goLoginForm() {
+//			return "Login.sg4";
+//		}
+		
+//		@PostMapping("/login")
+////		외부에서 전달받은 아이디와 패스워드를 매개변수로 받는다.
+//		public String login(HttpServletRequest request,
+//				Model model,
+//				@RequestBody
+//				EventDTO eventDTO,
+//				@RequestParam("menu_id") String menu_id
+//				) throws Exception  {
+//			
+//			MemberDTO memberDTO = (MemberDTO) request.getSession().getAttribute("member");
+////			만약 아아디가 admin일 경우
+//			if ( memberDTO != null ) {
+//				
+//				String user_id = memberDTO.getMember_id();
+//				if(user_id.equals("admin")) {
+//					
+//					return "admin.sg3";
+//				}
+////			만약 아이디가 admin이 아닐 경우  이동
+//				return "user.sg3";
+//			}
+//			return menu_id;
+//			}
+//	}
+//	
 	@Controller
 	public class loginController {
 //		아이디와 비밀번호를 입려받은 후 아이디가 admin일 경우 admin.jsp로 이동
@@ -287,20 +331,29 @@ public class EventController {
 		
 		@GetMapping("loginForm")
 		public String goLoginForm() {
-			return "loginEvent/login";
+			return "login.sg3";
 		}
 		
-		@PostMapping("/login")
+		@RequestMapping("/login")
 //		외부에서 전달받은 아이디와 패스워드를 매개변수로 받는다.
-		public String login(@ModelAttribute("id") String id, String pw) {
-//			만약 아아디가 admin일 경우
-			if(id.equals("admin")) {
-
-				return "loginEvent/admin";
-			}
+		public String login(HttpServletRequest request,
+				Model model
+				) throws Exception  {
+			MemberDTO memberDTO = (MemberDTO) request.getSession().getAttribute("member");
+			if ( memberDTO != null ) {
+			
+				String user_id = memberDTO.getMember_id();
+				System.out.println("user_id : " + user_id);
+				//	만약 아아디가 admin일 경우
+				if(user_id.equals("admin")) {
+					
+					return "admin.sg3";
+				}
 //			만약 아이디가 admin이 아닐 경우  이동
-			return "loginEvent/user";
-		}
+				return "user.sg3";
+			}
+			return "Login.sg4";
+			}
 	}
 	
 	//두번째 이미지 보여주는 창 admin 용

@@ -69,7 +69,7 @@ background: whitesmoke;
 /* } */
 .event_top{
 	width:30%;
-	margin:100px;
+
 	color: blue;
 	font-size: 30px;
 }
@@ -106,16 +106,11 @@ padding: 25px 50px;
 <button type="button" onclick="location.href='/modifyEvent.do'">이벤트 수정/삭제</button>
 </div>
 
-	
-</div>
+
 
 	<div class="event_top">
           <h1>EVENT</h1>
     </div> 
-    
-
-    
-    
 <!--  원래화면         -->
 
 <c:forEach var="vo" items="${ eventsList}">

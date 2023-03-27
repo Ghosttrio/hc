@@ -61,7 +61,7 @@ button {
 }
 
 .userlogin{
-	width: 350%;
+	
 	height: 500%;
 	color: blue;
 	text-align: center;
