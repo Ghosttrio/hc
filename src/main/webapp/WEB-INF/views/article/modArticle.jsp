@@ -34,7 +34,7 @@ input {
 </head>
 <body>
 	<div class="modmember">
-		<h1>회원수정</h1>
+		<h1>댓글수정</h1>
 	
 	</div>
 <form method="post"  action="/modArticle2.do">
