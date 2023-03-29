@@ -6,13 +6,12 @@
         }
         
         .main_image{
-        	heigth: 100px;
+        	height: 300px;
         }
         
         .main_image > img{
 			width:100%;
-			heigth: 100px;
-			
+			height: 300px;
 		}	
         
         #article1{
@@ -119,4 +118,14 @@
 		.movie_rate{
 			margin-top:10px;
 			border-top:1px solid grey;
+		}
+		.detail{
+			border-radius: 10px;
+			width:100px;
+			height:40px;
+			cursor: pointer;
+			border: none;
+			background: white;
+			color: black;
+			border:0.5px solid white;
 		}

@@ -9,48 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.spring.ex01.emp.dao.MovieDAO;
-import com.spring.ex01.emp.dto.LoginDTO;
 import com.spring.ex01.emp.dto.MovieDTO;
-import com.spring.ex01.emp.service.ManagerService;
 import com.spring.ex01.emp.service.MovieService;
 
 @Controller
 public class ManagerController {
 	
 	@Autowired
-	private ManagerService managerService;
-	@Autowired
-	private MovieDAO movieDAO;
-	@Autowired
 	private MovieDTO movieDTO;
 	@Autowired
 	private MovieService movieService;
-	@Autowired
-	private LoginDTO loginDTO;
 	
-	@RequestMapping(value="/manager.do", method=RequestMethod.GET)
-	public String manager() {
-		System.out.println("관리자페이지실행");
-		return "manager/manager";
-	}
-	
-//	@RequestMapping(value="/memberManager.do", method=RequestMethod.GET)
-//	public String memberManager(Model model) {
-//		System.out.println("회원관리실행");
-//		List memberList = managerService.selectMember();
-//		model.addAttribute("memberList",memberList);
-//		return "manager/memberManager";
-//	}
-	
-	
-
-//	@RequestMapping(value="/theaterManager.do", method=RequestMethod.GET)
-//	public String theaterManager() {
-//		System.out.println("극장관리실행");
-//		return "manager/theaterManager";
-//	}
-//	
 	@RequestMapping(value="/movieManager.do", method=RequestMethod.GET)
 	public String movieList(Model model,
 			@RequestParam(value="command", required=false) String command,
@@ -115,13 +84,16 @@ public class ManagerController {
 		return "manager/movieManager";
 	}
 	@RequestMapping(value="/add.do", method=RequestMethod.POST)
-	public String movieAdd(Model model) {
+	public String movieAdd(Model model,
+			@RequestParam(value="articleNO", required=false) int articleNO) {
 		System.out.println("占쌩곤옙占쏙옙占쏙옙占쏙옙 占쏙옙占�");
+		model.addAttribute("articleNO", articleNO);
+		
 		return "manager/add";
 	}
-//	
-////	占쏙옙화占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占�
-////	�쁺�솕�닔�젙
+
+	
+	
 	@RequestMapping(value="/update.do", method=RequestMethod.POST) 
 	public String movieUpdate(Model model,
 			@RequestParam(value="articleNO", required=false) int articleNO) { 
@@ -133,24 +105,6 @@ public class ManagerController {
 	
 	
 	
-	
-//	} else if(command != null && command.equals("del")) {
-//		String title = request.getParameter("title");
-//		System.out.println("占쏙옙占쏙옙 占쏙옙占쏙옙:" + title);
-//
-//
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-////	占쏙옙화占쌩곤옙占쏙옙占쏙옙占쏙옙 占쏙옙占�
-////	�쁺�솕異붽�
+
 	
 }

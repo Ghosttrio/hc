@@ -54,7 +54,7 @@
             border-right:2px solid #d4d3c9;
         }
         .time{
-            width: 29%;
+            width: 29.6%;
             background-color: #f2f0e5;
         }
         
@@ -116,7 +116,6 @@
         .btn0 > div > div{
         	display:inline-block;
         	vertical-align:middle;
-        	height:160px;
         }
         .btn0 {
 			width:100%;
@@ -127,27 +126,28 @@
         	font-weight:600;
         	line-height:160px;
         	color: white;
+        	margin-left:20px;
         }
         .ticket_info{
         	font-size:15px;
         	color: white;
-        	
+        	margin-left:20px;
         }
         #pay_btn{
-        	height:160px;
-        	width:100px;
+        	height:165px;
+        	width:165px;
 			cursor: pointer;
 			border: none;
 			background: #bf2828;
 			color: white;
-			position:relative;
-			right:-900px;
 			border:1px solid black;
 			border-radius: 10px;
+			position:absolute;
+			right:38px;
+			bottom:-275px;
         }
         .pay{
         	width:100%;
-        	border:1px solid red;
         	background-color:#1d1d1c;
         	vertical-align:middle;
         }
@@ -386,6 +386,10 @@
 				                </div>
 				                <div>
 				                	<form action="pay.do">
+				                		<input type="hidden" name="articleNO" value="${articleNO }">
+				                		<input type="hidden" name="theater_id" value="${theater_id }">
+					                	<input type="hidden" name="showdate" value="${showdate }">
+					                	<input type="hidden" name="showtime" value="${showtime }">
 					            		<div><input id="pay_btn" type="submit" value="결제하기"></div>
 				            		</form>
 				                </div>

@@ -1,5 +1,11 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
+encoding//src/main/java/com/spring/ex01/emp/controller/BookingController.java=UTF-8
+encoding//src/main/java/com/spring/ex01/emp/controller/ManagerController.java=UTF-8
+encoding//src/main/java/com/spring/ex01/emp/controller/MovieController.java=UTF-8
+encoding//src/main/java/com/spring/ex01/emp/controller/searchController.java=UTF-8
+encoding//src/main/java/com/spring/ex01/emp/dao/MovieDAO.java=UTF-8
+encoding//src/main/java/com/spring/ex01/emp/service/MovieService.java=UTF-8
 encoding//src/main/resources=UTF-8
 encoding//src/test/java=UTF-8
 encoding/<project>=UTF-8

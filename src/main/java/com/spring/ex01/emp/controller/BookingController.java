@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.spring.ex01.emp.dto.MovieDTO;
 import com.spring.ex01.emp.service.MovieService;
 
-	
 @Controller("bookingController")
 public class BookingController {
 
@@ -37,7 +36,7 @@ public class BookingController {
 		model.addAttribute("theaterList", theaterList);
 //		아이디 세션 전달
 		model.addAttribute("memberList",session.getAttribute("id"));
-		return "/booking/booking";
+		return "booking/booking";
 	}
 	
 	@RequestMapping(value="/t_movie.do", method=RequestMethod.GET)
@@ -87,14 +86,9 @@ public class BookingController {
 		System.out.println(showdate);
 		System.out.println(showtime);
 		System.out.println("--------------");
-		movieDTO.setArticleNO1(articleNO);
-		movieDTO.setTheater_id(theater_id);
-		movieDTO.setShowdate(showdate);
-		movieDTO.setShowtime(showtime);
 		
 		List movieList = movieService.movieList();
 		List theaterList = movieService.theaterList();
-		List showList = movieService.showList(movieDTO);
 		
 		model.addAttribute("articleNO", articleNO);
 		model.addAttribute("theater_id", theater_id);
@@ -103,7 +97,6 @@ public class BookingController {
 		
 		model.addAttribute("movieList", movieList);
 		model.addAttribute("theaterList", theaterList);
-		model.addAttribute("showList", showList);
 		return "booking/pay";
 	}
 	

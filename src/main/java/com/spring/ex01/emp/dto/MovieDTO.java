@@ -31,8 +31,15 @@ public class MovieDTO {
 	private int recnum;
 	private int level;
 	private int count;
+	private int tot;
 	
-//	theater ���̺�
+public int getTot() {
+		return tot;
+	}
+	public void setTot(int tot) {
+		this.tot = tot;
+	}
+	//	theater ���̺�
 	private String theater_name;
 	private String theater_id;
 	

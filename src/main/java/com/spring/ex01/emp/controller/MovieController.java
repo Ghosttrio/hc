@@ -44,7 +44,7 @@ public class MovieController {
 	
 //	영화상세출력
 	@RequestMapping(value="/movieInfo.do", method=RequestMethod.GET)
-	public String movieInfo(Model model,
+	public String movieInfo(Model model, HttpSession session,
 			@RequestParam(value="articleNO", required=false) int articleNO,
 			@RequestParam(value="section", required=false) String section,
 			@RequestParam(value="pageNum", required=false) String pageNum) {
@@ -71,7 +71,7 @@ public class MovieController {
 		articlesMap.put("section", section_);
 		articlesMap.put("pageNum", pageNum_);
 		model.addAttribute("articlesMap", articlesMap);
-		
+		model.addAttribute("memberList",session.getAttribute("id"));
 		
 		return "movie/movieInfo";
 	}

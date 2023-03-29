@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.movie">
+
+<!-- 영화 출력 -->
+	 <select id="movieList" resultType="movieDTO" parameterType="movieDTO">
+         <![CDATA[
+         	select * from movie order by articleNO
+         ]]>
+	 </select>
+	 
+	 
+	 
+	 
+	 
+	<!-- 좋아요 업데이트 -->
+	<update id="updateLike" parameterType="int">
+		<![CDATA[
+         	update movie set like_num=like_num+1 where articleNO=#{articleNO}
+         ]]>
+	</update>
+
+<!-- 좋아요 출력 -->
+	<select id="selectLike" resultType="int" parameterType="int">
+         <![CDATA[
+         	select like_num from movie where articleNO=#{articleNO}
+         ]]>
+	</select>
+<!-- articleNO에 맞는 영화 출력 -->
+	 <select id="movieInfo" resultType="movieDTO" parameterType="int">
+         <![CDATA[
+         	select * from movie where articleNO=#{articleNO}
+         ]]>
+         
+	</select>
+	
+	
+	
+	
+	
+
+	
+<!-- 관리자페이지 영화 추가 -->
+	<insert id="movieAdd" parameterType="movieDTO">
+         <![CDATA[
+         	insert into movie 
+        	 (articleNO, title, title_en, age, opendate, explain, director, genre, runningtime, actor, poster_back, poster_main)
+        	 values(#{articleNO1}, #{title}, #{title_en}, #{age}, #{opendate}, #{explain}, #{director}, #{genre}, #{runningtime}, #{actor}, #{poster_back}, #{poster_main})
+         ]]>
+	</insert>
+	
+<!-- 관리자페이지 영화 수정 -->
+	<update id="movieUpdate" parameterType="movieDTO">
+         <![CDATA[
+       		update movie set title=#{title}, title_en=#{title_en}, age=#{age}, 
+			opendate=#{opendate}, explain=#{explain},
+			director=#{director}, genre=#{genre}, runningtime=#{runningtime}, actor=#{actor},
+			poster_back=#{poster_back}, poster_main=#{poster_main} 
+			 where title=#{title}
+         ]]>
+	</update>
+
+<!-- 관리자페이지 영화 수정 -->
+	<delete id="movieDelete" parameterType="String">
+         <![CDATA[
+       		delete from movie where title = #{title}
+         ]]>
+	</delete>
+
+
+<!-- 댓글 추가 -->
+	<insert id="insertComment" parameterType="movieDTO">
+         	<selectKey resultType="int" keyProperty="commentNO" order="BEFORE">
+				select count(commentNO) from comment_1
+			</selectKey> 
+         
+         	INSERT INTO comment_1 (articleNO, commentNO, parentNO, comment_id, comment_text, comment_rate) 
+         	VALUES (#{articleNO}, #{commentNO}+1, 0, #{comment_id}, #{comment_text}, #{comment_rate})
+	</insert>
+	
+	
+	
+	<insert id="insertComment2" parameterType="movieDTO">
+         <selectKey resultType="int" keyProperty="commentNO" order="BEFORE">
+				select count(commentNO) from comment_1
+			</selectKey> 
+         	INSERT INTO comment_1 (articleNO, commentNO, parentNO, comment_id, comment_text) 
+         	VALUES (#{articleNO}, #{commentNO}, #{parentNO}, #{comment_id}, #{comment_text})
+	</insert>
+	
+	
+	<delete id="deleteComment" parameterType="int">
+		delete from comment_1 where commentNO = #{commentNO}
+	</delete>
+	
+	
+	
+	
+<!-- 댓글출력(페이징) -->
+	<select id="commentList" resultType="movieDTO" parameterType="java.util.HashMap">
+         <![CDATA[
+			     
+     
+     
+        		SELECT * FROM (
+				SELECT rownum AS recnum, lvl, articleNO, commentNO, parentNO, comment_text, comment_id, comment_rate
+				FROM (SELECT LEVEL AS lvl, articleNO, commentNO, parentNO, comment_text, comment_id, comment_rate 
+						FROM COMMENT_1
+						START WITH parentNO=0
+						CONNECT BY NOCYCLE PRIOR commentNO = parentNO
+						ORDER SIBLINGS BY commentNO DESC))
+			 WHERE articleNO = #{articleNO} and recnum BETWEEN (#{section}-1)*100 + (#{pageNum}-1)*10+1 AND (#{section}-1)*100+#{pageNum}*10
+	
+         
+         ]]>
+	</select>
+	
+	
+<!-- 전체 댓글 개수 -->
+	<select id="tot" resultType="int" parameterType="java.util.HashMap">
+         <![CDATA[
+        	 SELECT count(*) FROM (
+				SELECT rownum AS recnum, lvl, articleNO, commentNO, parentNO, comment_text, comment_id, comment_rate 
+				FROM (SELECT LEVEL AS lvl, articleNO, commentNO, parentNO, comment_text, comment_id, comment_rate 
+					FROM COMMENT_1 
+					START WITH parentNO=0 
+					CONNECT BY NOCYCLE PRIOR commentNO = parentNO 
+					ORDER SIBLINGS BY commentNO DESC)) 
+			WHERE articleNO = #{articleNO} and lvl= 1 
+         ]]>
+	</select>
+	
+	<!-- 극장정보출력  -->
+	<select id="theaterList" resultType="movieDTO">
+         <![CDATA[
+         	select * from theater
+         ]]>
+	</select>
+	
+<!-- 극장정보출력  -->
+	<select id="showList" resultType="movieDTO">
+         <![CDATA[
+         	select * from show
+         ]]>
+	</select>
+	
+
+	<select id="showList2" resultType="movieDTO" parameterType="movieDTO">
+        	select 
+        	<choose>
+        		<when test="articleNO != null and theater_id == null and showdate == null">
+        			distinct articleNO, theater_id
+        		</when>
+        		<when test="articleNO != null and theater_id != null and showdate == null">
+        			distinct articleNO, theater_id, showdate
+        		</when>
+        		<when test="articleNO != null and theater_id != null and showdate != null">
+        			distinct articleNO, theater_id, showdate, showtime
+        		</when>
+        	</choose>
+        	  from show
+        <where>
+        	<if test="articleNO != '' and articleNO != null">
+        		articleNO = #{articleNO} 
+        	</if>
+        	<if test="theater_id != '' and theater_id != null">
+        		and theater_id = #{theater_id} 
+        		<if test="showdate == null">
+        			order by showdate
+        		</if>
+        	</if>
+        	<if test="showdate != '' and showdate != null">
+        		and showdate = #{showdate}
+        		<if test="showtime == null">
+        			order by showdate
+        		</if>
+        	</if>
+        	<if test="showtime != '' and showtime != null">
+        		and showtime = #{showtime}
+        	</if>
+        </where>
+	</select>
+	
+</mapper>

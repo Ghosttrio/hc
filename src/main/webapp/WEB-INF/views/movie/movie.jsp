@@ -43,28 +43,29 @@
 
 
 				/* 호버시 보여지는곳 */
-		.explain{
+		.explain {
 		    position: relative;
-		    top:-300px;
+		    top: -100%;
 		    color: white;
-		    font-size: 15px;
+		    font-size: 20px;
 		    padding: 30px;
 		    opacity: 0;
 		    transition: opacity 0.2s linear;
 		    z-index: 1;
-		    width: 180px;
-			height: 230px;
-			word-wrap: break-word;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			text-align : center;
+		    word-wrap: break-word;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		    text-align: center;
+		    width: 83%;
+		    height: 75%;
+		    margin-top: 40px;
 		}
 		
 		
 		.image{
 		
-			width: 240px;
-		    height: 330px;
+			width: 100%;
+		    height: 450px;
 		}
 		
 		.image:hover .explain{
@@ -73,8 +74,8 @@
 		
 		.poster{
 		    transition: 0.2s;
-		    width: 240px;
-		    height: 330px;
+		    width: 100%;
+		    height: 100%;
 		}
 		.image:hover .poster {
 		    filter: brightness(50%); 
@@ -190,7 +191,7 @@ display:inline-block;
 }
 .booking_btn input {
 	border-radius: 10px;
-	width:150px;
+	width:100%;
 	height:40px;
 	cursor: pointer;
 	border: none;
@@ -203,12 +204,22 @@ display:inline-block;
 	overflow: hidden;  
 	text-overflow: ellipsis;
 }
-
+.detail{
+	border-radius: 10px;
+	width:100px;
+	height:40px;
+	cursor: pointer;
+	border: none;
+	background: white;
+	color: black;
+	border:0.5px solid white;
+}
 </style>
 </head>
 <body>
     <div id="wrap">
         
+		<jsp:include page="../common/header.jsp"></jsp:include>
 		<h1>전체영화</h1>
 		<div class="tab">
 		    <div id="tab1">상영중</div>
@@ -228,10 +239,7 @@ display:inline-block;
 					        	<form id="article_form" action="movieInfo.do" method="get">
 					        		<h3>${movie.title }</h3>
 						          	<input type="hidden" name="articleNO" value="${movie.articleNO }">
-						       		<input id="detail" type="submit" value="상세보기">
-						       		<div class="movie_rate">
-						       			관람평 ${movie.rate }
-					       			</div>
+						       		<input class="detail" type="submit" value="상세보기">
 					    		</form>
 					     	</div>
 					 	</div>
@@ -249,21 +257,45 @@ display:inline-block;
 		    	    	<!-- 버튼부분 -->
 		    	    	<div class="movie_btn">
 		    	    	<!-- 좋아요버튼 -->
-		    	    		<div class="like_btn">
-			    	    		<form action="like.do">
-				    	    		<input class="like_num" type="hidden" name="like_num" value="${movie.like_num}">
-								  	<input class="articleNO1${status.count }" type="hidden" name="articleNO1" value="${movie.articleNO}">
-								  	<input class="command" type="hidden" name="command1" value="like_it">
-								  	<input class="like_btn${status.count }" type="button" value="♡ ${movie.like_num }">
-			    	    		</form>
-		    	    		</div>
+		    	    		<c:if test="${memberList != null }">
+			    	    		<div class="like_btn">
+				    	    		<form action="like.do">
+					    	    		<input class="like_num" type="hidden" name="like_num" value="${movie.like_num}">
+									  	<input class="articleNO1${status.count }" type="hidden" name="articleNO1" value="${movie.articleNO}">
+									  	<input class="command" type="hidden" name="command1" value="like_it">
+									  	<input class="like_login${status.count }" type="hidden" name="like_login" value="1">
+									  	<input class="like_btn${status.count }" type="button" value="♡ ${movie.like_num }">
+				    	    		</form>
+			    	    		</div>
+		    	    		</c:if>
+		    	    		<c:if test="${memberList == null }">
+			    	    		<div class="like_btn">
+				    	    		<form action="like.do">
+					    	    		<input class="like_num" type="hidden" name="like_num" value="${movie.like_num}">
+									  	<input class="articleNO1${status.count }" type="hidden" name="articleNO1" value="${movie.articleNO}">
+									  	<input class="command" type="hidden" name="command1" value="like_it">
+									  	<input class="like_login${status.count }" type="hidden" name="like_login" value="2">
+									  	<input class="like_btn${status.count }" type="button" value="♡ ${movie.like_num }">
+				    	    		</form>
+			    	    		</div>
+		    	    		</c:if>
 		    	    		<!-- 예매버튼 -->
-		    	    		<div class="booking_btn">
-			    	    		<form action="booking.do">
-				    	    		<input type="hidden" name="articleno" value="${movie.articleNO }">
-				    	    		<input type="submit" value="예매">
-			    	    		</form>
-		    	    		</div>
+		    	    		<c:if test="${memberList != null }">
+			    	    		<div class="booking_btn">
+				    	    		<form action="booking.do">
+					    	    		<input type="hidden" name="articleno" value="${movie.articleNO }">
+					    	    		<input type="submit" value="예매">
+				    	    		</form>
+			    	    		</div>
+		    	    		</c:if>
+		    	    		<c:if test="${memberList == null }">
+		    	    			<div class="booking_btn">
+				    	    		<a href="login.do">
+					    	    		<input type="hidden" class="booking_login_value2" value="1">
+					    	    		<input class="booking_login2" type="button" value="예매">
+				    	    		</a>
+			    	    		</div>
+		    	    		</c:if>
 						  
 		    	    	</div>
 		   	    	</div>
@@ -280,12 +312,9 @@ display:inline-block;
 						    <img class="poster" src="${movie.poster_main }">
 					        <div class="explain">
 					        	<form id="article_form" action="movieInfo.do" method="get">
-					        		<h1>${movie.title }</h1>
+					        		<h3>${movie.title }</h3>
 						          	<input type="hidden" name="articleNO" value="${movie.articleNO }">
-						       		<input id="detail" type="submit" value="상세보기">
-						       		<div class="movie_rate">
-						       			관람평 ${movie.rate }
-					       			</div>
+						       		<input class="detail" type="submit" value="상세보기">
 					    		</form>
 					     	</div>
 					 	</div>
@@ -312,12 +341,26 @@ display:inline-block;
 		    	    		</form>
 	    	    		</div>
 	    	    		<!-- 예매버튼 -->
-	    	    		<div class="booking_btn">
-		    	    		<form action="booking.do">
-			    	    		<input type="hidden" name="articleno" value="${movie.articleNO }">
-			    	    		<input type="submit" value="예매">
-		    	    		</form>
-	    	    		</div>
+	    	    		
+	    	    		<c:if test="${memberList != null }">
+		    	    		<div class="booking_btn">
+			    	    		<form action="booking.do">
+				    	    		<input type="hidden" name="articleno" value="${movie.articleNO }">
+				    	    		<input type="submit" value="예매">
+			    	    		</form>
+		    	    		</div>
+	    	    		</c:if>
+	    	    		<c:if test="${memberList == null }">
+	    	    			<div class="booking_btn">
+			    	    		<a href="login.do">
+				    	    		<input type="hidden" class="booking_login_value2" value="1">
+				    	    		<input class="booking_login2" type="button" value="예매">
+			    	    		</a>
+		    	    		</div>
+	    	    		</c:if>
+	    	    		
+	    	    		
+	    	    		
 					  
 	    	    	</div>
 		    	    	
@@ -401,29 +444,47 @@ $(function(){
     });
 });
 
-/* 
-for (let k = 1; k < ${total}; k++) {
-	document.querySelector("#like_btn"+k).addEventListener("click", function(){
-   	 $.ajax({
-		    url: "../like/",
-		    type: "POST",
-		    dataType: "html",
-		   	data:{
-	            command : $('#command').val(),
-	            articleNO1 : $('#articleNO1'+k).val()
-	        },
-		    success:function(data){  
-		    	alert("성공");
-		    	let a = data;
-		    	console.log(a);
-		    	$("#like_btn"+k).val("좋아요 "+a);
-		    },   
-		    error: 
-		    function (request, status, error){  
-		    }
-		  });
-   })
-} */
+for (let k = 1; k < 5; k++) {
+	 
+   	
+	document.querySelector(".like_btn"+k).addEventListener("click", function(){
+		if(document.querySelector(".like_login"+k).value==1){
+			 $.ajax({
+				    url: "like.do",
+				    type: "POST",
+				    dataType: "html",
+				   	data:{
+			            command : $('.command').val(),
+			            articleNO1 : $('.articleNO1'+k).val()
+			        },
+				    success:function(data){  
+				    	alert("성공");
+				    	let a = data;
+				    	console.log(a);
+				    	 /* 화면에 표시하는 방법  */
+				    	$(".like_btn"+k).val("♡ "+a);
+				    },   
+				    error: 
+				    function (request, status, error){  
+				    }
+				  });
+		}else if(document.querySelector(".like_login"+k).value==2){
+			alert("로그인이 필요합니다.");
+		}
+		
+   	
+   });
+}
+
+
+document.querySelector(".booking_login2").addEventListener("click", function(){
+	if(document.querySelector(".booking_login_value2").value==1){
+		alert("로그인이 필요합니다.");
+	}
+})
+
+
+
 
 </script>
 </html>

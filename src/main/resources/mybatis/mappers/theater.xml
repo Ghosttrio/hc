@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.theater">
+
+	<!-- 극장정보출력  -->
+	<select id="theaterList" resultType="movieDTO">
+         <![CDATA[
+         	select * from theater
+         ]]>
+	</select>
+	
+<!-- 극장정보출력  -->
+	<select id="showList" resultType="movieDTO">
+         <![CDATA[
+         	select * from show
+         ]]>
+	</select>
+	
+</mapper>

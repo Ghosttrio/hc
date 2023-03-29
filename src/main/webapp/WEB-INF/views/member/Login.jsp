@@ -34,36 +34,39 @@
 	  </script>
 </c:if>
 <body>
-    <section class="login">
-        <div class="login_box">
-            <div class="left_img">
-                <div class="slider">
-                    <img id="mainimg" src="/image/member/poster01.jpg">
-                    <img id="mainimg" src="/image/member/poster02.jpg">
-                    <img id="mainimg" src="/image/member/poster03.jpg">
-                    <img id="mainimg" src="/image/member/poster04.jpg">
-                    <img id="mainimg" src="/image/member/poster05.jpg">
-                    <img id="mainimg" src="/image/member/poster06.jpg">
-                    <img id="mainimg" src="/image/member/poster07.jpg">
-                    <img id="mainimg" src="/image/member/poster08.jpg">
-                    <img id="mainimg" src="/image/member/poster09.jpg">
-                    <img id="mainimg" src="/image/member/poster10.jpg">
+    <div id="wrap">
+        <jsp:include page="../common/header.jsp"></jsp:include>
+        <section class="login3">
+            <div class="login_box">
+                <div class="left_img">
+                    <div class="slider">
+                        <img id="mainimg" src="/image/member/poster01.jpg">
+                        <img id="mainimg" src="/image/member/poster02.jpg">
+                        <img id="mainimg" src="/image/member/poster03.jpg">
+                        <img id="mainimg" src="/image/member/poster04.jpg">
+                        <img id="mainimg" src="/image/member/poster05.jpg">
+                        <img id="mainimg" src="/image/member/poster06.jpg">
+                        <img id="mainimg" src="/image/member/poster07.jpg">
+                        <img id="mainimg" src="/image/member/poster08.jpg">
+                        <img id="mainimg" src="/image/member/poster09.jpg">
+                        <img id="mainimg" src="/image/member/poster10.jpg">
+                    </div>
+                </div>
+                <div class="right_login">
+                    <div class="sign-in">
+                    <img id="humanimg" src="/image/member/loginLogo.png">
+                    
+                        <form method="post" action="/loginMember">
+                                <input id="inputId" type="text" placeholder="아이디를 입력하세요" maxlength="20" name="member_id">
+                                <input id="inputPwd" type="password" placeholder="비밀번호를 입력하세요" maxlength="20" name="member_pwd">
+                                <button class="submit">로그인</button><br>
+                        </form>
+                        
+                    </div>
                 </div>
             </div>
-            <div class="right_login">
-                <div class="sign-in">
-                <img id="humanimg" src="/image/member/loginLogo.png">
-                
-	                <form method="post" action="/member/loginMember">
-			                <input id="inputId" type="text" placeholder="아이디를 입력하세요" maxlength="20" name="member_id">
-			                <input id="inputPwd" type="password" placeholder="비밀번호를 입력하세요" maxlength="20" name="member_pwd">
-			                <button class="submit">로그인</button><br>
-	                </form>
-	                
-                </div>
-            </div>
-        </div>
-    </section>  
+        </section>
+    </div>  
 </body
 >
 </html>

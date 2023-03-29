@@ -57,14 +57,7 @@
 		      <groupId>org.apache.tomcat.embed</groupId>
 		      <artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
-		
-		<!-- tiles -->
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-jsp</artifactId>
-			<version>3.0.7</version>
-		</dependency>
-		
+	
       <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
       <dependency>
           <groupId>com.fasterxml.jackson.core</groupId>

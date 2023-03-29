@@ -1,114 +1,212 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    isELIgnored="false"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>header</title>
+<title>Insert title here</title>
 <style>
-       
-       	a{text-decoration: none;}
-       	
-        header{
-            font-family: 'Courier New', Courier, monospace;
-            margin-top: 30px;
-            text-decoration:none;
-		
+	body::-webkit-scrollbar {
+  display: none;
+}
+    	/* �⺻ �������� */
+        #wrap {
+            margin-left: 2%;
+            margin-right: 2%;
         }
         
-        .header_list {
-        	font-color:black;
-            padding: 0 10px 0 10px;
-            letter-spacing: 1px;
-            opacity: 0.85;/* 투명도 */
-            background-color: black;
-            display: flex;
-            justify-content: space-around;
-            text-align: center;
-            height: 100px;
+        /* ����� */
+        header {
+        	border-top: 2px solid black; 
+            height: 150px;
+            border-bottom: 2px solid black; 
         }
-        .header_list div{
-            width: 100px;
+        header > div {
+            display: inline-block;
+            
+        }
+       .logo{
+            width: 85%;
+        }
+        .login{
+            width: 14%;
+            vertical-align: top;
+            height: 100px;
             line-height: 100px;
-            font-weight: 600;
-            color: white;
-            font-size: 20px;
+            
+            
         }
-        .header_list a{
-        	color:white;
+        .login > div{
+            display: inline-block;
+            margin-right:10px;
         }
-        #logo_human{
-            width: 160px;
-            height: 100px;
+        .login input{
+			width:100px;
+			height:40px;        
+            
         }
-        #logo_human img{
-            width: 160px;
-            height: 50px;
-            vertical-align: middle;
+        .tab_h > div{
+            display: inline-block;
         }
-        .login_signup {
-            display: flex;
-            justify-content: flex-end;
-            color:black;  
-            word-spacing: 20px;
-            padding-bottom: 20px;
+
+        .tab_h{
+        	width:100%;
+            margin-left: 20px;
+            
         }
-        .login_signup div{
-        	margin-top: 10px;
-            margin-right: 50px;
-            font-weight: 600;
-            font-size: 17px;
-        }
-        .login_signup a{
+        .tab_h a {
+        	text-decoration:none;
+        	font-size: 20px;
+        	font-weight:600;
         	color:black;
         	
         }
-    </style>
+        .tab_h > div {
+        	margin-right:40px;
+        }
+        
+        
+        .tab_h > .search{
+        	float:right;
+        	margin-right:20px;
+        	
+        }
+        #schoolInput{
+        	width:200px;
+        	height:30px;
+			
+        }
+        
+        
+        
+        .login a{
+        	text-decoration:none;
+        	color:black;
+        	font-size:20px;
+        	font-weight:600;
+        }
+        
+        .ajaxList{
+        	border:0;
+        	outline:0;
+        	color:black;
+        	width: 100%;
+		    height: 30px;
+		    background-color: f2f0e5;
+		    color:black;
+		    border-bottom: 1px solid black;
+		    cursor:pointer;
+        }
+        #schoolList{
+        	position:relative;
+			z-index:100;
+        }
+        
+         .login2 a {
+        	text-decoration: none;
+        	font-size:11px;
+        }
+       	.login2{
+       		vertical-align:top;
+       		margin-top:10px;
+       		width:150px;
+       	}
+       	.login2 div{
+       		font-size:20px;
+       		font-weight:600;
+       		margin-bottom:10px;
+       	}
+       
+        .login2 *{
+        	
+        	color:black;
+        }
+        
+</style>
 
 </head>
 <body>
-    <header>
-        <div class="header_list">
-            <div id="h1"><a href="/myapp/movie/movieTab.do">
-            	<span style="cursor: pointer">영화</span></a></div>
-            
-            <div id="h2"><a href="">
-            	<span style="cursor: pointer">예매</span></a></div>
-            
-            <div id="h3"><a href="/HumanCinema/cinema/cinema.do">
-            	<span style="cursor: pointer">극장</span></a></div>
-            	
-            <div id="logo_human"><a href="/main/main.do">
-        		<img src="/image/headerLogo.png"/></a></div>
-        		
-			<div id="h4"><a href="/Store/storemain.do">
-            	<span style="cursor: pointer">스토어</span></a></div>
-            
-            <div id="h5"><a href="/login">
-            	<span style="cursor: pointer">이벤트</span></a></div>
-            
-            <div id="h6"><a href="/notice/ntl">
-            	<span style="cursor: pointer">고객센터</span></a></div>
-        </div>
-        
-        <div class="login_signup">
-         <div id="h7">
-	            	<c:choose>
-            			<c:when test="${isLogOn ==true and member!=null}">
-	            				${member.member_id }님	|
-		            			<a href="/member/logout" style="cursor: pointer">로그아웃</a> |
-		            			<a href="/member/mypage.do" style="cursor: pointer">마이페이지</a>
-		        	 	</c:when>
-		          		<c:otherwise>
-			       			 <a href="/member/login.do" style="cursor: pointer">로그인</a> |
-			       			 <a href="/member/add.do" style="cursor: pointer">회원가입</a>
-			     		 </c:otherwise>
-			   		</c:choose>     
-       		 </div>
-		</div> 
-		  	
-    </header>
+	<header>
+	    <div class="logo"><a href="main.do"><img src="/image/LOGO3.jpg" width="300px" height="100px"></a></div>
+	    <c:set var="member" value="${memberList }" />
+	    
+	    <c:choose>
+		    <c:when test="${member == '' || member == null}">
+			    <div class="login">
+			        <div><a href="login.do">LOGIN</a></div>
+			        <div><a href="signup.do">SIGNUP</a></div>
+			    </div>
+		    </c:when>
+		    <c:when test="${member != '' && member !=null}">
+	    		<div class="login2">
+	    			<div>USER ${memberList.member_id}</div>
+	    			<a href="logout.do">
+		    			LOGOUT │
+		    		</a>
+					<a href="">
+		    			MYPAGE
+		    		</a>
+    			</div>
+		    </c:when>
+	    </c:choose>
+	    
+	    <div class="tab_h">
+	        <div><a href="movie.do">MOVIE</a></div>
+	        <div><a href="booking.do">BOOKING</a></div>
+	        
+
+
+			<!-- 여기에다가 주소 적으시면 됩니다. -->
+			<div><a href="">이벤트탭</a></div>
+			<div><a href="">스토어탭</a></div>
+			<div><a href="">고객센터탭</a></div>
+
+
+	        
+	        <div class="search">
+	        	<form action="movieInfo.do">
+		        	<input id="schoolInput" type="text" data-cate="high" onkeyup="search(this);" placeholder="ENTER MOVIE NAME">
+		        	<div id="schoolList"></div>
+	        		<h1 id="selected"></h1>
+        		</form>
+	        </div>
+	    </div>
+	</header>
 </body>
+<script>
+
+window.onload = () => {
+	
+
+	function search(target){
+	
+	    $.ajax({
+	        type: 'GET',
+	        dataType: 'JSON',
+	        url: 'search.do',
+	        error: function(err){
+	            console.log(err);
+	        },
+	        success: function(data){
+	            var checkWord = $("#schoolInput").val();
+	            var schoolList = $("#schoolList");
+	           /*  console.log(checkWord); */
+				
+	            schoolList.empty();
+	            data.forEach((school)=>{
+	                if(school['title'].includes(checkWord)){
+	                	console.log(school['title']);
+	                    schoolList.append(
+	                  		"<input class=\"ajaxList\" type=\"submit\" value=\""+school['title']+"\">"+ 
+	                  		"<br/><input type=\"hidden\" name=\"articleNO\" value="
+	                  		+school['articleNO']+">"); 
+	                }
+	            })
+	        }
+	    })
+	}    
+	
+}
+</script>
 </html>

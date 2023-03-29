@@ -34,7 +34,7 @@
             color:white;
         }
         article{
-            width: 80%;
+            width: 100%;
             height: 800px;
             overflow:scroll;
             background-color:#f2f0e5;
@@ -104,18 +104,17 @@
             <h1>관리자페이지</h1>
         </header>
         <section>
-            <aside>
-                <div class="aside_title">관리탭</div>
-                <div><a href="memberManager.do"><input type="submit" value="회원관리"></a></div>
-                <div><a href="movieManager.do"><input type="submit" value="영화관리"></a></div>
-                <div><a href="theaterManager.do"><input type="submit" value="극장관리"></a></div>
-            </aside>
             <article>
 				<div class="content">
 					<form name="managerForm" >
 						<div class="top2">
 							<div class="top2_1">영화관리</div>
-							<input class="add" type="button" value="영화추가하기">
+							<c:forEach var="movie" items="${movieList }" begin="${movieList.size() - 1}" end="${movieList.size() }" varStatus="status">
+								<form>
+									<input type="hidden" name="articleNO" value="${status.end + 1}">
+									<input class="add" type="button" value="영화추가하기">
+								</form>
+							</c:forEach>
 						</div>
 						<c:forEach var="movie" items="${movieList }" begin="0" end="${movieList.size() }" varStatus="status">
 							<div class="article">

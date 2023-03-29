@@ -22,14 +22,13 @@ public class MainController {
 	
 	@RequestMapping(value="/main.do", method=RequestMethod.GET)
 	public String main(Model model, HttpSession session) {
-//		��ȭ ���
-		System.out.println("������ ���");
-//		�α��� ������ ������ ���� ����
+		System.out.println("메인창 출력");
 		model.addAttribute("memberList", session.getAttribute("id"));
 		List movieList = movieService.movieList();
 		
 		model.addAttribute("movieList",movieList);
 		
+
 		return "main/main";
 	}
 	

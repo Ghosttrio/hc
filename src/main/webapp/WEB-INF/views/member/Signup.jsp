@@ -107,45 +107,48 @@
     
 
 <body>
-    <section class="login">
-        <div class="login_box">
-            <div class="left_img">
-                <div class="slider">
-                	 <img id="mainimg" src="/image/member/poster01.jpg">
-                    <img id="mainimg" src="/image/member/poster02.jpg">
-                    <img id="mainimg" src="/image/member/poster03.jpg">
-                    <img id="mainimg" src="/image/member/poster04.jpg">
-                    <img id="mainimg" src="/image/member/poster05.jpg">
-                    <img id="mainimg" src="/image/member/poster06.jpg">
-                    <img id="mainimg" src="/image/member/poster07.jpg">
-                    <img id="mainimg" src="/image/member/poster08.jpg">
-                    <img id="mainimg" src="/image/member/poster09.jpg">
-                    <img id="mainimg" src="/image/member/poster10.jpg">
-                </div>
-            </div>
-            
-            <div class="right_login">
-                <div class="sign-in">
-                
-                <form id="addMember" method="post" action="/member/addMember">
-                  <div class="join_login">
-                     <div class="inputSet"><input id="inputId"  type="text" name="member_id" placeholder="아이디를 입력하세요" maxlength="20">
-                     <input type="button" class="check"  id="idcheck" onclick="fn_checkMember()" value="확인&#128504;"></div>
-                     <div id="message"></div>
-                     <div class="inputSet"><input id="inputPwd1"  type="password" name="member_pwd" placeholder="비밀번호를 입력하세요" maxlength="20" ></div>
-                     <div class="inputSet"><input id="inputPwd2"  type="password" name="member_pwd2" placeholder="한번 더 입력하세요" maxlength="20" ></div>
-                     <h1></h1>
-                     <div class="inputSet"><input id="inputName"  type="text" name="member_name" placeholder="이름을 입력하세요" ></div>
-                     <div class="inputSet"><input id="inputEmail"  type="text" name="member_email" placeholder="이메일을 입력하세요" ></div>
-                     <div class="inputSet"><input id="inputNumber"  type="text" name="member_number" placeholder="전화번호를 입력하세요" ></div>
-                 </div>
-                 <button  type="submit" class="button"  id="new"  disabled="disabled">회원가입</button><br>
-                 </form>
-                 
-               </div>
-            </div>
-        </div>
-    </section>       
+	<div id="wrap">
+		<jsp:include page="../common/header.jsp"></jsp:include>
+		<section class="login3">
+			<div class="login_box">
+				<div class="left_img">
+					<div class="slider">
+						<img id="mainimg" src="/image/member/poster01.jpg">
+						<img id="mainimg" src="/image/member/poster02.jpg">
+						<img id="mainimg" src="/image/member/poster03.jpg">
+						<img id="mainimg" src="/image/member/poster04.jpg">
+						<img id="mainimg" src="/image/member/poster05.jpg">
+						<img id="mainimg" src="/image/member/poster06.jpg">
+						<img id="mainimg" src="/image/member/poster07.jpg">
+						<img id="mainimg" src="/image/member/poster08.jpg">
+						<img id="mainimg" src="/image/member/poster09.jpg">
+						<img id="mainimg" src="/image/member/poster10.jpg">
+					</div>
+				</div>
+				
+				<div class="right_login">
+					<div class="sign-in">
+					
+					<form id="addMember" method="post" action="/member/addMember">
+					<div class="join_login">
+						<div class="inputSet"><input id="inputId"  type="text" name="member_id" placeholder="아이디를 입력하세요" maxlength="20">
+						<input type="button" class="check"  id="idcheck" onclick="fn_checkMember()" value="확인&#128504;"></div>
+						<div id="message"></div>
+						<div class="inputSet"><input id="inputPwd1"  type="password" name="member_pwd" placeholder="비밀번호를 입력하세요" maxlength="20" ></div>
+						<div class="inputSet"><input id="inputPwd2"  type="password" name="member_pwd2" placeholder="한번 더 입력하세요" maxlength="20" ></div>
+						<h1></h1>
+						<div class="inputSet"><input id="inputName"  type="text" name="member_name" placeholder="이름을 입력하세요" ></div>
+						<div class="inputSet"><input id="inputEmail"  type="text" name="member_email" placeholder="이메일을 입력하세요" ></div>
+						<div class="inputSet"><input id="inputNumber"  type="text" name="member_number" placeholder="전화번호를 입력하세요" ></div>
+					</div>
+					<button  type="submit" class="button"  id="new"  disabled="disabled">회원가입</button><br>
+					</form>
+					
+				</div>
+				</div>
+			</div>
+		</section>
+	</div>       
 </body>
 
 </html>

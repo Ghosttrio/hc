@@ -69,7 +69,9 @@ public class MovieService {
 	public void insertComment2(MovieDTO movieDTO) {
 		movieDAO.insertComment2(movieDTO);
 	}
-	
+	public void deleteComment(int commentNO) {
+		movieDAO.deleteComment(commentNO);
+	}
 	
 	
 	
@@ -79,7 +81,7 @@ public class MovieService {
 	public Map commentList(Map pagingMap) {
 		Map articlesMap = new HashMap();
 		List articlesList = movieDAO.movieList(pagingMap);
-		int totArticles = movieDAO.selectTotArticles();
+		int totArticles = movieDAO.selectTotArticles(pagingMap);
 //		섹션, 페이징에 맞는 댓글리스트 출력
 		articlesMap.put("articlesList", articlesList);
 //		댓글 총개수 출력 --> 부모댓글의 총개수 출력으로 변경하기
@@ -94,7 +96,6 @@ public class MovieService {
 		List showList = movieDAO.showList();
 		return showList;
 	}
-	
 	
 	
 	
@@ -115,9 +116,5 @@ public class MovieService {
 		return showList;
 	}
 	
-	
-//	public void upComment2(MovieDTO movieDTO) {
-//		movieDAO.upComment2(articleNO, upComment2, comment_id, comment_text);
-//	}
 	
 }

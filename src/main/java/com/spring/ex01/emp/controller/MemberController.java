@@ -1,5 +1,7 @@
 package com.spring.ex01.emp.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -17,19 +19,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.ex01.emp.dto.MemberDTO;
 import com.spring.ex01.emp.service.MemberService;
+import com.spring.ex01.emp.service.MovieService;
 
 @Controller("memberController")
-@RequestMapping("/member")
 public class MemberController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	@Autowired	private MemberService memberService;
 	
+	@Autowired	private MovieService movieService;
+	
 	//로그인 View (/login.do) 
 	@RequestMapping("/login.do")
 	public String login() {
-		return "loginMember";
+		return "member/Login";
 	}
 	
 	//로그인(loginMember)
@@ -47,21 +51,24 @@ public class MemberController {
 			  session.setAttribute("member", memberDTO);
 			  session.setAttribute("isLogOn", true); // 세션 속성(true 로그인/ false 로그아웃)
 			  System.out.println("login session: "+session.getAttribute("isLogOn")+"(true 있음 false 없음)"); //세션정보 출력
-
-			  return "main";
+			  List movieList = movieService.movieList();
+				
+			  model.addAttribute("movieList",movieList);
+			  session.setAttribute("memberList", memberDTO);
+			  return "main/main";
 				
 			}else {
 				  model.addAttribute("msg", "아이디 또는 비밀번호가 다릅니다.");
 				  model.addAttribute("result","loginFailed");
 				  
-				  return "loginMember";
+				  return "member/Login";
 			}	
 	}
 	
 	//회원가입 View (/add.do) 
-	@RequestMapping("/add.do")
+	@RequestMapping("/signup.do")
 	public String add() {
-		return "addMember";
+		return "member/Signup";
 	}
 	
 	//회원가입(addMember)
@@ -82,7 +89,7 @@ public class MemberController {
 						return "addMember";
 					}
 					
-					return "forward:/member/login.do";
+					return "forward:/login.do";
 				}
 	
 	
@@ -128,10 +135,10 @@ public class MemberController {
 					 
 					 model.addAttribute("result", memberDTO);
 					 
-					 return "mainMypage";
+					 return "member/Mypage_main";
 				}else {
 					System.out.println("로그인 정보가 없어 마이페이지를 출력 할 수 없습니다"); //실패 출력
-					return "loginMember";
+					return "member/Login";
 				}
 		}
 		

@@ -24,14 +24,9 @@
             display: inline-block;
             vertical-align: top;
         }
-        aside{
-            width: 19%;
-            height: 800px;
-            background-color:#333;
-            color:white;
-        }
+
         article{
-            width: 80%;
+            width: 100%;
             height: 800px;
             overflow:scroll;
             background-color:#f2f0e5;
@@ -101,24 +96,16 @@
             <h1>관리자페이지</h1>
         </header>
         <section>
-            <aside>
-                <div class="aside_title">관리탭</div>
-                <div><a href="memberManager.do"><input type="submit" value="회원관리"></a></div>
-                <div><a href="movieManager.do"><input type="submit" value="영화관리"></a></div>
-                <div><a href="theaterManager.do"><input type="submit" value="극장관리"></a></div>
-            </aside>
-            
              <article>
 				<div class="content">
 					<h1>영화추가</h1>
 				    <form action="movieManager.do" method="GET">
-				    	영화번호 : <input type="text" name="articleNO"> <br>
+				    
+				    	영화번호 : <input type="text" name="articleNO" value="${articleNO }"> <br>
 					    타이틀 : <input type="text" name="title"> <br>
 					    타이틀(영문) : <input type="text" name="title_en"> <br>
 					    관람연령 : <input type="text" name="age"> <br>
 					    개봉일 : <input type="text" name="opendate"> <br>
-					    좋아요 수 : <input type="text" readonly> <br>
-					    평점 : <input type="text" readonly> <br>
 					    영화설명 : <input type="text" name="explain"> <br>
 					    감독 : <input type="text" name="director"> <br>
 					    장르 : <input type="text" name="genre"> <br>

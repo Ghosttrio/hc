@@ -10,10 +10,10 @@
     
 	<typeAliases>
 		<typeAlias type="com.spring.ex01.emp.dto.MemberDTO"  alias="memberDTO" />
+		<typeAlias type="com.spring.ex01.emp.dto.BookingDTO"  alias="bookingDTO" />
+		<typeAlias type="com.spring.ex01.emp.dto.LoginDTO"  alias="loginDTO" />
 		<typeAlias type="com.spring.ex01.emp.dto.MovieDTO"  alias="movieDTO" />
-		<typeAlias type="com.spring.ex01.emp.dto.EventDTO"  alias="eventDTO" />
-		<typeAlias type="com.spring.ex01.emp.dto.StoreDTO"  alias="storeDTO" />
-		<typeAlias type="com.spring.ex01.emp.dto.NoticeDTO"  alias="noticeDTO" />
+		<typeAlias type="com.spring.ex01.emp.dto.ManagerDTO"  alias="ManagerDTO" />
 	</typeAliases>
 	
 	

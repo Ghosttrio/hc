@@ -25,14 +25,8 @@
             display: inline-block;
             vertical-align: top;
         }
-        aside{
-            width: 19%;
-            height: 800px;
-            background-color:#333;
-            color:white;
-        }
         article{
-            width: 80%;
+            width: 100%;
             height: 800px;
             overflow:scroll;
             background-color:#f2f0e5;
@@ -102,29 +96,22 @@
             <h1>관리자페이지</h1>
         </header>
         <section>
-            <aside>
-                <div class="aside_title">관리탭</div>
-                <div><a href="memberManager.do"><input type="submit" value="회원관리"></a></div>
-                <div><a href="movieManager.do"><input type="submit" value="영화관리"></a></div>
-                <div><a href="theaterManager.do"><input type="submit" value="극장관리"></a></div>
-            </aside>
-            
              <article>
 				<div class="content">
 					<h1>영화수정</h1>
 				    <c:forEach var="movieList" items="${movieList }" varStatus="status">
 					   <form action="movieManager.do" method="GET">
-					    타이틀 : <input type="text" value="${movieList.title }" name="title">
-					   	타이틀(영문) :	<input type="text" value="${movieList.title_en }" name="title_en">
-					   	관람연령 :	<input type="text" value="${movieList.age }" name="age">
-					   	개봉일 : <input type="text" value="${movieList.opendate }" name="opendate">
-						영화설명 : <input type="text" value="${movieList.explain }" name="explain">
-						감독 : <input type="text" value="${movieList.director }" name="director">
-					   	장르 : <input type="text" value="${movieList.genre }" name="genre">
-					   	러닝타임 :	<input type="text" value="${movieList.runningtime }" name="runningtime">
-					  	배우 : <input type="text" value="${movieList.actor }" name="actor">
-					   	포스터(배경) : <input type="text" value="${movieList.poster_back }" name="poster_back">
-					   	포스터(메인) :	<input type="text" value="${movieList.poster_main }" name="poster_main">
+					    타이틀 : <input type="text" value="${movieList.title }" name="title"><br>
+					   	타이틀(영문) :	<input type="text" value="${movieList.title_en }" name="title_en"><br>
+					   	관람연령 :	<input type="text" value="${movieList.age }" name="age"><br>
+					   	개봉일 : <input type="text" value="${movieList.opendate }" name="opendate"><br>
+						영화설명 : <input type="text" value="${movieList.explain }" name="explain"><br>
+						감독 : <input type="text" value="${movieList.director }" name="director"><br>
+					   	장르 : <input type="text" value="${movieList.genre }" name="genre"><br>
+					   	러닝타임 :	<input type="text" value="${movieList.runningtime }" name="runningtime"><br>
+					  	배우 : <input type="text" value="${movieList.actor }" name="actor"><br>
+					   	포스터(배경) : <input type="text" value="${movieList.poster_back }" name="poster_back"><br>
+					   	포스터(메인) :	<input type="text" value="${movieList.poster_main }" name="poster_main"><br>
 					   	
 					   	
 					    <input type="submit">

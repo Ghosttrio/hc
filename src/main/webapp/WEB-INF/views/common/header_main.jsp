@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -10,13 +10,13 @@
 	body::-webkit-scrollbar {
   display: none;
 }
-    	/* ±‚∫ª ∏∂¡¯º≥¡§ */
+    	/* ÔøΩ‚∫ª ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ */
         #wrap {
             margin-left: 2%;
             margin-right: 2%;
         }
         
-        /* ªÛ¥‹≈« */
+        /* ÔøΩÔøΩÔøΩÔøΩÔøΩ */
         header {
             height: 150px;
             
@@ -93,7 +93,7 @@
         	color:black;
         	width: 100%;
 		    height: 30px;
-		    background-color: f2f0e5;
+		    background-color: #f2f0e5;
 		    color:black;
 		    border-bottom: 1px solid black;
 		    cursor:pointer;
@@ -122,6 +122,7 @@
         	
         	color:white;
         }
+   
         
         
 </style>
@@ -129,38 +130,67 @@
 </head>
 <body>
 	<header>
-	    <div class="logo"><a href="main.do"><img src="resources/image/LOGO2.jpg" width="300px" height="100px"></a></div>
+	    <div class="logo"><a href="main.do"><img src="/image/LOGO2.jpg" width="300px" height="100px"></a></div>
 	    <c:set var="member" value="${memberList }" />
 	    
 	    <c:choose>
 		    <c:when test="${member == '' || member == null}">
 			    <div class="login">
-			        <div><a href="login.do">∑Œ±◊¿Œ</a></div>
-			        <div><a href="signup.do">»∏ø¯∞°¿‘</a></div>
+			        <div><a href="login.do">LOGIN</a></div>
+			        <div><a href="signup.do">SIGNUP</a></div>
 			    </div>
 		    </c:when>
 		    <c:when test="${member != '' && member !=null}">
-	    		<%-- <div class="login">${memberList[0].name } ¥‘</div> --%>
 	    		<div class="login2">
-	    			<div>${memberList} ¥‘</div>
-	    			<a href="mypage.do">
-		    			∏∂¿Ã∆‰¿Ã¡ˆ ¶¢
-		    		</a>
+	    			<div>USER ${memberList.member_id}</div>
 	    			<a href="logout.do">
-		    			∑Œ±◊æ∆øÙ
+		    			LOGOUT ‚îÇ
 		    		</a>
+					<a href="">
+						MYPAGE
+					</a>
     			</div>
 	    		
 		    </c:when>
 	    </c:choose>
 	    
 	    <div class="tab_h">
-	        <div><a href="movie.do">øµ»≠</a></div>
-	        <div><a href="theater.do">±ÿ¿Â</a></div>
-	        <div><a href="booking.do">øπ∏≈</a></div>
+	        <div><a href="movie.do">MOVIE</a></div>
+	        <c:if test="${memberList != null }">
+		        <div class="booking_login"><a href="booking.do">BOOKING</a>
+		        </div>
+	        </c:if>
+	        <c:if test="${memberList == null }">
+		        <div class="booking_login">
+		        	<a href="login.do">BOOKING</a>
+		        	<input type="hidden" class="booking_login_value" value="1">
+		        </div>
+	        </c:if>
+
+
+
+
+
+
+
+
+
+			<!-- Ïó¨Í∏∞ÏóêÎã§Í∞Ä Ï£ºÏÜå Ï†ÅÏúºÏãúÎ©¥ Îê©ÎãàÎã§. -->
+			<div><a href="">Ïù¥Î≤§Ìä∏ÌÉ≠</a></div>
+			<div><a href="">Ïä§ÌÜ†Ïñ¥ÌÉ≠</a></div>
+			<div><a href="">Í≥†Í∞ùÏÑºÌÑ∞ÌÉ≠</a></div>
+
+
+
+
+
+
+
+
+
 	        <div class="search">
 	        	<form action="movieInfo.do">
-		        	<input id="schoolInput" type="text" data-cate="high" onkeyup="search(this);" placeholder="øµ»≠∏¶ ¿‘∑¬«œººø‰">
+		        	<input id="schoolInput" type="text" data-cate="high" onkeyup="search(this);" placeholder="ENTER MOVIE NAME">
 		        	<div id="schoolList"></div>
 	        		<h1 id="selected"></h1>
         		</form>
@@ -170,36 +200,80 @@
 </body>
 <script>
 
-function search(target){
-
-    $.ajax({
-        type: 'GET',
-        dataType: 'JSON',
-        url: 'search.do',
-        error: function(err){
-            console.log(err);
-        },
-        success: function(data){
-            var checkWord = $("#schoolInput").val();
-            var schoolList = $("#schoolList");
-           /*  console.log(checkWord); */
-			
-            schoolList.empty();
-            data.forEach((school)=>{
-                if(school['title'].includes(checkWord)){
-                	console.log(school['title']);
-                    schoolList.append(
-                  		"<input class=\"ajaxList\" type=\"submit\" value=\""+school['title']+"\">"+ 
-                  		"<br/><input type=\"hidden\" name=\"articleNO\" value="
-                  		+school['articleNO']+">"); 
-                }
-            })
-        }
-    })
-
-}    
-
-
+	window.onload = () => {
+		
+	
+		function search(target){
+		
+		    $.ajax({
+		        type: 'GET',
+		        dataType: 'JSON',
+		        url: 'search.do',
+		        error: function(err){
+		            console.log(err);
+		        },
+		        success: function(data){
+		            var checkWord = $("#schoolInput").val();
+		            var schoolList = $("#schoolList");
+		           /*  console.log(checkWord); */
+					
+		            schoolList.empty();
+		            data.forEach((school)=>{
+		                if(school['title'].includes(checkWord)){
+		                	console.log(school['title']);
+		                    schoolList.append(
+		                  		"<input class=\"ajaxList\" type=\"submit\" value=\""+school['title']+"\">"+ 
+		                  		"<br/><input type=\"hidden\" name=\"articleNO\" value="
+		                  		+school['articleNO']+">"); 
+		                }
+		            })
+		        }
+		    })
+		
+		}    
+		
+		document.querySelector(".booking_login").addEventListener("click", function(){
+			if(document.querySelector(".booking_login_value").value==1){
+				alert("ÔøΩŒ±ÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩ øÔøΩÔøΩ’¥œ¥ÔøΩ.");
+			}
+		})
+		
+		document.querySelector(".booking_login2").addEventListener("click", function(){
+			if(document.querySelector(".booking_login_value2").value==1){
+				alert("ÔøΩŒ±ÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩ øÔøΩÔøΩ’¥œ¥ÔøΩ.");
+			}
+		})
+		
+		for (let k = 1; k < 5; k++) {
+			document.querySelector(".like_btn"+k).addEventListener("click", function(){
+				if(document.querySelector(".like_login"+k).value==1){
+					 $.ajax({
+						    url: "like.do",
+						    type: "POST",
+						    dataType: "html",
+						   	data:{
+					            command : $('.command').val(),
+					            articleNO1 : $('.articleNO1'+k).val()
+					        },
+						    success:function(data){  
+						    	alert("ÔøΩÔøΩÔøΩ∆ø‰∞° ÔøΩ›øÔøΩÔøΩ«æÔøΩÔøΩÔøΩÔøΩœ¥ÔøΩ.");
+						    	let a = data;
+						    	console.log(a);
+						    	 /* »≠ÔøΩÈø° «•ÔøΩÔøΩÔøΩœ¥ÔøΩ ÔøΩÔøΩÔøΩ  */
+						    	$(".like_btn"+k).val("ÔøΩÔøΩ "+a);
+						    },   
+						    error: 
+						    function (request, status, error){  
+						    }
+						  });
+				}else if(document.querySelector(".like_login"+k).value==2){
+					alert("ÔøΩŒ±ÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩ øÔøΩÔøΩ’¥œ¥ÔøΩ.");
+				}
+				
+		   	
+		   });
+		}
+	}
 
 
 </script>

@@ -77,6 +77,7 @@ public class MovieDAO {
 	
 //	�뙎湲� �엯�젰
 	public void insertComment(MovieDTO movieDTO) {
+		
 		sqlSession.insert("mapper.movie.insertComment", movieDTO);
 	}
 	
@@ -84,16 +85,22 @@ public class MovieDAO {
 	public void insertComment2(MovieDTO movieDTO) {
 		sqlSession.insert("mapper.movie.insertComment2", movieDTO);
 	}
+	public void deleteComment(int commentNO) {
+		sqlSession.delete("mapper.movie.deleteComment", commentNO);
+	}
+	
+	
 	
 //	�뙎湲� 異쒕젰(�럹�씠吏�)
 	public List movieList(Map pagingMap) {
+		
 		List movieList = sqlSession.selectList("mapper.movie.commentList", pagingMap);
 		return movieList;
 	}
 	
 //	(�럹�씠吏� 湲곕뒫) �뙎湲� 媛쒖닔 援ы븯湲�
-	public int selectTotArticles() {
-		int tot = sqlSession.selectOne("mapper.movie.tot");
+	public int selectTotArticles(Map pagingMap) {
+		int tot = sqlSession.selectOne("mapper.movie.tot", pagingMap);
 		return tot;
 	}
 	
@@ -131,6 +138,7 @@ public class MovieDAO {
 	}
 
 	
+
 	
 }
 
