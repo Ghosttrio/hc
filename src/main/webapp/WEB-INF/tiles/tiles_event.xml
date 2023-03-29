@@ -12,6 +12,10 @@
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
    
+<<<<<<< HEAD
+=======
+  
+>>>>>>> master
       
 <!--     이벤트  -->
   		<definition name="*.sg" extends="baseLayout">
@@ -32,12 +36,17 @@
 	    </definition>
 	    
 	    
+<<<<<<< HEAD
 <!--     이벤트 댓글용 -->
   		<definition name="*.sg4" extends="baseLayout">
          <put-attribute name="title" value="로그인 페이지" />
          <put-attribute name="body" value="/WEB-INF/views/member/{1}.jsp" />
 	    </definition>
 	    
+=======
+
+
+>>>>>>> master
 	    
 	  </tiles-definitions>
 	  

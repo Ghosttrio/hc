@@ -14,11 +14,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.ex01.emp.dto.EventDTO;
+import com.spring.ex01.emp.dto.MemberDTO;
+import com.spring.ex01.emp.dto.StoreDTO;
 import com.spring.ex01.emp.service.EventService;
 
 
@@ -40,7 +43,7 @@ public class EventController {
 		model.addAttribute("eventsList", list);
 		logger.warn("EventController > getList : list.size = "+ list.size());
 		
-		return "event/listEvent";
+		return "listEvent.sg";
 	}
 	
 	//이벤트 목록 일반용
@@ -51,7 +54,7 @@ public class EventController {
 		model.addAttribute("eventsList", list);
 		logger.warn("EventController > getList : list.size = "+ list.size());
 		
-		return "event/listEvent2";
+		return "listEvent2.sg";
 	}
 	
 	
@@ -85,7 +88,7 @@ public class EventController {
 		
 		
 		
-		return "event/addEvent2";
+		return "addEvent2.sg";
 	}
 	
 	//두번째 이미지 보여주는 창
@@ -114,7 +117,7 @@ public class EventController {
 		model.addAttribute("listArticles", list2);
 		logger.warn("EventController > getList : list.size = "+ list.size());
 		
-		return "event/viewEvent";
+		return "viewEvent.sg";
 	}
 	
 	//이벤트 수정창
@@ -138,7 +141,7 @@ public class EventController {
 		model.addAttribute("eventsList", list);
 		
 		
-		return "event/modify";
+		return "modify.sg";
 	}
 	
 	
@@ -147,7 +150,7 @@ public class EventController {
 		
 		
 
-		return "event/modEventForm";
+		return "modEventForm.sg";
 	}
 	
 	//이벤트 삭제창
@@ -178,7 +181,7 @@ public class EventController {
 		model.addAttribute("listArticles", list);
 		logger.warn("EventController > ListArticles : list.size = "+ list.size());
 		
-		return "article/listArticles";
+		return "listArticles.sg2";
 	}
 	
 	//댓글추가창
@@ -202,7 +205,7 @@ public class EventController {
 		System.out.println("replyForm.do:id;"+id);
 		
 		model.addAttribute("id",id);
-		return "article/articleForm";
+		return "articleForm.sg2";
 	}
 	
 	//이벤트 대댓글 추가 창
@@ -220,7 +223,7 @@ public class EventController {
 		
 		model.addAttribute("id",id);
 		
-		return "article/replyForm";
+		return "replyForm.sg2";
 	}
 //	@RequestMapping(value="/replyForm3.do")
 //	public String replyForm3(Model model,@RequestParam("id") String id) {
@@ -271,7 +274,7 @@ public class EventController {
 			model.addAttribute("dto", dto);
 			
 			System.out.println("modArticle.do 실행");
-			return "article/modArticle";
+			return "modArticle.sg2";
 	}
 	
 	
@@ -287,19 +290,29 @@ public class EventController {
 		
 		@GetMapping("loginForm")
 		public String goLoginForm() {
-			return "loginEvent/login";
+			return "login.sg3";
 		}
 		
-		@PostMapping("/login")
+		@RequestMapping("/login")
 //		외부에서 전달받은 아이디와 패스워드를 매개변수로 받는다.
-		public String login(@ModelAttribute("id") String id, String pw) {
+		public String login(HttpServletRequest request
+				
+				) throws Exception  {
+		
+		
+			MemberDTO memberDTO = (MemberDTO) request.getSession().getAttribute("member");
+			
+			if ( memberDTO != null ) {
 //			만약 아아디가 admin일 경우
-			if(id.equals("admin")) {
-
-				return "loginEvent/admin";
-			}
+				String user_id = memberDTO.getMember_id();
+				if(user_id.equals("admin")) {
+					
+					return "admin.sg3";
+				}
 //			만약 아이디가 admin이 아닐 경우  이동
-			return "loginEvent/user";
+				return "user.sg3";
+			}
+			return "/login";
 		}
 	}
 	
@@ -329,7 +342,7 @@ public class EventController {
 			model.addAttribute("listArticles", list2);
 			logger.warn("EventController > getList : list.size = "+ list.size());
 			
-			return "event/viewEvent2";
+			return "viewEvent2.sg";
 		}
 	
 }

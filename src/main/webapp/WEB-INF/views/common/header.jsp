@@ -86,7 +86,7 @@
 			<div id="h4"><a href="/Store/storemain.do">
             	<span style="cursor: pointer">스토어</span></a></div>
             
-            <div id="h5"><a href="/HumanCinema/event1/event1.do">
+            <div id="h5"><a href="/login">
             	<span style="cursor: pointer">이벤트</span></a></div>
             
             <div id="h6"><a href="/notice/ntl">

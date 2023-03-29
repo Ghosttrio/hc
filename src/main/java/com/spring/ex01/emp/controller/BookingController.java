@@ -37,7 +37,7 @@ public class BookingController {
 		model.addAttribute("theaterList", theaterList);
 //		아이디 세션 전달
 		model.addAttribute("memberList",session.getAttribute("id"));
-		return "booking/booking";
+		return "/booking/booking";
 	}
 	
 	@RequestMapping(value="/t_movie.do", method=RequestMethod.GET)

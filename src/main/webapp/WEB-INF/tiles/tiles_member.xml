@@ -16,7 +16,8 @@
 	  <definition name="loginMember" extends="baseLayout">
          <put-attribute name="title" value="로그인 페이지" />
          <put-attribute name="body" value="/WEB-INF/views/member/Login.jsp" />
-      </definition>  
+      </definition> 
+       
       
 <!-- 회원가입 페이지  -->      
       <definition name="addMember" extends="baseLayout">

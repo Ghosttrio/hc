@@ -18,9 +18,9 @@
 
 body {
     text-align: center;
-    padding: 100px;
+/*     padding: 100px; */
     background: whitesmoke;
-    display: table-cell;
+/*     display: table-cell; */
 }
 button {
     margin: 20px;
@@ -61,7 +61,7 @@ button {
 }
 
 .userlogin{
-	width: 350%;
+	
 	height: 500%;
 	color: blue;
 	text-align: center;
@@ -78,7 +78,7 @@ button {
 
 <div class="userlogin">
 	<h1>
-	<c:out value="${id}님 환영합니다!"/>
+	<c:out value="환영합니다!"/>
 	</h1>
 
 
