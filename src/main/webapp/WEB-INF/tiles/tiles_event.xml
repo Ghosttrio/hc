@@ -12,11 +12,6 @@
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
    
-      <!--  메인 페이지  -->
-         <definition name="main" extends="baseLayout">
-         <put-attribute name="title" value="메인 페이지" />
-         <put-attribute name="body" value="/WEB-INF/views/main/main.jsp" />
-      </definition>
       
 <!--     이벤트  -->
   		<definition name="*.sg" extends="baseLayout">
@@ -43,11 +38,6 @@
          <put-attribute name="body" value="/WEB-INF/views/member/{1}.jsp" />
 	    </definition>
 	    
-<!--     로그인 페이지 -->
-  		<definition name="*.sg4" extends="baseLayout">
-         <put-attribute name="title" value="로그인 페이지" />
-         <put-attribute name="body" value="/WEB-INF/views/member/{1}.jsp" />
-	    </definition>
 	    
 	  </tiles-definitions>
 	  
