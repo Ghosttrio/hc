@@ -473,7 +473,7 @@ display:inline-block;
 		            	<c:if test="${memberList != null }">
 							<form method="get" action="reply.do">
 								<input type="hidden" name="articleNO" value="${movie.articleNO }">
-								<input type="hidden" name="comment_id" value="${memberList }">
+								<input type="hidden" name="comment_id" value="${memberList.member_id }">
 								<input type="hidden" name="totArticles" value="${totArticles }">
 								<input class="b" type="text" name = "comment_text" placeholder="  관람평을 입력해주세요">
 								<input class="c" type="number" min="0" max="10" name = "comment_rate" placeholder="평점">
@@ -527,7 +527,7 @@ display:inline-block;
 				        					<div class="recomment_l"><h3>ㄴ</h3></div>
 											<input type="hidden" name="articleNO" value="${movie.articleNO }">
 											<input type="hidden" name="recommentNO" value="${comment.commentNO }">
-											<input type="hidden" name="recomment_id" value="${memberList }">
+											<input type="hidden" name="recomment_id" value="${memberList.member_id }">
 											<input class="recomment_text" type="text" name = "recomment_text" placeholder="대댓글입력">
 											<input class="recomment_btn" type="submit" value="대댓글입력">
 										</form>
@@ -549,7 +549,7 @@ display:inline-block;
 						            	<div class="recomment_ll">ㄴ </div>
 						            	<div class="dd">${comment.comment_id }님의 답글:</div>
 										<div class="ee">${comment.comment_text}</div>
-										<c:if test="${memberList == comment.comment_id}">
+										<c:if test="${memberList.member_id == comment.comment_id}">
 											<div class="comment_manager">
 												<form action="reply_del.do">
 													<input type="hidden" name="articleNO" value="${movie.articleNO }">

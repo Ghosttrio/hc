@@ -22,7 +22,6 @@ public class searchController {
     @GetMapping("/search.do")
     public List search() {
     	List movieList = movieService.movieList();
-    	
         return movieList;
     }
 
