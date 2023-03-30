@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="/css/main/main.css?v=3">
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+	<script src="js/main/main.js" defer></script>
 </head>
 <body>
     <div id="wrap">

@@ -47,9 +47,8 @@
 	        </c:if>
 	        <div class="search">
 	        	<form action="movieInfo.do">
-		        	<input id="schoolInput" type="text" data-cate="high" onkeyup="search(this);" placeholder="영화제목을 입력하세요">
-		        	<div id="schoolList"></div>
-	        		<h1 id="selected"></h1>
+		        	<input id="movieInput" type="text" data-cate="high" onkeyup="search(this);" placeholder="영화제목을 입력하세요">
+		        	<div id="movieList"></div>
         		</form>
 	        </div>
 	    </div>

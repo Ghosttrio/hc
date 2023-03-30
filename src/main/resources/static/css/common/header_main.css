@@ -64,7 +64,7 @@ header > div {
 	margin-right:20px;
 	
 }
-#schoolInput{
+#movieInput{
 	width:200px;
 	height:30px;
 	
@@ -91,7 +91,7 @@ header > div {
     cursor:pointer;
 	
 }
-#schoolList{
+#movieList{
 	position:relative;
 	z-index:100;
 }

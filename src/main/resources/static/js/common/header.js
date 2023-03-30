@@ -10,18 +10,17 @@
 	            console.log(err);
 	        },
 	        success: function(data){
-	            var checkWord = $("#schoolInput").val();
-	            var schoolList = $("#schoolList");
+	            var checkWord = $("#movieInput").val();
+	            var movieList = $("#movieList");
 	           /*  console.log(checkWord); */
-				
-	            schoolList.empty();
-	            data.forEach((school)=>{
-	                if(school['title'].includes(checkWord)){
-	                	console.log(school['title']);
-	                    schoolList.append(
-	                  		"<input class=\"ajaxList\" type=\"submit\" value=\""+school['title']+"\">"+ 
+	            movieList.empty();
+	            data.forEach((movie)=>{
+	                if(movie['title'].includes(checkWord)){
+	                	console.log(movie['title']);
+	                    movieList.append(
+	                  		"<input class=\"ajaxList\" type=\"submit\" value=\""+movie['title']+"\">"+ 
 	                  		"<br/><input type=\"hidden\" name=\"articleNO\" value="
-	                  		+school['articleNO']+">"); 
+	                  		+movie['articleNO']+">"); 
 	                }
 	            })
 	        }
