@@ -3,7 +3,8 @@
     isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<title>HUMANCINEMA</title>
+<link rel="icon" href="/image/favicon.png">
 <link  href="/css/member/MemberLogin.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

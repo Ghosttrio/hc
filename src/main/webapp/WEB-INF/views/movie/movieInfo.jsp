@@ -27,7 +27,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>영화정보</title>
+    <title>HUMANCINEMA</title>
+	<link rel="icon" href="/image/favicon.png">
 	<link rel="stylesheet" href="/css/movie/movieInfo.css">
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>

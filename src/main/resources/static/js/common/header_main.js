@@ -1,7 +1,4 @@
-window.onload = () =>{
-	
 
-	
 	function search(target){
 	
 	    $.ajax({
@@ -73,4 +70,3 @@ window.onload = () =>{
 	}
 
 
-}
