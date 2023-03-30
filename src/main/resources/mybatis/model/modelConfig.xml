@@ -9,11 +9,9 @@
     </settings>
     
 	<typeAliases>
-		<typeAlias type="com.spring.ex01.emp.dto.MemberDTO"  alias="memberDTO" />
-		<typeAlias type="com.spring.ex01.emp.dto.BookingDTO"  alias="bookingDTO" />
-		<typeAlias type="com.spring.ex01.emp.dto.LoginDTO"  alias="loginDTO" />
-		<typeAlias type="com.spring.ex01.emp.dto.MovieDTO"  alias="movieDTO" />
-		<typeAlias type="com.spring.ex01.emp.dto.ManagerDTO"  alias="ManagerDTO" />
+		<typeAlias type="com.spring.dto.MemberDTO"  alias="memberDTO" />
+		<typeAlias type="com.spring.dto.BookingDTO"  alias="bookingDTO" />
+		<typeAlias type="com.spring.dto.MovieDTO"  alias="movieDTO" />
 	</typeAliases>
 	
 	

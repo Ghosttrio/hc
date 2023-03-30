@@ -10,9 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HUMANCINEMA</title>
     <link rel="icon" href="/image/favicon.png">
-	<link rel="stylesheet" href="/css/main.css?v=3">
+	<link rel="stylesheet" href="/css/main/main.css?v=3">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-	<script src="/js/main.js"></script>
 </head>
 <body>
     <div id="wrap">
@@ -40,50 +40,48 @@
 				    		</form>
 				     	</div>
 				 	</div>
-	    	    	
 	    	    	<!-- 버튼부분 -->
 	    	    	<div class="movie_btn">
-	    	    	<!-- 좋아요버튼 -->
-	    	    	<c:if test="${memberList != null }">
-	    	    		<div class="like_btn">
-		    	    		<form action="like.do">
-			    	    		<input class="like_num" type="hidden" name="like_num" value="${movie.like_num}">
-							  	<input class="articleNO1${status.count }" type="hidden" name="articleNO1" value="${movie.articleNO}">
-							  	<input class="command" type="hidden" name="command1" value="like_it">
-							  	<input class="like_login${status.count }" type="hidden" name="like_login" value="1">
-							  	<input class="like_btn${status.count }" type="button" value="♡ ${movie.like_num }">
-		    	    		</form>
-	    	    		</div>
-    	    		</c:if>
-    	    		<c:if test="${memberList == null }">
-	    	    		<div class="like_btn">
-		    	    		<form action="like.do">
-			    	    		<input class="like_num" type="hidden" name="like_num" value="${movie.like_num}">
-							  	<input class="articleNO1${status.count }" type="hidden" name="articleNO1" value="${movie.articleNO}">
-							  	<input class="command" type="hidden" name="command1" value="like_it">
-							  	<input class="like_login${status.count }" type="hidden" name="like_login" value="2">
-							  	<input class="like_btn${status.count }" type="button" value="♡ ${movie.like_num }">
-		    	    		</form>
-	    	    		</div>
-    	    		</c:if>
-	    	    		<!-- 예매버튼 -->
-	    	    		<c:if test="${memberList != null }">
-		    	    		<div class="booking_btn">
-			    	    		<form action="booking.do">
-				    	    		<input type="hidden" name="articleno" value="${movie.articleNO }">
-				    	    		<input class="booking_login2" type="submit" value="예매">
-			    	    		</form>
-		    	    		</div>
-	    	    		</c:if>
-	    	    		<c:if test="${memberList == null }">
-	    	    			<div class="booking_btn">
-			    	    		<form action="login.do">
-				    	    		<input type="hidden" class="booking_login_value2" value="1">
-				    	    		<input class="booking_login2" type="button" value="예매">
-			    	    		</form>
-		    	    		</div>
-	    	    		</c:if>
-					  
+						<!-- 좋아요버튼 -->
+						<c:if test="${memberList != null }">
+							<div class="like_btn">
+								<form action="like.do">
+									<input class="like_num" type="hidden" name="like_num" value="${movie.like_num}">
+									<input class="articleNO1${status.count }" type="hidden" name="articleNO1" value="${movie.articleNO}">
+									<input class="command" type="hidden" name="command1" value="like_it">
+									<input class="like_login${status.count }" type="hidden" name="like_login" value="1">
+									<input class="like_btn${status.count }" type="button" value="♡ ${movie.like_num }">
+								</form>
+							</div>
+						</c:if>
+						<c:if test="${memberList == null }">
+							<div class="like_btn">
+								<form action="like.do">
+									<input class="like_num" type="hidden" name="like_num" value="${movie.like_num}">
+									<input class="articleNO1${status.count }" type="hidden" name="articleNO1" value="${movie.articleNO}">
+									<input class="command" type="hidden" name="command1" value="like_it">
+									<input class="like_login${status.count }" type="hidden" name="like_login" value="2">
+									<input class="like_btn${status.count }" type="button" value="♡ ${movie.like_num }">
+								</form>
+							</div>
+						</c:if>
+						<!-- 예매버튼 -->
+						<c:if test="${memberList != null }">
+							<div class="booking_btn">
+								<form action="booking.do">
+									<input type="hidden" name="articleno" value="${movie.articleNO }">
+									<input class="booking_login2" type="submit" value="예매">
+								</form>
+							</div>
+						</c:if>
+						<c:if test="${memberList == null }">
+							<div class="booking_btn">
+								<form action="login.do">
+									<input type="hidden" class="booking_login_value2" value="1">
+									<input class="booking_login2" type="button" value="예매">
+								</form>
+							</div>
+						</c:if>
 	    	    	</div>
 	   	    	</div>
     	    </c:forEach>

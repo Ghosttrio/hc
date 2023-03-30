@@ -1,0 +1,130 @@
+body{
+
+	background: rgb(26,20,18);
+	
+}
+
+.main_image{
+	height: 300px;
+}
+
+.main_image > img{
+	width:100%;
+	height: 300px;
+}	
+
+#article1{
+	width:100%;
+    height: 600px;
+}
+h2{
+	margin-top:40px;
+	text-align:center;
+	margin-bottom:20px;
+	color:white;
+	
+}
+#article1 {
+	display:flex;
+	justify-content: space-around;
+	
+}
+.movie_btn{
+	text-align:center;
+	margin-top:10px;
+}
+.movie_btn > div{
+	display:inline-block;
+}
+.like_btn{
+	width:27%;
+	height:40px;
+	
+}
+.like_btn input {
+	border-radius: 10px;
+	width:100%;
+	height:40px;
+	cursor: pointer;
+	border: none;
+	background: black;
+	color: white;
+	border:0.5px solid white;
+}
+
+.booking_btn{
+	width:70%;
+	height:40px;
+}
+.booking_btn input {
+	border-radius: 10px;
+	width:100%;
+	height:40px;
+	cursor: pointer;
+	border: none;
+	background: #037b94;
+	color: white;
+}
+.movie_article img{
+	border-radius: 10px;
+}
+		
+/* ȣ���� �������°� */
+.explain{
+    position: relative;
+    top:-310px;
+    color: white;
+    font-size: 15px;
+    padding: 30px;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+    z-index: 1;
+    width: 180px;
+	height: 230px;
+	word-wrap: break-word;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align : center;
+}
+
+.image{
+
+	width: 240px;
+    height: 330px;
+}
+
+.image:hover .explain{
+    opacity: 1;
+}
+
+.poster{
+    transition: 0.2s;
+    width: 240px;
+    height: 330px;
+}
+.image:hover .poster {
+    filter: brightness(50%); 
+}
+
+.info{
+    font-size: 20px;
+}
+
+.info div {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.movie_rate{
+	margin-top:10px;
+	border-top:1px solid grey;
+}
+.detail{
+	border-radius: 10px;
+	width:100px;
+	height:40px;
+	cursor: pointer;
+	border: none;
+	background: white;
+	color: black;
+	border:0.5px solid white;
+}
